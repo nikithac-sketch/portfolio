@@ -417,22 +417,15 @@ img { display: block; max-width: 100%; }
    CONTACT CHAPTER
    ============================================ */
 .chapter { padding: var(--section-pad) 40px; max-width: var(--max-w); margin: 0 auto; }
-.chapter-contact {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    max-width: 100%;
-    background: var(--bg);
-}
+.chapter-contact { max-width: 100%; background: var(--bg); }
 .chapter-contact > * { max-width: var(--max-w); margin-left: auto; margin-right: auto; }
 
-.chapter-label { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.chapter-label { display: flex; align-items: center; gap: 14px; margin-bottom: 48px; }
 .chapter-num { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--accent); }
 .chapter-dash { width: 40px; height: 2px; background: var(--accent); }
 .chapter-name { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; color: var(--text-muted); }
 
-.chapter-contact .chapter-label { margin-bottom: 16px; }
-.story-hero-text { margin-bottom: 40px; }
-.chapter-contact .story-hero-text { margin-bottom: 24px; }
+.story-hero-text { margin-bottom: 64px; }
 .story-hero-text h2 {
     font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 900;
     line-height: 1.05; letter-spacing: -0.03em; text-transform: uppercase;
@@ -483,10 +476,10 @@ img { display: block; max-width: 100%; }
 .connect-layout {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 32px;
     align-items: stretch;
     width: 100%;
-    margin-top: 24px;
+    margin-top: 56px;
 }
 
 .connect-form-side {
@@ -497,24 +490,24 @@ img { display: block; max-width: 100%; }
 .connect-form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 24px;
     background: #ffffff;
     border: 2px solid #555555;
     border-radius: 16px;
-    padding: 24px 28px;
+    padding: 30px 32px;
     height: 100%;
 }
 
 .form-field {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
     width: 100%;
 }
 
 .form-field label {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     color: var(--text-muted);
@@ -529,7 +522,7 @@ img { display: block; max-width: 100%; }
     background: transparent;
     border: none;
     border-bottom: 2px solid var(--border);
-    padding: 6px 0 6px;
+    padding: 8px 0 10px;
     outline: none;
     transition: border-color 0.4s var(--ease-expo);
     width: 100%;
@@ -556,7 +549,7 @@ img { display: block; max-width: 100%; }
     font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.1em;
-    padding: 10px 24px;
+    padding: 14px 36px;
     background: var(--text);
     color: var(--bg);
     border: 2px solid var(--text);
@@ -589,7 +582,7 @@ img { display: block; max-width: 100%; }
 .contact-cards-stack {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     height: 100%;
 }
 
@@ -598,7 +591,7 @@ img { display: block; max-width: 100%; }
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 14px 18px;
+    padding: 20px 24px;
     background: #ffffff;
     border: 2px solid #555555;
     border-radius: 16px;
@@ -618,21 +611,17 @@ img { display: block; max-width: 100%; }
 }
 
 .contact-card-icon {
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 10px;
     background: var(--bg);
     border: 1.5px solid #555555;
     color: var(--text);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     transition: all 0.3s ease;
-}
-.contact-card-icon svg {
-    width: 16px;
-    height: 16px;
 }
 
 .contact-card:hover .contact-card-icon {
@@ -644,12 +633,12 @@ img { display: block; max-width: 100%; }
 .contact-card-info {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
     width: 100%;
 }
 
 .contact-card-label {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     color: var(--text-muted);
@@ -657,7 +646,7 @@ img { display: block; max-width: 100%; }
 }
 
 .contact-card-value {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--text);
     transition: color 0.3s ease;
