@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikitha C — UX Designer & Game Designer</title>
+    <meta name="description" content="Portfolio of Nikitha C — a UX designer and game designer crafting digital experiences that blend code and art.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=29">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-left">
+            <span class="nav-local">LOCAL/</span>
+            <span class="nav-clock" id="navClock">00:00:00</span>
+        </div>
+        <div class="nav-center">
+            <a href="#" class="nav-logo" aria-label="Home">
+                <span class="logo-dot"></span>
+                <span class="logo-dot"></span>
+                <span class="logo-dot"></span>
+                <span class="logo-dot"></span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="#projects" class="nav-link">WORK</a>
+            <a href="#" class="nav-link">FUN</a>
+            <a href="#chapter-connect" class="nav-btn" id="navContactBtn">CONTACT</a>
+        </div>
+    </nav>
+
+    <!-- Side Chapter Indicator -->
+    <div class="chapter-indicator" id="chapterIndicator">
+        <div class="chapter-dots">
+            <button class="chapter-dot active" data-target="hero" aria-label="Intro"></button>
+            <button class="chapter-dot" data-target="projects" aria-label="Projects"></button>
+            <button class="chapter-dot" data-target="chapter-connect" aria-label="Contact"></button>
+        </div>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+        <!-- Background morph video -->
+        <div class="hero-icon">
+            <video class="hero-morph-video" id="morphVideo" autoplay loop muted playsinline>
+                <source src="Smartphone_morphs_into_die_202605192040.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-content">
+            <p class="hero-prelude reveal-anim" style="--delay: 0.3s">IF YOU WERE LOOKING FOR</p>
+            <h1 class="hero-title reveal-anim" style="--delay: 0.5s">
+                <span class="typewriter-text" id="typewriterText"></span>
+                <span class="typewriter-cursor">|</span>
+            </h1>
+            <p class="hero-tagline reveal-anim" style="--delay: 0.7s">YOU ARE AT THE RIGHT PLACE !</p>
+        </div>
+        <div class="scroll-hint" id="scrollHint">
+            <div class="scroll-hint-line"></div>
+            <span>SCROLL</span>
+        </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <div id="projects" class="projects-container">
+        <div class="projects-layout">
+
+            <!-- Sticky Phone (left) -->
+            <div class="projects-phone-col">
+                <div class="phone-frame">
+                    <!-- Screen -->
+                    <div class="phone-screen" id="phoneScreen">
+                        <img src="img-pots.svg?v=29" alt="POTS" class="phone-screen-img active pots-landscape" data-project="section1">
+                        <img src="img-echoverse.png" alt="ECHOVERSE" class="phone-screen-img" data-project="section2">
+                        <img src="img-terraform.png" alt="TERRAFORM" class="phone-screen-img" data-project="section3">
+                    </div>
+
+                    <!-- Sketchy Phone SVG Overlay -->
+                    <svg viewBox="0 0 300 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="phone-sketch-overlay">
+                        <!-- Combined Path for Solid Opaque Phone Bezel/Frame (EvenOdd Fill Rule) -->
+                        <path d="M 38,18 C 95,14 205,14 262,18 C 283,18 285,35 285,82 C 286,198 284,362 285,478 C 285,525 283,542 262,542 C 205,538 95,546 38,542 C 17,542 15,525 15,478 C 15,362 15,198 15,82 C 15,35 17,18 38,18 Z M 23,61 C 90,58 210,58 277,61 C 279,61 279,64 279,80 C 280,200 278,360 279,470 C 279,486 279,489 277,489 C 210,492 90,492 23,489 C 21,489 21,486 21,470 C 20,360 22,200 21,80 C 21,64 21,61 23,61 Z" 
+                              fill="#ffffff" 
+                              fill-rule="evenodd" 
+                              stroke="#555555" 
+                              stroke-width="2.5" 
+                              stroke-linecap="round" />
+
+                        <!-- Left Side Buttons -->
+                        <path d="M 12,110 C 6,110 6,113 6,116 C 6,119 6,122 12,122" stroke="#555555" stroke-width="2.5" stroke-linecap="round" />
+                        <path d="M 12,137 C 6,137 6,144 6,150 C 6,156 6,160 12,160" stroke="#555555" stroke-width="2.5" stroke-linecap="round" />
+
+                        <!-- Top Camera & Speaker -->
+                        <path d="M 115,36 A 5,5 0 1 1 114.9,36 Z" fill="#555555" stroke="#555555" stroke-width="1" />
+                        <path d="M 140,32 C 155,30 175,30 190,32 C 196,32 198,34 198,36 C 198,38 196,40 190,40 C 175,42 155,42 140,40 C 134,40 132,38 132,36 C 132,34 134,32 140,32 Z" stroke="#555555" stroke-width="2.5" stroke-linecap="round" />
+
+                        <!-- Bottom Home Button -->
+                        <path d="M 125,502 C 135,499 165,499 175,502 C 182,502 185,506 185,510 C 185,514 182,518 175,518 C 165,521 135,521 125,518 C 118,518 115,514 115,510 C 115,506 118,502 125,502 Z" stroke="#555555" stroke-width="2.5" stroke-linecap="round" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Scrolling Content (right) -->
+            <div class="projects-content-col">
+
+                <!-- Project 1: POTS -->
+                <div class="project-panel" id="section1" data-screen="0">
+                    <div class="project-label">
+                        <span class="project-num">01</span>
+                        <span class="project-dash"></span>
+                        <span class="project-cat">CLIENT PROJECT</span>
+                    </div>
+                    <h2 class="project-title">Pots</h2>
+                    <div class="mobile-project-card pots-mobile-card">
+                        <img src="img-pots.svg?v=29" alt="POTS" class="mobile-project-img pots-landscape">
+                    </div>
+                    <p class="project-desc">Delve into the world of Pots, where saving gets more exciting with milestones and rewards.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">UX Design</span>
+                        <span class="project-tag">Gamification</span>
+                        <span class="project-tag">FinTech</span>
+                    </div>
+                    <a href="#" class="project-cta">
+                        VIEW PROJECT
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Project 2: ECHOVERSE -->
+                <div class="project-panel" id="section2" data-screen="1">
+                    <div class="project-label">
+                        <span class="project-num">02</span>
+                        <span class="project-dash"></span>
+                        <span class="project-cat">PERSONAL PROJECT</span>
+                    </div>
+                    <h2 class="project-title">ECHOVERSE</h2>
+                    <div class="mobile-project-card">
+                        <img src="img-echoverse.png" alt="ECHOVERSE" class="mobile-project-img">
+                    </div>
+                    <p class="project-desc">A spatial audio experience that transforms sound into immersive 3D landscapes. Wander through sonic worlds that react and reshape to music in real-time.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">UX DESIGN</span>
+                        <span class="project-tag">THREE.JS</span>
+                        <span class="project-tag">SPATIAL AUDIO</span>
+                    </div>
+                    <a href="#" class="project-cta">
+                        VIEW PROJECT
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Project 3: TERRAFORM -->
+                <div class="project-panel" id="section3" data-screen="2">
+                    <div class="project-label">
+                        <span class="project-num">03</span>
+                        <span class="project-dash"></span>
+                        <span class="project-cat">CLIENT PROJECT</span>
+                    </div>
+                    <h2 class="project-title">TERRAFORM</h2>
+                    <div class="mobile-project-card">
+                        <img src="img-terraform.png" alt="TERRAFORM" class="mobile-project-img">
+                    </div>
+                    <p class="project-desc">An interactive climate data dashboard that tells the story of our changing planet through stunning visualizations, making complex data accessible and deeply emotional.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">DATA VISUALIZATION</span>
+                        <span class="project-tag">D3.JS</span>
+                        <span class="project-tag">DASHBOARD</span>
+                    </div>
+                    <a href="#" class="project-cta">
+                        VIEW PROJECT
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="chapter chapter-contact" id="chapter-connect">
+        <div class="chapter-label scroll-reveal">
+            <span class="chapter-num">04</span>
+            <span class="chapter-dash"></span>
+            <span class="chapter-name">CONTACT</span>
+        </div>
+        <div class="story-hero-text scroll-reveal">
+            <h2>LET'S WORK<br><span class="text-outline">TOGETHER</span></h2>
+        </div>
+        <div class="connect-layout">
+            <div class="connect-form-side scroll-reveal">
+                <form class="connect-form" id="connectForm">
+                    <div class="form-field">
+                        <label for="formName">YOUR NAME</label>
+                        <input type="text" id="formName" name="name" placeholder="Jane Doe" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="formEmail">YOUR EMAIL</label>
+                        <input type="email" id="formEmail" name="email" placeholder="hello@example.com" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="formMessage">YOUR MESSAGE</label>
+                        <textarea id="formMessage" name="message" placeholder="Tell me about your project..." rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-dark" id="submitBtn">
+                        SEND MESSAGE
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </form>
+            </div>
+            <div class="connect-info-side scroll-reveal">
+                <div class="connect-cta">
+                    <p>Have a project in mind? Let's create something extraordinary together.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" id="linkGithub"><span class="social-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></span><span>GITHUB</span></a>
+                    <a href="#" class="social-link" id="linkLinkedin"><span class="social-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span><span>LINKEDIN</span></a>
+                    <a href="#" class="social-link" id="linkTwitter"><span class="social-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span><span>X / TWITTER</span></a>
+                    <a href="mailto:hello@nikithac.dev" class="social-link" id="linkEmail"><span class="social-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></span><span>EMAIL</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">NIKITHA C <span class="accent-dot">.</span></span>
+            <span class="footer-copy">&copy; 2026 — Crafted with passion, code & coffee.</span>
+            <span class="footer-back"><a href="#hero">BACK TO TOP ↑</a></span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
