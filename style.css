@@ -477,23 +477,25 @@ img { display: block; max-width: 100%; }
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
-    align-items: start;
+    align-items: stretch;
     width: 100%;
     margin-top: 56px;
 }
 
 .connect-form-side {
     grid-column: 1 / span 2;
+    height: 100%;
 }
 
 .connect-form {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    background: var(--bg-alt);
-    border: 2px solid var(--border);
+    background: #ffffff;
+    border: 2px solid #555555;
     border-radius: 16px;
     padding: 40px;
+    height: 100%;
 }
 
 .form-field {
@@ -554,7 +556,7 @@ img { display: block; max-width: 100%; }
     border-radius: 100px;
     cursor: pointer;
     transition: all 0.3s var(--ease-spring);
-    margin-top: 12px;
+    margin-top: auto;
 }
 
 .btn-dark:hover {
@@ -574,27 +576,31 @@ img { display: block; max-width: 100%; }
 
 .connect-links-side {
     grid-column: 3;
+    height: 100%;
 }
 
 .contact-cards-stack {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    height: 100%;
 }
 
 .contact-card {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
     padding: 32px;
-    background: var(--bg-alt);
-    border: 2px solid var(--border);
+    background: #ffffff;
+    border: 2px solid #555555;
     border-radius: 16px;
     transition: all 0.4s var(--ease-spring);
     text-decoration: none;
     color: inherit;
     position: relative;
     overflow: hidden;
+    flex: 1;
 }
 
 .contact-card:hover {
@@ -612,9 +618,9 @@ img { display: block; max-width: 100%; }
     justify-content: center;
     border-radius: 12px;
     background: var(--bg);
-    border: 1.5px solid var(--border);
+    border: 1.5px solid #555555;
     color: var(--text);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     transition: all 0.3s ease;
 }
 
@@ -661,12 +667,12 @@ img { display: block; max-width: 100%; }
         gap: 28px;
     }
     .contact-card {
-        padding: 24px;
+        padding: 20px 24px;
     }
     .contact-card-icon {
         width: 48px;
         height: 48px;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
     }
     .contact-card-value {
         font-size: 0.95rem;
@@ -680,14 +686,27 @@ img { display: block; max-width: 100%; }
     }
     .connect-form-side {
         grid-column: auto;
+        height: auto;
+    }
+    .connect-form {
+        height: auto;
+    }
+    .btn-dark {
+        margin-top: 24px;
     }
     .connect-links-side {
         grid-column: auto;
+        height: auto;
     }
     .contact-cards-stack {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         gap: 16px;
+        height: auto;
+    }
+    .contact-card {
+        flex: none;
+        height: auto;
     }
 }
 
