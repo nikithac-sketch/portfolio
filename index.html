@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=30">
+    <link rel="stylesheet" href="style.css?v=31">
 </head>
 <body>
 
@@ -194,29 +194,7 @@
             <h2>WAIT A MIN...<br><span class="text-outline">WHO ARE YOU?</span></h2>
         </div>
         <div class="connect-layout">
-            <!-- Left Side: Form -->
-            <div class="connect-form-side scroll-reveal">
-                <form id="connectForm" class="connect-form">
-                    <div class="form-field">
-                        <label for="formName">YOUR NAME</label>
-                        <input type="text" id="formName" name="name" placeholder="Jane Doe" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="formContact">YOUR EMAIL OR PHONE</label>
-                        <input type="text" id="formContact" name="contact" placeholder="hello@example.com / +91 99999 99999" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="formMessage">YOUR MESSAGE</label>
-                        <textarea id="formMessage" name="message" rows="4" placeholder="Tell me about your project..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-dark">
-                        SEND MESSAGE
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left: 6px; display: inline-block; vertical-align: middle;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </button>
-                </form>
-            </div>
-
-            <!-- Right Side: Contact Links Stack -->
+            <!-- Left Side: Contact Links Stack -->
             <div class="connect-links-side scroll-reveal">
                 <div class="contact-cards-stack">
                     <!-- Mobile Number -->
@@ -252,6 +230,28 @@
                         </div>
                     </a>
                 </div>
+            </div>
+
+            <!-- Right Side: Form -->
+            <div class="connect-form-side scroll-reveal">
+                <form id="connectForm" class="connect-form">
+                    <div class="form-field">
+                        <label for="formName">YOUR NAME</label>
+                        <input type="text" id="formName" name="name" placeholder="Jane Doe" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="formContact">YOUR EMAIL OR PHONE</label>
+                        <input type="text" id="formContact" name="contact" placeholder="hello@example.com / +91 99999 99999" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="formMessage">YOUR MESSAGE</label>
+                        <textarea id="formMessage" name="message" rows="4" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-dark">
+                        SEND MESSAGE
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left: 6px; display: inline-block; vertical-align: middle;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
