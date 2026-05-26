@@ -13,11 +13,10 @@ colors:
   primary_accent: "#F5A623"
   hover_accent: "#FF7A00"
 typography:
-  display_font: "Inter, sans-serif"
+  display_font: "Instrument Sans, sans-serif"
   code_font: "Space Mono, monospace"
   handwritten_font: "Nothing You Could Do, cursive"
   weights:
-    light: 300
     regular: 400
     medium: 500
     semibold: 600
@@ -65,7 +64,7 @@ Detailed design tokens for backgrounds, text layers, and accents:
 
 Clean editorial readability paired with structured code-like details and loose handwriting:
 
-* **Display (`Inter`)**: Primary interface font family. Spans weights `300` (light) up to `900` (heavy) for tight, bold headings and legible editorial grids.
+* **Display (`Instrument Sans`)**: Primary interface font family. Spans weights `400` (regular) up to `900` (heavy) for tight, bold headings and legible editorial grids.
   - *Outline Letter-Spacing*: Outlined headers (`.text-outline`) use a positive letter-spacing of `0.04em` (overriding the default heading spacing of `-0.03em`) to prevent adjacent characters' outline strokes from intersecting or overlapping, ensuring a clean, hollow aesthetic.
 * **Data Monospace (`Space Mono`)**: Used for the clock, page breadcrumbs, and tags. Lends a digital precision to structural details.
 * **Script Handwriting (`Nothing You Could Do`)**: Strictly dedicated to polaroid handwritten descriptions, giving a warm personal signature.
