@@ -21,8 +21,6 @@ typography:
     medium: 500
     semibold: 600
     bold: 700
-    extrabold: 800
-    heavy: 900
 layout:
   breakpoints:
     mobile: "768px"
@@ -64,7 +62,7 @@ Detailed design tokens for backgrounds, text layers, and accents:
 
 Clean editorial readability paired with structured code-like details and loose handwriting:
 
-* **Display (`Instrument Sans`)**: Primary interface font family. Spans weights `400` (regular) up to `900` (heavy) for tight, bold headings and legible editorial grids.
+* **Display (`Instrument Sans`)**: Primary interface font family. Spans weights `400` (regular) up to `700` (bold) for tight, distinct headings and legible editorial grids.
   - *Outline Letter-Spacing*: Outlined headers (`.text-outline`) use a positive letter-spacing of `0.04em` (overriding the default heading spacing of `-0.03em`) to prevent adjacent characters' outline strokes from intersecting or overlapping, ensuring a clean, hollow aesthetic.
 * **Data Monospace (`Space Mono`)**: Used for the clock, page breadcrumbs, and tags. Lends a digital precision to structural details.
 * **Script Handwriting (`Nothing You Could Do`)**: Strictly dedicated to polaroid handwritten descriptions, giving a warm personal signature.
