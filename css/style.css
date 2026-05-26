@@ -402,7 +402,7 @@ img { display: block; max-width: 100%; }
     font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.1em;
-    padding: 14px 32px;
+    padding: 20px 36px;
     border: none;
     border-radius: 0;
     color: var(--text);
@@ -462,7 +462,7 @@ img { display: block; max-width: 100%; }
     justify-content: center;
     width: 100%;
     max-width: 420px;
-    margin: 0 auto;
+    margin: 0;
 }
 .cta-sprinkle {
     position: absolute;
