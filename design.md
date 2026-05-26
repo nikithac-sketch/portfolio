@@ -91,7 +91,11 @@ Clean editorial readability paired with structured code-like details and loose h
 - **Shape & Border**: Wobbly rectangular single-stroke outline using path coordinate rounding to keep corners slightly curved, styled via custom responsive SVG overlay (`.cta-sketch-border`).
 - **Solid Canvas**: Default button fill uses a solid `#ffffff` background inside the sketchy outline path, ensuring the button remains highly legible against off-white (`#f6f5f2`) section wrappers.
 - **Accents & Arrows**: CTA buttons utilize standard horizontal arrow icons (`Arrow 5.svg`) or vertical down arrow icons (`Arrow 17.svg`) selected directly from the **`01_Arrows`** library.
-- **Flanking Doodles**: The buttons are flanked by organic hand-drawn decorative lines (`Doodle 4.svg` on the left and `Doodle 5.svg` on the right from the **`12_Doodles`** library) placed outside the main anchor within a `.cta-container`. On hover, the doodles POP and scale into view symmetrically using CSS transitions driven by `--ease-spring`.
+### 4.5. Hand-Drawn Contact Section
+- **Containers & Form**: Replaced regular solid CSS borders on `.contact-card` and `.connect-form` with wobbly rectangular vector SVG overlays (`.card-sketch-border` and `.form-sketch-border`) to continue the organic hand-drawn aesthetic. Background solidness (`#ffffff`) is preserved inside the wobbly path fills.
+- **Unclamped Boundaries**: Applied `overflow: visible;` in CSS to contact cards and forms, letting sketchy lines wobble organically outside parent bounding limits.
+- **Interactive States**: Hovering over `.contact-card` dynamically transitions the vector card outline stroke to `--accent` and changes the interior path fill to a subtle amber tint (`rgba(245,166,35,0.04)`).
+- **Sketchy Icons**: Small icon boxes utilize wobbly square SVG outline masks (`.icon-sketch-border`) that fill with orange on hover. The core SVG icons (phone, mail, LinkedIn) feature custom-drawn wobbly paths to achieve unified, sketchy vector line quality.
 
 ---
 
