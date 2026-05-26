@@ -1,77 +1,93 @@
-# Design System & Creative Philosophy — Nikitha's Portfolio
+---
+brand: "Nikitha Portfolio"
+philosophy: "Minimalist layout meeting custom hand-drawn, sketchy organic vector lines"
+colors:
+  background: "#FFFFFF"
+  background_secondary: "#F0F2F2"
+  background_accent: "#D1EBEB"
+  text_primary: "#333333"
+  text_secondary: "#555555"
+  brand_accent: "#0B3C58"
+  success_accent: "#11530D"
+typography:
+  display_font: "Inter, sans-serif"
+  code_font: "Space Mono, monospace"
+  handwritten_font: "Nothing You Could Do, cursive"
+  weights:
+    light: 300
+    regular: 400
+    medium: 500
+    semibold: 600
+    bold: 700
+    extrabold: 800
+    heavy: 900
+layout:
+  breakpoints:
+    mobile: "768px"
+---
 
-This document outlines the design architecture, typography, color palettes, responsive layout principles, and interactive components that define the user experience of **Nikitha C's Scrollytelling Portfolio**.
+# DESIGN.md — Nikitha C's Scrollytelling Portfolio
+
+This file serves as the design system specification and AI "source of truth" for Nikitha C's Portfolio website, conforming to the `awesome-design-md` format standard.
 
 ---
 
-## 1. Creative Concept & Philosophy
+## 1. Brand & Philosophy
 
-The portfolio is designed as an interactive, narratively-driven experience ("Scrollytelling") that merges a clean, minimalist layout with custom **hand-drawn, sketchy vector elements**. 
-
-### Key Tenets:
-- **Art Meets Code**: Precise typography and digital layouts contrasted with organic, sketchy borders (e.g., wobbly phone bezels, hand-drawn polaroid frames).
-- **Responsive Motion**: Subtle scroll-based transitions (scroll reveals, scrolly phone screen updates, horizontal-scrolling comic strip).
-- **Playful UX Details**: Inclusion of real-time local clock, interactive custom resume buttons, and delightful milestone timelines.
+The portfolio blends digital design precision with hand-drawn, sketchy organic graphics, creating a visual balance between code structure and creative art:
+* **Organic Hand-Drawn Highlights**: Wobbly sketchy phone bezels and loose polaroid frames soften the layouts.
+* **Scroll-Driven Narrative**: Smooth, scroll-triggered visual transformations (fixed phone screen swaps, scroll fades, scrolly comic tracks).
+* **Delightful Details**: Interactive live clock, responsive download resume indicators, and seamlessly blended milestone grids.
 
 ---
 
-## 2. Typography
+## 2. Colors
 
-We use Google Fonts to establish a hierarchy that balances clean editorial readability with a code-like, structured feel:
+Detailed design tokens for backgrounds, text layers, and accents:
 
-| Font Family | Applied To | Weights / Styles | Rationale |
-| :--- | :--- | :--- | :--- |
-| **Inter** | Headings, Body Text, Navigation, Project Titles | `300`, `400`, `500`, `600`, `700`, `800`, `900` | Elegant sans-serif providing extreme readability at both microscopic metadata scales and bold header sizes. |
-| **Space Mono** | Live Clock, Prelude Tags, Metadata Labels | `400`, `700` | Monospaced face giving a code-inspired, mechanical precision to technical details. |
-| **Nothing You Could Do** | Polaroid Captions (About Page) | `Regular` | A natural, handwritten script to give the profile sections an authentic, personal touch. |
-
----
-
-## 3. Color System
-
-A sleek, content-centric color palette designed for high contrast and organic feel.
-
-```
-┌────────────────────────────────────────────────────────┐
-│  Backgrounds & Ground Colors                           │
-│  █████████ #FFFFFF (Page background / White Space)     │
-│  █████████ #F0F2F2 (Hero video showcase container)     │
-│  █████████ #D1EBEB (Pots showcase soft gradient background) │
-└────────────────────────────────────────────────────────┘
-┌────────────────────────────────────────────────────────┐
-│  Typography & Accents                                  │
-│  █████████ #333333 (Core dark headers & body copy)      │
-│  █████████ #555555 (Sketchy phone & polaroid borders)  │
-│  █████████ #0B3C58 (Deep navy - Case study links)      │
-│  █████████ #11530D (Forest green - Active milestones)   │
-└────────────────────────────────────────────────────────┘
-```
+* **Background Layer (`#FFFFFF`)**: Primary page canvas and negative spacing.
+* **Secondary Surface (`#F0F2F2`)**: Soft grey frame backing the interactive hero video.
+* **Accent Surface (`#D1EBEB`)**: Pastel mint-blue container background for the Pots showcase card.
+* **Primary Text (`#333333`)**: Body copy, title headers, and dark interface grids.
+* **Secondary Accent (`#555555`)**: Used for organic phone and polaroid sketch lines.
+* **Brand Navy (`#0B3C58`)**: High-contrast blue used for links and secondary project badges.
+* **Milestone Green (`#11530D`)**: Forest green used for active roadmap markers and checklist icons.
 
 ---
 
-## 4. Key Interactive Components
+## 3. Typography
 
-### 4.1. Sticky Phone Scrollyteller (`index.html`)
-- **Visuals**: A clean image screen container masked under a wobbly phone frame (`phone-sketch-overlay`) drawn with a custom `evenodd` SVG path fill to block out screen corners.
-- **Interactions**: As the user scrolls through project text panels on the right, an `IntersectionObserver` swaps the active image (`img-pots.svg` ➔ `img-echoverse.png` ➔ `img-terraform.png`) on the left screen smoothly.
+Clean editorial readability paired with structured code-like details and loose handwriting:
 
-### 4.2. Timeline Edge Masks (`pots.html`)
-- To avoid harsh timeline lines clipping at the edge of the showcase container, we use a CSS mask on the parent container (`.showcase-frame`):
+* **Display (`Inter`)**: Primary interface font family. Spans weights `300` (light) up to `900` (heavy) for tight, bold headings and legible editorial grids.
+* **Data Monospace (`Space Mono`)**: Used for the clock, page breadcrumbs, and tags. Lends a digital precision to structural details.
+* **Script Handwriting (`Nothing You Could Do`)**: Strictly dedicated to polaroid handwritten descriptions, giving a warm personal signature.
+
+---
+
+## 4. Components
+
+### 4.1. The Sticky Scrolly Phone
+- **Bezel**: Hand-drawn sketchy SVG path overlay (`.phone-sketch-overlay`) containing `fill-rule="evenodd"` to block out corners.
+- **Screen**: Centered viewport (`.phone-screen`) masking smooth, scrolling-triggered active image transitions.
+- **Behavior**: As sections scroll, an `IntersectionObserver` matches viewport position to toggle active screen layers seamlessly.
+
+### 4.2. Timeline Edge Masks
+- **Container Mask**: Left and right side horizontal fade to dissolve sharp boundary cuts:
   ```css
   mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
   ```
-- Combined with a local SVG `<linearGradient>` on the active track line (`paint_active_fade` from `x=360` to `x=520`), this blends the timeline organically at both ends while keeping the milestone markers readable.
+- **SVG Track Fade**: A linear gradient (`paint_active_fade` from `x=360` to `x=520`) softens the active progress bar at the viewBox bounds.
 
-### 4.3. Scrolly Comic Strip (`pots.html`)
-- A vertical scroll depth of `350vh` anchors a sticky horizontal track.
-- Re-translates vertical page progress (`window.scrollY`) into horizontal shifts (`translateX`) of a beautiful, panel-by-panel comic strip describing design problems and loops.
+### 4.3. Horizontal Scrolly Comic
+- **Track**: Anchored sticky inside a scroll depth of `350vh`.
+- **Logic**: Converts vertical scroll progress into a seamless `translateX` layout shift, moving panels left-to-right.
 
 ---
 
-## 5. Responsive Design Breaks
+## 5. Responsive Guardrails (Do's and Don'ts)
 
-To preserve the scrollytelling phone layouts on small screens, our layout responds gracefully across devices:
-
-> [!NOTE]
-> - **Desktop (> 768px)**: Dual-column sticky scrolling showcase (left screen fixed, right content scrolls).
-> - **Mobile (≤ 768px)**: Converts automatically to a stacked layout. Fixes the fixed-height phone container, translating it into elegant native scrolling cards so interaction is fast and lightweight.
+* **Do**: Preserve clean URLs by keeping `index.html`, `about.html`, and `pots.html` strictly in the root directory.
+* **Do**: Use `assets/images/`, `assets/svgs/`, and `assets/videos/` folders to house all static assets.
+* **Do**: Automatically transition sticky, fix-positioned side columns on desktop to stack-scrolling cards on screens `≤ 768px`.
+* **Don't**: Introduce drop-shadows or solid borders on the phone screens; keep the wobbly vector overlay as the organic boundary.
