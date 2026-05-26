@@ -87,6 +87,12 @@ Clean editorial readability paired with structured code-like details and loose h
 - **Track**: Anchored sticky inside a scroll depth of `350vh`.
 - **Logic**: Converts vertical scroll progress into a seamless `translateX` layout shift, moving panels left-to-right.
 
+### 4.4. Hand-Drawn CTA Buttons
+- **Shape & Border**: Wobbly rectangular single-stroke outline using path coordinate rounding to keep corners slightly curved, styled via custom responsive SVG overlay (`.cta-sketch-border`).
+- **Solid Canvas**: Default button fill uses a solid `#ffffff` background inside the sketchy outline path, ensuring the button remains highly legible against off-white (`#f6f5f2`) section wrappers.
+- **Accents & Arrows**: CTA buttons utilize standard horizontal arrow icons (`Arrow 5.svg`) or vertical down arrow icons (`Arrow 17.svg`) selected directly from the **`01_Arrows`** library.
+- **Flanking Sprinkles**: The buttons are flanked by three-line radiating sprinkles (`Sprinkle 2.svg` from the **`10_Sprinkles`** library) placed outside the main anchor within a `.cta-container`. On hover, the sprinkles POP and scale into view symmetrically using CSS transitions driven by `--ease-spring`.
+
 ---
 
 ## 5. Responsive Guardrails (Do's and Don'ts)
