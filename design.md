@@ -3,10 +3,11 @@ brand: "Nikitha Portfolio"
 philosophy: "Minimalist layout meeting custom hand-drawn, sketchy organic vector lines"
 colors:
   background: "#FFFFFF"
-  background_secondary: "#F0F2F2"
+  background_secondary: "#F6F5F2"
   background_accent: "#D1EBEB"
-  text_primary: "#333333"
-  text_secondary: "#555555"
+  text_primary: "#0D0D0D"
+  text_secondary: "#5A5A5A"
+  border_stroke: "#555555"
   brand_accent: "#0B3C58"
   success_accent: "#11530D"
   primary_accent: "#F5A623"
@@ -48,10 +49,11 @@ The portfolio blends digital design precision with hand-drawn, sketchy organic g
 Detailed design tokens for backgrounds, text layers, and accents:
 
 * **Background Layer (`#FFFFFF`)**: Primary page canvas and negative spacing.
-* **Secondary Surface (`#F0F2F2`)**: Soft grey frame backing the interactive hero video.
+* **Secondary Surface (`#F6F5F2`)**: Cozy grey-white surface backing phone screens, polaroid frames, and background layout blocks.
 * **Accent Surface (`#D1EBEB`)**: Pastel mint-blue container background for the Pots showcase card.
-* **Primary Text (`#333333`)**: Body copy, title headers, and dark interface grids.
-* **Secondary Accent (`#555555`)**: Used for organic phone and polaroid sketch lines.
+* **Primary Text (`#0D0D0D`)**: Near black body copy, title headers, and dark interface grids.
+* **Secondary Text (`#5A5A5A`)**: Subtle slate grey used for secondary descriptors, tags, and paragraph preludes.
+* **Border & Sketch Stroke (`#555555`)**: Charcoal grey dedicated to sketchy organic phone overlays, polaroid hand-drawn frames, and modular borders.
 * **Cozy Amber/Orange (`#F5A623` / `--accent`)**: The primary brand accent color. Applied to the top scroll progress bar, navigation hover lines, logo hover states, active scroll dots, and typewriter blinking cursor.
 * **Vivid Orange (`#FF7A00`)**: The active interaction color. Applied as a vibrant background transition on navigation CTA and secondary outline buttons during hover states.
 * **Brand Navy (`#0B3C58`)**: High-contrast blue used for links and secondary project badges.
