@@ -64,6 +64,7 @@ Detailed design tokens for backgrounds, text layers, and accents:
 Clean editorial readability paired with structured code-like details and loose handwriting:
 
 * **Display (`Inter`)**: Primary interface font family. Spans weights `300` (light) up to `900` (heavy) for tight, bold headings and legible editorial grids.
+  - *Outline Letter-Spacing*: Outlined headers (`.text-outline`) use a positive letter-spacing of `0.04em` (overriding the default heading spacing of `-0.03em`) to prevent adjacent characters' outline strokes from intersecting or overlapping, ensuring a clean, hollow aesthetic.
 * **Data Monospace (`Space Mono`)**: Used for the clock, page breadcrumbs, and tags. Lends a digital precision to structural details.
 * **Script Handwriting (`Nothing You Could Do`)**: Strictly dedicated to polaroid handwritten descriptions, giving a warm personal signature.
 

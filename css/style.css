@@ -430,7 +430,11 @@ img { display: block; max-width: 100%; }
     font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 900;
     line-height: 1.05; letter-spacing: -0.03em; text-transform: uppercase;
 }
-.text-outline { -webkit-text-stroke: 2px var(--text); -webkit-text-fill-color: transparent; }
+.text-outline { 
+    -webkit-text-stroke: 2px var(--text); 
+    -webkit-text-fill-color: transparent; 
+    letter-spacing: 0.04em;
+}
 
 .contact-header-container {
     display: grid;
