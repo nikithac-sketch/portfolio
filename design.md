@@ -35,7 +35,7 @@ This file serves as the design system specification and AI "source of truth" for
 ## 1. Brand & Philosophy
 
 The portfolio blends digital design precision with hand-drawn, sketchy organic graphics, creating a visual balance between code structure and creative art:
-* **Organic Hand-Drawn Highlights**: Wobbly sketchy phone bezels and loose polaroid frames soften the layouts.
+* **Organic Hand-Drawn Highlights**: Wobbly sketchy phone bezels and loose polaroid frames soften the layouts. All organic underlines, loops, blobs, whirls, doodles, arrows, and path styles are derived from the official **`Highlights-by-Outdraw-Design`** illustration library located in `assets/Highlights-by-Outdraw-Design/`.
 * **Scroll-Driven Narrative**: Smooth, scroll-triggered visual transformations (fixed phone screen swaps, scroll fades, scrolly comic tracks).
 * **Delightful Details**: Interactive live clock, responsive download resume indicators, and seamlessly blended milestone grids.
 
@@ -72,7 +72,7 @@ Clean editorial readability paired with structured code-like details and loose h
 ## 4. Components
 
 ### 4.1. The Sticky Scrolly Phone
-- **Bezel**: Hand-drawn sketchy SVG path overlay (`.phone-sketch-overlay`) containing `fill-rule="evenodd"` to block out corners.
+- **Bezel**: Hand-drawn sketchy SVG path overlay (`.phone-sketch-overlay`) containing `fill-rule="evenodd"` to block out corners. The outlines and control points are explicitly derived from the vector paths of the **`07_Lines`** library collection to maintain consistent wobbliness and hand-crafted weight.
 - **Screen**: Centered viewport (`.phone-screen`) masking smooth, scrolling-triggered active image transitions.
 - **Behavior**: As sections scroll, an `IntersectionObserver` matches viewport position to toggle active screen layers seamlessly.
 
@@ -92,6 +92,7 @@ Clean editorial readability paired with structured code-like details and loose h
 ## 5. Responsive Guardrails (Do's and Don'ts)
 
 * **Do**: Preserve clean URLs by keeping `index.html`, `about.html`, and `pots.html` strictly in the root directory.
-* **Do**: Use `assets/images/`, `assets/svgs/`, and `assets/videos/` folders to house all static assets.
+* **Do**: Use `assets/images/`, `assets/svgs/`, and `assets/videos/` folders to house all static assets. Store the **`Highlights-by-Outdraw-Design`** asset library in its dedicated root under `assets/Highlights-by-Outdraw-Design/`.
+* **Do**: Derive the hand-drawn contours for phone bezels, polaroid frames, and custom highlights directly from the stroke styles of the **`Highlights-by-Outdraw-Design`** library (specifically `07_Lines` and `02_Underlines`) to preserve visual alignment.
 * **Do**: Automatically transition sticky, fix-positioned side columns on desktop to stack-scrolling cards on screens `≤ 768px`.
 * **Don't**: Introduce drop-shadows or solid borders on the phone screens; keep the wobbly vector overlay as the organic boundary.
