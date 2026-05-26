@@ -83,45 +83,26 @@
                     </div>
 
                     <!-- Sketchy Phone SVG Overlay -->
-                    <!-- Sketchy Phone SVG Overlay -->
                     <svg viewBox="0 0 300 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="phone-sketch-overlay">
-                        <!-- Solid White Background Mask (EvenOdd rule masks outer bezel but keeps screen transparent) -->
-                        <path d="M 38,18 C 95,14 205,14 262,18 C 283,18 285,35 285,82 C 286,198 284,362 285,478 C 285,525 283,542 262,542 C 205,538 95,546 38,542 C 17,542 15,525 15,478 C 15,362 15,198 15,82 C 15,35 17,18 38,18 Z M 23,61 C 90,58 210,58 277,61 C 279,61 279,64 279,80 C 280,200 278,360 279,470 C 279,486 279,489 277,489 C 210,492 90,492 23,489 C 21,489 21,486 21,470 C 20,360 22,200 21,80 C 21,64 21,61 23,61 Z" 
+                        <!-- Opaque White Bezel Mask with Single-Stroke Outer Outline (EvenOdd Rule, slightly more rounded corners) -->
+                        <path d="M 45,18 C 120,16 180,16 255,18 C 275,18 285,28 285,48 C 286,150 284,380 285,512 C 285,532 275,542 255,542 C 180,544 120,538 45,542 C 25,542 15,532 15,512 C 14,380 16,150 15,48 C 15,28 25,18 45,18 Z M 25,62 C 90,60 210,60 275,62 C 276,170 274,380 275,488 C 210,490 90,490 25,488 C 24,380 26,170 25,62 Z" 
                               fill="#ffffff" 
-                              fill-rule="evenodd" />
-
-                        <!-- Sketchy Outer Frame (Overlapping Double-Strokes from Outdraw Lines style) -->
-                        <!-- Top Edge -->
-                        <path d="M 10,19 C 95,15 205,15 290,19" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-                        <path d="M 15,22 C 95,18 205,18 285,22" stroke="#555555" stroke-width="1.8" stroke-linecap="round" />
-                        <!-- Bottom Edge -->
-                        <path d="M 10,539 C 95,543 205,537 290,539" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-                        <path d="M 15,542 C 95,539 205,544 285,542" stroke="#555555" stroke-width="1.8" stroke-linecap="round" />
-                        <!-- Left Edge -->
-                        <path d="M 18,10 C 14,150 14,350 18,550" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-                        <path d="M 15,15 C 17,150 15,350 15,545" stroke="#555555" stroke-width="1.8" stroke-linecap="round" />
-                        <!-- Right Edge -->
-                        <path d="M 282,10 C 286,150 286,350 282,550" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-                        <path d="M 285,15 C 283,150 284,350 285,545" stroke="#555555" stroke-width="1.8" stroke-linecap="round" />
-
-                        <!-- Sketchy Inner Screen Frame (Outdraw Lines style) -->
-                        <path d="M 16,62 C 90,59 210,59 284,62" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
-                        <path d="M 16,488 C 90,491 210,491 284,488" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
-                        <path d="M 21,55 C 21,180 20,320 21,495" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
-                        <path d="M 279,55 C 278,180 279,320 279,495" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
+                              fill-rule="evenodd" 
+                              stroke="#555555" 
+                              stroke-width="2.5" 
+                              stroke-linecap="round" 
+                              stroke-linejoin="round" />
 
                         <!-- Left Side Buttons -->
-                        <path d="M 12,110 C 6,110 6,113 6,116 C 6,119 6,122 12,122" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-                        <path d="M 12,137 C 6,137 6,144 6,150 C 6,156 6,160 12,160" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
+                        <path d="M 15,110 C 10,110 10,113 10,116 C 10,119 10,122 15,122" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
+                        <path d="M 15,137 C 10,137 10,144 10,150 C 10,156 10,160 15,160" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
 
-                        <!-- Top Camera & Speaker (Sketchy overlapping loops) -->
-                        <path d="M 115,36 A 5,5 0 1 1 114.9,36 Z" fill="#555555" stroke="#555555" stroke-width="1" />
-                        <path d="M 140,32 C 155,30 175,30 190,32 C 196,32 198,34 198,36 C 198,38 196,40 190,40 C 175,42 155,42 140,40 C 134,40 132,38 132,36 C 132,34 134,32 140,32 Z" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
-                        <path d="M 142,34 C 154,32 176,32 188,34 C 194,34 196,35 196,36 C 196,37 194,38 188,38 C 176,40 154,40 142,38 C 136,38 134,37 134,36 C 134,35 136,34 142,34 Z" stroke="#555555" stroke-width="1.5" stroke-linecap="round" />
+                        <!-- Top Camera & Speaker (Clean single stroke sketchy contours) -->
+                        <circle cx="115" cy="38" r="4.5" fill="#555555" />
+                        <path d="M 140,34 C 155,32 175,32 190,34 C 196,34 198,36 198,38 C 198,40 196,42 190,42 C 175,44 155,44 140,42 C 134,42 132,40 132,38 C 132,36 134,34 140,34 Z" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
 
-                        <!-- Bottom Home Button (Double loop sketch) -->
+                        <!-- Bottom Home Button (Clean single stroke sketchy loop) -->
                         <path d="M 125,502 C 135,499 165,499 175,502 C 182,502 185,506 185,510 C 185,514 182,518 175,518 C 165,521 135,521 125,518 C 118,518 115,514 115,510 C 115,506 118,502 125,502 Z" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-                        <path d="M 127,504 C 137,501 163,501 173,504 C 180,504 183,508 183,511 C 183,514 180,516 173,516 C 163,519 137,519 127,516 C 120,516 117,514 117,511 C 117,508 120,504 127,504 Z" stroke="#555555" stroke-width="1.5" stroke-linecap="round" />
                     </svg>
                 </div>
             </div>

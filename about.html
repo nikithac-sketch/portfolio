@@ -50,30 +50,14 @@
 
                     <!-- Sketchy Polaroid SVG Overlay -->
                     <svg viewBox="0 0 320 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="polaroid-sketch-overlay">
-                        <!-- Solid White Background Mask (EvenOdd rule masks outer bezel but keeps screen transparent) -->
-                        <path d="M 25,18 C 100,15 220,15 295,18 C 303,18 305,25 305,60 C 305,150 305,250 305,340 C 305,375 303,382 295,382 C 220,380 100,385 25,382 C 17,382 15,375 15,340 C 15,250 15,150 15,60 C 15,25 17,18 25,18 Z M 32,36 C 100,33 220,33 288,36 C 290,36 290,39 290,52 C 290,120 290,190 290,260 C 290,274 290,277 288,277 C 220,280 100,280 32,277 C 30,277 30,274 30,260 C 30,190 30,120 30,52 C 30,39 30,36 32,36 Z" 
+                        <!-- Opaque White Bezel Mask with Single-Stroke Outer Outline (EvenOdd Rule, slightly more rounded corners) -->
+                        <path d="M 35,18 C 100,16 220,16 285,18 C 298,18 305,25 305,40 C 304,120 306,260 305,365 C 305,375 298,382 285,382 C 220,384 100,378 35,382 C 22,382 15,375 15,365 C 16,260 14,120 15,40 C 15,25 22,18 35,18 Z M 32,36 C 100,33 220,33 288,36 C 290,36 290,39 290,52 C 290,120 290,190 290,260 C 290,274 290,277 288,277 C 220,280 100,280 32,277 C 30,277 30,274 30,260 C 30,190 30,120 30,52 C 30,39 30,36 32,36 Z" 
                               fill="#ffffff" 
-                              fill-rule="evenodd" />
-
-                        <!-- Sketchy Outer Frame (Overlapping Double-Strokes from Outdraw Lines style) -->
-                        <!-- Top Edge -->
-                        <path d="M 15,21 C 100,16 220,16 305,21" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-                        <path d="M 20,24 C 100,20 220,20 300,24" stroke="#555555" stroke-width="1.8" stroke-linecap="round" />
-                        <!-- Bottom Edge -->
-                        <path d="M 15,381 C 100,384 220,378 305,381" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-                        <path d="M 20,384 C 100,381 220,386 300,384" stroke="#555555" stroke-width="1.8" stroke-linecap="round" />
-                        <!-- Left Edge -->
-                        <path d="M 25,10 C 21,120 21,270 25,390" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-                        <path d="M 22,15 C 18,120 18,270 22,385" stroke="#555555" stroke-width="1.8" stroke-linecap="round" />
-                        <!-- Right Edge -->
-                        <path d="M 295,10 C 299,120 299,270 295,390" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-                        <path d="M 298,15 C 295,120 296,270 298,385" stroke="#555555" stroke-width="1.8" stroke-linecap="round" />
-
-                        <!-- Sketchy Inner Screen Frame (Outdraw Lines style) -->
-                        <path d="M 24,38 C 100,35 220,35 296,38" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
-                        <path d="M 24,275 C 100,278 220,278 296,275" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
-                        <path d="M 30,30 C 30,100 30,200 30,265" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
-                        <path d="M 290,30 C 289,100 290,200 290,265" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
+                              fill-rule="evenodd" 
+                              stroke="#555555" 
+                              stroke-width="2.5" 
+                              stroke-linecap="round" 
+                              stroke-linejoin="round" />
                     </svg>
 
                     <!-- Handwritten Polaroid Caption -->
