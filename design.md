@@ -91,7 +91,7 @@ Clean editorial readability paired with structured code-like details and loose h
 - **Shape & Border**: Wobbly rectangular single-stroke outline using path coordinate rounding to keep corners slightly curved, styled via custom responsive SVG overlay (`.cta-sketch-border`).
 - **Solid Canvas**: Default button fill uses a solid `#ffffff` background inside the sketchy outline path, ensuring the button remains highly legible against off-white (`#f6f5f2`) section wrappers.
 - **Accents & Arrows**: CTA buttons utilize standard horizontal arrow icons (`Arrow 5.svg`) or vertical down arrow icons (`Arrow 17.svg`) selected directly from the **`01_Arrows`** library.
-- **Flanking Sprinkles**: The buttons are flanked by three-line radiating sprinkles (`Sprinkle 2.svg` from the **`10_Sprinkles`** library) placed outside the main anchor within a `.cta-container`. On hover, the sprinkles POP and scale into view symmetrically using CSS transitions driven by `--ease-spring`.
+- **Flanking Doodles**: The buttons are flanked by organic hand-drawn decorative lines (`Doodle 4.svg` on the left and `Doodle 5.svg` on the right from the **`12_Doodles`** library) placed outside the main anchor within a `.cta-container`. On hover, the doodles POP and scale into view symmetrically using CSS transitions driven by `--ease-spring`.
 
 ---
 

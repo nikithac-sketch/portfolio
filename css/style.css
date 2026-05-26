@@ -466,7 +466,7 @@ img { display: block; max-width: 100%; }
 }
 .cta-sprinkle {
     position: absolute;
-    width: 40px;
+    width: 24px;
     height: auto;
     opacity: 0;
     transform: scale(0);
@@ -476,15 +476,14 @@ img { display: block; max-width: 100%; }
     z-index: 2;
 }
 .cta-sprinkle-left {
-    left: -48px;
-    transform: scale(0) scaleX(-1);
+    left: -32px;
 }
 .cta-sprinkle-right {
-    right: -48px;
+    right: -32px;
 }
 .project-cta:hover ~ .cta-sprinkle-left {
     opacity: 0.85;
-    transform: scale(1) scaleX(-1);
+    transform: scale(1);
 }
 .project-cta:hover ~ .cta-sprinkle-right {
     opacity: 0.85;
