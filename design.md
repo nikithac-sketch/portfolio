@@ -9,6 +9,8 @@ colors:
   text_secondary: "#555555"
   brand_accent: "#0B3C58"
   success_accent: "#11530D"
+  primary_accent: "#F5A623"
+  hover_accent: "#FF7A00"
 typography:
   display_font: "Inter, sans-serif"
   code_font: "Space Mono, monospace"
@@ -50,6 +52,8 @@ Detailed design tokens for backgrounds, text layers, and accents:
 * **Accent Surface (`#D1EBEB`)**: Pastel mint-blue container background for the Pots showcase card.
 * **Primary Text (`#333333`)**: Body copy, title headers, and dark interface grids.
 * **Secondary Accent (`#555555`)**: Used for organic phone and polaroid sketch lines.
+* **Cozy Amber/Orange (`#F5A623` / `--accent`)**: The primary brand accent color. Applied to the top scroll progress bar, navigation hover lines, logo hover states, active scroll dots, and typewriter blinking cursor.
+* **Vivid Orange (`#FF7A00`)**: The active interaction color. Applied as a vibrant background transition on navigation CTA and secondary outline buttons during hover states.
 * **Brand Navy (`#0B3C58`)**: High-contrast blue used for links and secondary project badges.
 * **Milestone Green (`#11530D`)**: Forest green used for active roadmap markers and checklist icons.
 
