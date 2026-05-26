@@ -192,13 +192,17 @@ img { display: block; max-width: 100%; }
     animation: fade-in 1s ease 1.2s both;
 }
 .scroll-hint span { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; color: var(--text-muted); }
-.scroll-hint-line {
-    width: 1px; height: 50px; background: var(--text-muted);
-    animation: line-grow 1.8s ease infinite; transform-origin: top;
+.scroll-hint-arrow {
+    width: 14px;
+    height: 48px;
+    object-fit: contain;
+    opacity: 0.55;
+    filter: brightness(0.4); /* Makes the black sketch line slightly lighter charcoal gray */
+    animation: arrow-bounce 1.6s ease infinite;
 }
-@keyframes line-grow {
-    0%, 100% { transform: scaleY(0.3); opacity: 0.3; }
-    50% { transform: scaleY(1); opacity: 1; }
+@keyframes arrow-bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(8px); opacity: 0.95; }
 }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 
@@ -1072,8 +1076,8 @@ img { display: block; max-width: 100%; }
     .scroll-hint {
         bottom: 20px;
     }
-    .scroll-hint-line {
-        height: 30px;
+    .scroll-hint-arrow {
+        height: 32px;
     }
 }
 
