@@ -885,6 +885,14 @@ img { display: block; max-width: 100%; }
     pointer-events: none;
     z-index: 10;
 }
+.phone-sketch-overlay path,
+.polaroid-sketch-overlay path {
+    stroke: var(--text);
+    stroke-width: 2.5;
+}
+.phone-sketch-overlay circle {
+    fill: var(--text);
+}
 
 .polaroid-caption {
     position: absolute;
