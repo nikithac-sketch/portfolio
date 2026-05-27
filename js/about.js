@@ -83,7 +83,7 @@
     if (polaroidFrame && polaroidImg && polaroidCaption) {
         const hoverImages = [
             { src: 'assets/images/nikitha-polaroid.jpg?v=3', caption: '#goldenhour<br>#office vibes' },
-            { src: 'assets/images/nikitha-polaroid-2.jpg', caption: '#kathak<br>#dancelife', zoom: 1.35, objectPosition: 'center 40%' },
+            { src: 'assets/images/nikitha-polaroid-2.jpg', caption: '#kathak<br>#dancelife', zoom: 1.2, objectPosition: 'center 58%' },
             { src: 'assets/images/nikitha-polaroid-3.png', caption: '#nature walk<br>#weekend vibes' },
             { src: 'assets/images/nikitha-polaroid-4.png', caption: '#cozy coffee<br>#morning fuel' }
         ];
