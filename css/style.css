@@ -717,7 +717,7 @@ img { display: block; max-width: 100%; }
 .contact-card {
     display: flex;
     flex-direction: row; /* Content beside the icon */
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 20px;
     padding: 16px 28px; /* Balanced padding with sketchy organic vector lines */
