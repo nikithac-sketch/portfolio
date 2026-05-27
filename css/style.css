@@ -93,15 +93,42 @@ img { display: block; max-width: 100%; }
     transition: width 0.3s var(--ease-expo);
 }
 .nav-link:hover::after { width: 100%; }
-.nav-btn {
-    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em;
-    padding: 10px 22px; background: var(--text); color: var(--bg);
-    border-radius: 100px; transition: transform 0.3s var(--ease-spring), background 0.4s ease, color 0.4s ease;
-}
-.nav-btn:hover {
-    transform: scale(1.05);
-    background: #ff7a00;
+.nav-btn-wobbly {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 10px 22px;
     color: #ffffff;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.3s var(--ease-spring), color 0.3s ease;
+    z-index: 1;
+}
+.nav-btn-wobbly:hover {
+    transform: scale(1.05);
+    color: #ffffff;
+}
+.nav-sketch-border {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+.nav-sketch-border path {
+    stroke: var(--text);
+    stroke-width: 2.2;
+    fill: var(--text);
+    transition: stroke 0.3s ease, fill 0.3s ease;
+}
+.nav-btn-wobbly:hover .nav-sketch-border path {
+    stroke: #ff7a00;
+    fill: #ff7a00;
 }
 
 /* ============================================
@@ -1816,5 +1843,21 @@ img { display: block; max-width: 100%; }
 }
 .title-underline path {
     fill: var(--accent); /* Warm amber brand color */
+}
+
+/* Wobbly Dark Submit Button */
+.cta-dark-btn {
+    color: #ffffff !important;
+}
+.cta-dark-btn .cta-sketch-border path {
+    fill: var(--text) !important;
+    stroke: var(--text) !important;
+}
+.cta-dark-btn:hover .cta-sketch-border path {
+    fill: #ff7a00 !important;
+    stroke: #ff7a00 !important;
+}
+.cta-dark-btn .cta-arrow-svg {
+    filter: brightness(0) invert(1) !important;
 }
 

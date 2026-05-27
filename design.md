@@ -88,9 +88,10 @@ Clean editorial readability paired with structured code-like details and loose h
 - **Logic**: Converts vertical scroll progress into a seamless `translateX` layout shift, moving panels left-to-right.
 
 ### 4.4. Hand-Drawn CTA Buttons
-- **Shape & Border**: Wobbly rectangular single-stroke outline using path coordinate rounding to keep corners slightly curved, styled via custom responsive SVG overlay (`.cta-sketch-border`).
-- **Solid Canvas**: Default button fill uses a solid `#ffffff` background inside the sketchy outline path, ensuring the button remains highly legible against off-white (`#f6f5f2`) section wrappers.
-- **Accents & Arrows**: CTA buttons utilize standard horizontal arrow icons (`Arrow 5.svg`) or vertical down arrow icons (`Arrow 17.svg`) selected directly from the **`01_Arrows`** library.
+- **Shape & Border**: Wobbly rectangular single-stroke outline using path coordinate rounding to keep corners slightly curved, styled via custom responsive SVG overlay (`.cta-sketch-border` or `.nav-sketch-border`).
+- **Solid Canvas & Dark Fills**: Default primary project buttons use a solid `#ffffff` background inside the wobbly path fill. The contact submit button (`.cta-dark-btn`) and navigation contact button (`.nav-btn-wobbly`) are unified to use solid black path fills (`fill: var(--text);` or `fill: #000000;`) with white text.
+- **Accents & Arrows**: Primary white buttons utilize standard horizontal arrow icons (`Arrow 5.svg`) or vertical down arrow icons (`Arrow 17.svg`) selected directly from the **`01_Arrows`** library.
+- **Interactive Transitions**: On hover, all buttons dynamically fill and outline with vivid orange (`#ff7a00`), with text/arrows transitioning smoothly to white.
 ### 4.5. Hand-Drawn Contact Section
 - **Containers & Form**: Replaced regular solid CSS borders on `.contact-card` and `.connect-form` with wobbly rectangular vector SVG overlays (`.card-sketch-border` and `.form-sketch-border`) to continue the organic hand-drawn aesthetic. Background solidness (`#ffffff`) is preserved inside the wobbly path fills.
 - **Unclamped Boundaries**: Applied `overflow: visible;` in CSS to contact cards and forms, letting sketchy lines wobble organically outside parent bounding limits.
