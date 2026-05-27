@@ -15,7 +15,6 @@ colors:
 typography:
   display_font: "Instrument Sans, sans-serif"
   code_font: "Space Mono, monospace"
-  handwritten_font: "Permanent Marker, cursive"
   weights:
     regular: 400
     medium: 500
@@ -62,10 +61,9 @@ Detailed design tokens for backgrounds, text layers, and accents:
 
 Clean editorial readability paired with structured code-like details and loose handwriting:
 
-* **Display (`Instrument Sans`)**: Primary interface font family. Spans weights `400` (regular) up to `700` (bold) for tight, distinct headings and legible editorial grids.
+* **Display & Polaroid Captions (`Instrument Sans`)**: Primary interface font family and polaroid photo captions. Spans weights `400` (regular) up to `700` (bold) for clean modern editorial readability.
   - *Outline Letter-Spacing*: Outlined headers (`.text-outline`) use a positive letter-spacing of `0.04em` (overriding the default heading spacing of `-0.03em`) to prevent adjacent characters' outline strokes from intersecting or overlapping, ensuring a clean, hollow aesthetic.
 * **Data Monospace (`Space Mono`)**: Used for the clock, page breadcrumbs, and tags. Lends a digital precision to structural details.
-* **Script Handwriting (`Permanent Marker`)**: Strictly dedicated to polaroid handwritten descriptions, giving a bold marker signature.
 
 ---
 

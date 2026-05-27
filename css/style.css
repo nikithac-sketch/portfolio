@@ -1002,8 +1002,8 @@ img { display: block; max-width: 100%; }
     left: 0;
     right: 0;
     text-align: center;
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1.65rem;
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 1.45rem; /* Adjusted slightly down for display sans font balance */
     font-weight: 700;
     color: var(--accent);
     line-height: 1.25;
