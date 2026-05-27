@@ -1797,3 +1797,22 @@ img { display: block; max-width: 100%; }
     }
 }
 
+/* Highlight Underline for Titles */
+.highlight-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.title-underline {
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.95;
+}
+.title-underline path {
+    fill: var(--accent); /* Warm amber brand color */
+}
+
