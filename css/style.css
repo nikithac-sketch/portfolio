@@ -731,6 +731,7 @@ img { display: block; max-width: 100%; }
 .contact-card-icon {
     width: 44px;
     height: 44px;
+    flex-shrink: 0; /* Prevents icon container from squishing horizontally */
     display: flex;
     align-items: center;
     justify-content: center;
