@@ -717,10 +717,10 @@ img { display: block; max-width: 100%; }
 .contact-card {
     display: flex;
     flex-direction: row; /* Content beside the icon */
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 20px;
-    padding: 16px 28px; /* Balanced padding with sketchy organic vector lines */
+    padding: 13px 28px 19px; /* Shunted slightly up to compensate for font baseline and center perfectly */
     background: transparent;
     border: none;
     border-radius: 0;
@@ -802,7 +802,8 @@ img { display: block; max-width: 100%; }
     display: flex;
     flex-direction: column;
     gap: 4px;
-    width: auto;
+    width: 100%;
+    line-height: 1.25; /* Tighten line height to eliminate excess vertical spacing */
 }
 
 .contact-card-label {
@@ -835,7 +836,7 @@ img { display: block; max-width: 100%; }
         gap: 28px;
     }
     .contact-card {
-        padding: 14px 24px;
+        padding: 11px 24px 17px; /* Responsive shunted padding */
     }
     .contact-card-icon {
         width: 48px;
