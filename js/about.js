@@ -74,4 +74,68 @@
             }, 3000);
         });
     }
+
+    // ─── Polaroid Image Cycling on Hover ───
+    const polaroidFrame = document.querySelector('.polaroid-frame');
+    const polaroidImg = polaroidFrame ? polaroidFrame.querySelector('.char-img') : null;
+    const polaroidCaption = polaroidFrame ? polaroidFrame.querySelector('.polaroid-caption') : null;
+
+    if (polaroidFrame && polaroidImg && polaroidCaption) {
+        const hoverImages = [
+            { src: 'assets/images/nikitha-polaroid.jpg?v=3', caption: '#goldenhour<br>#office vibes' },
+            { src: 'assets/images/nikitha-polaroid-2.png', caption: '#creative space<br>#design life' },
+            { src: 'assets/images/nikitha-polaroid-3.png', caption: '#nature walk<br>#weekend vibes' },
+            { src: 'assets/images/nikitha-polaroid-4.png', caption: '#cozy coffee<br>#morning fuel' }
+        ];
+
+        // Preload cycling images to ensure instantaneous transition without browser layout flicker
+        hoverImages.forEach(imgData => {
+            const tempImg = new Image();
+            tempImg.src = imgData.src;
+        });
+
+        let currentImageIndex = 0;
+        let isTransitioning = false;
+
+        polaroidFrame.addEventListener('mouseenter', () => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            // Increment index
+            currentImageIndex = (currentImageIndex + 1) % hoverImages.length;
+            const nextData = hoverImages[currentImageIndex];
+
+            // Trigger sleek transition out
+            polaroidImg.classList.add('polaroid-switching');
+            polaroidCaption.classList.add('polaroid-switching');
+
+            setTimeout(() => {
+                polaroidImg.src = nextData.src;
+                polaroidCaption.innerHTML = nextData.caption;
+
+                // When image is bound and loaded, trigger soft spring transition back in
+                const handleLoad = () => {
+                    polaroidImg.classList.remove('polaroid-switching');
+                    polaroidCaption.classList.remove('polaroid-switching');
+                    isTransitioning = false;
+                    polaroidImg.removeEventListener('load', handleLoad);
+                };
+                
+                if (polaroidImg.complete) {
+                    handleLoad();
+                } else {
+                    polaroidImg.addEventListener('load', handleLoad);
+                }
+
+                // Safety timeout fallback
+                setTimeout(() => {
+                    if (isTransitioning) {
+                        polaroidImg.classList.remove('polaroid-switching');
+                        polaroidCaption.classList.remove('polaroid-switching');
+                        isTransitioning = false;
+                    }
+                }, 150);
+            }, 180);
+        });
+    }
 })();

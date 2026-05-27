@@ -1012,6 +1012,13 @@ img { display: block; max-width: 100%; }
     z-index: 15;
     pointer-events: none;
     user-select: none;
+    transition: opacity 0.25s ease, transform 0.3s ease;
+}
+
+.polaroid-switching {
+    opacity: 0 !important;
+    transform: scale(0.96) rotate(-0.5deg) !important;
+    transition: opacity 0.18s ease, transform 0.18s ease !important;
 }
 
 /* Right Column: About Content */
