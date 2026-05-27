@@ -1015,6 +1015,14 @@ img { display: block; max-width: 100%; }
     transition: opacity 0.25s ease, transform 0.3s ease;
 }
 
+.hashtag-icon {
+    display: inline-block;
+    width: 0.85em;
+    height: 0.85em;
+    vertical-align: -0.05em;
+    margin-right: 1px;
+}
+
 .polaroid-switching {
     opacity: 0 !important;
     transform: scale(0.96) rotate(-0.5deg) !important;

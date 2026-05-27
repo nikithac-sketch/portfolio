@@ -81,11 +81,12 @@
     const polaroidCaption = polaroidFrame ? polaroidFrame.querySelector('.polaroid-caption') : null;
 
     if (polaroidFrame && polaroidImg && polaroidCaption) {
+        const hashIcon = '<img src="assets/Highlights-by-Outdraw-Design/11_Punctuation/Punctuation 1.svg" class="hashtag-icon" alt="#">';
         const hoverImages = [
-            { src: 'assets/images/nikitha-polaroid.jpg?v=3', caption: '#goldenhour<br>#office vibes' },
-            { src: 'assets/images/nikitha-polaroid-2.jpg', caption: '#kathak<br>#dancelife', zoom: 1.2, objectPosition: 'center 58%' },
-            { src: 'assets/images/nikitha-polaroid-3.png', caption: '#nature walk<br>#weekend vibes' },
-            { src: 'assets/images/nikitha-polaroid-4.png', caption: '#cozy coffee<br>#morning fuel' }
+            { src: 'assets/images/nikitha-polaroid.jpg?v=3', caption: hashIcon + 'goldenhour<br>' + hashIcon + 'office vibes' },
+            { src: 'assets/images/nikitha-polaroid-2.jpg', caption: hashIcon + 'kathak<br>' + hashIcon + 'dancelife', zoom: 1.2, objectPosition: 'center 58%' },
+            { src: 'assets/images/nikitha-polaroid-3.png', caption: hashIcon + 'nature walk<br>' + hashIcon + 'weekend vibes' },
+            { src: 'assets/images/nikitha-polaroid-4.png', caption: hashIcon + 'cozy coffee<br>' + hashIcon + 'morning fuel' }
         ];
 
         // Preload cycling images to ensure instantaneous transition without browser layout flicker
