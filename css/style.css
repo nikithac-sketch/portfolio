@@ -720,7 +720,7 @@ img { display: block; max-width: 100%; }
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
-    padding: 24px 28px; /* Slightly increased padding since border is handled by SVG */
+    padding: 16px 28px; /* Balanced padding with sketchy organic vector lines */
     background: transparent;
     border: none;
     border-radius: 0;
@@ -835,7 +835,7 @@ img { display: block; max-width: 100%; }
         gap: 28px;
     }
     .contact-card {
-        padding: 20px 24px;
+        padding: 14px 24px;
     }
     .contact-card-icon {
         width: 48px;
