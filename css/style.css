@@ -1943,6 +1943,158 @@ img { display: block; max-width: 100%; }
 }
 
 /* ============================================
+   FUNNEL CHART SECTION
+   ============================================ */
+.funnel-section {
+    padding: 80px 40px 140px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.funnel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+/* Individual funnel layer row */
+.funnel-layer {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* The coloured bar */
+.funnel-bar {
+    height: 72px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.3s var(--ease-spring);
+}
+
+.funnel-bar:hover {
+    transform: scale(1.03);
+}
+
+/* Layer-specific widths and colours */
+.funnel-layer-1 .funnel-bar {
+    width: 100%;
+    background: linear-gradient(135deg, #F5A623 0%, #e6951c 100%);
+    box-shadow: 0 6px 28px rgba(245, 166, 35, 0.25);
+}
+
+.funnel-layer-2 .funnel-bar {
+    width: 68%;
+    background: linear-gradient(135deg, #f0bd64 0%, #e8a93e 100%);
+    box-shadow: 0 6px 24px rgba(245, 166, 35, 0.18);
+}
+
+.funnel-layer-3 .funnel-bar {
+    width: 18%;
+    min-width: 100px;
+    background: linear-gradient(135deg, #e93c3c 0%, #d43232 100%);
+    box-shadow: 0 6px 24px rgba(233, 60, 60, 0.22);
+}
+
+/* Percentage text inside bar */
+.funnel-pct {
+    font-family: var(--font);
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+}
+
+/* Label text below bar */
+.funnel-label {
+    font-family: var(--font);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+}
+
+/* Layout: stack bar on top, label underneath */
+.funnel-layer {
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Thin connector between layers */
+.funnel-connector {
+    width: 2px;
+    height: 32px;
+    background: var(--border-dark);
+    margin: 0 auto;
+}
+
+/* ── Staggered Reveal for Funnel ── */
+.funnel-section.scroll-reveal {
+    opacity: 1;
+    transform: none;
+}
+
+.funnel-section.scroll-reveal .funnel-layer {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.funnel-section.scroll-reveal .funnel-layer-1 { transition-delay: 0s; }
+.funnel-section.scroll-reveal .funnel-layer-2 { transition-delay: 0.25s; }
+.funnel-section.scroll-reveal .funnel-layer-3 { transition-delay: 0.5s; }
+
+.funnel-section.scroll-reveal .funnel-connector {
+    opacity: 0;
+    transform: scaleY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.funnel-section.scroll-reveal .funnel-connector:nth-of-type(2) { transition-delay: 0.15s; }
+.funnel-section.scroll-reveal .funnel-connector:nth-of-type(4) { transition-delay: 0.4s; }
+
+/* Revealed */
+.funnel-section.scroll-reveal.revealed .funnel-layer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.funnel-section.scroll-reveal.revealed .funnel-connector {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .funnel-section {
+        padding: 60px 20px 100px;
+    }
+    .funnel-bar {
+        height: 56px;
+        border-radius: 10px;
+    }
+    .funnel-pct {
+        font-size: 1.2rem;
+    }
+    .funnel-label {
+        font-size: 0.9rem;
+    }
+    .funnel-layer-3 .funnel-bar {
+        min-width: 80px;
+    }
+}
+
+/* ============================================
    COMIC STRIP SECTION
    ============================================ */
 .comic-scroll-container {
