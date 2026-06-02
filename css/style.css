@@ -2064,12 +2064,12 @@ img { display: block; max-width: 100%; }
     mix-blend-mode: multiply;          /* blends lines nicely with background */
 }
 
-/* ── Sketchy strokes outline using Line 5.svg (overlays intersect for connected look) ── */
+/* ── Sketchy strokes outline (Line 5.svg for thick horizontal, Line 6.svg for thin vertical) ── */
 .funnel-stroke-top {
     position: absolute;
-    top: -5px;
-    left: -7px;                        /* extends slightly past left/right borders to connect corners */
-    right: -7px;
+    top: -5px;                         /* slightly overlaps fill to prevent gaps */
+    left: -8px;                        /* extends past left border line */
+    right: -8px;                       /* extends past right border line */
     height: 10px;
     background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 5.svg');
     background-size: 100% 100%;
@@ -2080,9 +2080,9 @@ img { display: block; max-width: 100%; }
 
 .funnel-stroke-bottom {
     position: absolute;
-    bottom: -5px;
-    left: -7px;
-    right: -7px;
+    bottom: -5px;                      /* slightly overlaps fill to prevent gaps */
+    left: -8px;
+    right: -8px;
     height: 10px;
     background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 5.svg');
     background-size: 100% 100%;
@@ -2091,14 +2091,14 @@ img { display: block; max-width: 100%; }
     z-index: 2;
 }
 
-/* Left and right vertical borders are slightly longer rotated Line 5 strokes */
+/* Left and right vertical borders are rotated thin Line 6 strokes */
 .funnel-stroke-left {
     position: absolute;
     left: -46px;                       /* centers 92px wide element at x = 0 */
-    top: calc(50% - 5px);
-    width: 92px;                       /* extends 6px past top/bottom borders to overlap corners */
-    height: 10px;
-    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 5.svg');
+    top: calc(50% - 3px);
+    width: 92px;                       /* extends past top/bottom strokes to close the outline */
+    height: 6px;                       /* thin stroke */
+    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 6.svg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     transform: rotate(90deg);
@@ -2110,10 +2110,10 @@ img { display: block; max-width: 100%; }
 .funnel-stroke-right {
     position: absolute;
     right: -46px;                      /* centers 92px wide element at x = W */
-    top: calc(50% - 5px);
-    width: 92px;                       /* extends 6px past top/bottom borders to overlap corners */
-    height: 10px;
-    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 5.svg');
+    top: calc(50% - 3px);
+    width: 92px;                       /* extends past top/bottom strokes to close the outline */
+    height: 6px;                       /* thin stroke */
+    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 6.svg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     transform: rotate(90deg);
