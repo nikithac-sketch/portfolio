@@ -1756,9 +1756,19 @@ img { display: block; max-width: 100%; }
    ============================================ */
 .hugo-intro-section {
     width: 100%;
-    margin: 80px auto;
+    margin: 150px auto 100px;
     padding: 0 40px;
     max-width: var(--max-w);
+}
+
+/* Custom Dissolve Reveal Effect */
+.scroll-reveal.dissolve {
+    opacity: 0;
+    transform: none; /* Pure fade/dissolve */
+    transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.scroll-reveal.dissolve.revealed {
+    opacity: 1;
 }
 
 .hugo-intro-grid {
