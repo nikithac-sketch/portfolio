@@ -1752,6 +1752,121 @@ img { display: block; max-width: 100%; }
 }
 
 /* ============================================
+   HUGOSAVE INTRO SECTION
+   ============================================ */
+.hugo-intro-section {
+    width: 100%;
+    margin: 80px auto;
+    padding: 0 40px;
+    max-width: var(--max-w);
+}
+
+.hugo-intro-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hugo-intro-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hugo-logo-frame {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hugo-logo-img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    border-radius: 24px;
+    transform: rotate(-1.5deg);
+    transition: transform 0.5s var(--ease-spring);
+    z-index: 2;
+}
+
+.hugo-logo-frame:hover .hugo-logo-img {
+    transform: rotate(3deg) scale(1.06);
+}
+
+.hugo-logo-sketch {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hugo-logo-sketch path {
+    stroke: #555555;
+    transition: stroke 0.4s ease;
+}
+
+.hugo-logo-frame:hover .hugo-logo-sketch path {
+    stroke: var(--accent);
+}
+
+.hugo-intro-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.hugo-intro-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.hugo-intro-description {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.desc-line {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Responsive adjustment for Hugosave Intro */
+@media (max-width: 768px) {
+    .hugo-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    .hugo-intro-right {
+        align-items: center;
+    }
+    .hugo-logo-frame {
+        width: 160px;
+        height: 160px;
+    }
+    .hugo-logo-img {
+        width: 114px;
+        height: 114px;
+    }
+}
+
+/* ============================================
    COMIC STRIP SECTION
    ============================================ */
 .comic-scroll-container {
