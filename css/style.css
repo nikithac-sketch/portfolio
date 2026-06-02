@@ -1955,72 +1955,79 @@ img { display: block; max-width: 100%; }
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 6px;                          /* small gap between bars, like amcharts links.height:5 */
+    gap: 12px;                         /* small gap between slices */
+    --max-bar-area: 68%;               /* bars occupy 68% of total row width */
 }
 
-/* ── Row: bar-wrap  |  tick  |  meta ── */
+/* ── Row layout with spacers and tick lines ── */
 .funnel-row {
-    display: grid;
-    grid-template-columns: 1fr 40px auto;
-    align-items: center;
-    gap: 0;
-}
-
-/* Bar wrapper — centres the bar horizontally */
-.funnel-bar-wrap {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-/* The coloured bar */
+.funnel-row-1 { --pct: 100; }
+.funnel-row-2 { --pct: 68; }
+.funnel-row-3 { --pct: 8; }
+
+.funnel-row {
+    --bar-width: calc(var(--max-bar-area) * var(--pct) / 100);
+}
+
+/* Spacer balances the bar to center it within the bar area */
+.funnel-spacer-left {
+    width: calc((var(--max-bar-area) - var(--bar-width)) / 2);
+    flex-shrink: 0;
+}
+
+/* Rounded corner rectangular bar, proportional width & uniform height */
 .funnel-bar {
-    border-radius: 10px;               /* rounded corners on all 4 sides */
-    width: 100%;
+    height: 80px;                      /* uniform height slice */
+    border-radius: 12px;               /* rounded corners on all 4 sides */
+    width: var(--bar-width);
+    min-width: 32px;                   /* ensures visibility of 8% bar */
+    flex-shrink: 0;
     transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                filter 0.3s ease,
                 box-shadow 0.35s ease;
 }
 
 .funnel-bar:hover {
-    transform: scaleX(1.02);
-    filter: brightness(1.08);
+    transform: scale(1.02);
+    filter: brightness(1.06);
 }
 
-/* ── Layer-specific heights & widths ── */
-/*    Heights proportional to value (100, 68, 8)
-      amcharts uses bottomRatio:1, so each bar is rectangular.
-      We normalise so the tallest bar ~140px and scale down.  */
-
+/* Color palettes extracted directly from assets/svgs/img-pots.svg */
 .funnel-row-1 .funnel-bar {
-    height: 140px;
-    background: linear-gradient(180deg, #67b7dc 0%, #5aacd2 100%);
-    box-shadow: 0 4px 20px rgba(103, 183, 220, 0.30);
+    background: linear-gradient(180deg, #FFD76F 0%, #F3C364 100%);
+    box-shadow: 0 4px 20px rgba(243, 195, 100, 0.25);
 }
 
 .funnel-row-2 .funnel-bar {
-    height: 96px;                      /* ≈ 68% of 140 */
-    background: linear-gradient(180deg, #6794dc 0%, #5c87d0 100%);
-    box-shadow: 0 4px 18px rgba(103, 148, 220, 0.28);
+    background: linear-gradient(180deg, #C6E8E9 0%, #80AEAF 100%);
+    box-shadow: 0 4px 18px rgba(128, 174, 175, 0.2);
 }
 
 .funnel-row-3 .funnel-bar {
-    height: 40px;                      /* ≈ 8% of 140, but min for visibility */
-    background: linear-gradient(180deg, #e93c3c 0%, #d43232 100%);
-    box-shadow: 0 4px 16px rgba(233, 60, 60, 0.28);
+    background: linear-gradient(180deg, #FF8B8B 0%, #B84646 100%);
+    box-shadow: 0 4px 16px rgba(184, 70, 70, 0.25);
 }
 
-/* ── Tick line (connects bar to label) ── */
+/* ── Tick line (connects right edge of centered bar to label) ── */
 .funnel-tick {
-    width: 100%;
+    width: calc((var(--max-bar-area) - var(--bar-width)) / 2 + 10%);
     height: 1px;
     background: var(--border-dark);
+    flex-shrink: 0;
 }
 
-/* ── Meta: percentage + label ── */
+/* ── Right-aligned Meta Labels ── */
 .funnel-meta {
     display: flex;
     flex-direction: column;
-    padding-left: 6px;
-    white-space: nowrap;
+    padding-left: 12px;
+    width: 22%;                        /* fixed width for perfect vertical alignment */
+    flex-shrink: 0;
 }
 
 .funnel-pct {
@@ -2068,20 +2075,22 @@ img { display: block; max-width: 100%; }
     .funnel-section {
         padding: 60px 20px 80px;
     }
-    .funnel-row {
-        grid-template-columns: 1fr 28px auto;
+    .funnel-chart {
+        --max-bar-area: 60%;
+        gap: 10px;
     }
-    .funnel-row-1 .funnel-bar { height: 100px; }
-    .funnel-row-2 .funnel-bar { height: 68px; }
-    .funnel-row-3 .funnel-bar { height: 32px; }
     .funnel-bar {
-        border-radius: 7px;
+        height: 60px;
+        border-radius: 8px;
     }
     .funnel-pct {
         font-size: 1.05rem;
     }
     .funnel-label {
         font-size: 0.78rem;
+    }
+    .funnel-meta {
+        width: 30%;
     }
 }
 
