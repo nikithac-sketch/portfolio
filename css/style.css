@@ -2009,10 +2009,9 @@ img { display: block; max-width: 100%; }
     flex-shrink: 0;
 }
 
-/* Rounded corner rectangular bar, proportional width & uniform height */
+/* Rounded corner rectangular bar wrapper, proportional width & uniform height */
 .funnel-bar {
     height: 80px;                      /* uniform height slice */
-    border-radius: 12px;               /* rounded corners on all 4 sides */
     width: var(--bar-width);
     min-width: 32px;                   /* ensures visibility of 8% bar */
     flex-shrink: 0;
@@ -2027,28 +2026,50 @@ img { display: block; max-width: 100%; }
     filter: brightness(1.06);
 }
 
-/* Solid colors from img-pots.svg */
-.funnel-row-1 .funnel-bar {
+/* Background container with rounded corners and clipped hatching overlay */
+.funnel-bar-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;               /* slightly rounded inside outline */
+    overflow: hidden;                  /* clips cross-hatching inside */
+    z-index: 1;
+}
+
+/* Solid background colors from img-pots.svg */
+.funnel-row-1 .funnel-bar-bg {
     background-color: #F3C364;        /* Solid Pots Gold */
     box-shadow: 0 4px 15px rgba(243, 195, 100, 0.12);
 }
 
-.funnel-row-2 .funnel-bar {
+.funnel-row-2 .funnel-bar-bg {
     background-color: #80AEAF;        /* Solid Teal */
     box-shadow: 0 4px 15px rgba(128, 174, 175, 0.1);
 }
 
-.funnel-row-3 .funnel-bar {
+.funnel-row-3 .funnel-bar-bg {
     background-color: #B84646;        /* Solid Warning Red */
     box-shadow: 0 4px 15px rgba(184, 70, 70, 0.12);
 }
 
-/* ── Sketchy strokes overlays using Line 5 for all four sides ── */
+/* Diagonal cross-hatching pattern using thin Line 6.svg */
+.funnel-hatching {
+    position: absolute;
+    inset: -100px;                     /* extends beyond container so rotation covers all corners */
+    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 6.svg');
+    background-size: 100% 12px;        /* repeat line vertically every 12px */
+    background-repeat: repeat-y;
+    transform: rotate(-60deg);         /* rotate to make lines diagonal */
+    opacity: 0.28;                     /* visible hand-drawn sketch hatching */
+    pointer-events: none;
+    mix-blend-mode: multiply;          /* blends lines nicely with background */
+}
+
+/* ── Sketchy strokes outline using Line 5.svg (overlays intersect for connected look) ── */
 .funnel-stroke-top {
     position: absolute;
     top: -5px;
-    left: -4px;
-    right: -4px;
+    left: -7px;                        /* extends slightly past left/right borders to connect corners */
+    right: -7px;
     height: 10px;
     background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 5.svg');
     background-size: 100% 100%;
@@ -2060,8 +2081,8 @@ img { display: block; max-width: 100%; }
 .funnel-stroke-bottom {
     position: absolute;
     bottom: -5px;
-    left: -4px;
-    right: -4px;
+    left: -7px;
+    right: -7px;
     height: 10px;
     background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 5.svg');
     background-size: 100% 100%;
@@ -2070,12 +2091,12 @@ img { display: block; max-width: 100%; }
     z-index: 2;
 }
 
-/* Left and right vertical borders are rotated horizontal strokes */
+/* Left and right vertical borders are slightly longer rotated Line 5 strokes */
 .funnel-stroke-left {
     position: absolute;
-    left: -40px;
+    left: -46px;                       /* centers 92px wide element at x = 0 */
     top: calc(50% - 5px);
-    width: 80px;                       /* spans the full height of the bar */
+    width: 92px;                       /* extends 6px past top/bottom borders to overlap corners */
     height: 10px;
     background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 5.svg');
     background-size: 100% 100%;
@@ -2088,9 +2109,9 @@ img { display: block; max-width: 100%; }
 
 .funnel-stroke-right {
     position: absolute;
-    right: -40px;
+    right: -46px;                      /* centers 92px wide element at x = W */
     top: calc(50% - 5px);
-    width: 80px;                       /* spans the full height of the bar */
+    width: 92px;                       /* extends 6px past top/bottom borders to overlap corners */
     height: 10px;
     background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 5.svg');
     background-size: 100% 100%;
