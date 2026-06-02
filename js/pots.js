@@ -83,6 +83,50 @@
         revealObserver.observe(el);
     });
 
+    // ─── Scrollytelling Funnel Logic ───
+    const scrollySteps = document.querySelectorAll('.scrolly-step');
+    const funnelRows = document.querySelectorAll('.funnel-row');
+
+    if (scrollySteps.length > 0 && funnelRows.length > 0) {
+        const scrollyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stepNum = parseInt(entry.target.getAttribute('data-step'), 10);
+                    
+                    // Activate corresponding cards
+                    scrollySteps.forEach(step => {
+                        const currentNum = parseInt(step.getAttribute('data-step'), 10);
+                        if (currentNum === stepNum) {
+                            step.classList.add('active');
+                        } else {
+                            step.classList.remove('active');
+                        }
+                    });
+
+                    // Update funnel layers visibility
+                    funnelRows.forEach((row, index) => {
+                        const rowIndex = index + 1;
+                        if (rowIndex <= stepNum) {
+                            row.classList.add('active-step');
+                            row.classList.remove('inactive-step');
+                        } else {
+                            row.classList.remove('active-step');
+                            row.classList.add('inactive-step');
+                        }
+                    });
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '-30% 0px -40% 0px', // triggers when the card enters the central viewport band
+            threshold: 0
+        });
+
+        scrollySteps.forEach(step => {
+            scrollyObserver.observe(step);
+        });
+    }
+
     // ─── Scroll Listener ───
     let ticking = false;
     window.addEventListener('scroll', () => {

@@ -115,59 +115,89 @@
             <h2 class="dramatic-text-bold">UNTIL</h2>
         </section>
 
-        <!-- Funnel Chart Section -->
-        <section class="funnel-section scroll-reveal">
-            <div class="funnel-chart">
+        <!-- Funnel Chart Section (Scrollytelling) -->
+        <section class="scrolly-funnel-container scroll-reveal">
+            
+            <!-- Sticky Visual (Funnel Chart) -->
+            <div class="scrolly-funnel-sticky">
+                <div class="funnel-chart">
+                    
+                    <!-- Layer 1 — 100% -->
+                    <div class="funnel-row funnel-row-1">
+                        <div class="funnel-spacer-left"></div>
+                        <div class="funnel-bar">
+                            <div class="funnel-stroke-top"></div>
+                            <div class="funnel-stroke-bottom"></div>
+                            <div class="funnel-stroke-left"></div>
+                            <div class="funnel-stroke-right"></div>
+                        </div>
+                        <div class="funnel-tick"></div>
+                        <div class="funnel-meta">
+                            <span class="funnel-pct">100%</span>
+                            <span class="funnel-label">Created a Pot</span>
+                        </div>
+                    </div>
 
-                <!-- Layer 1 — 100% -->
-                <div class="funnel-row funnel-row-1">
-                    <div class="funnel-spacer-left"></div>
-                    <div class="funnel-bar">
-                        <div class="funnel-stroke-top"></div>
-                        <div class="funnel-stroke-bottom"></div>
-                        <div class="funnel-stroke-left"></div>
-                        <div class="funnel-stroke-right"></div>
+                    <!-- Layer 2 — 68% -->
+                    <div class="funnel-row funnel-row-2">
+                        <div class="funnel-spacer-left"></div>
+                        <div class="funnel-bar">
+                            <div class="funnel-stroke-top"></div>
+                            <div class="funnel-stroke-bottom"></div>
+                            <div class="funnel-stroke-left"></div>
+                            <div class="funnel-stroke-right"></div>
+                        </div>
+                        <div class="funnel-tick"></div>
+                        <div class="funnel-meta">
+                            <span class="funnel-pct">68%</span>
+                            <span class="funnel-label">Contributed to it</span>
+                        </div>
                     </div>
-                    <div class="funnel-tick"></div>
-                    <div class="funnel-meta">
-                        <span class="funnel-pct">100%</span>
-                        <span class="funnel-label">Created a Pot</span>
+
+                    <!-- Layer 3 — 8% -->
+                    <div class="funnel-row funnel-row-3">
+                        <div class="funnel-spacer-left"></div>
+                        <div class="funnel-bar">
+                            <div class="funnel-stroke-top"></div>
+                            <div class="funnel-stroke-bottom"></div>
+                            <div class="funnel-stroke-left"></div>
+                            <div class="funnel-stroke-right"></div>
+                        </div>
+                        <div class="funnel-tick"></div>
+                        <div class="funnel-meta">
+                            <span class="funnel-pct">8%</span>
+                            <span class="funnel-label">Completed their goal</span>
+                        </div>
                     </div>
+
                 </div>
-
-                <!-- Layer 2 — 68% -->
-                <div class="funnel-row funnel-row-2">
-                    <div class="funnel-spacer-left"></div>
-                    <div class="funnel-bar">
-                        <div class="funnel-stroke-top"></div>
-                        <div class="funnel-stroke-bottom"></div>
-                        <div class="funnel-stroke-left"></div>
-                        <div class="funnel-stroke-right"></div>
-                    </div>
-                    <div class="funnel-tick"></div>
-                    <div class="funnel-meta">
-                        <span class="funnel-pct">68%</span>
-                        <span class="funnel-label">Contributed to it</span>
-                    </div>
-                </div>
-
-                <!-- Layer 3 — 8% -->
-                <div class="funnel-row funnel-row-3">
-                    <div class="funnel-spacer-left"></div>
-                    <div class="funnel-bar">
-                        <div class="funnel-stroke-top"></div>
-                        <div class="funnel-stroke-bottom"></div>
-                        <div class="funnel-stroke-left"></div>
-                        <div class="funnel-stroke-right"></div>
-                    </div>
-                    <div class="funnel-tick"></div>
-                    <div class="funnel-meta">
-                        <span class="funnel-pct">8%</span>
-                        <span class="funnel-label">Completed their goal</span>
-                    </div>
-                </div>
-
             </div>
+
+            <!-- Narrative Scroll Steps -->
+            <div class="scrolly-funnel-narrative">
+                <div class="scrolly-step" data-step="1">
+                    <div class="scrolly-card">
+                        <span class="scrolly-step-num">01</span>
+                        <h3>Created a Pot</h3>
+                        <p>Everything was going great. <strong>100% of users</strong> in our cohort created a savings Pot, showing high initial intent and enthusiasm for setting goals.</p>
+                    </div>
+                </div>
+                <div class="scrolly-step" data-step="2">
+                    <div class="scrolly-card">
+                        <span class="scrolly-step-num">02</span>
+                        <h3>Contributed to it</h3>
+                        <p>But habits are hard to form. The friction of manual savings kicked in, and only <strong>68% of users</strong> made a contribution to their Pot.</p>
+                    </div>
+                </div>
+                <div class="scrolly-step" data-step="3">
+                    <div class="scrolly-card">
+                        <span class="scrolly-step-num">03</span>
+                        <h3>Completed their goal</h3>
+                        <p>In the end, only a shocking <strong>8% of users</strong> completed their goals. The rest dropped off, revealing a huge gap in motivation and follow-through.</p>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <!-- Horizontal Scrolling Comic Strip -->
