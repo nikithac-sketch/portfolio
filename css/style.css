@@ -1987,6 +1987,7 @@ img { display: block; max-width: 100%; }
     width: var(--bar-width);
     min-width: 32px;                   /* ensures visibility of 8% bar */
     flex-shrink: 0;
+    position: relative;                /* anchor for absolute stroke overlays */
     transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
                 filter 0.3s ease,
                 box-shadow 0.35s ease;
@@ -1997,20 +1998,78 @@ img { display: block; max-width: 100%; }
     filter: brightness(1.06);
 }
 
-/* Color palettes extracted directly from assets/svgs/img-pots.svg */
+/* Solid colors from img-pots.svg */
 .funnel-row-1 .funnel-bar {
-    background: linear-gradient(180deg, #FFD76F 0%, #F3C364 100%);
-    box-shadow: 0 4px 20px rgba(243, 195, 100, 0.25);
+    background-color: #F3C364;        /* Solid Pots Gold */
+    box-shadow: 0 4px 15px rgba(243, 195, 100, 0.15);
 }
 
 .funnel-row-2 .funnel-bar {
-    background: linear-gradient(180deg, #C6E8E9 0%, #80AEAF 100%);
-    box-shadow: 0 4px 18px rgba(128, 174, 175, 0.2);
+    background-color: #80AEAF;        /* Solid Teal */
+    box-shadow: 0 4px 15px rgba(128, 174, 175, 0.12);
 }
 
 .funnel-row-3 .funnel-bar {
-    background: linear-gradient(180deg, #FF8B8B 0%, #B84646 100%);
-    box-shadow: 0 4px 16px rgba(184, 70, 70, 0.25);
+    background-color: #B84646;        /* Solid Warning Red */
+    box-shadow: 0 4px 15px rgba(184, 70, 70, 0.15);
+}
+
+/* ── Sketchy strokes overlays using lines from Highlights Library ── */
+.funnel-stroke-top {
+    position: absolute;
+    top: -5px;
+    left: -4px;
+    right: -4px;
+    height: 10px;
+    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 1.svg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.funnel-stroke-bottom {
+    position: absolute;
+    bottom: -5px;
+    left: -4px;
+    right: -4px;
+    height: 10px;
+    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 2.svg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Left and right vertical borders are rotated horizontal strokes */
+.funnel-stroke-left {
+    position: absolute;
+    left: -40px;
+    top: calc(50% - 5px);
+    width: 80px;                       /* spans the full height of the bar */
+    height: 10px;
+    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 5.svg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transform: rotate(90deg);
+    transform-origin: center center;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.funnel-stroke-right {
+    position: absolute;
+    right: -40px;
+    top: calc(50% - 5px);
+    width: 80px;                       /* spans the full height of the bar */
+    height: 10px;
+    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 6.svg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transform: rotate(90deg);
+    transform-origin: center center;
+    pointer-events: none;
+    z-index: 2;
 }
 
 /* ── Tick line (connects right edge of centered bar to label) ── */
@@ -2082,6 +2141,14 @@ img { display: block; max-width: 100%; }
     .funnel-bar {
         height: 60px;
         border-radius: 8px;
+    }
+    .funnel-stroke-left {
+        width: 60px;                   /* matches mobile bar height */
+        left: -30px;
+    }
+    .funnel-stroke-right {
+        width: 60px;                   /* matches mobile bar height */
+        right: -30px;
     }
     .funnel-pct {
         font-size: 1.05rem;
