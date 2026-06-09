@@ -34,7 +34,7 @@ This file serves as the design system specification and AI "source of truth" for
 ## 1. Brand & Philosophy
 
 The portfolio blends digital design precision with hand-drawn, sketchy organic graphics, creating a visual balance between code structure and creative art:
-* **Organic Hand-Drawn Highlights**: Wobbly sketchy phone bezels and loose polaroid frames soften the layouts. All organic underlines, loops, blobs, whirls, doodles, arrows, and path styles are derived from the official **`Highlights-by-Outdraw-Design`** illustration library located in `assets/Highlights-by-Outdraw-Design/`.
+* **Organic Hand-Drawn Highlights**: Wobbly sketchy phone bezels and loose polaroid frames soften the layouts. All organic underlines, loops, blobs, whirls, doodles, arrows, and path styles are derived from the official **`Highlights-by-Outdraw-Design`** illustration library located in `assets/Highlights-by-Outdraw-Design/`. User archetype sections are illustrated using hand-drawn characters styled in the **`Open Doodles`** aesthetic, featuring sketchy, loose wobbly contours and minimal flat color accents.
 * **Scroll-Driven Narrative**: Smooth, scroll-triggered visual transformations (fixed phone screen swaps, scroll fades, scrolly comic tracks).
 * **Delightful Details**: Interactive live clock, responsive download resume indicators, and seamlessly blended milestone grids.
 
@@ -96,12 +96,17 @@ Clean editorial readability paired with structured code-like details and loose h
 - **Interactive States**: Hovering over `.contact-card` dynamically transitions the vector card outline stroke to `--accent` and changes the interior path fill to a subtle amber tint (`rgba(245,166,35,0.04)`).
 - **Sketchy Icons**: Small icon boxes utilize wobbly square SVG outline masks (`.icon-sketch-border`) that fill with orange on hover. The core SVG icons (phone, mail, LinkedIn) feature custom-drawn wobbly paths to achieve unified, sketchy vector line quality.
 
+### 4.6. Archetype Illustrations
+- **Style**: Playful, sketchy vector character illustrations inspired by the **Open Doodles** collection. They feature organic, loose outlines, handwritten styling details, and flat pastel color fills that align with each archetype's visual identity (Architect: purple, Accumulator: green, Countdown: mustard/orange, Explorer: slate/grey).
+- **Layout & Sizing**: Contained inside `.arch-illustration-box` with a cozy background (`var(--bg-alt)`) and centered layout, scaling down responsively on screens `≤ 768px` to maintain viewport breathing room.
+
 ---
 
 ## 5. Responsive Guardrails (Do's and Don'ts)
 
 * **Do**: Preserve clean URLs by keeping `index.html`, `about.html`, and `pots.html` strictly in the root directory.
 * **Do**: Use `assets/images/`, `assets/svgs/`, and `assets/videos/` folders to house all static assets. Store the **`Highlights-by-Outdraw-Design`** asset library in its dedicated root under `assets/Highlights-by-Outdraw-Design/`.
+* **Do**: Design user archetype cards using hand-drawn, sketchy character illustrations inspired by the **Open Doodles** style to complement the organic, hand-crafted feel of the site.
 * **Do**: Derive the hand-drawn contours for phone bezels, polaroid frames, and custom highlights directly from the stroke styles of the **`Highlights-by-Outdraw-Design`** library (specifically `07_Lines` and `02_Underlines`) to preserve visual alignment.
 * **Do**: Automatically transition sticky, fix-positioned side columns on desktop to stack-scrolling cards on screens `≤ 768px`.
 * **Don't**: Introduce drop-shadows or solid borders on the phone screens; keep the wobbly vector overlay as the organic boundary.
