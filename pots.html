@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=36">
+    <link rel="stylesheet" href="css/style.css?v=46">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 </head>
 <body>
 
@@ -124,89 +125,245 @@
                     
                     <!-- Layer 1 — 100% -->
                     <div class="funnel-row funnel-row-1">
-                        <div class="funnel-spacer-left"></div>
                         <div class="funnel-bar">
                             <div class="funnel-bar-bg">
                                 <div class="funnel-hatching"></div>
                             </div>
-                            <div class="funnel-stroke-top"></div>
-                            <div class="funnel-stroke-bottom"></div>
-                            <div class="funnel-stroke-left"></div>
-                            <div class="funnel-stroke-right"></div>
-                        </div>
-                        <div class="funnel-tick"></div>
-                        <div class="funnel-meta">
-                            <span class="funnel-pct">100%</span>
-                            <span class="funnel-label">Created a Pot</span>
+                            <svg class="funnel-bar-border" viewBox="0 0 220 50" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 10,2 C 60,1.5 160,2.5 210,2 C 215,2 218,5 218,10 C 217,20 219,30 218,40 C 218,45 215,48 210,48 C 160,47.5 60,48.5 10,48 C 5,48 2,45 2,40 C 3,30 1,20 2,10 C 2,5 5,2 10,2 Z" />
+                            </svg>
+                            <div class="funnel-bar-content">
+                                <div class="funnel-bar-header">
+                                    <span class="funnel-step-title">Out of 100% people who created the pot</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Layer 2 — 68% -->
                     <div class="funnel-row funnel-row-2">
-                        <div class="funnel-spacer-left"></div>
                         <div class="funnel-bar">
                             <div class="funnel-bar-bg">
                                 <div class="funnel-hatching"></div>
                             </div>
-                            <div class="funnel-stroke-top"></div>
-                            <div class="funnel-stroke-bottom"></div>
-                            <div class="funnel-stroke-left"></div>
-                            <div class="funnel-stroke-right"></div>
-                        </div>
-                        <div class="funnel-tick"></div>
-                        <div class="funnel-meta">
-                            <span class="funnel-pct">68%</span>
-                            <span class="funnel-label">Contributed to it</span>
+                            <svg class="funnel-bar-border" viewBox="0 0 220 50" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 10,2 C 60,1.5 160,2.5 210,2 C 215,2 218,5 218,10 C 217,20 219,30 218,40 C 218,45 215,48 210,48 C 160,47.5 60,48.5 10,48 C 5,48 2,45 2,40 C 3,30 1,20 2,10 C 2,5 5,2 10,2 Z" />
+                            </svg>
+                            <div class="funnel-bar-content">
+                                <div class="funnel-bar-header">
+                                    <span class="funnel-step-pct">68%</span>
+                                    <span class="funnel-step-title">Contributed to it</span>
+                                </div>
+                                <div class="funnel-bar-body">
+                                    <p>But habits are hard to form. The friction of manual savings kicked in, and only <strong>68% of users</strong> made a contribution to their Pot.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Layer 3 — 8% -->
                     <div class="funnel-row funnel-row-3">
-                        <div class="funnel-spacer-left"></div>
                         <div class="funnel-bar">
                             <div class="funnel-bar-bg">
                                 <div class="funnel-hatching"></div>
                             </div>
-                            <div class="funnel-stroke-top"></div>
-                            <div class="funnel-stroke-bottom"></div>
-                            <div class="funnel-stroke-left"></div>
-                            <div class="funnel-stroke-right"></div>
-                        </div>
-                        <div class="funnel-tick"></div>
-                        <div class="funnel-meta">
-                            <span class="funnel-pct">8%</span>
-                            <span class="funnel-label">Completed their goal</span>
+                            <svg class="funnel-bar-border" viewBox="0 0 220 50" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 10,2 C 60,1.5 160,2.5 210,2 C 215,2 218,5 218,10 C 217,20 219,30 218,40 C 218,45 215,48 210,48 C 160,47.5 60,48.5 10,48 C 5,48 2,45 2,40 C 3,30 1,20 2,10 C 2,5 5,2 10,2 Z" />
+                            </svg>
+                            <div class="funnel-bar-content">
+                                <div class="funnel-bar-header">
+                                    <span class="funnel-step-pct">8%</span>
+                                    <span class="funnel-step-title">Completed their goal</span>
+                                </div>
+                                <div class="funnel-bar-body">
+                                    <p>In the end, only a shocking <strong>8% of users</strong> completed their goals. The rest dropped off, revealing a huge gap in motivation and follow-through.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <!-- Narrative Scroll Steps -->
+            <!-- Narrative Scroll Steps (Invisible triggers driving the animation) -->
             <div class="scrolly-funnel-narrative">
-                <div class="scrolly-step" data-step="1">
-                    <div class="scrolly-card">
-                        <span class="scrolly-step-num">01</span>
-                        <h3>Created a Pot</h3>
-                        <p>Everything was going great. <strong>100% of users</strong> in our cohort created a savings Pot, showing high initial intent and enthusiasm for setting goals.</p>
+                <div class="scrolly-step" data-step="1"></div>
+                <div class="scrolly-step" data-step="2"></div>
+                <div class="scrolly-step" data-step="3"></div>
+            </div>
+
+        </section>
+
+        <!-- Archetypes Scrollytelling Section -->
+        <section class="scrolly-archetypes-container">
+            <!-- Sticky Intro Header -->
+            <div class="archetypes-sticky-header">
+                <p class="archetypes-intro-text">To better understand the usage patterns, user interviews and app usage were studied.<br>This emerged 4 interesting archetypes who create a money pot:</p>
+            </div>
+            
+            <!-- Left Side: Sticky Donut Chart & Center Text -->
+            <div class="archetypes-sticky-left">
+                <div class="donut-chart-box">
+                    
+                    <!-- SVG Donut Chart -->
+                    <div class="donut-svg-wrapper">
+                        <svg class="donut-svg" viewBox="0 0 120 120">
+                            <!-- Background Circle -->
+                            <circle class="donut-ring-bg" cx="60" cy="60" r="50" fill="none" stroke="#f8fafc" stroke-width="12" />
+                            
+                            <!-- Type 4: The Explorer (44.39%) -->
+                            <circle class="donut-segment segment-explorer" cx="60" cy="60" r="50" fill="none" 
+                                    stroke="#94a3b8" stroke-width="12" 
+                                    stroke-dasharray="139.46 174.70" stroke-dashoffset="0"
+                                    data-archetype="4" />
+                            
+                            <!-- Type 1: The Architect (37.84%) -->
+                            <circle class="donut-segment segment-architect" cx="60" cy="60" r="50" fill="none" 
+                                    stroke="#8b5cf6" stroke-width="12" 
+                                    stroke-dasharray="118.88 195.28" stroke-dashoffset="-139.46"
+                                    data-archetype="1" />
+                            
+                            <!-- Type 2: The Accumulator (16.22%) -->
+                            <circle class="donut-segment segment-accumulator" cx="60" cy="60" r="50" fill="none" 
+                                    stroke="#10b981" stroke-width="12" 
+                                    stroke-dasharray="50.96 263.20" stroke-dashoffset="-258.34"
+                                    data-archetype="2" />
+                            
+                            <!-- Type 3: The Countdown (1.55%) -->
+                            <circle class="donut-segment segment-countdown" cx="60" cy="60" r="50" fill="none" 
+                                    stroke="#f59e0b" stroke-width="12" 
+                                    stroke-dasharray="4.87 309.29" stroke-dashoffset="-309.30"
+                                    data-archetype="3" />
+                        </svg>
+                        
+                        <!-- Donut Chart Center Text -->
+                        <div class="donut-center-text">
+                            <span class="donut-pct-val" id="donutPct">37.84%</span>
+                            <span class="donut-label-val" id="donutLabel">The Architect</span>
+                        </div>
                     </div>
-                </div>
-                <div class="scrolly-step" data-step="2">
-                    <div class="scrolly-card">
-                        <span class="scrolly-step-num">02</span>
-                        <h3>Contributed to it</h3>
-                        <p>But habits are hard to form. The friction of manual savings kicked in, and only <strong>68% of users</strong> made a contribution to their Pot.</p>
-                    </div>
-                </div>
-                <div class="scrolly-step" data-step="3">
-                    <div class="scrolly-card">
-                        <span class="scrolly-step-num">03</span>
-                        <h3>Completed their goal</h3>
-                        <p>In the end, only a shocking <strong>8% of users</strong> completed their goals. The rest dropped off, revealing a huge gap in motivation and follow-through.</p>
-                    </div>
+
+                    <!-- Legend list removed to prioritize chart size -->
+
                 </div>
             </div>
 
+            <!-- Right Side: Scrolling Archetype Cards -->
+            <div class="archetypes-scroll-right">
+                
+                <!-- Archetype Card 1 -->
+                <div class="archetype-scroll-trigger" data-archetype="1">
+                    <div class="archetype-card card-architect active-card">
+                        <!-- Wobbly SVG outline -->
+                        <svg class="cta-sketch-border" viewBox="0 0 220 50" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 10,2 C 60,1.5 160,2.5 210,2 C 215,2 218,5 218,10 C 217,20 219,30 218,40 C 218,45 215,48 210,48 C 160,47.5 60,48.5 10,48 C 5,48 2,45 2,40 C 3,30 1,20 2,10 C 2,5 5,2 10,2 Z" />
+                        </svg>
+                        
+                        <div class="arch-card-header">
+                            <span class="arch-badge badge-architect">
+                                <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                Amount + date
+                            </span>
+                            <span class="arch-number">ARCHETYPE 01</span>
+                            <h3 class="arch-title">The Architect</h3>
+                        </div>
+                        <p class="arch-body">Has a clear vision and a firm deadline. They’ve done the math, picked the date, and just need a system to execute. Every pot is a blueprint — structured, intentional, and on schedule.</p>
+                        <div class="arch-footer">
+                            <span class="arch-footer-badge checked font-architect">Goal amount ✓</span>
+                            <span class="arch-footer-badge checked font-architect">Goal date ✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Archetype Card 2 -->
+                <div class="archetype-scroll-trigger" data-archetype="2">
+                    <div class="archetype-card card-accumulator">
+                        <!-- Wobbly SVG outline -->
+                        <svg class="cta-sketch-border" viewBox="0 0 220 50" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 10,2 C 60,1.5 160,2.5 210,2 C 215,2 218,5 218,10 C 217,20 219,30 218,40 C 218,45 215,48 210,48 C 160,47.5 60,48.5 10,48 C 5,48 2,45 2,40 C 3,30 1,20 2,10 C 2,5 5,2 10,2 Z" />
+                        </svg>
+                        
+                        <div class="arch-card-header">
+                            <span class="arch-badge badge-accumulator">
+                                <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                                    <path d="M14.5 9.5h-3a1.5 1.5 0 0 0 0 3h2a1.5 1.5 0 0 1 0 3h-3"></path>
+                                </svg>
+                                Amount only
+                            </span>
+                            <span class="arch-number">ARCHETYPE 02</span>
+                            <h3 class="arch-title">The Accumulator</h3>
+                        </div>
+                        <p class="arch-body">Knows exactly what they want but isn’t in a hurry. They save toward a fixed number at their own pace — no pressure, no countdown. The finish line is the number, not the calendar.</p>
+                        <div class="arch-footer">
+                            <span class="arch-footer-badge checked font-accumulator">Goal amount ✓</span>
+                            <span class="arch-footer-badge disabled">Goal date —</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Archetype Card 3 -->
+                <div class="archetype-scroll-trigger" data-archetype="3">
+                    <div class="archetype-card card-countdown">
+                        <!-- Wobbly SVG outline -->
+                        <svg class="cta-sketch-border" viewBox="0 0 220 50" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 10,2 C 60,1.5 160,2.5 210,2 C 215,2 218,5 218,10 C 217,20 219,30 218,40 C 218,45 215,48 210,48 C 160,47.5 60,48.5 10,48 C 5,48 2,45 2,40 C 3,30 1,20 2,10 C 2,5 5,2 10,2 Z" />
+                        </svg>
+                        
+                        <div class="arch-card-header">
+                            <span class="arch-badge badge-countdown">
+                                <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                Date only
+                            </span>
+                            <span class="arch-number">ARCHETYPE 03</span>
+                            <h3 class="arch-title">The Countdown</h3>
+                        </div>
+                        <p class="arch-body">Saving toward a moment, not a number. A trip, a wedding, a birthday — the date is sacred. They’ll figure out the exact amount later, but the clock is already ticking.</p>
+                        <div class="arch-footer">
+                            <span class="arch-footer-badge disabled">Goal amount —</span>
+                            <span class="arch-footer-badge checked font-countdown">Goal date ✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Archetype Card 4 -->
+                <div class="archetype-scroll-trigger" data-archetype="4">
+                    <div class="archetype-card card-explorer">
+                        <!-- Wobbly SVG outline -->
+                        <svg class="cta-sketch-border" viewBox="0 0 220 50" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 10,2 C 60,1.5 160,2.5 210,2 C 215,2 218,5 218,10 C 217,20 219,30 218,40 C 218,45 215,48 210,48 C 160,47.5 60,48.5 10,48 C 5,48 2,45 2,40 C 3,30 1,20 2,10 C 2,5 5,2 10,2 Z" />
+                        </svg>
+                        
+                        <div class="arch-card-header">
+                            <span class="arch-badge badge-explorer">
+                                <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2v20M2 12h20M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7z"></path>
+                                </svg>
+                                Neither
+                            </span>
+                            <span class="arch-number">ARCHETYPE 04</span>
+                            <h3 class="arch-title">The Explorer</h3>
+                        </div>
+                        <p class="arch-body">Something just felt right about starting a pot. No number, no date — just the intention to save. They’re still discovering what this goal will become, and that openness is exactly where to meet them.</p>
+                        <div class="arch-footer">
+                            <span class="arch-footer-badge disabled">Goal amount —</span>
+                            <span class="arch-footer-badge disabled">Goal date —</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <!-- Horizontal Scrolling Comic Strip -->
@@ -273,6 +430,6 @@
         </div>
     </footer>
 
-    <script src="js/pots.js"></script>
+    <script src="js/pots.js?v=46"></script>
 </body>
 </html>

@@ -103,7 +103,7 @@
                         }
                     });
 
-                    // Update funnel layers visibility
+                    // Update funnel layers visibility and focus
                     funnelRows.forEach((row, index) => {
                         const rowIndex = index + 1;
                         if (rowIndex <= stepNum) {
@@ -112,6 +112,12 @@
                         } else {
                             row.classList.remove('active-step');
                             row.classList.add('inactive-step');
+                        }
+
+                        if (rowIndex === stepNum) {
+                            row.classList.add('focus-step');
+                        } else {
+                            row.classList.remove('focus-step');
                         }
                     });
                 }
@@ -124,6 +130,74 @@
 
         scrollySteps.forEach(step => {
             scrollyObserver.observe(step);
+        });
+    }
+    // ─── Scrollytelling Archetypes Logic ───
+    const archetypeTriggers = document.querySelectorAll('.archetype-scroll-trigger');
+    const donutPct = document.getElementById('donutPct');
+    const donutLabel = document.getElementById('donutLabel');
+    const donutSegments = document.querySelectorAll('.donut-segment');
+
+    const archetypeData = {
+        1: { pct: '37.84%', label: 'The Architect' },
+        2: { pct: '16.22%', label: 'The Accumulator' },
+        3: { pct: '1.55%', label: 'The Countdown' },
+        4: { pct: '44.39%', label: 'The Explorer' }
+    };
+
+    if (archetypeTriggers.length > 0) {
+        const archetypesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const archId = parseInt(entry.target.getAttribute('data-archetype'), 10);
+                    
+                    // Activate corresponding card
+                    archetypeTriggers.forEach(trigger => {
+                        const card = trigger.querySelector('.archetype-card');
+                        const currentId = parseInt(trigger.getAttribute('data-archetype'), 10);
+                        if (currentId === archId) {
+                            if (card) card.classList.add('active-card');
+                        } else {
+                            if (card) card.classList.remove('active-card');
+                        }
+                    });
+
+                    // Update donut chart text
+                    if (donutPct && donutLabel && archetypeData[archId]) {
+                        donutPct.textContent = archetypeData[archId].pct;
+                        donutLabel.textContent = archetypeData[archId].label;
+                    }
+
+                    // Highlight donut segment
+                    donutSegments.forEach(segment => {
+                        const segmentId = parseInt(segment.getAttribute('data-archetype'), 10);
+                        if (segmentId === archId) {
+                            segment.classList.add('active-slice');
+                        } else {
+                            segment.classList.remove('active-slice');
+                        }
+                    });
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '-30% 0px -40% 0px', // triggers when the card enters the central viewport band
+            threshold: 0
+        });
+
+        archetypeTriggers.forEach(trigger => {
+            archetypesObserver.observe(trigger);
+        });
+
+        // Add click listener on donut segments to scroll to corresponding cards
+        document.querySelectorAll('.donut-segment').forEach(el => {
+            el.addEventListener('click', () => {
+                const archId = el.getAttribute('data-archetype');
+                const targetTrigger = document.querySelector(`.archetype-scroll-trigger[data-archetype="${archId}"]`);
+                if (targetTrigger) {
+                    targetTrigger.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
         });
     }
 

@@ -1946,10 +1946,8 @@ img { display: block; max-width: 100%; }
    FUNNEL CHART SECTION  (amcharts-inspired & scrollytelling)
    ============================================ */
 .scrolly-funnel-container {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 60px;
-    max-width: var(--max-w);
+    display: block;                    /* single centered column layout */
+    max-width: var(--max-w);           /* matches page max width (1200px) */
     margin: 80px auto 140px;
     position: relative;
     padding: 0 40px;
@@ -1962,21 +1960,22 @@ img { display: block; max-width: 100%; }
     display: flex;
     align-items: center;
     justify-content: center;
-    align-self: start;                 /* required for grid stickiness */
+    z-index: 2;
 }
 
 .funnel-chart {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
+    gap: 20px;
     width: 100%;
-    --max-bar-area: 68%;               /* bars occupy 68% of visual area */
+    --max-bar-area: 100%;              /* bars occupy 100% of funnel chart container width */
 }
 
-/* ── Row layout with spacers and tick lines ── */
+/* ── Centered row layout ── */
 .funnel-row {
     display: flex;
+    justify-content: center;           /* centers bars horizontally */
     align-items: center;
     width: 100%;
     opacity: 0.12;                     /* inactive/unrevealed state */
@@ -2003,22 +2002,34 @@ img { display: block; max-width: 100%; }
     --bar-width: calc(var(--max-bar-area) * var(--pct) / 100);
 }
 
-/* Spacer balances the bar to center it within the bar area */
-.funnel-spacer-left {
-    width: calc((var(--max-bar-area) - var(--bar-width)) / 2);
-    flex-shrink: 0;
-}
-
-/* Rounded corner rectangular bar wrapper, proportional width & uniform height */
+/* Rounded corner rectangular bar wrapper, proportional width & dynamic height */
 .funnel-bar {
-    height: 80px;                      /* uniform height slice */
+    height: 80px;                      /* default collapsed height */
     width: var(--bar-width);
-    min-width: 32px;                   /* ensures visibility of 8% bar */
+    min-width: 72px;                   /* allows the 8% bar to shrink to its true proportion when collapsed */
     flex-shrink: 0;
     position: relative;                /* anchor for absolute stroke overlays */
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                height 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
                 filter 0.3s ease,
                 box-shadow 0.35s ease;
+}
+
+/* Expanded active widths and heights when focused */
+.focus-step.funnel-row-3 .funnel-bar {
+    width: 320px;                      /* proportional focused size to fit text cleanly */
+    height: 220px;                     /* taller to fit description text */
+}
+
+.focus-step.funnel-row-2 .funnel-bar {
+    width: 68%;                        /* remains 68% (612px wide, fits text easily) */
+    height: 180px;
+}
+
+.focus-step.funnel-row-1 .funnel-bar {
+    width: 100%;                       /* remains 100% (900px wide) */
+    height: 80px;                      /* remains 80px (does not expand) */
 }
 
 .funnel-bar:hover {
@@ -2029,208 +2040,189 @@ img { display: block; max-width: 100%; }
 /* Background container with rounded corners and clipped hatching overlay */
 .funnel-bar-bg {
     position: absolute;
-    inset: 0;
+    inset: 0;                          /* reset to 0 to keep hatching inside the wobbly border */
     border-radius: 10px;               /* slightly rounded inside outline */
     overflow: hidden;                  /* clips cross-hatching inside */
-    z-index: 1;
+    z-index: 2;                        /* higher than SVG fill, lower than content */
 }
 
-/* Solid background colors from img-pots.svg */
-.funnel-row-1 .funnel-bar-bg {
-    background-color: #F3C364;        /* Solid Pots Gold */
-    box-shadow: 0 4px 15px rgba(243, 195, 100, 0.12);
+/* Row-specific shadows and SVG fill colors to eliminate bleeding and white space */
+.funnel-row-1 .funnel-bar-border path {
+    fill: #F3C364;                     /* Solid Pots Gold */
 }
 
-.funnel-row-2 .funnel-bar-bg {
-    background-color: #80AEAF;        /* Solid Teal */
-    box-shadow: 0 4px 15px rgba(128, 174, 175, 0.1);
+.funnel-row-2 .funnel-bar-border path {
+    fill: #80AEAF;                     /* Solid Teal */
 }
 
-.funnel-row-3 .funnel-bar-bg {
-    background-color: #B84646;        /* Solid Warning Red */
-    box-shadow: 0 4px 15px rgba(184, 70, 70, 0.12);
+.funnel-row-3 .funnel-bar-border path {
+    fill: #B84646;                     /* Solid Warning Red */
 }
 
 /* Diagonal cross-hatching pattern using thin Line 6.svg */
 .funnel-hatching {
     position: absolute;
-    inset: -100px;                     /* extends beyond container so rotation covers all corners */
+    inset: -400px;                     /* extends beyond container so rotation covers all corners */
     background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 6.svg');
     background-size: 100% 12px;        /* repeat line vertically every 12px */
     background-repeat: repeat-y;
     transform: rotate(-60deg);         /* rotate to make lines diagonal */
-    opacity: 0.28;                     /* visible hand-drawn sketch hatching */
+    opacity: 0.08;                     /* light hand-drawn sketch hatching for text readability */
     pointer-events: none;
     mix-blend-mode: multiply;          /* blends lines nicely with background */
 }
 
-/* ── Sketchy strokes outline (Line 5.svg for thick horizontal, Line 6.svg for thin vertical) ── */
-.funnel-stroke-top {
+/* ── Single Sketchy Outline SVG Border ── */
+.funnel-bar-border {
     position: absolute;
-    top: -5px;                         /* slightly overlaps fill to prevent gaps */
-    left: -8px;                        /* extends past left border line */
-    right: -8px;                       /* extends past right border line */
-    height: 10px;
-    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 5.svg');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    inset: -5px;                       /* aligns with sketchy background overlay */
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
     pointer-events: none;
-    z-index: 2;
+    z-index: 1;
 }
 
-.funnel-stroke-bottom {
+.funnel-bar-border path {
+    stroke: #1a1a1a;
+    stroke-width: 2.8;                 /* slightly increased stroke width for better visibility */
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke; /* keeps stroke width uniform when stretched */
+}
+
+/* ── Card Content inside the Funnel Bar ── */
+.funnel-bar-content {
     position: absolute;
-    bottom: -5px;                      /* slightly overlaps fill to prevent gaps */
-    left: -8px;
-    right: -8px;
-    height: 10px;
-    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 5.svg');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    pointer-events: none;
-    z-index: 2;
-}
-
-/* Left and right vertical borders are rotated thin Line 6 strokes */
-.funnel-stroke-left {
-    position: absolute;
-    left: -46px;                       /* centers 92px wide element at x = 0 */
-    top: calc(50% - 3px);
-    width: 92px;                       /* extends past top/bottom strokes to close the outline */
-    height: 6px;                       /* thin stroke */
-    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 6.svg');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    transform: rotate(90deg);
-    transform-origin: center center;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.funnel-stroke-right {
-    position: absolute;
-    right: -46px;                      /* centers 92px wide element at x = W */
-    top: calc(50% - 3px);
-    width: 92px;                       /* extends past top/bottom strokes to close the outline */
-    height: 6px;                       /* thin stroke */
-    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 6.svg');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    transform: rotate(90deg);
-    transform-origin: center center;
-    pointer-events: none;
-    z-index: 2;
-}
-
-/* ── Tick line (connects right edge of centered bar to label) ── */
-.funnel-tick {
-    width: calc((var(--max-bar-area) - var(--bar-width)) / 2 + 10%);
-    height: 1px;
-    background: var(--border-dark);
-    flex-shrink: 0;
-}
-
-/* ── Right-aligned Meta Labels ── */
-.funnel-meta {
+    inset: 0;
+    padding: 14px 24px;
     display: flex;
     flex-direction: column;
-    padding-left: 12px;
-    width: 22%;                        /* fixed width for perfect vertical alignment */
-    flex-shrink: 0;
-}
-
-.funnel-pct {
-    font-family: var(--font);
-    font-size: 1.35rem;
-    font-weight: 800;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 3;
+    pointer-events: none;              /* allow scroll wheel / drag events through */
     color: var(--text-primary);
-    line-height: 1.2;
-    letter-spacing: -0.03em;
+    box-sizing: border-box;
 }
 
-.funnel-label {
+.funnel-bar-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.funnel-step-pct {
     font-family: var(--font);
-    font-size: 0.88rem;
+    font-size: 1.4rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.funnel-step-title {
+    font-family: var(--font);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0.9;
+}
+
+.funnel-bar-body {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-top: 0;
+    transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                opacity 0.3s ease,
+                margin-top 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    font-size: 0.9rem;
+    line-height: 1.45;
     font-weight: 500;
-    color: var(--text-secondary);
-    line-height: 1.3;
-    letter-spacing: -0.01em;
+    max-width: 460px;                  /* clamps description line length */
+}
+
+.focus-step .funnel-bar-body {
+    max-height: 120px;
+    opacity: 1;
+    margin-top: 12px;
+}
+
+/* Row-specific text contrast styling */
+.funnel-row-1 .funnel-bar-content,
+.funnel-row-2 .funnel-bar-content {
+    color: #1a1a1a;
+}
+.funnel-row-1 .funnel-step-pct,
+.funnel-row-2 .funnel-step-pct {
+    color: #1a1a1a;
+}
+.funnel-row-1 .funnel-step-title,
+.funnel-row-2 .funnel-step-title {
+    color: #1a1a1a;
+}
+
+.funnel-row-3 .funnel-bar-content {
+    color: #ffffff;
+}
+.funnel-row-3 .funnel-step-pct {
+    color: #ffffff;
+}
+.funnel-row-3 .funnel-step-title {
+    color: #ffffff;
+}
+.funnel-row-3:not(.focus-step) .funnel-step-title {
+    display: none;
+}
+
+/* ── Staggered Scroll-Reveal ── */
+.funnel-section.scroll-reveal {
+    opacity: 1;
+    transform: none;
+}
+
+.funnel-section.scroll-reveal .funnel-row {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.funnel-section.scroll-reveal .funnel-row-1 { transition-delay: 0s; }
+.funnel-section.scroll-reveal .funnel-row-2 { transition-delay: 0.2s; }
+.funnel-section.scroll-reveal .funnel-row-3 { transition-delay: 0.4s; }
+
+.funnel-section.scroll-reveal.revealed .funnel-row {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ── Narrative Scroll-telling Blocks (Right Column) ── */
 .scrolly-funnel-narrative {
     position: relative;
-    z-index: 5;
+    margin-top: -100vh;                /* pull it up to overlay the sticky container */
+    pointer-events: none;              /* allows scrolling/clicks to go through */
+    z-index: 1;
 }
 
 .scrolly-step {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.25;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    height: 100vh;                     /* each step trigger is one screen height */
+    pointer-events: none;
 }
 
-.scrolly-step.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.scrolly-card {
-    background-color: var(--bg);
-    border: 2px solid var(--border-dark);
-    padding: 32px;
-    border-radius: 16px;
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    max-width: 420px;
-    transition: box-shadow 0.3s ease;
-}
-
-.scrolly-card:hover {
-    box-shadow: var(--shadow-md);
-}
-
-.scrolly-step-num {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--accent);
-    display: block;
-    margin-bottom: 8px;
-}
-
-.scrolly-card h3 {
-    font-family: var(--font);
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin-bottom: 12px;
-    letter-spacing: -0.02em;
-}
-
-.scrolly-card p {
-    font-family: var(--font);
-    font-size: 1rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-}
-
-/* ── Responsive ── */
+/* ── Responsive funnel styles ── */
 @media (max-width: 768px) {
     .scrolly-funnel-container {
-        grid-template-columns: 1fr;
-        gap: 0;
         margin: 40px auto 80px;
-        padding: 0 20px;
+        padding: 0 16px;
     }
     
     .scrolly-funnel-sticky {
         position: sticky;
         top: 80px;
-        height: 35vh;
+        height: 60vh;                  /* tall enough to fit expanded active funnel chart */
         z-index: 10;
         background-color: var(--bg);
         border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -2238,43 +2230,60 @@ img { display: block; max-width: 100%; }
     }
     
     .funnel-chart {
-        --max-bar-area: 60%;
-        gap: 8px;
+        --max-bar-area: 100%;
+        gap: 12px;
+        padding: 0 10px;
     }
     
     .funnel-bar {
-        height: 50px;
+        height: 70px;                  /* collapsed height on mobile */
         border-radius: 8px;
+        min-width: 60px;               /* allows the 8% bar to shrink to 60px when collapsed */
     }
     
-    .funnel-stroke-left {
-        width: 50px;                   /* matches mobile bar height */
-        left: -25px;
+    .focus-step.funnel-row-3 .funnel-bar {
+        width: 240px;
+        height: 260px;                 /* taller on mobile to fit the text in narrower width */
     }
     
-    .funnel-stroke-right {
-        width: 50px;                   /* matches mobile bar height */
-        right: -25px;
+    .focus-step.funnel-row-2 .funnel-bar {
+        width: 280px;
+        height: 240px;
     }
     
-    .funnel-meta {
-        width: 30%;
+    .focus-step.funnel-row-1 .funnel-bar {
+        width: 100%;
+        height: 70px;
+    }
+    
+    .funnel-bar-content {
+        padding: 12px 16px;
+    }
+    
+    .funnel-step-pct {
+        font-size: 1.2rem;
+    }
+    
+    .funnel-step-title {
+        font-size: 1rem;
+    }
+    
+    .funnel-bar-body {
+        font-size: 0.82rem;
+        line-height: 1.35;
+    }
+    
+    .focus-step .funnel-bar-body {
+        max-height: 160px;
+        margin-top: 8px;
     }
     
     .scrolly-funnel-narrative {
-        margin-top: 20px;
+        margin-top: -60vh;             /* offset mobile sticky height */
     }
     
     .scrolly-step {
-        height: auto;
-        min-height: 60vh;
-        padding: 40px 0;
-        align-items: flex-start;
-    }
-    
-    .scrolly-card {
-        max-width: 100%;
-        padding: 24px;
+        height: 100vh;
     }
 }
 
@@ -2445,4 +2454,355 @@ img { display: block; max-width: 100%; }
 .cta-dark-btn .cta-arrow-svg {
     filter: brightness(0) invert(1) !important;
 }
+
+.archetypes-sticky-header {
+    position: sticky;
+    top: 70px;                          /* immediately below nav */
+    grid-column: span 2;
+    z-index: 100;
+    background: var(--bg);
+    padding: 30px 24px 20px;
+    text-align: center;
+    border-bottom: 1.5px solid #f1f5f9;
+    margin-bottom: 30px;
+}
+
+.archetypes-intro-text {
+    font-family: var(--font);
+    font-size: 1.35rem;
+    line-height: 1.6;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.scrolly-archetypes-container {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;  /* Donut chart left, scrolling cards right */
+    gap: 80px;
+    max-width: var(--max-w);
+    margin: 0 auto 100px;
+    padding: 0 40px;
+    position: relative;
+}
+
+.archetypes-sticky-left {
+    position: sticky;
+    top: 220px;                        /* clear nav + sticky header */
+    height: calc(100vh - 260px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.donut-chart-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+}
+
+.donut-svg-wrapper {
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+.donut-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);         /* start segments at the top */
+    transform-origin: center center;
+}
+
+.donut-segment {
+    transition: stroke-width 0.3s ease, filter 0.3s ease, stroke 0.3s ease;
+    cursor: pointer;
+}
+
+.donut-segment.active-slice {
+    stroke-width: 15px;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+}
+
+.donut-center-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    pointer-events: none;
+}
+
+.donut-pct-val {
+    font-family: var(--font);
+    font-size: 3.6rem;                 /* larger font size for bigger chart */
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.donut-label-val {
+    font-family: var(--font);
+    font-size: 1.2rem;                  /* larger label font size */
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.archetypes-scroll-right {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    padding: 100px 0;
+}
+
+.archetype-scroll-trigger {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.archetype-card {
+    position: relative;
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    opacity: 0.3;                      /* inactive state */
+    transform: translateY(24px) scale(0.97);
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.archetype-card.active-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.archetype-card .cta-sketch-border {
+    position: absolute;
+    inset: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.archetype-card .cta-sketch-border path {
+    stroke: #1a1a1a;
+    stroke-width: 2.5;
+    fill: #ffffff;
+    vector-effect: non-scaling-stroke;
+}
+
+/* Badges inside archetype cards */
+.arch-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.arch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    text-transform: capitalize;
+}
+
+.badge-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.arch-number {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+}
+
+.arch-title {
+    font-family: var(--font);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 4px 0 0;
+    letter-spacing: -0.01em;
+}
+
+.arch-body {
+    font-family: var(--font);
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.6;
+    font-weight: 500;
+    margin: 0 0 28px;
+}
+
+.arch-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.arch-footer-badge {
+    display: inline-block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid transparent;
+}
+
+.arch-footer-badge.disabled {
+    border-color: #cbd5e1;
+    color: #94a3b8;
+    background-color: #f8fafc;
+}
+
+/* Badge row-specific colors */
+/* 1. Architect (Purple) */
+.badge-architect {
+    background-color: #e0e7ff;
+    color: #4338ca;
+}
+.font-architect {
+    border-color: #8b5cf6;
+    color: #8b5cf6;
+    background-color: #faf5ff;
+}
+
+/* 2. Accumulator (Teal) */
+.badge-accumulator {
+    background-color: #ccfbf1;
+    color: #0f766e;
+}
+.font-accumulator {
+    border-color: #10b981;
+    color: #10b981;
+    background-color: #ecfdf5;
+}
+
+/* 3. Countdown (Mustard/Orange) */
+.badge-countdown {
+    background-color: #fef3c7;
+    color: #b45309;
+}
+.font-countdown {
+    border-color: #f59e0b;
+    color: #f59e0b;
+    background-color: #fffbeb;
+}
+
+/* 4. Explorer (Slate/Grey) */
+.badge-explorer {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+/* ── Responsive Archetype Styles ── */
+@media (max-width: 768px) {
+    .scrolly-archetypes-container {
+        grid-template-columns: 1fr;    /* stack vertically on mobile */
+        gap: 24px;
+        margin: 0 auto 60px;
+        padding: 0 16px;
+    }
+
+    .archetypes-sticky-header {
+        position: sticky;
+        top: 60px;                     /* below mobile nav */
+        z-index: 100;
+        padding: 16px 8px;
+        margin-bottom: 10px;
+        background-color: var(--bg);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .archetypes-intro-text {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+
+    .archetypes-sticky-left {
+        position: sticky;
+        top: 150px;                    /* clear mobile nav + sticky header */
+        height: auto;
+        min-height: 290px;
+        z-index: 98;
+        background-color: var(--bg);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        padding: 16px 0;
+    }
+
+    .donut-chart-box {
+        gap: 16px;
+        transform: scale(0.9);
+        transform-origin: center center;
+    }
+
+    .donut-svg-wrapper {
+        width: 240px;
+        height: 240px;
+    }
+
+    .donut-pct-val {
+        font-size: 2.2rem;
+    }
+
+    .donut-label-val {
+        font-size: 0.95rem;
+    }
+
+    .archetypes-scroll-right {
+        padding: 20px 0;
+        gap: 40px;
+    }
+
+    .archetype-scroll-trigger {
+        min-height: auto;
+        padding: 10px 0;
+    }
+
+    .archetype-card {
+        padding: 24px;
+    }
+
+    .arch-title {
+        font-size: 1.40rem;
+    }
+
+    .arch-body {
+        font-size: 0.88rem;
+        margin-bottom: 20px;
+    }
+
+    .arch-footer {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .arch-footer-badge {
+        padding: 4px 10px;
+        font-size: 0.78rem;
+    }
+}
+
 
