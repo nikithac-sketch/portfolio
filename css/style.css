@@ -2601,7 +2601,7 @@ img { display: block; max-width: 100%; }
 .archetype-card .cta-sketch-border path {
     stroke: #1a1a1a;
     stroke-width: 2.5;
-    fill: #ffffff;
+    fill: var(--bg-alt);
     vector-effect: non-scaling-stroke;
 }
 
@@ -2614,8 +2614,8 @@ img { display: block; max-width: 100%; }
     overflow: hidden;
     margin-bottom: 24px;
     border-radius: 12px;
-    background-color: var(--bg-alt); /* Cozy grey-white surface */
-    border: 1.5px solid #e2e8f0;
+    background-color: transparent;
+    border: none;
     padding: 16px;
     box-sizing: border-box;
 }
