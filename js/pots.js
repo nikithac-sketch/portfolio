@@ -90,10 +90,10 @@
     const pictoTitle = document.getElementById('pictoTitle');
     const pictoDesc = document.getElementById('pictoDesc');
 
-    // Generate 100 person icons
+    // Generate 400 person icons (20x20 grid)
     if (pictoGrid) {
         const personSvg = '<svg viewBox="0 0 20 36" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="4.5"/><path d="M10,11 C5,11 2,16 2,22 L5,22 5,34 8.5,34 8.5,25 11.5,25 11.5,34 15,34 15,22 18,22 C18,16 15,11 10,11Z"/></svg>';
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 400; i++) {
             const div = document.createElement('div');
             div.className = 'picto-person';
             div.dataset.index = i;
@@ -104,9 +104,9 @@
 
     const pictoPersons = document.querySelectorAll('.picto-person');
     const pictoSteps = [
-        { count: 100, color: '#F3C364', pct: '100%', title: 'people who created the pot', desc: '' },
-        { count: 68, color: '#80AEAF', pct: '68%', title: 'contributed to it', desc: 'But habits are hard to form. The friction of manual savings kicked in, and only <strong>68% of users</strong> made a contribution to their Pot.' },
-        { count: 8, color: '#B84646', pct: '8%', title: 'completed their goal', desc: 'In the end, only a shocking <strong>8% of users</strong> completed their goals. The rest dropped off, revealing a huge gap in motivation and follow-through.' },
+        { count: 400, color: '#F3C364', pct: '100%', title: 'people who created the pot', desc: '' },
+        { count: 272, color: '#80AEAF', pct: '68%', title: 'contributed to it', desc: 'But habits are hard to form. The friction of manual savings kicked in, and only <strong>68% of users</strong> made a contribution to their Pot.' },
+        { count: 32, color: '#B84646', pct: '8%', title: 'completed their goal', desc: 'In the end, only a shocking <strong>8% of users</strong> completed their goals. The rest dropped off, revealing a huge gap in motivation and follow-through.' },
     ];
 
     function updatePictogram(stepIndex) {
@@ -126,17 +126,18 @@
         // Set fill color
         if (pictoGrid) pictoGrid.style.setProperty('--picto-fill', step.color);
 
-        // Fill bottom-to-top: items 0-99 flow top-left to bottom-right
-        // To fill from bottom, we fill indices >= (100 - count)
-        const fillThreshold = 100 - step.count;
+        // Fill bottom-to-top: items 0-399 flow top-left to bottom-right
+        // To fill from bottom, we fill indices >= (400 - count)
+        const fillThreshold = 400 - step.count;
 
         pictoPersons.forEach((person, i) => {
             const shouldFill = i >= fillThreshold;
             if (shouldFill) {
                 person.classList.add('filled');
                 // Stagger: bottom icons fill first (smaller delay)
-                const distFromBottom = 99 - i;
-                person.style.setProperty('--stagger', (distFromBottom * 0.012) + 's');
+                // Use a smaller stagger step (0.003s) for smoother animations with 400 icons
+                const distFromBottom = 399 - i;
+                person.style.setProperty('--stagger', (distFromBottom * 0.003) + 's');
             } else {
                 person.classList.remove('filled');
                 person.style.setProperty('--stagger', '0s');

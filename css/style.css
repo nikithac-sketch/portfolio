@@ -1969,7 +1969,7 @@ img { display: block; max-width: 100%; }
     align-items: center;
     gap: 28px;
     width: 100%;
-    max-width: 900px;
+    max-width: 520px;
     margin: 0 auto;
 }
 
@@ -2005,11 +2005,11 @@ img { display: block; max-width: 100%; }
     transition: opacity 0.4s ease;
 }
 
-/* ── 10×10 Person Grid ── */
+/* ── 20×20 Person Grid ── */
 .picto-grid {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 5px;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 4px;
     width: 100%;
     --picto-fill: #F3C364;
 }
