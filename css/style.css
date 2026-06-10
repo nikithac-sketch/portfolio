@@ -2060,8 +2060,8 @@ img { display: block; max-width: 100%; }
 
 .picto-overlay-qmark {
     display: inline-block;
-    width: 0.5em;
-    height: 1.0em;
+    width: 0.3em;
+    height: 1.05em;
     vertical-align: middle;
     margin-left: 0.05em;
     position: relative;
