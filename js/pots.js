@@ -83,53 +83,86 @@
         revealObserver.observe(el);
     });
 
-    // ─── Scrollytelling Funnel Logic ───
+    // ─── Scrollytelling Pictogram Logic ───
     const scrollySteps = document.querySelectorAll('.scrolly-step');
-    const funnelRows = document.querySelectorAll('.funnel-row');
+    const pictoGrid = document.getElementById('pictoGrid');
+    const pictoPct = document.getElementById('pictoPct');
+    const pictoTitle = document.getElementById('pictoTitle');
+    const pictoDesc = document.getElementById('pictoDesc');
 
-    if (scrollySteps.length > 0 && funnelRows.length > 0) {
-        const scrollyObserver = new IntersectionObserver((entries) => {
+    // Generate 100 person icons
+    if (pictoGrid) {
+        const personSvg = '<svg viewBox="0 0 20 36" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="4.5"/><path d="M10,11 C5,11 2,16 2,22 L5,22 5,34 8.5,34 8.5,25 11.5,25 11.5,34 15,34 15,22 18,22 C18,16 15,11 10,11Z"/></svg>';
+        for (let i = 0; i < 100; i++) {
+            const div = document.createElement('div');
+            div.className = 'picto-person';
+            div.dataset.index = i;
+            div.innerHTML = personSvg;
+            pictoGrid.appendChild(div);
+        }
+    }
+
+    const pictoPersons = document.querySelectorAll('.picto-person');
+    const pictoSteps = [
+        { count: 100, color: '#F3C364', pct: '100%', title: 'people who created the pot', desc: '' },
+        { count: 68, color: '#80AEAF', pct: '68%', title: 'contributed to it', desc: 'But habits are hard to form. The friction of manual savings kicked in, and only <strong>68% of users</strong> made a contribution to their Pot.' },
+        { count: 8, color: '#B84646', pct: '8%', title: 'completed their goal', desc: 'In the end, only a shocking <strong>8% of users</strong> completed their goals. The rest dropped off, revealing a huge gap in motivation and follow-through.' },
+    ];
+
+    function updatePictogram(stepIndex) {
+        const step = pictoSteps[stepIndex];
+        if (!step) return;
+
+        // Update header
+        if (pictoPct) {
+            pictoPct.textContent = step.pct;
+            pictoPct.style.color = step.color;
+        }
+        if (pictoTitle) pictoTitle.textContent = step.title;
+        if (pictoDesc) {
+            pictoDesc.innerHTML = step.desc ? '<p class="visible">' + step.desc + '</p>' : '';
+        }
+
+        // Set fill color
+        if (pictoGrid) pictoGrid.style.setProperty('--picto-fill', step.color);
+
+        // Fill bottom-to-top: items 0-99 flow top-left to bottom-right
+        // To fill from bottom, we fill indices >= (100 - count)
+        const fillThreshold = 100 - step.count;
+
+        pictoPersons.forEach((person, i) => {
+            const shouldFill = i >= fillThreshold;
+            if (shouldFill) {
+                person.classList.add('filled');
+                // Stagger: bottom icons fill first (smaller delay)
+                const distFromBottom = 99 - i;
+                person.style.setProperty('--stagger', (distFromBottom * 0.012) + 's');
+            } else {
+                person.classList.remove('filled');
+                person.style.setProperty('--stagger', '0s');
+            }
+        });
+    }
+
+    // Initialize with step 1
+    updatePictogram(0);
+
+    if (scrollySteps.length > 0 && pictoPersons.length > 0) {
+        const pictoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const stepNum = parseInt(entry.target.getAttribute('data-step'), 10);
-                    
-                    // Activate corresponding cards
-                    scrollySteps.forEach(step => {
-                        const currentNum = parseInt(step.getAttribute('data-step'), 10);
-                        if (currentNum === stepNum) {
-                            step.classList.add('active');
-                        } else {
-                            step.classList.remove('active');
-                        }
-                    });
-
-                    // Update funnel layers visibility and focus
-                    funnelRows.forEach((row, index) => {
-                        const rowIndex = index + 1;
-                        if (rowIndex <= stepNum) {
-                            row.classList.add('active-step');
-                            row.classList.remove('inactive-step');
-                        } else {
-                            row.classList.remove('active-step');
-                            row.classList.add('inactive-step');
-                        }
-
-                        if (rowIndex === stepNum) {
-                            row.classList.add('focus-step');
-                        } else {
-                            row.classList.remove('focus-step');
-                        }
-                    });
+                    updatePictogram(stepNum - 1);
                 }
             });
         }, {
             root: null,
-            rootMargin: '-30% 0px -40% 0px', // triggers when the card enters the central viewport band
+            rootMargin: '-30% 0px -40% 0px',
             threshold: 0
         });
 
         scrollySteps.forEach(step => {
-            scrollyObserver.observe(step);
+            pictoObserver.observe(step);
         });
     }
     // ─── Scrollytelling Archetypes Logic ───

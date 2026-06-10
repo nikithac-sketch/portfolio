@@ -1943,347 +1943,173 @@ img { display: block; max-width: 100%; }
 }
 
 /* ============================================
-   FUNNEL CHART SECTION  (amcharts-inspired & scrollytelling)
+   PICTOGRAM SECTION  (scrollytelling people-grid)
    ============================================ */
-.scrolly-funnel-container {
-    display: block;                    /* single centered column layout */
-    max-width: var(--max-w);           /* matches page max width (1200px) */
+.scrolly-picto-container {
+    display: block;
+    max-width: var(--max-w);
     margin: 80px auto 140px;
     position: relative;
     padding: 0 40px;
 }
 
-.scrolly-funnel-sticky {
+.scrolly-picto-sticky {
     position: sticky;
-    top: 130px;                        /* header offset */
-    height: calc(100vh - 180px);
+    top: 100px;
+    height: calc(100vh - 140px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
 }
 
-.funnel-chart {
+.picto-chart {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 20px;
-    width: 100%;
-    --max-bar-area: 100%;              /* bars occupy 100% of funnel chart container width */
-}
-
-/* ── Centered row layout ── */
-.funnel-row {
-    display: flex;
-    justify-content: center;           /* centers bars horizontally */
     align-items: center;
+    gap: 28px;
     width: 100%;
-    opacity: 0.12;                     /* inactive/unrevealed state */
-    transform: scale(0.97);
-    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
-                transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    max-width: 480px;
+    margin: 0 auto;
 }
 
-.funnel-row.active-step {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.funnel-row.inactive-step {
-    opacity: 0.12;
-    transform: scale(0.97);
-}
-
-.funnel-row-1 { --pct: 100; }
-.funnel-row-2 { --pct: 68; }
-.funnel-row-3 { --pct: 8; }
-
-.funnel-row {
-    --bar-width: calc(var(--max-bar-area) * var(--pct) / 100);
-}
-
-/* Rounded corner rectangular bar wrapper, proportional width & dynamic height */
-.funnel-bar {
-    height: 80px;                      /* default collapsed height */
-    width: var(--bar-width);
-    min-width: 72px;                   /* allows the 8% bar to shrink to its true proportion when collapsed */
-    flex-shrink: 0;
-    position: relative;                /* anchor for absolute stroke overlays */
-    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-                height 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-                transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-                filter 0.3s ease,
-                box-shadow 0.35s ease;
-}
-
-/* Expanded active widths and heights when focused */
-.focus-step.funnel-row-3 .funnel-bar {
-    width: 320px;                      /* proportional focused size to fit text cleanly */
-    height: 220px;                     /* taller to fit description text */
-}
-
-.focus-step.funnel-row-2 .funnel-bar {
-    width: 68%;                        /* remains 68% (612px wide, fits text easily) */
-    height: 180px;
-}
-
-.focus-step.funnel-row-1 .funnel-bar {
-    width: 100%;                       /* remains 100% (900px wide) */
-    height: 80px;                      /* remains 80px (does not expand) */
-}
-
-.funnel-bar:hover {
-    transform: scale(1.02);
-    filter: brightness(1.06);
-}
-
-/* Background container with rounded corners and clipped hatching overlay */
-.funnel-bar-bg {
-    position: absolute;
-    inset: 0;                          /* reset to 0 to keep hatching inside the wobbly border */
-    border-radius: 10px;               /* slightly rounded inside outline */
-    overflow: hidden;                  /* clips cross-hatching inside */
-    z-index: 2;                        /* higher than SVG fill, lower than content */
-}
-
-/* Row-specific shadows and SVG fill colors to eliminate bleeding and white space */
-.funnel-row-1 .funnel-bar-border path {
-    fill: #F3C364;                     /* Solid Pots Gold */
-}
-
-.funnel-row-2 .funnel-bar-border path {
-    fill: #80AEAF;                     /* Solid Teal */
-}
-
-.funnel-row-3 .funnel-bar-border path {
-    fill: #B84646;                     /* Solid Warning Red */
-}
-
-/* Diagonal cross-hatching pattern using thin Line 6.svg */
-.funnel-hatching {
-    position: absolute;
-    inset: -400px;                     /* extends beyond container so rotation covers all corners */
-    background-image: url('../assets/Highlights-by-Outdraw-Design/07_Lines/Line 6.svg');
-    background-size: 100% 12px;        /* repeat line vertically every 12px */
-    background-repeat: repeat-y;
-    transform: rotate(-60deg);         /* rotate to make lines diagonal */
-    opacity: 0.08;                     /* light hand-drawn sketch hatching for text readability */
-    pointer-events: none;
-    mix-blend-mode: multiply;          /* blends lines nicely with background */
-}
-
-/* ── Single Sketchy Outline SVG Border ── */
-.funnel-bar-border {
-    position: absolute;
-    inset: -5px;                       /* aligns with sketchy background overlay */
-    width: calc(100% + 10px);
-    height: calc(100% + 10px);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.funnel-bar-border path {
-    stroke: #1a1a1a;
-    stroke-width: 2.8;                 /* slightly increased stroke width for better visibility */
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    vector-effect: non-scaling-stroke; /* keeps stroke width uniform when stretched */
-}
-
-/* ── Card Content inside the Funnel Bar ── */
-.funnel-bar-content {
-    position: absolute;
-    inset: 0;
-    padding: 14px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* ── Header: Percentage + Title ── */
+.picto-header {
     text-align: center;
-    z-index: 3;
-    pointer-events: none;              /* allow scroll wheel / drag events through */
-    color: var(--text-primary);
-    box-sizing: border-box;
-}
-
-.funnel-bar-header {
+    min-height: 80px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    width: 100%;
 }
 
-.funnel-step-pct {
+.picto-pct {
     font-family: var(--font);
-    font-size: 1.4rem;
+    font-size: 3.4rem;
     font-weight: 800;
     line-height: 1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+    display: block;
+    color: #F3C364;
+    transition: color 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.funnel-step-title {
+.picto-title {
     font-family: var(--font);
-    font-size: 1.15rem;
-    font-weight: 700;
-    line-height: 1;
-    opacity: 0.9;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: block;
+    margin-top: 6px;
+    opacity: 0.75;
+    color: var(--text);
+    transition: opacity 0.4s ease;
 }
 
-.funnel-bar-body {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    margin-top: 0;
-    transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-                opacity 0.3s ease,
-                margin-top 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    font-size: 0.9rem;
-    line-height: 1.45;
+/* ── 10×10 Person Grid ── */
+.picto-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    width: 100%;
+    --picto-fill: #F3C364;
+}
+
+.picto-person {
+    aspect-ratio: 20 / 36;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.picto-person svg {
+    width: 100%;
+    height: 100%;
+    fill: #ddd;
+    transition: fill 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+                opacity 0.35s ease;
+    transition-delay: var(--stagger, 0s);
+    opacity: 0.45;
+}
+
+.picto-person.filled svg {
+    fill: var(--picto-fill);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* ── Description text below grid ── */
+.picto-description {
+    text-align: center;
+    min-height: 60px;
+    max-width: 460px;
+    padding: 0 16px;
+}
+
+.picto-description p {
+    font-family: var(--font);
+    font-size: 0.95rem;
+    line-height: 1.55;
     font-weight: 500;
-    max-width: 460px;                  /* clamps description line length */
-}
-
-.focus-step .funnel-bar-body {
-    max-height: 120px;
-    opacity: 1;
-    margin-top: 12px;
-}
-
-/* Row-specific text contrast styling */
-.funnel-row-1 .funnel-bar-content,
-.funnel-row-2 .funnel-bar-content {
-    color: #1a1a1a;
-}
-.funnel-row-1 .funnel-step-pct,
-.funnel-row-2 .funnel-step-pct {
-    color: #1a1a1a;
-}
-.funnel-row-1 .funnel-step-title,
-.funnel-row-2 .funnel-step-title {
-    color: #1a1a1a;
-}
-
-.funnel-row-3 .funnel-bar-content {
-    color: #ffffff;
-}
-.funnel-row-3 .funnel-step-pct {
-    color: #ffffff;
-}
-.funnel-row-3 .funnel-step-title {
-    color: #ffffff;
-}
-.funnel-row-3:not(.focus-step) .funnel-step-title {
-    display: none;
-}
-
-/* ── Staggered Scroll-Reveal ── */
-.funnel-section.scroll-reveal {
-    opacity: 1;
-    transform: none;
-}
-
-.funnel-section.scroll-reveal .funnel-row {
+    color: var(--text-secondary);
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1),
-                transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.funnel-section.scroll-reveal .funnel-row-1 { transition-delay: 0s; }
-.funnel-section.scroll-reveal .funnel-row-2 { transition-delay: 0.2s; }
-.funnel-section.scroll-reveal .funnel-row-3 { transition-delay: 0.4s; }
-
-.funnel-section.scroll-reveal.revealed .funnel-row {
+.picto-description p.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* ── Narrative Scroll-telling Blocks (Right Column) ── */
-.scrolly-funnel-narrative {
+/* ── Narrative Scroll-telling Blocks ── */
+.scrolly-picto-narrative {
     position: relative;
-    margin-top: -100vh;                /* pull it up to overlay the sticky container */
-    pointer-events: none;              /* allows scrolling/clicks to go through */
+    margin-top: -100vh;
+    pointer-events: none;
     z-index: 1;
 }
 
-.scrolly-step {
-    height: 100vh;                     /* each step trigger is one screen height */
+.scrolly-picto-narrative .scrolly-step {
+    height: 100vh;
     pointer-events: none;
 }
 
-/* ── Responsive funnel styles ── */
+/* ── Responsive pictogram styles ── */
 @media (max-width: 768px) {
-    .scrolly-funnel-container {
+    .scrolly-picto-container {
         margin: 40px auto 80px;
         padding: 0 16px;
     }
-    
-    .scrolly-funnel-sticky {
-        position: sticky;
+
+    .scrolly-picto-sticky {
         top: 80px;
-        height: 60vh;                  /* tall enough to fit expanded active funnel chart */
-        z-index: 10;
-        background-color: var(--bg);
-        border-bottom: 1px solid rgba(0,0,0,0.05);
-        padding: 10px 0;
+        height: 70vh;
     }
-    
-    .funnel-chart {
-        --max-bar-area: 100%;
-        gap: 12px;
-        padding: 0 10px;
+
+    .picto-chart {
+        max-width: 320px;
+        gap: 20px;
     }
-    
-    .funnel-bar {
-        height: 70px;                  /* collapsed height on mobile */
-        border-radius: 8px;
-        min-width: 60px;               /* allows the 8% bar to shrink to 60px when collapsed */
+
+    .picto-pct {
+        font-size: 2.6rem;
     }
-    
-    .focus-step.funnel-row-3 .funnel-bar {
-        width: 240px;
-        height: 260px;                 /* taller on mobile to fit the text in narrower width */
+
+    .picto-title {
+        font-size: 0.95rem;
     }
-    
-    .focus-step.funnel-row-2 .funnel-bar {
-        width: 280px;
-        height: 240px;
+
+    .picto-grid {
+        gap: 3px;
     }
-    
-    .focus-step.funnel-row-1 .funnel-bar {
-        width: 100%;
-        height: 70px;
+
+    .picto-description p {
+        font-size: 0.85rem;
     }
-    
-    .funnel-bar-content {
-        padding: 12px 16px;
-    }
-    
-    .funnel-step-pct {
-        font-size: 1.2rem;
-    }
-    
-    .funnel-step-title {
-        font-size: 1rem;
-    }
-    
-    .funnel-bar-body {
-        font-size: 0.82rem;
-        line-height: 1.35;
-    }
-    
-    .focus-step .funnel-bar-body {
-        max-height: 160px;
-        margin-top: 8px;
-    }
-    
-    .scrolly-funnel-narrative {
-        margin-top: -60vh;             /* offset mobile sticky height */
-    }
-    
-    .scrolly-step {
-        height: 100vh;
+
+    .scrolly-picto-narrative {
+        margin-top: -70vh;
     }
 }
 
