@@ -2009,7 +2009,7 @@ img { display: block; max-width: 100%; }
 .picto-grid {
     display: grid;
     grid-template-columns: repeat(20, 1fr);
-    gap: 6px 5px;
+    gap: 15px 12px;
     width: 100%;
     --picto-fill: #F3C364;
 }
@@ -2024,16 +2024,21 @@ img { display: block; max-width: 100%; }
 .picto-person svg {
     width: 100%;
     height: 100%;
-    fill: #ddd;
+    fill: transparent;
+    stroke: #0d0d0d;
+    stroke-width: 1.1px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
     transition: fill 0.35s cubic-bezier(0.25, 1, 0.5, 1),
                 transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
                 opacity 0.35s ease;
     transition-delay: var(--stagger, 0s);
-    opacity: 0.45;
+    opacity: 0.35;
 }
 
 .picto-person.filled svg {
     fill: var(--picto-fill);
+    stroke: #0d0d0d;
     opacity: 1;
     transform: scale(1.05);
 }
@@ -2101,7 +2106,7 @@ img { display: block; max-width: 100%; }
     }
 
     .picto-grid {
-        gap: 4px 3px;
+        gap: 8px 6px;
     }
 
     .picto-description p {
