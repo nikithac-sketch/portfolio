@@ -92,7 +92,7 @@
 
     // Generate 100 person icons
     if (pictoGrid) {
-        const personSvg = '<svg viewBox="0 0 20 36" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="4.5"/><path d="M10,11 C5,11 2,16 2,22 L5,22 5,34 8.5,34 8.5,25 11.5,25 11.5,34 15,34 15,22 18,22 C18,16 15,11 10,11Z"/></svg>';
+        const personSvg = '<svg viewBox="0 0 24 32" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M 12.2, 1.8 C 18.1, 2.1 21.8, 6.3 21.4, 11.7 C 21.1, 15.2 17.6, 21.1 12.3, 29.2 C 11.9, 29.7 11.5, 29.5 11.2, 29.1 C 6.2, 21.4 2.8, 15.6 2.4, 11.9 C 2.1, 6.2 6.1, 2.2 12.2, 1.8 Z M 12.1, 5.2 C 10.4, 5.1 9.2, 6.4 9.1, 8.1 C 9.0, 9.8 10.3, 11.2 12.0, 11.1 C 13.7, 11.0 14.9, 9.6 14.8, 7.9 C 14.7, 6.2 13.8, 5.3 12.1, 5.2 Z M 12.3, 13.2 C 9.1, 13.1 6.3, 15.6 6.1, 18.8 L 17.9, 18.9 C 17.7, 15.7 15.4, 13.3 12.3, 13.2 Z"/></svg>';
         for (let i = 0; i < 100; i++) {
             const div = document.createElement('div');
             div.className = 'picto-person';
