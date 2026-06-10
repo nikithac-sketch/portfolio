@@ -107,20 +107,49 @@
         { count: 100, color: '#F3C364', pct: '100%', title: 'people who created the pot', desc: '' },
         { count: 68, color: '#80AEAF', pct: '68%', title: 'contributed to it', desc: 'But habits are hard to form. The friction of manual savings kicked in, and only <strong>68% of users</strong> made a contribution to their Pot.' },
         { count: 8, color: '#B84646', pct: '8%', title: 'completed their goal', desc: 'In the end, only a shocking <strong>8% of users</strong> completed their goals. The rest dropped off, revealing a huge gap in motivation and follow-through.' },
+        { count: 0, color: '#ddd', pct: '', title: '', desc: '', showOverlay: true }
     ];
 
     function updatePictogram(stepIndex) {
         const step = pictoSteps[stepIndex];
         if (!step) return;
 
-        // Update header
-        if (pictoPct) {
-            pictoPct.textContent = step.pct;
-            pictoPct.style.color = step.color;
-        }
-        if (pictoTitle) pictoTitle.textContent = step.title;
-        if (pictoDesc) {
-            pictoDesc.innerHTML = step.desc ? '<p class="visible">' + step.desc + '</p>' : '';
+        // Handle overlay visibility and header fade out for step 4 (index 3)
+        const overlay = document.getElementById('pictoOverlay');
+        if (step.showOverlay) {
+            if (pictoPct) {
+                pictoPct.style.opacity = '0';
+                pictoPct.style.pointerEvents = 'none';
+            }
+            if (pictoTitle) {
+                pictoTitle.style.opacity = '0';
+                pictoTitle.style.pointerEvents = 'none';
+            }
+            if (pictoDesc) {
+                pictoDesc.style.opacity = '0';
+                pictoDesc.style.pointerEvents = 'none';
+            }
+            if (overlay) overlay.classList.add('visible');
+            if (pictoGrid) pictoGrid.classList.add('fade-out');
+        } else {
+            if (pictoPct) {
+                pictoPct.style.opacity = '1';
+                pictoPct.style.pointerEvents = 'auto';
+                pictoPct.textContent = step.pct;
+                pictoPct.style.color = step.color;
+            }
+            if (pictoTitle) {
+                pictoTitle.style.opacity = '1';
+                pictoTitle.style.pointerEvents = 'auto';
+                pictoTitle.textContent = step.title;
+            }
+            if (pictoDesc) {
+                pictoDesc.style.opacity = '1';
+                pictoDesc.style.pointerEvents = 'auto';
+                pictoDesc.innerHTML = step.desc ? '<p class="visible">' + step.desc + '</p>' : '';
+            }
+            if (overlay) overlay.classList.remove('visible');
+            if (pictoGrid) pictoGrid.classList.remove('fade-out');
         }
 
         // Set fill color

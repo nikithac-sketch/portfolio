@@ -1991,7 +1991,8 @@ img { display: block; max-width: 100%; }
     letter-spacing: -0.03em;
     display: block;
     color: #F3C364;
-    transition: color 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: color 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+                opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .picto-title {
@@ -2012,6 +2013,49 @@ img { display: block; max-width: 100%; }
     gap: 12px 10px;
     width: 100%;
     --picto-fill: #F3C364;
+    transition: opacity 0.6s ease;
+}
+
+.picto-grid.fade-out {
+    opacity: 0.12;
+}
+
+.picto-grid-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.picto-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.92);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 10;
+}
+
+.picto-overlay.visible {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.picto-overlay-text {
+    font-family: var(--font);
+    font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+    font-weight: 850;
+    text-align: center;
+    color: var(--text);
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    max-width: 650px;
+    padding: 0 24px;
 }
 
 .picto-person {
@@ -2044,6 +2088,7 @@ img { display: block; max-width: 100%; }
     min-height: 60px;
     max-width: 460px;
     padding: 0 16px;
+    transition: opacity 0.5s ease;
 }
 
 .picto-description p {
