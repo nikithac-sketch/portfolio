@@ -1969,7 +1969,7 @@ img { display: block; max-width: 100%; }
     align-items: center;
     gap: 28px;
     width: 100%;
-    max-width: 480px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -2008,8 +2008,8 @@ img { display: block; max-width: 100%; }
 /* ── 10×10 Person Grid ── */
 .picto-grid {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 5px;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 6px 5px;
     width: 100%;
     --picto-fill: #F3C364;
 }
@@ -2088,7 +2088,7 @@ img { display: block; max-width: 100%; }
     }
 
     .picto-chart {
-        max-width: 320px;
+        max-width: 100%;
         gap: 20px;
     }
 
@@ -2101,7 +2101,7 @@ img { display: block; max-width: 100%; }
     }
 
     .picto-grid {
-        gap: 3px;
+        gap: 4px 3px;
     }
 
     .picto-description p {
