@@ -1928,24 +1928,24 @@ img { display: block; max-width: 100%; }
     position: relative;
 }
 
-.dramatic-scribble {
+.dramatic-spiral {
     position: absolute;
-    top: 52%;
+    bottom: 85%; /* Float above the top of the text */
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 125%;
+    transform: translateX(-50%) rotate(5deg);
+    width: clamp(50px, 9vw, 75px);
     height: auto;
-    max-height: 160%;
     pointer-events: none;
     color: #F3C364; /* brand yellow/gold */
     opacity: 0;
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     transition-delay: 1.0s;
     z-index: 1;
 }
 
-.dramatic-transition-section.scroll-reveal.revealed .dramatic-scribble {
-    opacity: 0.75;
+.dramatic-transition-section.scroll-reveal.revealed .dramatic-spiral {
+    opacity: 0.85;
+    transform: translateX(-50%) rotate(0deg);
 }
 
 /* ============================================
