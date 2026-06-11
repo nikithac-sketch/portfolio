@@ -38,36 +38,7 @@
         }
     }
 
-    // ─── Comic Horizontal Scroll Logic ───
-    const comicContainer = document.querySelector('.comic-scroll-container');
-    const comicTrack = document.querySelector('.comic-track');
 
-    function handleComicScroll() {
-        if (!comicContainer || !comicTrack) return;
-
-        const rect = comicContainer.getBoundingClientRect();
-        const containerHeight = comicContainer.scrollHeight;
-        const viewHeight = window.innerHeight;
-
-        // Calculate scroll duration (how much vertical scroll exists inside container)
-        const totalDuration = containerHeight - viewHeight;
-        
-        // Scroll distance from top of container relative to viewport
-        const currentScroll = -rect.top;
-
-        // Calculate progress percentage clamped between 0 and 1
-        let pct = currentScroll / totalDuration;
-        pct = Math.max(0, Math.min(1, pct));
-
-        // Total translate width = total track scroll width - viewport width
-        const trackWidth = comicTrack.scrollWidth;
-        const maxTranslate = trackWidth - window.innerWidth;
-
-        const translateAmount = -pct * Math.max(0, maxTranslate);
-        
-        // Apply transform
-        comicTrack.style.transform = `translateX(${translateAmount}px)`;
-    }
 
     // ─── Scroll Reveal Observer ───
     const revealObserver = new IntersectionObserver((entries) => {
@@ -281,21 +252,16 @@
             requestAnimationFrame(() => {
                 updateScrollProgress();
                 updateNavState();
-                handleComicScroll();
                 ticking = false;
             });
             ticking = true;
         }
     });
 
-    // Handle resize to update translation math dynamically
-    window.addEventListener('resize', () => {
-        handleComicScroll();
-    });
+
 
     // Initial executions
     updateScrollProgress();
     updateNavState();
-    handleComicScroll();
 
 })();
