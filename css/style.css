@@ -1868,9 +1868,14 @@ img { display: block; max-width: 100%; }
    ============================================ */
 .dramatic-transition-section {
     text-align: center;
-    padding: 120px 40px 180px;
+    padding: 220px 40px 260px;
     max-width: 900px;
     margin: 0 auto;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Staggered Dramatic Reveal Setup */
@@ -1909,7 +1914,7 @@ img { display: block; max-width: 100%; }
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
 }
 
 .dramatic-headline {
@@ -1945,7 +1950,7 @@ img { display: block; max-width: 100%; }
 
 .dramatic-spiral {
     display: block;
-    width: clamp(65px, 12vw, 100px);
+    width: clamp(110px, 18vw, 180px);
     height: auto;
     pointer-events: none;
     color: #F3C364; /* brand yellow/gold */
