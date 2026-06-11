@@ -2983,14 +2983,8 @@ img { display: block; max-width: 100%; }
    ============================================ */
 .gamification-section {
     max-width: var(--max-w);
-    margin: 80px auto 32px;
+    margin: 80px auto 140px;
     padding: 0 40px;
-}
-
-.scope-section {
-    max-width: var(--max-w);
-    margin: 0 auto 140px;
-    padding: 0 40px 0;
 }
 
 .gamification-intro-text,
@@ -3010,7 +3004,7 @@ img { display: block; max-width: 100%; }
 }
 
 .gamification-outro-text {
-    margin-top: 0;
+    margin-top: 56px;
 }
 
 .gamification-outro-text p:first-child {
@@ -3232,12 +3226,11 @@ img { display: block; max-width: 100%; }
 }
 @media (max-width: 768px) {
     .gamification-section {
-        margin: 60px auto 20px;
+        margin: 60px auto 100px;
         padding: 0 16px;
     }
-    .scope-section {
-        margin: 0 auto 100px;
-        padding: 0 16px 0;
+    .gamification-outro-text {
+        margin-top: 40px;
     }
     .gamification-intro-text,
     .gamification-outro-text {
