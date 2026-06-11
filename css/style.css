@@ -1838,6 +1838,11 @@ img { display: block; max-width: 100%; }
     margin: 0;
 }
 
+.hugo-cta-container {
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
 /* Responsive adjustment for Hugosave Intro */
 @media (max-width: 768px) {
     .hugo-intro-grid {
@@ -1852,6 +1857,9 @@ img { display: block; max-width: 100%; }
         width: 160px;
         height: 160px;
         border-radius: 28px;
+    }
+    .hugo-cta-container {
+        align-self: center;
     }
 }
 
