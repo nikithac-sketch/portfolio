@@ -2423,7 +2423,7 @@ img { display: block; max-width: 100%; }
     gap: 20px;
     position: relative;
     overflow: visible;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     border-radius: 12px;
     background-color: transparent;
     border: none;
@@ -2443,7 +2443,7 @@ img { display: block; max-width: 100%; }
     width: 100%;
     max-width: none; /* match .arch-body full width */
     height: auto;
-    padding: 12px 0 16px;
+    padding: 12px 0 0;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -2466,7 +2466,7 @@ img { display: block; max-width: 100%; }
     font-size: 1.15rem; /* Large font size */
     font-style: italic;
     font-weight: 600;
-    color: var(--text-secondary);
+    color: var(--text);
     line-height: 1.4;
     z-index: 1;
 }
@@ -2678,7 +2678,7 @@ img { display: block; max-width: 100%; }
         top: auto;
         width: 100%;
         height: auto;
-        padding: 8px 0 12px;
+        padding: 8px 0 0;
         transform: translateY(8px);
         transition-delay: 0.15s;
     }
