@@ -86,6 +86,7 @@
     // ─── Scrollytelling Pictogram Logic ───
     const scrollySteps = document.querySelectorAll('.scrolly-step');
     const pictoGrid = document.getElementById('pictoGrid');
+    const pictoPrefix = document.getElementById('pictoPrefix');
     const pictoPct = document.getElementById('pictoPct');
     const pictoTitle = document.getElementById('pictoTitle');
     const pictoDesc = document.getElementById('pictoDesc');
@@ -104,10 +105,10 @@
 
     const pictoPersons = document.querySelectorAll('.picto-person');
     const pictoSteps = [
-        { count: 100, color: '#F3C364', pct: '100%', title: 'Out of ALL the people who created the pot', desc: '' },
-        { count: 68, color: '#80AEAF', pct: '68%', title: 'contributed to it', desc: 'But habits are hard to form. The friction of manual savings kicked in, and only <strong>68% of users</strong> made a contribution to their Pot.' },
-        { count: 8, color: '#B84646', pct: '8%', title: 'completed their goal', desc: 'In the end, only a shocking <strong>8% of users</strong> completed their goals. The rest dropped off, revealing a huge gap in motivation and follow-through.' },
-        { count: 0, color: '#ddd', pct: '', title: '', desc: '', showOverlay: true }
+        { count: 100, color: '#F3C364', prefix: 'Out of', pct: 'ALL', title: 'the people who created money pots', desc: '' },
+        { count: 68, color: '#80AEAF', prefix: '', pct: '68%', title: 'contributed to it', desc: 'But habits are hard to form. The friction of manual savings kicked in, and only <strong>68% of users</strong> made a contribution to their Pot.' },
+        { count: 8, color: '#B84646', prefix: '', pct: '8%', title: 'completed their goal', desc: 'In the end, only a shocking <strong>8% of users</strong> completed their goals. The rest dropped off, revealing a huge gap in motivation and follow-through.' },
+        { count: 0, color: '#ddd', prefix: '', pct: '', title: '', desc: '', showOverlay: true }
     ];
 
     function updatePictogram(stepIndex) {
@@ -117,6 +118,10 @@
         // Handle overlay visibility and header fade out for step 4 (index 3)
         const overlay = document.getElementById('pictoOverlay');
         if (step.showOverlay) {
+            if (pictoPrefix) {
+                pictoPrefix.style.opacity = '0';
+                pictoPrefix.style.pointerEvents = 'none';
+            }
             if (pictoPct) {
                 pictoPct.style.opacity = '0';
                 pictoPct.style.pointerEvents = 'none';
@@ -132,6 +137,12 @@
             if (overlay) overlay.classList.add('visible');
             if (pictoGrid) pictoGrid.classList.add('fade-out');
         } else {
+            if (pictoPrefix) {
+                pictoPrefix.textContent = step.prefix || '';
+                pictoPrefix.style.opacity = step.prefix ? '0.75' : '0';
+                pictoPrefix.style.pointerEvents = step.prefix ? 'auto' : 'none';
+                pictoPrefix.style.marginBottom = step.prefix ? '6px' : '0px';
+            }
             if (pictoPct) {
                 pictoPct.style.opacity = '1';
                 pictoPct.style.pointerEvents = 'auto';

@@ -1983,6 +1983,15 @@ img { display: block; max-width: 100%; }
     justify-content: center;
 }
 
+.picto-prefix {
+    font-family: var(--font);
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: block;
+    color: var(--text);
+    transition: opacity 0.4s ease, margin-bottom 0.4s ease;
+}
+
 .picto-pct {
     font-family: var(--font);
     font-size: 3.4rem;
@@ -2152,6 +2161,10 @@ img { display: block; max-width: 100%; }
     .picto-chart {
         max-width: 100%;
         gap: 20px;
+    }
+
+    .picto-prefix {
+        font-size: 0.95rem;
     }
 
     .picto-pct {
