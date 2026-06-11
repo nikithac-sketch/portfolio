@@ -77,7 +77,7 @@
     const pictoPersons = document.querySelectorAll('.picto-person');
     const pictoSteps = [
         { count: 100, color: '#F3C364', prefix: 'Out of', pct: 'ALL', title: 'the people who created money pots', desc: '' },
-        { count: 68, color: '#80AEAF', prefix: 'Only', pct: '68%', title: 'contributed to it', desc: 'But habits are hard to form. The friction of manual savings kicked in, and only <strong>68% of users</strong> made a contribution to their Pot.' },
+        { count: 68, color: '#80AEAF', prefix: 'Only', pct: '68%', title: 'contributed to it', desc: 'The friction of manual savings kicked in, and only <strong>68% of users</strong> made a contribution to their Pot.' },
         { count: 8, color: '#B84646', prefix: 'And only', pct: '8%', title: 'completed their goal', desc: 'In the end, only a shocking <strong>8% of users</strong> completed their goals. The rest dropped off, revealing a huge gap in motivation and follow-through.' },
         { count: 0, color: '#ddd', prefix: '', pct: '', title: '', desc: '', showOverlay: true }
     ];
