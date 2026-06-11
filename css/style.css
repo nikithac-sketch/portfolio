@@ -2990,7 +2990,7 @@ img { display: block; max-width: 100%; }
 .scope-section {
     max-width: var(--max-w);
     margin: 0 auto 140px;
-    padding: 40px 40px 0;
+    padding: 0 40px 0;
 }
 
 .gamification-intro-text,
@@ -3010,7 +3010,7 @@ img { display: block; max-width: 100%; }
 }
 
 .gamification-outro-text {
-    margin-top: 48px;
+    margin-top: 0;
 }
 
 .gamification-scope-limit {
@@ -3233,7 +3233,7 @@ img { display: block; max-width: 100%; }
     }
     .scope-section {
         margin: 0 auto 100px;
-        padding: 20px 16px 0;
+        padding: 0 16px 0;
     }
     .gamification-intro-text,
     .gamification-outro-text {
