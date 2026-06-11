@@ -2983,7 +2983,7 @@ img { display: block; max-width: 100%; }
    ============================================ */
 .gamification-section {
     max-width: var(--max-w);
-    margin: 80px auto 80px;
+    margin: 80px auto 32px;
     padding: 0 40px;
 }
 
@@ -3010,6 +3010,10 @@ img { display: block; max-width: 100%; }
 }
 
 .gamification-outro-text {
+    margin-top: 0;
+}
+
+.gamification-outro-text p:first-child {
     margin-top: 0;
 }
 
@@ -3228,7 +3232,7 @@ img { display: block; max-width: 100%; }
 }
 @media (max-width: 768px) {
     .gamification-section {
-        margin: 60px auto 60px;
+        margin: 60px auto 20px;
         padding: 0 16px;
     }
     .scope-section {
