@@ -245,6 +245,72 @@
         });
     }
 
+    // ─── Pain Points Card Reveal ───
+    const painCards = document.querySelectorAll('.painpoint-card');
+    if (painCards.length > 0) {
+        const painObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('pp-visible');
+                    painObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px 0px -10% 0px',
+            threshold: 0.1
+        });
+
+        painCards.forEach(card => {
+            painObserver.observe(card);
+        });
+    }
+
+    // ─── Lightbox Modal Interactivity ───
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const conceptImageWrappers = document.querySelectorAll('.concept-image-wrapper');
+
+    if (lightboxModal && lightboxImg && lightboxClose) {
+        conceptImageWrappers.forEach(wrapper => {
+            wrapper.addEventListener('click', () => {
+                const img = wrapper.querySelector('img');
+                const caption = wrapper.getAttribute('data-caption');
+                if (img) {
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightboxCaption.textContent = caption || img.alt;
+                    lightboxModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        const closeLightbox = () => {
+            lightboxModal.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                lightboxImg.src = '';
+                lightboxCaption.textContent = '';
+            }, 300);
+        };
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    }
+
     // ─── Scroll Listener ───
     let ticking = false;
     window.addEventListener('scroll', () => {
@@ -265,3 +331,4 @@
     updateNavState();
 
 })();
+
