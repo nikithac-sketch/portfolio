@@ -2814,15 +2814,6 @@ img { display: block; max-width: 100%; }
     transition: width 0.3s ease;
 }
 
-.painpoint-card:hover .painpoint-card-inner {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-    transform: translateY(-4px);
-    border-color: rgba(0, 0, 0, 0.1);
-}
-
-.painpoint-card:hover .painpoint-card-inner::before {
-    width: 6px;
-}
 
 /* ── Color accents per archetype ── */
 .painpoint-architect .painpoint-card-inner { --tag-color: #8b5cf6; }
