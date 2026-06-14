@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=71">
+    <link rel="stylesheet" href="css/style.css?v=86">
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 </head>
 <body>
@@ -492,6 +492,239 @@
         </section>
     </main>
 
+
+    <!-- ============ INFORMATION ARCHITECTURE SECTION ============ -->
+    <section class="ia-section scroll-reveal dissolve">
+
+        <!-- Section Header -->
+        <div class="ia-header">
+            <span class="ia-label">INFORMATION ARCHITECTURE</span>
+            <h2 class="ia-title">Mapping the savings journey</h2>
+            <p class="ia-subtitle">The complete user flow — from creating a pot to reaching milestones and growing investments.</p>
+        </div>
+
+        <!-- Horizontally scrollable flow layout -->
+        <div class="ia-layout-container">
+            <div class="ia-flow-viewport">
+                <div class="ia-flow-track">
+
+                    <!-- ── PHASE 1: Entry ── -->
+                    <div class="ia-phase-wrapper">
+                        <div class="ia-phase">
+                            <div class="ia-phase-label">PHASE 1</div>
+                            <div class="ia-phase-title">Entry</div>
+                            <div class="ia-nodes">
+                                <div class="ia-node ia-node-entry">
+                                    <div class="ia-node-icon">
+                                        <img src="assets/svgs/project_Pots/homeDashboard.svg" alt="Pots overview">
+                                    </div>
+                                    <span class="ia-node-label">Pots overview</span>
+                                </div>
+                                <div class="ia-connector ia-connector-down"></div>
+                                <div class="ia-node ia-node-entry">
+                                    <div class="ia-node-icon">
+                                        <img src="assets/svgs/project_Pots/createPot.svg" alt="Create New Pot">
+                                    </div>
+                                    <span class="ia-node-label">Create New Pot</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ia-connector-bent">
+                            <svg viewBox="0 0 32 136" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 0,134 L 16,134 L 16,2 L 26,2" stroke="var(--border)" stroke-width="2" stroke-linejoin="round" fill="none" />
+                                <polygon points="32,2 26,-2 26,6" fill="var(--border)" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- ── PHASE 2: Input Details ── -->
+                    <div class="ia-phase-wrapper">
+                        <div class="ia-phase">
+                            <div class="ia-phase-label">PHASE 2</div>
+                            <div class="ia-phase-title">Input Details</div>
+                            <div class="ia-nodes" style="gap: 14px;">
+                                <div class="ia-node ia-node-setup">
+                                    <div class="ia-node-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                                    </div>
+                                    <span class="ia-node-label">Name Your Pot</span>
+                                </div>
+                                <div class="ia-node ia-node-setup">
+                                    <div class="ia-node-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                    </div>
+                                    <span class="ia-node-label">Set Goal Amount</span>
+                                    <span class="ia-node-tag ia-tag-optional">Optional</span>
+                                </div>
+                                <div class="ia-node ia-node-setup ia-node-highlight">
+                                    <div class="ia-node-badge">NEW</div>
+                                    <div class="ia-node-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                    </div>
+                                    <span class="ia-node-label">Set Target Date</span>
+                                    <span class="ia-node-tag ia-tag-optional">Optional</span>
+                                </div>
+                                <div class="ia-node ia-node-setup">
+                                    <div class="ia-node-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                                    </div>
+                                    <span class="ia-node-label">Upload Image</span>
+                                    <span class="ia-node-tag ia-tag-optional">Optional</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ia-connector-horiz"></div>
+                    </div>
+
+                    <!-- ── PHASE 3: Choose Pot Type (Branch) ── -->
+                    <div class="ia-phase-wrapper">
+                        <div class="ia-phase ia-phase-branch">
+                            <div class="ia-phase-label">PHASE 3</div>
+                            <div class="ia-phase-title">Pot Type</div>
+                            <div class="ia-branch-wrapper">
+                                <div class="ia-branch-line"></div>
+                                <div class="ia-branch-paths">
+                                    <div class="ia-branch-path">
+                                        <div class="ia-node ia-node-branch-a">
+                                            <div class="ia-node-icon">
+                                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                            </div>
+                                            <span class="ia-node-label">Cash</span>
+                                            <span class="ia-node-desc">Standard liquid savings</span>
+                                        </div>
+                                    </div>
+                                    <div class="ia-branch-divider">
+                                        <span>OR</span>
+                                    </div>
+                                    <div class="ia-branch-path">
+                                        <div class="ia-node ia-node-branch-b ia-node-highlight">
+                                            <div class="ia-node-badge">NEW</div>
+                                            <div class="ia-node-icon">
+                                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                                            </div>
+                                            <span class="ia-node-label">Gold</span>
+                                            <span class="ia-node-desc">Real-time commodity gold</span>
+                                        </div>
+                                    </div>
+                                    <div class="ia-branch-divider">
+                                        <span>OR</span>
+                                    </div>
+                                    <div class="ia-branch-path">
+                                        <div class="ia-node ia-node-branch-b ia-node-highlight">
+                                            <div class="ia-node-badge">NEW</div>
+                                            <div class="ia-node-icon">
+                                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                                            </div>
+                                            <span class="ia-node-label">Platinum</span>
+                                            <span class="ia-node-desc">Real-time commodity platinum</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ia-connector-horiz"></div>
+                    </div>
+
+                    <!-- ── PHASE 4: Preview and Acknowledgement ── -->
+                    <div class="ia-phase-wrapper">
+                        <div class="ia-phase">
+                            <div class="ia-phase-label">PHASE 4</div>
+                            <div class="ia-phase-title" style="display: block; text-align: center; line-height: 1.3; font-size: 0.95rem;">Preview and<br>Acknowledgement</div>
+                            <div class="ia-nodes">
+                                <div class="ia-node ia-node-setup">
+                                    <div class="ia-node-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    </div>
+                                    <span class="ia-node-label">Preview details</span>
+                                </div>
+                                <div class="ia-connector ia-connector-down"></div>
+                                <div class="ia-node ia-node-setup">
+                                    <div class="ia-node-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                    </div>
+                                    <span class="ia-node-label">Success confirmation</span>
+                                </div>
+                                <div class="ia-connector ia-connector-down"></div>
+                                <div class="ia-node ia-node-setup ia-node-highlight">
+                                    <div class="ia-node-badge">NEW</div>
+                                    <div class="ia-node-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                                    </div>
+                                    <span class="ia-node-label">Add $1 as nudge</span>
+                                    <span class="ia-node-tag ia-tag-optional">Optional</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ia-connector-horiz"></div>
+                    </div>
+
+                    <!-- ── PHASE 5: Pots Lifecycle ── -->
+                    <div class="ia-phase-wrapper">
+                        <div class="ia-phase">
+                            <div class="ia-phase-label">PHASE 5</div>
+                            <div class="ia-phase-title">Pots Lifecycle</div>
+                            <div class="ia-nodes">
+                                <div class="ia-node ia-node-dashboard">
+                                    <div class="ia-node-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                                    </div>
+                                    <span class="ia-node-label" style="font-weight: 700;">Pots Dashboard</span>
+                                    <div class="ia-mini-cards">
+                                        <div class="ia-mini-card ia-mini-new">
+                                            <span>Milestone tracker</span>
+                                            <span class="ia-mini-badge">NEW</span>
+                                        </div>
+                                        <div class="ia-mini-card ia-mini-new">
+                                            <span>Favourite pot</span>
+                                            <span class="ia-mini-badge">NEW</span>
+                                        </div>
+                                        <div class="ia-mini-card">
+                                            <span>Schedule Payment</span>
+                                        </div>
+                                        <div class="ia-mini-card">
+                                            <span>Add to Pot</span>
+                                        </div>
+                                        <div class="ia-mini-card">
+                                            <span>Withdraw from Pot</span>
+                                        </div>
+                                        <div class="ia-mini-card">
+                                            <span>Edit Pot</span>
+                                        </div>
+                                        <div class="ia-mini-card">
+                                            <span>Close Pot</span>
+                                        </div>
+                                        <div class="ia-mini-card">
+                                            <span>Learning page</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ia-connector-horiz"></div>
+                    </div>
+
+                    <!-- ── PHASE 6: Goal Completion ── -->
+                    <div class="ia-phase-wrapper">
+                        <div class="ia-phase">
+                            <div class="ia-phase-label">PHASE 6</div>
+                            <div class="ia-phase-title">Goal Completion</div>
+                            <div class="ia-nodes">
+                                <div class="ia-node ia-node-complete">
+                                    <div class="ia-node-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                    </div>
+                                    <span class="ia-node-label">100% Goal Met!</span>
+                                    <span class="ia-node-desc">Celebration moment</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
     <!-- ============ LIGHTBOX MODAL ============ -->
     <div class="lightbox-modal" id="lightboxModal">
         <div class="lightbox-content-wrapper">
