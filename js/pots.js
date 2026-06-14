@@ -326,6 +326,27 @@
 
 
 
+    // ─── Ideation Section Interactivity ───
+    const ideationTabs = document.querySelectorAll('.ideation-tab');
+    const ideationScreens = document.querySelectorAll('.ideation-screen-img');
+
+    if (ideationTabs.length > 0 && ideationScreens.length > 0) {
+        ideationTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetScreen = tab.getAttribute('data-screen');
+
+                // Update active tab class
+                ideationTabs.forEach(t => t.classList.toggle('active', t === tab));
+
+                // Update active phone screen image
+                ideationScreens.forEach(img => {
+                    const screenId = img.getAttribute('data-screen');
+                    img.classList.toggle('active', screenId === targetScreen);
+                });
+            });
+        });
+    }
+
     // Initial executions
     updateScrollProgress();
     updateNavState();

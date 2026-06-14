@@ -3660,5 +3660,204 @@ img { display: block; max-width: 100%; }
     }
 }
 
+/* ==========================================================================
+   IDEATION & UI DESIGN SECTION
+   ========================================================================== */
+.ideation-section {
+    max-width: 1200px;
+    width: 90%;
+    margin: 100px auto 140px;
+    padding: 0 20px;
+}
+
+.ideation-header {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.ideation-label {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.ideation-title {
+    font-family: var(--font);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.ideation-subtitle {
+    font-family: var(--font);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.ideation-showcase-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+/* Left Column: Tabs Stack */
+.ideation-tabs-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.ideation-tab {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    border-radius: 16px;
+    background: transparent;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+    text-align: left;
+}
+
+.ideation-tab:hover {
+    background: var(--bg-alt);
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+.ideation-tab.active {
+    background: var(--bg-alt);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+.ideation-tab-indicator {
+    width: 4px;
+    background: transparent;
+    border-radius: 4px;
+    align-self: stretch;
+    transition: background-color 0.3s ease;
+}
+
+.ideation-tab.active .ideation-tab-indicator {
+    background: var(--accent);
+}
+
+.ideation-tab-content {
+    flex: 1;
+}
+
+.ideation-tab-step {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.ideation-tab-title {
+    font-family: var(--font);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.ideation-tab-desc {
+    font-family: var(--font);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+/* Right Column: Phone Mockup Container */
+.ideation-phone-col {
+    flex: 0 0 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.ideation-phone-frame {
+    position: relative;
+    width: 300px;
+    height: 560px;
+    background: transparent;
+}
+
+.ideation-phone-screen {
+    position: absolute;
+    left: 22px;
+    top: 60px;
+    width: 256px;
+    height: 430px;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.ideation-screen-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transform: scale(0.98);
+}
+
+.ideation-screen-img.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Responsive Overrides */
+@media (max-width: 900px) {
+    .ideation-showcase-container {
+        flex-direction: column-reverse;
+        gap: 48px;
+    }
+    
+    .ideation-phone-col {
+        width: 100%;
+    }
+    
+    .ideation-tabs-col {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .ideation-section {
+        margin: 60px auto 80px;
+    }
+    .ideation-title {
+        font-size: 2rem;
+    }
+    .ideation-subtitle {
+        font-size: 1rem;
+    }
+    .ideation-tab {
+        padding: 16px;
+    }
+}
+
+
 
 
