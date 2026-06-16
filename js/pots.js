@@ -326,26 +326,101 @@
 
 
 
-    // ─── Ideation Section Interactivity ───
-    const ideationTabs = document.querySelectorAll('.ideation-tab');
-    const ideationScreens = document.querySelectorAll('.ideation-screen-img');
+    // ─── Ideation Section: Folder + Phase + Screen Flow ───
+    const ideationFolders = document.querySelectorAll('.ideation-folder');
+    const ideationPhaseBtns = document.querySelectorAll('.ideation-phase-btn');
+    const ideationScreenFlow = document.getElementById('ideationScreenFlow');
 
-    if (ideationTabs.length > 0 && ideationScreens.length > 0) {
-        ideationTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const targetScreen = tab.getAttribute('data-screen');
+    // Screen data: folder > phase > array of image URLs (null = empty placeholder)
+    // Replace null values with actual image paths when ready, e.g.:
+    //   'assets/svgs/project_Pots/Frame 17.svg'
+    const ideationScreenData = {
+        chosen: {
+            arrival:   [null, null, null, null, null],
+            intention: [null, null, null, null, null],
+            asset:     [null, null, null, null, null, null],
+            preview:   [null, null, null, null, null],
+            lifecycle: [null, null, null, null, null],
+            final:     [null, null, null, null, null]
+        },
+        discarded: {
+            arrival:   [null, null, null, null, null],
+            intention: [null, null, null, null, null],
+            asset:     [null, null, null, null, null, null],
+            preview:   [null, null, null, null, null],
+            lifecycle: [null, null, null, null, null],
+            final:     [null, null, null, null, null]
+        }
+    };
 
-                // Update active tab class
-                ideationTabs.forEach(t => t.classList.toggle('active', t === tab));
+    let activeFolder = 'chosen';
+    let activePhase = 'arrival';
 
-                // Update active phone screen image
-                ideationScreens.forEach(img => {
-                    const screenId = img.getAttribute('data-screen');
-                    img.classList.toggle('active', screenId === targetScreen);
-                });
-            });
+    function renderScreenFlow() {
+        if (!ideationScreenFlow) return;
+
+        const screens = ideationScreenData[activeFolder]?.[activePhase] || [];
+        const isDiscarded = activeFolder === 'discarded';
+
+        // Apply discarded class for greyed-out effect
+        ideationScreenFlow.className = 'ideation-screen-flow' + (isDiscarded ? ' discarded' : '');
+        ideationScreenFlow.innerHTML = '';
+
+        screens.forEach((src, i) => {
+            // Create screen card
+            const card = document.createElement('div');
+            card.className = 'ideation-screen-card';
+            card.style.animationDelay = (i * 60) + 'ms';
+
+            if (src) {
+                // Real image
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = 'Screen ' + (i + 1);
+                img.className = 'screen-card-img';
+                card.appendChild(img);
+            } else {
+                // Empty placeholder
+                card.innerHTML =
+                    '<div class="screen-card-inner">' +
+                        '<span class="screen-card-number">' + String(i + 1).padStart(2, '0') + '</span>' +
+                        '<span class="screen-card-label">Screen</span>' +
+                    '</div>';
+            }
+
+            ideationScreenFlow.appendChild(card);
+
+            // Add flow arrow between cards (not after the last one)
+            if (i < screens.length - 1) {
+                const arrow = document.createElement('div');
+                arrow.className = 'ideation-flow-arrow';
+                arrow.style.animationDelay = (i * 60 + 30) + 'ms';
+                arrow.innerHTML = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M 4,9 L 13,9 M 10,5.5 L 14,9 L 10,12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                ideationScreenFlow.appendChild(arrow);
+            }
         });
     }
+
+    // Folder click handler
+    ideationFolders.forEach(folder => {
+        folder.addEventListener('click', () => {
+            activeFolder = folder.getAttribute('data-folder');
+            ideationFolders.forEach(f => f.classList.toggle('active', f === folder));
+            renderScreenFlow();
+        });
+    });
+
+    // Phase button click handler
+    ideationPhaseBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            activePhase = btn.getAttribute('data-phase');
+            ideationPhaseBtns.forEach(b => b.classList.toggle('active', b === btn));
+            renderScreenFlow();
+        });
+    });
+
+    // Initial render
+    renderScreenFlow();
 
     // Initial executions
     updateScrollProgress();
