@@ -59,7 +59,6 @@
     // ─── Interactive Resume Button Mockup ───
     if (resumeBtn) {
         resumeBtn.addEventListener('click', (e) => {
-            e.preventDefault();
             const originalHTML = resumeBtn.innerHTML;
             
             // Success animation
