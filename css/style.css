@@ -4474,15 +4474,16 @@ img { display: block; max-width: 100%; }
     pointer-events: none;
 }
 .wood-sketch-overlay path {
-    stroke: var(--border);
+    stroke: var(--text);
     stroke-width: 2.2;
     fill: var(--bg-alt);
+    vector-effect: non-scaling-stroke;
 }
 
 /* ─── 3D Book Component ─── */
 .book {
-    width: 170px;
-    height: 240px;
+    width: 240px;
+    height: 180px;
     position: relative;
     perspective: 1000px;
     cursor: pointer;
@@ -4547,6 +4548,7 @@ img { display: block; max-width: 100%; }
     flex-direction: column;
     overflow: hidden;
     box-shadow: -4px 6px 12px rgba(0, 0, 0, 0.05);
+    padding: 6px;
 }
 
 .book-cover-front::after {
@@ -4578,6 +4580,7 @@ img { display: block; max-width: 100%; }
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 4px;
 }
 .book-cover-thumb img {
     width: 100%;
@@ -4641,9 +4644,10 @@ img { display: block; max-width: 100%; }
     z-index: 10;
 }
 .book-sketch-overlay path {
-    stroke: var(--border);
+    stroke: var(--text);
     stroke-width: 2.2;
     fill: none;
+    vector-effect: non-scaling-stroke;
 }
 .book-inside .book-sketch-overlay path.sketch-outline {
     fill: #fffdfc;
@@ -4880,8 +4884,8 @@ img { display: block; max-width: 100%; }
         padding: 16px 8px 8px 8px;
     }
     .book {
-        width: 130px;
-        height: 185px;
+        width: 180px;
+        height: 135px;
     }
     .book-cover-title-area {
         padding: 4px 6px;
