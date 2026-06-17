@@ -4415,163 +4415,262 @@ img { display: block; max-width: 100%; }
     margin-left: 4px;
 }
 
-/* ─── Project Grid ─── */
-.work-grid {
-    flex: 1;
-    min-width: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 32px;
-}
-
-/* ─── Folder Card ─── */
-.work-card {
+/* ─── Bookshelves Area ─── */
+.work-bookshelves {
     display: flex;
     flex-direction: column;
-    border-radius: 0 16px 16px 16px;
-    background: var(--bg);
-    border: 1.5px solid var(--border);
+    gap: 64px;
+}
+
+.bookshelf {
     position: relative;
+    padding-bottom: 24px;
+}
+
+.bookshelf-title {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+    padding-left: 8px;
+    border-left: 3px solid var(--accent);
+    line-height: 1;
+}
+
+.bookshelf-row {
+    display: flex;
+    gap: 64px;
+    padding: 24px 24px 8px 24px;
+    overflow-x: auto;
+    scrollbar-width: none; /* Hide default scrollbar */
+    perspective: 1200px; /* Perspective for books on this shelf */
+    align-items: flex-end;
+}
+.bookshelf-row::-webkit-scrollbar {
+    display: none;
+}
+
+.bookshelf-wood {
+    height: 12px;
+    background: var(--bg-alt);
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+    position: relative;
+    z-index: 2;
+}
+
+/* ─── 3D Book Component ─── */
+.book {
+    width: 170px;
+    height: 240px;
+    position: relative;
+    perspective: 1000px;
     cursor: pointer;
-    transition: transform 0.3s var(--ease-expo), box-shadow 0.3s ease, border-color 0.3s ease;
+    flex-shrink: 0;
     text-decoration: none;
     color: inherit;
-    overflow: visible;
-    /* entrance animation */
+    /* Entrance Animation */
     opacity: 0;
     transform: translateY(20px);
+    z-index: 10;
 }
-.work-card.card-enter {
-    animation: workCardEnter 0.5s var(--ease-expo) both;
+.book.book-enter {
+    animation: bookEntrance 0.5s var(--ease-expo) both;
 }
-@keyframes workCardEnter {
+@keyframes bookEntrance {
     from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.work-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-    border-color: var(--accent);
+.book:hover {
+    z-index: 20;
 }
 
-/* Folder Tab */
-.work-card-tab {
-    position: absolute;
-    top: -22px;
-    left: -1px;
-    width: 64px;
-    height: 24px;
-    background: var(--bg);
-    border: 1.5px solid var(--border);
-    border-bottom: none;
-    border-radius: 10px 10px 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    transition: border-color 0.3s ease, background 0.3s ease;
-}
-.work-card:hover .work-card-tab {
-    border-color: var(--accent);
-    background: var(--accent);
-}
-.work-card-tab-label {
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    transition: color 0.3s ease;
-}
-.work-card:hover .work-card-tab-label {
-    color: #fff;
-}
-
-/* Card Body */
-.work-card-body {
-    padding: 0 0 20px 0;
-}
-
-/* Thumbnail */
-.work-card-thumb {
+.book-inner {
     width: 100%;
-    aspect-ratio: 16 / 10;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.book-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    transform-origin: left center;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transform-style: preserve-3d;
+}
+
+.book-cover-front,
+.book-cover-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 4px 10px 10px 4px;
+    border: 2px solid var(--border);
+    box-sizing: border-box;
+}
+
+.book-cover-front {
+    z-index: 2;
+    background: var(--bg);
+    transform: rotateY(0deg);
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-    border-radius: 0 14px 0 0;
+    box-shadow: -4px 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+.book-cover-front::after {
+    /* Book spine decorative shadow */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 10px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.08), transparent);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 3;
+}
+
+.book-cover-back {
+    z-index: 1;
     background: var(--bg-alt);
+    transform: rotateY(180deg);
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+.book-cover-thumb {
+    width: 100%;
+    height: 65%;
+    overflow: hidden;
+    background: var(--bg-alt);
+    border-bottom: 2px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 16px;
 }
-.work-card-thumb img {
+.book-cover-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s var(--ease-expo);
+    transition: transform 0.4s ease;
 }
-.work-card:hover .work-card-thumb img {
+.book:hover .book-cover-thumb img {
     transform: scale(1.04);
 }
 
-/* Placeholder thumbs for projects without images */
-.work-card-thumb-placeholder {
-    background: hsl(var(--ph-hue, 200), 30%, 92%);
-    position: relative;
-}
-.thumb-placeholder-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: hsl(var(--ph-hue, 200), 25%, 65%);
-    text-transform: uppercase;
+.book-cover-title-area {
+    width: 100%;
+    height: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    background: var(--bg);
+    box-sizing: border-box;
 }
 
-/* Tags Row */
-.work-card-tags {
+.book-title {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+}
+
+/* Paper Page inside book */
+.book-inside {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 96%;
+    height: 96%;
+    z-index: 5;
+    background: #fffdfc;
+    border: 2px solid var(--border);
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateZ(-2px);
+    overflow: hidden;
+}
+
+/* Custom guidelines inside paper pages for case study sketch feel */
+.book-inside::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 8px; right: 8px;
+    background: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 100% 16px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.book-inside-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    padding: 0 18px;
-    margin-bottom: 12px;
+    gap: 4px;
+    position: relative;
+    z-index: 2;
 }
-.work-tag {
+
+.book-inside-tag {
     font-family: var(--font-mono);
-    font-size: 0.55rem;
+    font-size: 0.52rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    padding: 3px 10px;
+    letter-spacing: 0.04em;
+    padding: 2px 6px;
     border-radius: 100px;
     border: 1px solid var(--border);
     color: var(--text-muted);
     text-transform: uppercase;
-    white-space: nowrap;
+    background: #fff;
 }
-.work-tag.accent {
+.book-inside-tag.accent {
     border-color: var(--accent);
     color: var(--accent);
-    background: rgba(245, 166, 35, 0.06);
+    background: rgba(245, 166, 35, 0.04);
 }
 
-/* Card Title */
-.work-card-title {
-    font-size: 1.35rem;
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    padding: 0 18px;
-    margin-bottom: 8px;
-    color: var(--text);
-}
-
-/* Card Description */
-.work-card-desc {
-    font-size: 0.82rem;
-    line-height: 1.65;
+.book-inside-desc {
+    font-size: 0.68rem;
+    line-height: 1.45;
     color: var(--text-secondary);
-    padding: 0 18px;
+    margin: 8px 0;
+    flex: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    position: relative;
+    z-index: 2;
+}
+
+/* 3D Swing Cover Animation */
+.book:hover .book-cover {
+    transform: rotateY(-125deg);
 }
 
 /* ─── Empty State ─── */
@@ -4732,9 +4831,38 @@ img { display: block; max-width: 100%; }
         display: inline-flex;
     }
 
-    .work-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        gap: 28px;
+    .work-bookshelves {
+        gap: 40px;
+    }
+    .bookshelf {
+        padding-bottom: 16px;
+    }
+    .bookshelf-row {
+        gap: 40px;
+        padding: 16px 8px 8px 8px;
+    }
+    .book {
+        width: 130px;
+        height: 185px;
+    }
+    .book-cover-title-area {
+        padding: 4px 6px;
+    }
+    .book-title {
+        font-size: 0.65rem;
+    }
+    .book-inside {
+        padding: 10px 8px;
+    }
+    .book-inside-desc {
+        font-size: 0.62rem;
+        line-height: 1.35;
+        margin: 4px 0;
+        -webkit-line-clamp: 4;
+    }
+    .book-inside-tag {
+        font-size: 0.48rem;
+        padding: 1px 4px;
     }
 }
 
@@ -4750,13 +4878,7 @@ img { display: block; max-width: 100%; }
     .work-header-title {
         font-size: 2.5rem;
     }
-    .work-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-    }
-    .work-card-tab {
-        top: -20px;
-        height: 22px;
-        width: 56px;
+    .bookshelf-row {
+        gap: 24px;
     }
 }

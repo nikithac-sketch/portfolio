@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=95">
+    <link rel="stylesheet" href="css/style.css?v=96">
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 </head>
 <body>
@@ -125,168 +125,229 @@
                 Filters
             </button>
 
-            <!-- ─── Project Grid ─── -->
-            <section class="work-grid" id="workGrid">
+            <!-- ─── Bookshelves Area ─── -->
+            <div class="work-bookshelves" id="workGrid">
+                
+                <!-- Bookshelf: UI/UX Design -->
+                <div class="bookshelf" data-shelf="uiux">
+                    <h2 class="bookshelf-title">UI/UX Design</h2>
+                    <div class="bookshelf-row">
+                        
+                        <!-- POTS -->
+                        <a href="pots.html" class="book" data-type="client" data-dept="uiux" data-duration="long" data-industry="fintech">
+                            <div class="book-inner">
+                                <div class="book-cover">
+                                    <div class="book-cover-front">
+                                        <div class="book-cover-thumb">
+                                            <img src="assets/svgs/project_Pots/img-pots.svg?v=29" alt="Pots thumbnail">
+                                        </div>
+                                        <div class="book-cover-title-area">
+                                            <h3 class="book-title">Pots</h3>
+                                        </div>
+                                    </div>
+                                    <div class="book-cover-back"></div>
+                                </div>
+                                <div class="book-inside">
+                                    <div class="book-inside-tags">
+                                        <span class="book-inside-tag">2024</span>
+                                        <span class="book-inside-tag accent">Fintech</span>
+                                    </div>
+                                    <p class="book-inside-desc">Making saving exciting — a gamified money pot experience with milestones, rewards, and compounding interest.</p>
+                                </div>
+                            </div>
+                        </a>
 
-                <!-- Project 1: POTS -->
-                <a href="pots.html" class="work-card" data-type="client" data-dept="uiux" data-duration="long" data-industry="fintech">
-                    <div class="work-card-tab">
-                        <span class="work-card-tab-label">01</span>
-                    </div>
-                    <div class="work-card-body">
-                        <div class="work-card-thumb">
-                            <img src="assets/svgs/project_Pots/img-pots.svg?v=29" alt="Pots project thumbnail" class="pots-landscape">
-                        </div>
-                        <div class="work-card-tags">
-                            <span class="work-tag">2024</span>
-                            <span class="work-tag accent">Fintech</span>
-                            <span class="work-tag">UX Design</span>
-                            <span class="work-tag">Gamification</span>
-                        </div>
-                        <h3 class="work-card-title">POTS</h3>
-                        <p class="work-card-desc">Making saving exciting — a gamified money pot experience with milestones, rewards, and compounding interest.</p>
-                    </div>
-                </a>
+                        <!-- ECHOVERSE -->
+                        <a href="#" class="book" data-type="personal" data-dept="uiux" data-duration="mid" data-industry="gaming">
+                            <div class="book-inner">
+                                <div class="book-cover">
+                                    <div class="book-cover-front">
+                                        <div class="book-cover-thumb">
+                                            <img src="assets/images/home/img-echoverse.png" alt="Echoverse thumbnail">
+                                        </div>
+                                        <div class="book-cover-title-area">
+                                            <h3 class="book-title">Echoverse</h3>
+                                        </div>
+                                    </div>
+                                    <div class="book-cover-back"></div>
+                                </div>
+                                <div class="book-inside">
+                                    <div class="book-inside-tags">
+                                        <span class="book-inside-tag">2024</span>
+                                        <span class="book-inside-tag accent">Game</span>
+                                    </div>
+                                    <p class="book-inside-desc">A spatial audio experience transforming sound into immersive 3D landscapes that react and reshape to music in real-time.</p>
+                                </div>
+                            </div>
+                        </a>
 
-                <!-- Project 2: ECHOVERSE -->
-                <a href="#" class="work-card" data-type="personal" data-dept="uiux" data-duration="mid" data-industry="gaming">
-                    <div class="work-card-tab">
-                        <span class="work-card-tab-label">02</span>
-                    </div>
-                    <div class="work-card-body">
-                        <div class="work-card-thumb">
-                            <img src="assets/images/home/img-echoverse.png" alt="Echoverse project thumbnail">
-                        </div>
-                        <div class="work-card-tags">
-                            <span class="work-tag">2024</span>
-                            <span class="work-tag accent">Game</span>
-                            <span class="work-tag">UX Design</span>
-                            <span class="work-tag">Spatial Audio</span>
-                        </div>
-                        <h3 class="work-card-title">ECHOVERSE</h3>
-                        <p class="work-card-desc">A spatial audio experience transforming sound into immersive 3D landscapes that react and reshape to music in real-time.</p>
-                    </div>
-                </a>
+                        <!-- TERRAFORM -->
+                        <a href="#" class="book" data-type="client" data-dept="product" data-duration="mid" data-industry="fintech">
+                            <div class="book-inner">
+                                <div class="book-cover">
+                                    <div class="book-cover-front">
+                                        <div class="book-cover-thumb">
+                                            <img src="assets/images/home/img-terraform.png" alt="Terraform thumbnail">
+                                        </div>
+                                        <div class="book-cover-title-area">
+                                            <h3 class="book-title">Terraform</h3>
+                                        </div>
+                                    </div>
+                                    <div class="book-cover-back"></div>
+                                </div>
+                                <div class="book-inside">
+                                    <div class="book-inside-tags">
+                                        <span class="book-inside-tag">2023</span>
+                                        <span class="book-inside-tag accent">Fintech</span>
+                                    </div>
+                                    <p class="book-inside-desc">An interactive climate data dashboard making complex environmental data accessible through stunning visualizations.</p>
+                                </div>
+                            </div>
+                        </a>
 
-                <!-- Project 3: TERRAFORM -->
-                <a href="#" class="work-card" data-type="client" data-dept="product" data-duration="mid" data-industry="fintech">
-                    <div class="work-card-tab">
-                        <span class="work-card-tab-label">03</span>
-                    </div>
-                    <div class="work-card-body">
-                        <div class="work-card-thumb">
-                            <img src="assets/images/home/img-terraform.png" alt="Terraform project thumbnail">
-                        </div>
-                        <div class="work-card-tags">
-                            <span class="work-tag">2023</span>
-                            <span class="work-tag accent">Fintech</span>
-                            <span class="work-tag">Product Design</span>
-                            <span class="work-tag">Dashboard</span>
-                        </div>
-                        <h3 class="work-card-title">TERRAFORM</h3>
-                        <p class="work-card-desc">An interactive climate data dashboard making complex environmental data accessible through stunning visualizations.</p>
-                    </div>
-                </a>
+                        <!-- STUDYBUDDY -->
+                        <a href="#" class="book" data-type="personal" data-dept="uiux" data-duration="quick" data-industry="edutech">
+                            <div class="book-inner">
+                                <div class="book-cover">
+                                    <div class="book-cover-front">
+                                        <div class="book-cover-thumb work-card-thumb-placeholder" style="--ph-hue: 200; height: 100%;">
+                                            <span class="thumb-placeholder-label" style="font-size: 0.8rem;">STUDYBUDDY</span>
+                                        </div>
+                                        <div class="book-cover-title-area">
+                                            <h3 class="book-title">StudyBuddy</h3>
+                                        </div>
+                                    </div>
+                                    <div class="book-cover-back"></div>
+                                </div>
+                                <div class="book-inside">
+                                    <div class="book-inside-tags">
+                                        <span class="book-inside-tag">2024</span>
+                                        <span class="book-inside-tag accent">Edutech</span>
+                                    </div>
+                                    <p class="book-inside-desc">A quick-win redesign of a peer study platform — simplifying group creation and session scheduling for college students.</p>
+                                </div>
+                            </div>
+                        </a>
 
-                <!-- Project 4: STUDYBUDDY -->
-                <a href="#" class="work-card" data-type="personal" data-dept="uiux" data-duration="quick" data-industry="edutech">
-                    <div class="work-card-tab">
-                        <span class="work-card-tab-label">04</span>
-                    </div>
-                    <div class="work-card-body">
-                        <div class="work-card-thumb work-card-thumb-placeholder" style="--ph-hue: 200;">
-                            <span class="thumb-placeholder-label">STUDYBUDDY</span>
-                        </div>
-                        <div class="work-card-tags">
-                            <span class="work-tag">2024</span>
-                            <span class="work-tag accent">Edutech</span>
-                            <span class="work-tag">UX Design</span>
-                        </div>
-                        <h3 class="work-card-title">STUDYBUDDY</h3>
-                        <p class="work-card-desc">A quick-win redesign of a peer study platform — simplifying group creation and session scheduling for college students.</p>
-                    </div>
-                </a>
+                        <!-- COINFLOW -->
+                        <a href="#" class="book" data-type="client" data-dept="uiux" data-duration="extended" data-industry="fintech">
+                            <div class="book-inner">
+                                <div class="book-cover">
+                                    <div class="book-cover-front">
+                                        <div class="book-cover-thumb work-card-thumb-placeholder" style="--ph-hue: 160; height: 100%;">
+                                            <span class="thumb-placeholder-label" style="font-size: 0.8rem;">COINFLOW</span>
+                                        </div>
+                                        <div class="book-cover-title-area">
+                                            <h3 class="book-title">Coinflow</h3>
+                                        </div>
+                                    </div>
+                                    <div class="book-cover-back"></div>
+                                </div>
+                                <div class="book-inside">
+                                    <div class="book-inside-tags">
+                                        <span class="book-inside-tag">2023</span>
+                                        <span class="book-inside-tag accent">Fintech</span>
+                                    </div>
+                                    <p class="book-inside-desc">End-to-end design of a crypto portfolio tracker with real-time analytics, risk scoring, and a comprehensive design system.</p>
+                                </div>
+                            </div>
+                        </a>
 
-                <!-- Project 5: COINFLOW -->
-                <a href="#" class="work-card" data-type="client" data-dept="uiux" data-duration="extended" data-industry="fintech">
-                    <div class="work-card-tab">
-                        <span class="work-card-tab-label">05</span>
-                    </div>
-                    <div class="work-card-body">
-                        <div class="work-card-thumb work-card-thumb-placeholder" style="--ph-hue: 160;">
-                            <span class="thumb-placeholder-label">COINFLOW</span>
-                        </div>
-                        <div class="work-card-tags">
-                            <span class="work-tag">2023</span>
-                            <span class="work-tag accent">Fintech</span>
-                            <span class="work-tag">UX Design</span>
-                            <span class="work-tag">Design System</span>
-                        </div>
-                        <h3 class="work-card-title">COINFLOW</h3>
-                        <p class="work-card-desc">End-to-end design of a crypto portfolio tracker with real-time analytics, risk scoring, and a comprehensive design system.</p>
-                    </div>
-                </a>
+                        <!-- PAYWISE -->
+                        <a href="#" class="book" data-type="client" data-dept="product" data-duration="long" data-industry="fintech">
+                            <div class="book-inner">
+                                <div class="book-cover">
+                                    <div class="book-cover-front">
+                                        <div class="book-cover-thumb work-card-thumb-placeholder" style="--ph-hue: 340; height: 100%;">
+                                            <span class="thumb-placeholder-label" style="font-size: 0.8rem;">PAYWISE</span>
+                                        </div>
+                                        <div class="book-cover-title-area">
+                                            <h3 class="book-title">Paywise</h3>
+                                        </div>
+                                    </div>
+                                    <div class="book-cover-back"></div>
+                                </div>
+                                <div class="book-inside">
+                                    <div class="book-inside-tags">
+                                        <span class="book-inside-tag">2024</span>
+                                        <span class="book-inside-tag accent">Fintech</span>
+                                    </div>
+                                    <p class="book-inside-desc">A B2B payroll management platform redesign — streamlining compliance, approvals, and employee self-service portals.</p>
+                                </div>
+                            </div>
+                        </a>
 
-                <!-- Project 6: QUESTFORGE -->
-                <a href="#" class="work-card" data-type="personal" data-dept="game" data-duration="mid" data-industry="gaming">
-                    <div class="work-card-tab">
-                        <span class="work-card-tab-label">06</span>
                     </div>
-                    <div class="work-card-body">
-                        <div class="work-card-thumb work-card-thumb-placeholder" style="--ph-hue: 280;">
-                            <span class="thumb-placeholder-label">QUESTFORGE</span>
-                        </div>
-                        <div class="work-card-tags">
-                            <span class="work-tag">2024</span>
-                            <span class="work-tag accent">Game</span>
-                            <span class="work-tag">Game Design</span>
-                            <span class="work-tag">Narrative</span>
-                        </div>
-                        <h3 class="work-card-title">QUESTFORGE</h3>
-                        <p class="work-card-desc">A narrative-driven RPG with branching storylines — designed the quest system, progression mechanics, and player onboarding.</p>
-                    </div>
-                </a>
+                    <div class="bookshelf-wood"></div>
+                </div>
 
-                <!-- Project 7: LEARNLOOP -->
-                <a href="#" class="work-card" data-type="client" data-dept="research" data-duration="quick" data-industry="edutech">
-                    <div class="work-card-tab">
-                        <span class="work-card-tab-label">07</span>
-                    </div>
-                    <div class="work-card-body">
-                        <div class="work-card-thumb work-card-thumb-placeholder" style="--ph-hue: 40;">
-                            <span class="thumb-placeholder-label">LEARNLOOP</span>
-                        </div>
-                        <div class="work-card-tags">
-                            <span class="work-tag">2023</span>
-                            <span class="work-tag accent">Edutech</span>
-                            <span class="work-tag">Design Research</span>
-                        </div>
-                        <h3 class="work-card-title">LEARNLOOP</h3>
-                        <p class="work-card-desc">A research sprint uncovering how learners retain microlearning content — user interviews, journey maps, and actionable insights.</p>
-                    </div>
-                </a>
+                <!-- Bookshelf: Game Design -->
+                <div class="bookshelf" data-shelf="game">
+                    <h2 class="bookshelf-title">Game Design</h2>
+                    <div class="bookshelf-row">
+                        
+                        <!-- QUESTFORGE -->
+                        <a href="#" class="book" data-type="personal" data-dept="game" data-duration="mid" data-industry="gaming">
+                            <div class="book-inner">
+                                <div class="book-cover">
+                                    <div class="book-cover-front">
+                                        <div class="book-cover-thumb work-card-thumb-placeholder" style="--ph-hue: 280; height: 100%;">
+                                            <span class="thumb-placeholder-label" style="font-size: 0.8rem;">QUESTFORGE</span>
+                                        </div>
+                                        <div class="book-cover-title-area">
+                                            <h3 class="book-title">Questforge</h3>
+                                        </div>
+                                    </div>
+                                    <div class="book-cover-back"></div>
+                                </div>
+                                <div class="book-inside">
+                                    <div class="book-inside-tags">
+                                        <span class="book-inside-tag">2024</span>
+                                        <span class="book-inside-tag accent">Game</span>
+                                    </div>
+                                    <p class="book-inside-desc">A narrative-driven RPG with branching storylines — designed the quest system, progression mechanics, and player onboarding.</p>
+                                </div>
+                            </div>
+                        </a>
 
-                <!-- Project 8: PAYWISE -->
-                <a href="#" class="work-card" data-type="client" data-dept="product" data-duration="long" data-industry="fintech">
-                    <div class="work-card-tab">
-                        <span class="work-card-tab-label">08</span>
                     </div>
-                    <div class="work-card-body">
-                        <div class="work-card-thumb work-card-thumb-placeholder" style="--ph-hue: 340;">
-                            <span class="thumb-placeholder-label">PAYWISE</span>
-                        </div>
-                        <div class="work-card-tags">
-                            <span class="work-tag">2024</span>
-                            <span class="work-tag accent">Fintech</span>
-                            <span class="work-tag">Product Design</span>
-                            <span class="work-tag">B2B</span>
-                        </div>
-                        <h3 class="work-card-title">PAYWISE</h3>
-                        <p class="work-card-desc">A B2B payroll management platform redesign — streamlining compliance, approvals, and employee self-service portals.</p>
-                    </div>
-                </a>
+                    <div class="bookshelf-wood"></div>
+                </div>
 
-            </section>
+                <!-- Bookshelf: Design Research -->
+                <div class="bookshelf" data-shelf="research">
+                    <h2 class="bookshelf-title">Design Research</h2>
+                    <div class="bookshelf-row">
+                        
+                        <!-- LEARNLOOP -->
+                        <a href="#" class="book" data-type="client" data-dept="research" data-duration="quick" data-industry="edutech">
+                            <div class="book-inner">
+                                <div class="book-cover">
+                                    <div class="book-cover-front">
+                                        <div class="book-cover-thumb work-card-thumb-placeholder" style="--ph-hue: 40; height: 100%;">
+                                            <span class="thumb-placeholder-label" style="font-size: 0.8rem;">LEARNLOOP</span>
+                                        </div>
+                                        <div class="book-cover-title-area">
+                                            <h3 class="book-title">Learnloop</h3>
+                                        </div>
+                                    </div>
+                                    <div class="book-cover-back"></div>
+                                </div>
+                                <div class="book-inside">
+                                    <div class="book-inside-tags">
+                                        <span class="book-inside-tag">2023</span>
+                                        <span class="book-inside-tag accent">Edutech</span>
+                                    </div>
+                                    <p class="book-inside-desc">A research sprint uncovering how learners retain microlearning content — user interviews, journey maps, and actionable insights.</p>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="bookshelf-wood"></div>
+                </div>
+
+            </div>
         </div>
 
         <!-- No results state -->
@@ -307,6 +368,6 @@
         </div>
     </footer>
 
-    <script src="js/work.js?v=3"></script>
+    <script src="js/work.js?v=4"></script>
 </body>
 </html>

@@ -16,7 +16,8 @@
     const filterToggle = document.getElementById('filterToggle');
     const filtersPanel = document.getElementById('workFilters');
 
-    const allCards = workGrid ? Array.from(workGrid.querySelectorAll('.work-card')) : [];
+    const allBooks = workGrid ? Array.from(workGrid.querySelectorAll('.book')) : [];
+    const allShelves = workGrid ? Array.from(workGrid.querySelectorAll('.bookshelf')) : [];
     const allCheckboxes = filtersPanel ? Array.from(filtersPanel.querySelectorAll('input[type="checkbox"]')) : [];
 
     // ─── Live Clock ───
@@ -61,33 +62,44 @@
         const hasActiveFilters = Object.keys(filters).length > 0;
         let visibleCount = 0;
 
-        allCards.forEach((card, i) => {
+        allBooks.forEach((book) => {
             let show = true;
 
             if (hasActiveFilters) {
-                // For each filter group, the card must match at least one selected value (OR within group, AND across groups)
+                // For each filter group, the book must match at least one selected value (OR within group, AND across groups)
                 if (filters.type && filters.type.length > 0) {
-                    if (!filters.type.includes(card.getAttribute('data-type'))) show = false;
+                    if (!filters.type.includes(book.getAttribute('data-type'))) show = false;
                 }
                 if (filters.dept && filters.dept.length > 0) {
-                    if (!filters.dept.includes(card.getAttribute('data-dept'))) show = false;
+                    if (!filters.dept.includes(book.getAttribute('data-dept'))) show = false;
                 }
                 if (filters.duration && filters.duration.length > 0) {
-                    if (!filters.duration.includes(card.getAttribute('data-duration'))) show = false;
+                    if (!filters.duration.includes(book.getAttribute('data-duration'))) show = false;
                 }
                 if (filters.industry && filters.industry.length > 0) {
-                    if (!filters.industry.includes(card.getAttribute('data-industry'))) show = false;
+                    if (!filters.industry.includes(book.getAttribute('data-industry'))) show = false;
                 }
             }
 
             if (show) {
-                card.style.display = '';
-                card.style.animationDelay = (visibleCount * 60) + 'ms';
-                card.classList.add('card-enter');
+                book.style.display = '';
+                book.style.animationDelay = (visibleCount * 60) + 'ms';
+                book.classList.add('book-enter');
                 visibleCount++;
             } else {
-                card.style.display = 'none';
-                card.classList.remove('card-enter');
+                book.style.display = 'none';
+                book.classList.remove('book-enter');
+            }
+        });
+
+        // Filter bookshelves
+        allShelves.forEach(shelf => {
+            const shelfBooks = Array.from(shelf.querySelectorAll('.book'));
+            const visibleBooksInShelf = shelfBooks.filter(b => b.style.display !== 'none');
+            if (visibleBooksInShelf.length > 0) {
+                shelf.style.display = '';
+            } else {
+                shelf.style.display = 'none';
             }
         });
 
@@ -204,9 +216,9 @@
     }
 
     // ─── Stagger entrance animation ───
-    allCards.forEach((card, i) => {
-        card.style.animationDelay = (i * 80) + 'ms';
-        card.classList.add('card-enter');
+    allBooks.forEach((book, i) => {
+        book.style.animationDelay = (i * 80) + 'ms';
+        book.classList.add('book-enter');
     });
 
     // ─── Scroll listener ───
