@@ -137,6 +137,17 @@
         });
     }
 
+    // Collapsible filter groups
+    const filterGroupLabels = filtersPanel ? filtersPanel.querySelectorAll('.filter-group-label') : [];
+    filterGroupLabels.forEach(label => {
+        label.addEventListener('click', () => {
+            const group = label.closest('.filter-group');
+            if (group) {
+                group.classList.toggle('collapsed');
+            }
+        });
+    });
+
     // ─── Stagger entrance animation ───
     allCards.forEach((card, i) => {
         card.style.animationDelay = (i * 80) + 'ms';

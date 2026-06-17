@@ -4235,6 +4235,10 @@ img { display: block; max-width: 100%; }
 /* Filter Group */
 .filter-group {
     margin-bottom: 28px;
+    transition: margin-bottom 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.filter-group.collapsed {
+    margin-bottom: 14px;
 }
 .filter-group-label {
     font-family: var(--font-mono);
@@ -4244,7 +4248,33 @@ img { display: block; max-width: 100%; }
     color: var(--text-muted);
     text-transform: uppercase;
     margin-bottom: 14px;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+.filter-group-label:hover {
+    color: var(--text);
+}
+.filter-group-chevron {
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: rotate(0deg);
+}
+.filter-group.collapsed .filter-group-chevron {
+    transform: rotate(-90deg);
+}
+.filter-group-options {
+    max-height: 250px;
+    overflow: hidden;
+    transition: max-height 0.25s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease;
+    opacity: 1;
+}
+.filter-group.collapsed .filter-group-options {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* Custom Checkbox */
