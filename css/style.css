@@ -432,15 +432,13 @@ img { display: block; max-width: 100%; }
 }
 .story-ring-svg circle {
     fill: none;
-    stroke: url(#storyGradient);
+    stroke: var(--accent, #E8A838);
     stroke-width: 3;
     stroke-dasharray: 6 3;
     stroke-linecap: round;
+    transform-box: fill-box;
+    transform-origin: center;
     animation: storyRingSpin 8s linear infinite;
-}
-/* Fallback solid stroke if no gradient defined — we'll use CSS instead */
-.story-ring-svg circle {
-    stroke: var(--accent, #E8A838);
 }
 .story-ring-icon {
     font-size: 0.72rem;
