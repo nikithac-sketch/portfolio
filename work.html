@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work — Nikitha C</title>
+    <meta name="description" content="Selected works by Nikitha C — UX design, game design, and product design projects across fintech, edutech, and gaming.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=92">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-left">
+            <span class="nav-local">LOCAL/</span>
+            <span class="nav-clock" id="navClock">00:00:00</span>
+        </div>
+        <div class="nav-center">
+            <a href="index.html" class="nav-logo" aria-label="Home">
+                <span class="logo-dot"></span>
+                <span class="logo-dot"></span>
+                <span class="logo-dot"></span>
+                <span class="logo-dot"></span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="work.html" class="nav-link active-page">WORK</a>
+            <a href="#" class="nav-link">FUN</a>
+            <a href="index.html#chapter-connect" class="nav-btn-wobbly" id="navContactBtn">
+                CONTACT
+                <svg class="nav-sketch-border" viewBox="0 0 120 40" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 8,2 C 40,1.5 80,2.5 112,2 C 115,2 118,4 118,8 C 117,14 118,26 118,32 C 118,36 115,38 112,38 C 80,37.5 40,38.5 8,38 C 5,38 2,36 2,32 C 3,26 1,14 2,8 C 2,4 5,2 8,2 Z" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ============ WORK PAGE ============ -->
+    <main class="work-page">
+
+        <!-- Page Header -->
+        <header class="work-header">
+            <span class="work-header-label">SELECTED WORK</span>
+            <h1 class="work-header-title">Projects</h1>
+            <p class="work-header-sub">A collection of client and personal projects across UX, product, game design, and research.</p>
+        </header>
+
+        <div class="work-layout">
+
+            <!-- ─── Filter Sidebar ─── -->
+            <aside class="work-filters" id="workFilters">
+                <div class="filter-header">
+                    <span class="filter-title">Filters</span>
+                    <button class="filter-clear" id="filterClear">Clear all</button>
+                </div>
+
+                <!-- Type -->
+                <div class="filter-group">
+                    <h3 class="filter-group-label">Type</h3>
+                    <label class="filter-check"><input type="checkbox" name="type" value="client"><span class="filter-check-box"></span>Client</label>
+                    <label class="filter-check"><input type="checkbox" name="type" value="personal"><span class="filter-check-box"></span>Personal</label>
+                </div>
+
+                <!-- Department -->
+                <div class="filter-group">
+                    <h3 class="filter-group-label">Department</h3>
+                    <label class="filter-check"><input type="checkbox" name="dept" value="uiux"><span class="filter-check-box"></span>UI/UX Design</label>
+                    <label class="filter-check"><input type="checkbox" name="dept" value="game"><span class="filter-check-box"></span>Game Design</label>
+                    <label class="filter-check"><input type="checkbox" name="dept" value="product"><span class="filter-check-box"></span>Product Design</label>
+                    <label class="filter-check"><input type="checkbox" name="dept" value="research"><span class="filter-check-box"></span>Design Research</label>
+                </div>
+
+                <!-- Time Duration -->
+                <div class="filter-group">
+                    <h3 class="filter-group-label">Time Duration</h3>
+                    <label class="filter-check"><input type="checkbox" name="duration" value="quick"><span class="filter-check-box"></span>Quick wins &lt; 1 month</label>
+                    <label class="filter-check"><input type="checkbox" name="duration" value="mid"><span class="filter-check-box"></span>1–6 months</label>
+                    <label class="filter-check"><input type="checkbox" name="duration" value="long"><span class="filter-check-box"></span>6 months – 1 year</label>
+                    <label class="filter-check"><input type="checkbox" name="duration" value="extended"><span class="filter-check-box"></span>1 year and above</label>
+                </div>
+
+                <!-- Industry -->
+                <div class="filter-group">
+                    <h3 class="filter-group-label">Industry</h3>
+                    <label class="filter-check"><input type="checkbox" name="industry" value="fintech"><span class="filter-check-box"></span>Fintech</label>
+                    <label class="filter-check"><input type="checkbox" name="industry" value="edutech"><span class="filter-check-box"></span>Edutech</label>
+                    <label class="filter-check"><input type="checkbox" name="industry" value="gaming"><span class="filter-check-box"></span>Game</label>
+                </div>
+            </aside>
+
+            <!-- Mobile filter toggle -->
+            <button class="work-filter-toggle" id="filterToggle">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 4h14M5 9h8M7 14h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Filters
+            </button>
+
+            <!-- ─── Project Grid ─── -->
+            <section class="work-grid" id="workGrid">
+
+                <!-- Project 1: POTS -->
+                <a href="pots.html" class="work-card" data-type="client" data-dept="uiux" data-duration="long" data-industry="fintech">
+                    <div class="work-card-tab">
+                        <span class="work-card-tab-label">01</span>
+                    </div>
+                    <div class="work-card-body">
+                        <div class="work-card-thumb">
+                            <img src="assets/svgs/project_Pots/img-pots.svg?v=29" alt="Pots project thumbnail" class="pots-landscape">
+                        </div>
+                        <div class="work-card-tags">
+                            <span class="work-tag">2024</span>
+                            <span class="work-tag accent">Fintech</span>
+                            <span class="work-tag">UX Design</span>
+                            <span class="work-tag">Gamification</span>
+                        </div>
+                        <h3 class="work-card-title">POTS</h3>
+                        <p class="work-card-desc">Making saving exciting — a gamified money pot experience with milestones, rewards, and compounding interest.</p>
+                    </div>
+                </a>
+
+                <!-- Project 2: ECHOVERSE -->
+                <a href="#" class="work-card" data-type="personal" data-dept="uiux" data-duration="mid" data-industry="gaming">
+                    <div class="work-card-tab">
+                        <span class="work-card-tab-label">02</span>
+                    </div>
+                    <div class="work-card-body">
+                        <div class="work-card-thumb">
+                            <img src="assets/images/home/img-echoverse.png" alt="Echoverse project thumbnail">
+                        </div>
+                        <div class="work-card-tags">
+                            <span class="work-tag">2024</span>
+                            <span class="work-tag accent">Game</span>
+                            <span class="work-tag">UX Design</span>
+                            <span class="work-tag">Spatial Audio</span>
+                        </div>
+                        <h3 class="work-card-title">ECHOVERSE</h3>
+                        <p class="work-card-desc">A spatial audio experience transforming sound into immersive 3D landscapes that react and reshape to music in real-time.</p>
+                    </div>
+                </a>
+
+                <!-- Project 3: TERRAFORM -->
+                <a href="#" class="work-card" data-type="client" data-dept="product" data-duration="mid" data-industry="fintech">
+                    <div class="work-card-tab">
+                        <span class="work-card-tab-label">03</span>
+                    </div>
+                    <div class="work-card-body">
+                        <div class="work-card-thumb">
+                            <img src="assets/images/home/img-terraform.png" alt="Terraform project thumbnail">
+                        </div>
+                        <div class="work-card-tags">
+                            <span class="work-tag">2023</span>
+                            <span class="work-tag accent">Fintech</span>
+                            <span class="work-tag">Product Design</span>
+                            <span class="work-tag">Dashboard</span>
+                        </div>
+                        <h3 class="work-card-title">TERRAFORM</h3>
+                        <p class="work-card-desc">An interactive climate data dashboard making complex environmental data accessible through stunning visualizations.</p>
+                    </div>
+                </a>
+
+                <!-- Project 4: STUDYBUDDY -->
+                <a href="#" class="work-card" data-type="personal" data-dept="uiux" data-duration="quick" data-industry="edutech">
+                    <div class="work-card-tab">
+                        <span class="work-card-tab-label">04</span>
+                    </div>
+                    <div class="work-card-body">
+                        <div class="work-card-thumb work-card-thumb-placeholder" style="--ph-hue: 200;">
+                            <span class="thumb-placeholder-label">STUDYBUDDY</span>
+                        </div>
+                        <div class="work-card-tags">
+                            <span class="work-tag">2024</span>
+                            <span class="work-tag accent">Edutech</span>
+                            <span class="work-tag">UX Design</span>
+                        </div>
+                        <h3 class="work-card-title">STUDYBUDDY</h3>
+                        <p class="work-card-desc">A quick-win redesign of a peer study platform — simplifying group creation and session scheduling for college students.</p>
+                    </div>
+                </a>
+
+                <!-- Project 5: COINFLOW -->
+                <a href="#" class="work-card" data-type="client" data-dept="uiux" data-duration="extended" data-industry="fintech">
+                    <div class="work-card-tab">
+                        <span class="work-card-tab-label">05</span>
+                    </div>
+                    <div class="work-card-body">
+                        <div class="work-card-thumb work-card-thumb-placeholder" style="--ph-hue: 160;">
+                            <span class="thumb-placeholder-label">COINFLOW</span>
+                        </div>
+                        <div class="work-card-tags">
+                            <span class="work-tag">2023</span>
+                            <span class="work-tag accent">Fintech</span>
+                            <span class="work-tag">UX Design</span>
+                            <span class="work-tag">Design System</span>
+                        </div>
+                        <h3 class="work-card-title">COINFLOW</h3>
+                        <p class="work-card-desc">End-to-end design of a crypto portfolio tracker with real-time analytics, risk scoring, and a comprehensive design system.</p>
+                    </div>
+                </a>
+
+                <!-- Project 6: QUESTFORGE -->
+                <a href="#" class="work-card" data-type="personal" data-dept="game" data-duration="mid" data-industry="gaming">
+                    <div class="work-card-tab">
+                        <span class="work-card-tab-label">06</span>
+                    </div>
+                    <div class="work-card-body">
+                        <div class="work-card-thumb work-card-thumb-placeholder" style="--ph-hue: 280;">
+                            <span class="thumb-placeholder-label">QUESTFORGE</span>
+                        </div>
+                        <div class="work-card-tags">
+                            <span class="work-tag">2024</span>
+                            <span class="work-tag accent">Game</span>
+                            <span class="work-tag">Game Design</span>
+                            <span class="work-tag">Narrative</span>
+                        </div>
+                        <h3 class="work-card-title">QUESTFORGE</h3>
+                        <p class="work-card-desc">A narrative-driven RPG with branching storylines — designed the quest system, progression mechanics, and player onboarding.</p>
+                    </div>
+                </a>
+
+                <!-- Project 7: LEARNLOOP -->
+                <a href="#" class="work-card" data-type="client" data-dept="research" data-duration="quick" data-industry="edutech">
+                    <div class="work-card-tab">
+                        <span class="work-card-tab-label">07</span>
+                    </div>
+                    <div class="work-card-body">
+                        <div class="work-card-thumb work-card-thumb-placeholder" style="--ph-hue: 40;">
+                            <span class="thumb-placeholder-label">LEARNLOOP</span>
+                        </div>
+                        <div class="work-card-tags">
+                            <span class="work-tag">2023</span>
+                            <span class="work-tag accent">Edutech</span>
+                            <span class="work-tag">Design Research</span>
+                        </div>
+                        <h3 class="work-card-title">LEARNLOOP</h3>
+                        <p class="work-card-desc">A research sprint uncovering how learners retain microlearning content — user interviews, journey maps, and actionable insights.</p>
+                    </div>
+                </a>
+
+                <!-- Project 8: PAYWISE -->
+                <a href="#" class="work-card" data-type="client" data-dept="product" data-duration="long" data-industry="fintech">
+                    <div class="work-card-tab">
+                        <span class="work-card-tab-label">08</span>
+                    </div>
+                    <div class="work-card-body">
+                        <div class="work-card-thumb work-card-thumb-placeholder" style="--ph-hue: 340;">
+                            <span class="thumb-placeholder-label">PAYWISE</span>
+                        </div>
+                        <div class="work-card-tags">
+                            <span class="work-tag">2024</span>
+                            <span class="work-tag accent">Fintech</span>
+                            <span class="work-tag">Product Design</span>
+                            <span class="work-tag">B2B</span>
+                        </div>
+                        <h3 class="work-card-title">PAYWISE</h3>
+                        <p class="work-card-desc">A B2B payroll management platform redesign — streamlining compliance, approvals, and employee self-service portals.</p>
+                    </div>
+                </a>
+
+            </section>
+        </div>
+
+        <!-- No results state -->
+        <div class="work-empty" id="workEmpty">
+            <img src="assets/Highlights-by-Outdraw-Design/12_Doodles/Doodle 4.svg" class="work-empty-doodle" alt="">
+            <p>No projects match the selected filters.</p>
+            <button class="work-empty-clear" id="emptyClear">Clear filters</button>
+        </div>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">NIKITHA C <span class="accent-dot">.</span></span>
+            <span class="footer-copy">&copy; 2026 — Crafted with passion, code & coffee.</span>
+            <span class="footer-back"><a href="#hero">BACK TO TOP ↑</a></span>
+        </div>
+    </footer>
+
+    <script src="js/work.js?v=1"></script>
+</body>
+</html>
