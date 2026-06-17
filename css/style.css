@@ -4879,3 +4879,35 @@ img { display: block; max-width: 100%; }
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* ============================================
+   RADIAL TRANSITION & EXPANDING CIRCLE
+   ============================================ */
+.expanding-transition-circle {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: #ff7a00;
+    border-radius: 50%;
+    z-index: 10000;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.radial-reveal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ff7a00;
+    z-index: 10000;
+    pointer-events: none;
+    clip-path: circle(150% at 50% 50%);
+    transition: clip-path 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.radial-reveal-overlay.reveal-active {
+    clip-path: circle(0% at 50% 50%);
+}
