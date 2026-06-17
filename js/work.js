@@ -129,6 +129,14 @@
     if (filterClearBtn) filterClearBtn.addEventListener('click', clearAllFilters);
     if (emptyClearBtn) emptyClearBtn.addEventListener('click', clearAllFilters);
 
+    // Sticky header DOM reference
+    const workStickyHeader = document.getElementById('workStickyHeader');
+    function updateStickyHeader() {
+        if (workStickyHeader) {
+            workStickyHeader.classList.toggle('is-sticky', window.scrollY > 40);
+        }
+    }
+
     // Mobile filter toggle
     if (filterToggle && filtersPanel) {
         filterToggle.addEventListener('click', () => {
@@ -137,16 +145,63 @@
         });
     }
 
-    // Collapsible filter groups
+    // Mobile filter close button
+    const filterClose = document.getElementById('filterClose');
+    if (filterClose && filtersPanel) {
+        filterClose.addEventListener('click', () => {
+            filtersPanel.classList.remove('open');
+            if (filterToggle) filterToggle.classList.remove('active');
+        });
+    }
+
+    // Collapsible filter groups & Dropdown behavior
     const filterGroupLabels = filtersPanel ? filtersPanel.querySelectorAll('.filter-group-label') : [];
     filterGroupLabels.forEach(label => {
-        label.addEventListener('click', () => {
+        label.addEventListener('click', (e) => {
+            const isDesktop = window.innerWidth > 900;
             const group = label.closest('.filter-group');
+            
             if (group) {
-                group.classList.toggle('collapsed');
+                if (isDesktop) {
+                    e.stopPropagation();
+                    const isCollapsed = group.classList.contains('collapsed');
+                    // Close all other groups
+                    if (filtersPanel) {
+                        filtersPanel.querySelectorAll('.filter-group').forEach(g => {
+                            g.classList.add('collapsed');
+                        });
+                    }
+                    // Toggle this group
+                    if (isCollapsed) {
+                        group.classList.remove('collapsed');
+                    } else {
+                        group.classList.add('collapsed');
+                    }
+                } else {
+                    // Mobile accordion
+                    group.classList.toggle('collapsed');
+                }
             }
         });
     });
+
+    // Close dropdowns on click outside (desktop only)
+    document.addEventListener('click', () => {
+        if (window.innerWidth > 900 && filtersPanel) {
+            filtersPanel.querySelectorAll('.filter-group').forEach(g => {
+                g.classList.add('collapsed');
+            });
+        }
+    });
+
+    // Stop propagation inside options so clicking options doesn't close the dropdown
+    if (filtersPanel) {
+        filtersPanel.querySelectorAll('.filter-group-options').forEach(options => {
+            options.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+    }
 
     // ─── Stagger entrance animation ───
     allCards.forEach((card, i) => {
@@ -161,6 +216,7 @@
             requestAnimationFrame(() => {
                 updateScrollProgress();
                 updateNavState();
+                updateStickyHeader();
                 ticking = false;
             });
             ticking = true;
@@ -170,6 +226,7 @@
     // ─── Initial ───
     updateScrollProgress();
     updateNavState();
+    updateStickyHeader();
     applyFilters();
 
 })();
