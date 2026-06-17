@@ -3711,61 +3711,28 @@ img { display: block; max-width: 100%; }
     align-items: flex-start;
 }
 
-/* ─── Left Sidebar: Folders ─── */
-.ideation-folders {
-    flex: 0 0 210px;
+/* ─── Left Sidebar: Phase Selection ─── */
+.ideation-sidebar {
+    flex: 0 0 260px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
     padding-top: 6px;
 }
 
-.ideation-folder {
+.ideation-sidebar .ideation-phase-btns {
     display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 18px;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.ideation-sidebar .ideation-phase-btn {
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+    padding: 12px 20px;
     border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    border: 1.5px solid transparent;
-    background: transparent;
-    user-select: none;
-}
-
-.ideation-folder:hover {
-    background: var(--bg-alt);
-}
-
-.ideation-folder.active {
-    background: var(--bg-alt);
-    border-color: rgba(0, 0, 0, 0.06);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-}
-
-.ideation-folder .folder-icon {
-    width: 22px;
-    height: 22px;
-    flex-shrink: 0;
-    color: var(--text-secondary);
-    transition: color 0.3s ease;
-}
-
-.ideation-folder.active .folder-icon {
-    color: var(--accent);
-}
-
-.ideation-folder .folder-label {
-    font-family: var(--font);
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    transition: color 0.3s ease;
-    line-height: 1.3;
-}
-
-.ideation-folder.active .folder-label {
-    color: var(--text);
 }
 
 /* ─── Right Panel: Explorer ─── */
@@ -3915,17 +3882,7 @@ img { display: block; max-width: 100%; }
     color: rgba(0, 0, 0, 0.15);
 }
 
-/* Discarded folder — greyed out effect */
-.ideation-screen-flow.discarded .ideation-screen-card {
-    filter: grayscale(0.45);
-    opacity: 0.55;
-    border-color: rgba(0, 0, 0, 0.06);
-    background: #f0f0f0;
-}
 
-.ideation-screen-flow.discarded .ideation-flow-arrow {
-    opacity: 0.4;
-}
 
 /* ─── Responsive Overrides ─── */
 @media (max-width: 900px) {
@@ -3934,16 +3891,23 @@ img { display: block; max-width: 100%; }
         gap: 24px;
     }
 
-    .ideation-folders {
+    .ideation-sidebar {
         flex: none;
         width: 100%;
-        flex-direction: row;
-        gap: 12px;
     }
 
-    .ideation-folder {
-        flex: 1;
-        justify-content: center;
+    .ideation-sidebar .ideation-phase-btns {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .ideation-sidebar .ideation-phase-btn {
+        width: auto;
+        flex-shrink: 0;
+        padding: 10px 16px;
     }
 
     .ideation-screen-card {
@@ -3962,12 +3926,10 @@ img { display: block; max-width: 100%; }
     .ideation-subtitle {
         font-size: 1rem;
     }
-    .ideation-phase-btns {
-        gap: 8px;
-    }
-    .ideation-phase-btn {
+    .ideation-sidebar .ideation-phase-btn {
         font-size: 0.62rem;
         padding: 8px 14px;
+        border-radius: 100px;
     }
     .ideation-screen-card {
         flex: 0 0 110px;
