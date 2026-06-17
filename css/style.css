@@ -4415,79 +4415,30 @@ img { display: block; max-width: 100%; }
     margin-left: 4px;
 }
 
-/* ─── Bookshelves Area ─── */
-.work-bookshelves {
+/* ============================================
+   WORK GRID & CARDS
+   ============================================ */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 48px;
+    margin-top: 40px;
+    perspective: 1000px;
+}
+
+.project-card {
+    position: relative;
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    gap: 64px;
-}
-
-.bookshelf {
-    position: relative;
-    padding-bottom: 24px;
-}
-
-.bookshelf-title {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 16px;
-    padding-left: 8px;
-    border-left: 3px solid var(--accent);
-    line-height: 1;
-}
-
-.bookshelf-row {
-    display: flex;
-    gap: 64px;
-    padding: 24px 24px 8px 24px;
-    overflow-x: auto;
-    scrollbar-width: none; /* Hide default scrollbar */
-    perspective: 1200px; /* Perspective for books on this shelf */
-    align-items: flex-end;
-}
-.bookshelf-row:not(:first-of-type) {
-    margin-top: 48px;
-}
-.bookshelf-row::-webkit-scrollbar {
-    display: none;
-}
-
-.bookshelf-wood {
-    height: 20px;
-    position: relative;
-    z-index: 2;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    margin-bottom: 24px;
-}
-
-.wood-sketch-overlay {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-.wood-sketch-overlay path {
-    stroke: var(--text);
-    stroke-width: 2.2;
-    fill: var(--bg-alt);
-    vector-effect: non-scaling-stroke;
-}
-
-/* ─── 3D Book Component ─── */
-.book {
-    width: 240px;
-    height: 180px;
-    position: relative;
-    perspective: 1000px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     cursor: pointer;
-    flex-shrink: 0;
+    overflow: hidden;
+    height: 100%;
+    min-height: 420px;
     text-decoration: none;
     color: inherit;
     /* Entrance Animation */
@@ -4495,190 +4446,119 @@ img { display: block; max-width: 100%; }
     transform: translateY(20px);
     z-index: 10;
 }
-.book.book-enter {
-    animation: bookEntrance 0.5s var(--ease-expo) both;
+
+.project-card.card-enter {
+    animation: cardEntrance 0.5s var(--ease-expo) both;
 }
-@keyframes bookEntrance {
+
+@keyframes cardEntrance {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-.book:hover {
-    z-index: 20;
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
-.book-inner {
-    width: 100%;
-    height: 100%;
+.project-card-thumb {
     position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.book-cover {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    z-index: 10;
-    transform-origin: left center;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    transform-style: preserve-3d;
-}
-
-.book-cover-front,
-.book-cover-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 4px 10px 10px 4px;
-    border: none;
-    box-sizing: border-box;
-}
-
-.book-cover-front {
-    z-index: 2;
-    background: var(--bg);
-    transform: rotateY(0deg);
-    display: flex;
-    flex-direction: column;
+    aspect-ratio: 16 / 10;
     overflow: hidden;
-    box-shadow: -4px 6px 12px rgba(0, 0, 0, 0.05);
-    padding: 6px;
-}
-
-.book-cover-front::after {
-    /* Book spine decorative shadow */
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 10px;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.08), transparent);
-    border-right: 1px solid rgba(0, 0, 0, 0.05);
-    z-index: 3;
-}
-
-.book-cover-back {
-    z-index: 1;
-    background: transparent;
-    transform: rotateY(180deg);
-    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.05);
-}
-
-.book-cover-thumb {
-    width: 100%;
-    height: 75%;
-    overflow: hidden;
+    border-radius: 8px;
     background: var(--bg-alt);
-    border-bottom: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
 }
-.book-cover-thumb img {
+
+.project-card-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
 }
-.book:hover .book-cover-thumb img {
+
+.project-card:hover .project-card-thumb img {
     transform: scale(1.04);
 }
 
-.book-cover-title-area {
-    width: 100%;
-    height: 25%;
+/* Placeholder thumbs for projects without images */
+.project-card-thumb-placeholder {
+    background: hsl(var(--ph-hue, 200), 30%, 92%);
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 12px;
-    background: var(--bg);
-    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+.thumb-placeholder-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: hsl(var(--ph-hue, 200), 25%, 60%);
+    text-transform: uppercase;
 }
 
-.book-title {
+/* Place story ring absolute in thumb top-right */
+.project-card .story-ring {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 12;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 44px;
+    height: 44px;
+}
+
+.project-card-info {
+    padding: 16px 8px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.project-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 700;
-    color: var(--text);
-    margin: 0;
+    color: var(--text-muted);
+    margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    line-height: 1.3;
 }
 
-/* Paper Page inside book */
-.book-inside {
-    position: absolute;
-    top: 2%;
-    left: 2%;
-    width: 96%;
-    height: 96%;
-    z-index: 5;
-    background: transparent;
-    border: none;
-    border-radius: 0 8px 8px 0;
-    box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.05);
-    box-sizing: border-box;
-    padding: 14px 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transform: translateZ(-2px);
-    overflow: hidden;
+.project-card-read-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--accent-dark);
 }
 
-.book-sketch-overlay {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 10;
-}
-.book-sketch-overlay path {
-    stroke: var(--text);
-    stroke-width: 2.2;
-    fill: none;
-    vector-effect: non-scaling-stroke;
-}
-.book-inside .book-sketch-overlay path.sketch-outline {
-    fill: #fffdfc;
-}
-.book-inside .book-sketch-overlay {
-    z-index: 0;
-}
-.book-cover-back .book-sketch-overlay path.sketch-outline {
-    fill: var(--bg-alt);
+.project-card-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    color: var(--text);
+    text-transform: uppercase;
 }
 
-/* Custom guidelines inside paper pages for case study sketch feel */
-.book-inside::before {
-    content: '';
-    position: absolute;
-    top: 0; bottom: 0; left: 8px; right: 8px;
-    background: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-    background-size: 100% 16px;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.book-inside-tags {
+.project-card-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    position: relative;
-    z-index: 2;
+    margin-bottom: 12px;
 }
 
-.book-inside-tag {
+.project-card-tag {
     font-family: var(--font-mono);
     font-size: 0.52rem;
     font-weight: 600;
@@ -4690,29 +4570,39 @@ img { display: block; max-width: 100%; }
     text-transform: uppercase;
     background: #fff;
 }
-.book-inside-tag.accent {
+
+.project-card-tag.accent {
     border-color: var(--accent);
     color: var(--accent);
     background: rgba(245, 166, 35, 0.04);
 }
 
-.book-inside-desc {
-    font-size: 0.68rem;
-    line-height: 1.45;
+.project-card-desc {
+    font-size: 0.82rem;
+    line-height: 1.6;
     color: var(--text-secondary);
-    margin: 8px 0;
-    flex: 1;
-    overflow: hidden;
+    margin-bottom: 8px;
     display: -webkit-box;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    position: relative;
-    z-index: 2;
+    overflow: hidden;
+    flex: 1;
 }
 
-/* 3D Swing Cover Animation */
-.book:hover .book-cover {
-    transform: rotateY(-125deg);
+.card-sketch-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 11;
+}
+
+.card-sketch-overlay path {
+    stroke: var(--text);
+    stroke-width: 2.2;
+    fill: none;
+    vector-effect: non-scaling-stroke;
 }
 
 /* ─── Empty State ─── */
@@ -4873,38 +4763,9 @@ img { display: block; max-width: 100%; }
         display: inline-flex;
     }
 
-    .work-bookshelves {
-        gap: 40px;
-    }
-    .bookshelf {
-        padding-bottom: 16px;
-    }
-    .bookshelf-row {
-        gap: 40px;
-        padding: 16px 8px 8px 8px;
-    }
-    .book {
-        width: 180px;
-        height: 135px;
-    }
-    .book-cover-title-area {
-        padding: 4px 6px;
-    }
-    .book-title {
-        font-size: 0.65rem;
-    }
-    .book-inside {
-        padding: 10px 8px;
-    }
-    .book-inside-desc {
-        font-size: 0.62rem;
-        line-height: 1.35;
-        margin: 4px 0;
-        -webkit-line-clamp: 4;
-    }
-    .book-inside-tag {
-        font-size: 0.48rem;
-        padding: 1px 4px;
+    .work-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 28px;
     }
 }
 
@@ -4920,7 +4781,8 @@ img { display: block; max-width: 100%; }
     .work-header-title {
         font-size: 2.5rem;
     }
-    .bookshelf-row {
+    .work-grid {
+        grid-template-columns: 1fr;
         gap: 24px;
     }
 }
