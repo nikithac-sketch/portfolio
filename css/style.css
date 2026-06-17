@@ -394,6 +394,209 @@ img { display: block; max-width: 100%; }
     margin-bottom: 20px;
     color: var(--text);
 }
+
+/* ─── Project Title Row (title + story ring) ─── */
+.project-title-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+.project-title-row .project-title {
+    margin-bottom: 20px;
+}
+
+/* ─── Story Ring Button ─── */
+.story-ring {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    transition: transform 0.25s ease;
+}
+.story-ring:hover {
+    transform: scale(1.12);
+}
+.story-ring-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.story-ring-svg circle {
+    fill: none;
+    stroke: url(#storyGradient);
+    stroke-width: 3;
+    stroke-dasharray: 6 3;
+    stroke-linecap: round;
+    animation: storyRingSpin 8s linear infinite;
+}
+/* Fallback solid stroke if no gradient defined — we'll use CSS instead */
+.story-ring-svg circle {
+    stroke: var(--accent, #E8A838);
+}
+.story-ring-icon {
+    font-size: 0.72rem;
+    color: var(--accent, #E8A838);
+    position: relative;
+    z-index: 1;
+    line-height: 1;
+}
+@keyframes storyRingSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* ─── Fullscreen Story Viewer ─── */
+.story-viewer {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.story-viewer.active {
+    opacity: 1;
+    visibility: visible;
+}
+.story-viewer-inner {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: 100%;
+    max-height: 750px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Progress bars row */
+.story-progress-bar {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    right: 14px;
+    display: flex;
+    gap: 4px;
+    z-index: 10;
+}
+.story-progress-seg {
+    flex: 1;
+    height: 3px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.25);
+    overflow: hidden;
+}
+.story-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #fff;
+    border-radius: 3px;
+    transition: none;
+}
+.story-progress-seg.done .story-progress-fill {
+    width: 100%;
+}
+.story-progress-seg.active .story-progress-fill {
+    animation: storyFill var(--story-duration, 5s) linear forwards;
+}
+@keyframes storyFill {
+    from { width: 0%; }
+    to   { width: 100%; }
+}
+
+/* Close button */
+.story-close {
+    position: absolute;
+    top: 28px;
+    right: 16px;
+    z-index: 12;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 8px;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+}
+.story-close:hover {
+    opacity: 1;
+}
+
+/* Project label in viewer */
+.story-project-label {
+    position: absolute;
+    top: 30px;
+    left: 18px;
+    z-index: 12;
+    font-family: var(--font-mono, 'Space Mono', monospace);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+}
+
+/* Slide image */
+.story-slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+.story-slide-img.loaded {
+    opacity: 1;
+}
+
+/* Tap zones (left = prev, right = next) */
+.story-tap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+    z-index: 8;
+    cursor: pointer;
+}
+.story-tap-left  { left: 0; }
+.story-tap-right { right: 0; width: 60%; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .story-viewer-inner {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 0;
+    }
+    .story-ring {
+        width: 40px;
+        height: 40px;
+    }
+    .story-ring-icon {
+        font-size: 0.6rem;
+    }
+    .project-title-row {
+        gap: 12px;
+    }
+}
 .project-desc {
     font-size: clamp(0.95rem, 1.3vw, 1.1rem);
     font-weight: 400;

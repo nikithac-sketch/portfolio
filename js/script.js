@@ -319,6 +319,199 @@
         }
     });
 
+    // ─── Instagram Stories Viewer ───
+    const STORY_DURATION = 5000; // 5 seconds per slide
+
+    // Slide data per project (replace nulls with real image paths later)
+    const storySlides = {
+        pots: {
+            label: 'POTS',
+            slides: [
+                'assets/images/stories/pots_1.jpg',
+                'assets/images/stories/pots_2.jpg',
+                'assets/images/stories/pots_3.jpg',
+                'assets/images/stories/pots_4.jpg',
+                'assets/images/stories/pots_5.jpg'
+            ]
+        },
+        echoverse: {
+            label: 'ECHOVERSE',
+            slides: [
+                'assets/images/stories/echoverse_1.jpg',
+                'assets/images/stories/echoverse_2.jpg',
+                'assets/images/stories/echoverse_3.jpg',
+                'assets/images/stories/echoverse_4.jpg',
+                'assets/images/stories/echoverse_5.jpg'
+            ]
+        },
+        terraform: {
+            label: 'TERRAFORM',
+            slides: [
+                'assets/images/stories/terraform_1.jpg',
+                'assets/images/stories/terraform_2.jpg',
+                'assets/images/stories/terraform_3.jpg',
+                'assets/images/stories/terraform_4.jpg',
+                'assets/images/stories/terraform_5.jpg'
+            ]
+        }
+    };
+
+    const storyViewer     = document.getElementById('storyViewer');
+    const storyProgressBar = document.getElementById('storyProgressBar');
+    const storySlideImg   = document.getElementById('storySlideImg');
+    const storyCloseBtn   = document.getElementById('storyClose');
+    const storyTapLeft    = document.getElementById('storyTapLeft');
+    const storyTapRight   = document.getElementById('storyTapRight');
+    const storyLabel      = document.getElementById('storyProjectLabel');
+
+    let currentStory = null;
+    let currentSlideIndex = 0;
+    let storyTimer = null;
+
+    function openStory(projectKey) {
+        const data = storySlides[projectKey];
+        if (!data) return;
+
+        currentStory = data;
+        currentSlideIndex = 0;
+
+        // Set project label
+        if (storyLabel) storyLabel.textContent = data.label;
+
+        // Build progress segments
+        storyProgressBar.innerHTML = '';
+        data.slides.forEach(() => {
+            const seg = document.createElement('div');
+            seg.className = 'story-progress-seg';
+            seg.innerHTML = '<div class="story-progress-fill"></div>';
+            storyProgressBar.appendChild(seg);
+        });
+
+        // Show viewer
+        storyViewer.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Show first slide
+        showSlide(0);
+    }
+
+    function closeStory() {
+        clearTimeout(storyTimer);
+        storyViewer.classList.remove('active');
+        document.body.style.overflow = '';
+        storySlideImg.classList.remove('loaded');
+        storySlideImg.src = '';
+        currentStory = null;
+    }
+
+    function showSlide(index) {
+        if (!currentStory) return;
+        const slides = currentStory.slides;
+
+        // If we've gone past the last slide, close the viewer
+        if (index >= slides.length) {
+            closeStory();
+            return;
+        }
+
+        // If going backwards past the beginning, stay at first
+        if (index < 0) index = 0;
+
+        currentSlideIndex = index;
+        clearTimeout(storyTimer);
+
+        // Update progress segments
+        const segs = storyProgressBar.querySelectorAll('.story-progress-seg');
+        segs.forEach((seg, i) => {
+            seg.classList.remove('active', 'done');
+            if (i < index) {
+                seg.classList.add('done');
+            } else if (i === index) {
+                seg.classList.add('active');
+                // Set the CSS custom property for animation duration
+                seg.querySelector('.story-progress-fill').style.setProperty('--story-duration', STORY_DURATION + 'ms');
+            }
+        });
+
+        // Load the image
+        storySlideImg.classList.remove('loaded');
+
+        // Generate a dummy placeholder color for missing images
+        const imgSrc = slides[index];
+        const dummyCanvas = document.createElement('canvas');
+        dummyCanvas.width = 420;
+        dummyCanvas.height = 750;
+        const ctx = dummyCanvas.getContext('2d');
+
+        // Unique background colour per slide
+        const hues = [32, 180, 260, 340, 120];
+        const hue = hues[index % hues.length];
+        ctx.fillStyle = 'hsl(' + hue + ', 35%, 25%)';
+        ctx.fillRect(0, 0, 420, 750);
+
+        // Label text
+        ctx.fillStyle = 'rgba(255,255,255,0.15)';
+        ctx.font = 'bold 80px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(String(index + 1).padStart(2, '0'), 210, 340);
+
+        ctx.fillStyle = 'rgba(255,255,255,0.35)';
+        ctx.font = '600 14px sans-serif';
+        ctx.fillText(currentStory.label + ' — SLIDE ' + (index + 1), 210, 410);
+
+        // Try real image, fallback to canvas dummy
+        const img = new Image();
+        img.onload = function () {
+            storySlideImg.src = img.src;
+            storySlideImg.classList.add('loaded');
+        };
+        img.onerror = function () {
+            storySlideImg.src = dummyCanvas.toDataURL();
+            storySlideImg.classList.add('loaded');
+        };
+        img.src = imgSrc;
+
+        // Auto-advance timer
+        storyTimer = setTimeout(() => {
+            showSlide(currentSlideIndex + 1);
+        }, STORY_DURATION);
+    }
+
+    // Bind story ring buttons
+    document.querySelectorAll('.story-ring').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const key = btn.getAttribute('data-story');
+            openStory(key);
+        });
+    });
+
+    // Close button
+    if (storyCloseBtn) {
+        storyCloseBtn.addEventListener('click', closeStory);
+    }
+
+    // Tap zones: left = previous, right = next
+    if (storyTapLeft) {
+        storyTapLeft.addEventListener('click', () => {
+            showSlide(currentSlideIndex - 1);
+        });
+    }
+    if (storyTapRight) {
+        storyTapRight.addEventListener('click', () => {
+            showSlide(currentSlideIndex + 1);
+        });
+    }
+
+    // Escape key to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && storyViewer.classList.contains('active')) {
+            closeStory();
+        }
+    });
+
     // ─── Initial ───
     updateScrollProgress();
     updateNavState();
