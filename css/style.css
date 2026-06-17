@@ -4648,6 +4648,9 @@ img { display: block; max-width: 100%; }
 .book-inside .book-sketch-overlay path.sketch-outline {
     fill: #fffdfc;
 }
+.book-inside .book-sketch-overlay {
+    z-index: 0;
+}
 .book-cover-back .book-sketch-overlay path.sketch-outline {
     fill: var(--bg-alt);
 }
