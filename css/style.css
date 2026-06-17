@@ -4449,18 +4449,34 @@ img { display: block; max-width: 100%; }
     perspective: 1200px; /* Perspective for books on this shelf */
     align-items: flex-end;
 }
+.bookshelf-row:not(:first-of-type) {
+    margin-top: 48px;
+}
 .bookshelf-row::-webkit-scrollbar {
     display: none;
 }
 
 .bookshelf-wood {
-    height: 12px;
-    background: var(--bg-alt);
-    border: 2px solid var(--border);
-    border-radius: 4px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+    height: 20px;
     position: relative;
     z-index: 2;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 24px;
+}
+
+.wood-sketch-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.wood-sketch-overlay path {
+    stroke: var(--border);
+    stroke-width: 2.2;
+    fill: var(--bg-alt);
 }
 
 /* ─── 3D Book Component ─── */
@@ -4519,7 +4535,7 @@ img { display: block; max-width: 100%; }
     height: 100%;
     backface-visibility: hidden;
     border-radius: 4px 10px 10px 4px;
-    border: 2px solid var(--border);
+    border: none;
     box-sizing: border-box;
 }
 
@@ -4548,7 +4564,7 @@ img { display: block; max-width: 100%; }
 
 .book-cover-back {
     z-index: 1;
-    background: var(--bg-alt);
+    background: transparent;
     transform: rotateY(180deg);
     box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.05);
 }
@@ -4558,7 +4574,7 @@ img { display: block; max-width: 100%; }
     height: 75%;
     overflow: hidden;
     background: var(--bg-alt);
-    border-bottom: 2px solid var(--border);
+    border-bottom: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -4603,9 +4619,8 @@ img { display: block; max-width: 100%; }
     width: 96%;
     height: 96%;
     z-index: 5;
-    background: #fffdfc;
-    border: 2px solid var(--border);
-    border-left: none;
+    background: transparent;
+    border: none;
     border-radius: 0 8px 8px 0;
     box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
@@ -4615,6 +4630,26 @@ img { display: block; max-width: 100%; }
     justify-content: space-between;
     transform: translateZ(-2px);
     overflow: hidden;
+}
+
+.book-sketch-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+.book-sketch-overlay path {
+    stroke: var(--border);
+    stroke-width: 2.2;
+    fill: none;
+}
+.book-inside .book-sketch-overlay path.sketch-outline {
+    fill: #fffdfc;
+}
+.book-cover-back .book-sketch-overlay path.sketch-outline {
+    fill: var(--bg-alt);
 }
 
 /* Custom guidelines inside paper pages for case study sketch feel */

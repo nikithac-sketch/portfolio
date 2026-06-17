@@ -92,11 +92,30 @@
             }
         });
 
-        // Filter bookshelves
+        // Filter bookshelves and their rows/planks
         allShelves.forEach(shelf => {
-            const shelfBooks = Array.from(shelf.querySelectorAll('.book'));
-            const visibleBooksInShelf = shelfBooks.filter(b => b.style.display !== 'none');
-            if (visibleBooksInShelf.length > 0) {
+            const rows = Array.from(shelf.querySelectorAll('.bookshelf-row'));
+            let anyRowVisible = false;
+
+            rows.forEach(row => {
+                const rowBooks = Array.from(row.querySelectorAll('.book'));
+                const visibleBooksInRow = rowBooks.filter(b => b.style.display !== 'none');
+                
+                // Get the adjacent wood plank
+                const wood = row.nextElementSibling;
+                const isWood = wood && wood.classList.contains('bookshelf-wood');
+
+                if (visibleBooksInRow.length > 0) {
+                    row.style.display = '';
+                    if (isWood) wood.style.display = '';
+                    anyRowVisible = true;
+                } else {
+                    row.style.display = 'none';
+                    if (isWood) wood.style.display = 'none';
+                }
+            });
+
+            if (anyRowVisible) {
                 shelf.style.display = '';
             } else {
                 shelf.style.display = 'none';
