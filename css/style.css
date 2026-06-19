@@ -4212,7 +4212,7 @@ img { display: block; max-width: 100%; }
 /* ─── Screen Flow Gallery ─── */
 .ideation-screen-flow {
     display: flex;
-    gap: 14px;
+    gap: 28px;
     align-items: flex-start;
     overflow-x: auto;
     padding-bottom: 12px;
