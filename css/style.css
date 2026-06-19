@@ -3980,8 +3980,10 @@ img { display: block; max-width: 100%; }
 
 /* Individual Screen Card */
 .ideation-screen-card {
-    flex: 0 0 210px;
+    flex: 0 0 auto;
+    width: auto;
     height: 390px;
+    aspect-ratio: 9 / 20;
     position: relative;
     border-radius: 18px;
     background: #fafafa;
@@ -3993,6 +3995,10 @@ img { display: block; max-width: 100%; }
     scroll-snap-align: start;
     overflow: hidden;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ideation-screen-card.has-image {
+    aspect-ratio: auto;
 }
 
 .ideation-screen-card:hover {
@@ -4045,11 +4051,9 @@ img { display: block; max-width: 100%; }
 
 /* Card with actual image */
 .ideation-screen-card .screen-card-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
+    display: block;
     height: 100%;
-    object-fit: cover;
+    width: auto;
     border-radius: 16px;
 }
 
@@ -4100,7 +4104,6 @@ img { display: block; max-width: 100%; }
     }
 
     .ideation-screen-card {
-        flex: 0 0 180px;
         height: 330px;
     }
 }
@@ -4121,7 +4124,6 @@ img { display: block; max-width: 100%; }
         border-radius: 100px;
     }
     .ideation-screen-card {
-        flex: 0 0 165px;
         height: 300px;
     }
     .ideation-flow-arrow svg {

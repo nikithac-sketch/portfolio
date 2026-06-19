@@ -374,6 +374,7 @@
 
             if (src) {
                 // Real image
+                card.classList.add('has-image');
                 const img = document.createElement('img');
                 img.src = src;
                 img.alt = 'Screen ' + (i + 1);
