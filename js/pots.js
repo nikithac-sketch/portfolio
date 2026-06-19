@@ -521,15 +521,6 @@
             }
 
             ideationScreenFlow.appendChild(wrapper);
-
-            // Add flow arrow between wrappers (not after the last one)
-            if (i < screens.length - 1) {
-                const arrow = document.createElement('div');
-                arrow.className = 'ideation-flow-arrow';
-                arrow.style.animationDelay = (i * 60 + 30) + 'ms';
-                arrow.innerHTML = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M 4,9 L 13,9 M 10,5.5 L 14,9 L 10,12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-                ideationScreenFlow.appendChild(arrow);
-            }
         });
     }
 
