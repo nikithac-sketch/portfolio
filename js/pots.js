@@ -334,7 +334,20 @@
     // Replace null values with actual image paths when ready, e.g.:
     //   'assets/svgs/project_Pots/Frame 17.svg'
     const ideationScreenData = {
-        creation:  Array(12).fill(null),
+        creation: [
+            'assets/svgs/project_Pots/ideationScreens/potCreation/screen1.svg',
+            'assets/svgs/project_Pots/ideationScreens/potCreation/screen2.svg',
+            'assets/svgs/project_Pots/ideationScreens/potCreation/screen3.svg',
+            'assets/svgs/project_Pots/ideationScreens/potCreation/screen4.svg',
+            'assets/svgs/project_Pots/ideationScreens/potCreation/screen5.svg',
+            'assets/svgs/project_Pots/ideationScreens/potCreation/screen6.svg',
+            'assets/svgs/project_Pots/ideationScreens/potCreation/screen7.svg',
+            'assets/svgs/project_Pots/ideationScreens/potCreation/screen8.svg',
+            'assets/svgs/project_Pots/ideationScreens/potCreation/screen9.svg',
+            'assets/svgs/project_Pots/ideationScreens/potCreation/screen10.svg',
+            'assets/svgs/project_Pots/ideationScreens/potCreation/screen11.svg',
+            'assets/svgs/project_Pots/ideationScreens/potCreation/screen12.svg'
+        ],
         dashboard: Array(12).fill(null),
         add:       Array(12).fill(null),
         withdraw:  Array(12).fill(null),
