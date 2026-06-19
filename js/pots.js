@@ -321,7 +321,7 @@
     const cutData = {
         1: {
             title: "Ideation Cut: Screen 1 — Form-Heavy Setup",
-            image: "assets/svgs/project_Pots/Frame 15.svg",
+            image: "assets/svgs/project_Pots/gamificationConcepts/Frame 15.svg",
             concept: "We initially designed a comprehensive, single-page creation form where users had to input their Pot Name, Target Amount, and Goal Date all at once.",
             drawbacks: [
                 "<strong>High cognitive load:</strong> Seeing a long form with multiple required inputs right after clicking 'Create Pot' created immediate friction.",
@@ -332,7 +332,7 @@
         },
         3: {
             title: "Ideation Cut: Screen 3 — Restrictive Target Dates",
-            image: "assets/svgs/project_Pots/Frame 16.svg",
+            image: "assets/svgs/project_Pots/gamificationConcepts/Frame 16.svg",
             concept: "This version enforced a strict, non-negotiable target date for the pot to calculate exact monthly savings schedules.",
             drawbacks: [
                 "<strong>Intimidating pressure:</strong> Users felt anxious about missing fixed deadlines, which discouraged them from creating pots for open-ended goals like 'Rainy Day Fund'.",
@@ -343,7 +343,7 @@
         },
         5: {
             title: "Ideation Cut: Screen 5 — Redundant Preview Step",
-            image: "assets/svgs/project_Pots/Frame 17.svg",
+            image: "assets/svgs/project_Pots/gamificationConcepts/Frame 17.svg",
             concept: "A confirmation screen summarizing the pot rules, selected category, and scheduled drafts, requiring a final confirmation click.",
             drawbacks: [
                 "<strong>Speed bump:</strong> The preview page acted as a transaction screen, slowing down the instant-gratification loop of savings.",
@@ -365,7 +365,7 @@
         },
         "dashboard-2": {
             title: "Ideation Cut: Screen 2 — Dense Matrix Grid Compare Layout",
-            image: "assets/svgs/project_Pots/Frame 16.svg",
+            image: "assets/svgs/project_Pots/gamificationConcepts/Frame 16.svg",
             concept: "We initially designed a detailed comparison matrix showing all assets side-by-side with exhaustive financial metrics, interest yields, and maturity dates.",
             drawbacks: [
                 "<strong>Overwhelming data density:</strong> Desktop-style comparison tables felt extremely cramped and required heavy horizontal scrolling on a mobile viewport.",
@@ -455,7 +455,7 @@
 
     // Screen data: phase > array of image URLs (null = empty placeholder)
     // Replace null values with actual image paths when ready, e.g.:
-    //   'assets/svgs/project_Pots/Frame 17.svg'
+    //   'assets/svgs/project_Pots/gamificationConcepts/Frame 17.svg'
     const ideationScreenData = {
         creation: [
             'assets/svgs/project_Pots/ideationScreens/potCreation/screen1.svg',
