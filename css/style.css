@@ -3904,6 +3904,18 @@ img { display: block; max-width: 100%; }
     border-left: 6px solid var(--border);
 }
 
+/* Special adjustments for connectors connected to the wider Dashboard node */
+.ia-connector-to-dashboard {
+    width: 58px;
+    margin-left: -22px;
+    margin-right: -4px;
+}
+.ia-connector-from-dashboard {
+    width: 58px;
+    margin-left: -4px;
+    margin-right: -22px;
+}
+
 /* ── Branch Layout (Phase 3: Standard vs Investment) ── */
 .ia-branch-wrapper {
     position: relative;
@@ -4034,6 +4046,16 @@ img { display: block; max-width: 100%; }
         margin-right: -5px;
         height: 124px;
         margin-top: 142px;
+    }
+    .ia-connector-to-dashboard {
+        width: 16px;
+        margin-left: -5px;
+        margin-right: 9px;
+    }
+    .ia-connector-from-dashboard {
+        width: 16px;
+        margin-left: 9px;
+        margin-right: -5px;
     }
 }
 
