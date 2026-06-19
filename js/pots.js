@@ -336,25 +336,29 @@
     //   'assets/svgs/project_Pots/Frame 17.svg'
     const ideationScreenData = {
         chosen: {
-            arrival:   [null, null, null, null, null],
-            intention: [null, null, null, null, null],
-            asset:     [null, null, null, null, null, null],
-            preview:   [null, null, null, null, null],
-            lifecycle: [null, null, null, null, null],
-            final:     [null, null, null, null, null]
+            creation:  [null, null, null, null, null],
+            dashboard: [null, null, null, null, null],
+            add:       [null, null, null, null, null],
+            withdraw:  [null, null, null, null, null],
+            schedule:  [null, null, null, null, null],
+            favourite: [null, null, null, null, null],
+            edit:      [null, null, null, null, null],
+            close:     [null, null, null, null, null]
         },
         discarded: {
-            arrival:   [null, null, null, null, null],
-            intention: [null, null, null, null, null],
-            asset:     [null, null, null, null, null, null],
-            preview:   [null, null, null, null, null],
-            lifecycle: [null, null, null, null, null],
-            final:     [null, null, null, null, null]
+            creation:  [null, null, null, null, null],
+            dashboard: [null, null, null, null, null],
+            add:       [null, null, null, null, null],
+            withdraw:  [null, null, null, null, null],
+            schedule:  [null, null, null, null, null],
+            favourite: [null, null, null, null, null],
+            edit:      [null, null, null, null, null],
+            close:     [null, null, null, null, null]
         }
     };
 
     let activeFolder = 'chosen';
-    let activePhase = 'arrival';
+    let activePhase = 'creation';
 
     function renderScreenFlow() {
         if (!ideationScreenFlow) return;
