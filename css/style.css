@@ -4124,6 +4124,85 @@ img { display: block; max-width: 100%; }
     color: #ffffff;
 }
 
+/* Scope differentiation for chips */
+.ideation-phase-btn[data-scope="new"] {
+    border-color: var(--accent);
+    color: var(--accent);
+    position: relative;
+}
+
+.ideation-phase-btn[data-scope="new"]::before {
+    content: '✦';
+    font-size: 0.55rem;
+    margin-right: 5px;
+    opacity: 0.8;
+}
+
+.ideation-phase-btn[data-scope="new"].active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+}
+
+.ideation-phase-btn[data-scope="new"].active::before {
+    opacity: 1;
+}
+
+.ideation-phase-btn[data-scope="existing"] {
+    border-style: dashed;
+    border-color: rgba(0, 0, 0, 0.15);
+    color: var(--text-secondary);
+}
+
+.ideation-phase-btn[data-scope="existing"].active {
+    border-style: solid;
+    background: #475569;
+    border-color: #475569;
+    color: #ffffff;
+}
+
+.ideation-phase-btn[data-scope="existing"]:hover {
+    border-color: #475569;
+    color: var(--text);
+}
+
+/* Scope Legend */
+.ideation-scope-legend {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 6px;
+}
+
+.scope-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+}
+
+.scope-legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.scope-legend-dot.new {
+    background: var(--accent);
+    box-shadow: 0 0 0 2px rgba(245, 166, 35, 0.2);
+}
+
+.scope-legend-dot.existing {
+    background: transparent;
+    border: 1.5px dashed #94a3b8;
+}
+
 /* ─── Screen Flow Gallery ─── */
 .ideation-screen-flow {
     display: flex;
