@@ -334,14 +334,14 @@
     // Replace null values with actual image paths when ready, e.g.:
     //   'assets/svgs/project_Pots/Frame 17.svg'
     const ideationScreenData = {
-        creation:  [null, null, null, null, null],
-        dashboard: [null, null, null, null, null],
-        add:       [null, null, null, null, null],
-        withdraw:  [null, null, null, null, null],
-        schedule:  [null, null, null, null, null],
-        favourite: [null, null, null, null, null],
-        edit:      [null, null, null, null, null],
-        close:     [null, null, null, null, null]
+        creation:  Array(12).fill(null),
+        dashboard: Array(12).fill(null),
+        add:       Array(12).fill(null),
+        withdraw:  Array(12).fill(null),
+        schedule:  Array(12).fill(null),
+        favourite: Array(12).fill(null),
+        edit:      Array(12).fill(null),
+        close:     Array(12).fill(null)
     };
 
     let activePhase = 'creation';

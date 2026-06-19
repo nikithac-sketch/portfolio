@@ -3980,8 +3980,8 @@ img { display: block; max-width: 100%; }
 
 /* Individual Screen Card */
 .ideation-screen-card {
-    flex: 0 0 140px;
-    height: 260px;
+    flex: 0 0 210px;
+    height: 390px;
     position: relative;
     border-radius: 18px;
     background: #fafafa;
@@ -4100,8 +4100,8 @@ img { display: block; max-width: 100%; }
     }
 
     .ideation-screen-card {
-        flex: 0 0 120px;
-        height: 220px;
+        flex: 0 0 180px;
+        height: 330px;
     }
 }
 
@@ -4121,8 +4121,8 @@ img { display: block; max-width: 100%; }
         border-radius: 100px;
     }
     .ideation-screen-card {
-        flex: 0 0 110px;
-        height: 200px;
+        flex: 0 0 165px;
+        height: 300px;
     }
     .ideation-flow-arrow svg {
         width: 14px;
