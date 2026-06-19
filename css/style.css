@@ -4341,8 +4341,10 @@ img { display: block; max-width: 100%; }
 .ideation-screen-card .screen-card-img {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 106%;
     object-fit: fill;
+    margin-top: -3%;
+    margin-bottom: -3%;
     border-radius: 16px;
 }
 
