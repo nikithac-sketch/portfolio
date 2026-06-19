@@ -484,9 +484,27 @@
             'assets/svgs/project_Pots/ideationScreens/addMoneyToPot/screen5.svg',
             'assets/svgs/project_Pots/ideationScreens/addMoneyToPot/screen6.svg'
         ],
-        withdraw:  Array(12).fill(null),
-        schedule:  Array(12).fill(null),
-        favourite: Array(12).fill(null),
+        withdraw: [
+            'assets/svgs/project_Pots/ideationScreens/withdrawFromPot/screen1.svg',
+            'assets/svgs/project_Pots/ideationScreens/withdrawFromPot/screen2.svg',
+            'assets/svgs/project_Pots/ideationScreens/withdrawFromPot/screen3.svg',
+            'assets/svgs/project_Pots/ideationScreens/withdrawFromPot/screen4.svg',
+            'assets/svgs/project_Pots/ideationScreens/withdrawFromPot/screen5.svg',
+            'assets/svgs/project_Pots/ideationScreens/withdrawFromPot/screen6.svg'
+        ],
+        schedule: [
+            'assets/svgs/project_Pots/ideationScreens/scheduleForPot/screen1.svg',
+            'assets/svgs/project_Pots/ideationScreens/scheduleForPot/screen2.svg',
+            'assets/svgs/project_Pots/ideationScreens/scheduleForPot/screen3.svg',
+            'assets/svgs/project_Pots/ideationScreens/scheduleForPot/screen4.svg',
+            'assets/svgs/project_Pots/ideationScreens/scheduleForPot/screen5.svg',
+            'assets/svgs/project_Pots/ideationScreens/scheduleForPot/screen6.svg'
+        ],
+        favourite: [
+            'assets/svgs/project_Pots/ideationScreens/favouritePot/screen1.svg',
+            'assets/svgs/project_Pots/ideationScreens/favouritePot/screen2.svg',
+            'assets/svgs/project_Pots/ideationScreens/favouritePot/screen3.svg'
+        ],
         edit:      Array(12).fill(null),
         close:     Array(12).fill(null)
     };
