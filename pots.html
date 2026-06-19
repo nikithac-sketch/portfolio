@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=105">
+    <link rel="stylesheet" href="css/style.css?v=106">
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 </head>
 <body>
@@ -750,6 +750,10 @@
         <div class="ideation-explorer-layout">
             <!-- Phase Explorer -->
             <div class="ideation-explorer">
+                <div class="ideation-scope-legend">
+                    <span class="scope-legend-item scope-legend-new"><span class="scope-legend-dot new"></span>New flows — scope to explore</span>
+                    <span class="scope-legend-item scope-legend-existing"><span class="scope-legend-dot existing"></span>Existing flows — translated from IA</span>
+                </div>
                 <div class="ideation-phase-btns">
                     <button class="ideation-phase-btn active" data-phase="creation" data-scope="new">Pot Creation</button>
                     <button class="ideation-phase-btn" data-phase="dashboard" data-scope="new">Pot Dashboard</button>
@@ -759,10 +763,6 @@
                     <button class="ideation-phase-btn" data-phase="favourite" data-scope="new">Favourite pot</button>
                     <button class="ideation-phase-btn" data-phase="edit" data-scope="existing">Edit Pot</button>
                     <button class="ideation-phase-btn" data-phase="close" data-scope="new">Close Pot</button>
-                </div>
-                <div class="ideation-scope-legend">
-                    <span class="scope-legend-item scope-legend-new"><span class="scope-legend-dot new"></span>New flows — scope to explore</span>
-                    <span class="scope-legend-item scope-legend-existing"><span class="scope-legend-dot existing"></span>Existing flows — translated from IA</span>
                 </div>
 
                 <div class="ideation-screen-flow" id="ideationScreenFlow">

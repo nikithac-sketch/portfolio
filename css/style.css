@@ -4126,8 +4126,8 @@ img { display: block; max-width: 100%; }
 
 /* Scope differentiation for chips */
 .ideation-phase-btn[data-scope="new"] {
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: #10b981;
+    color: #10b981;
     position: relative;
 }
 
@@ -4138,9 +4138,15 @@ img { display: block; max-width: 100%; }
     opacity: 0.8;
 }
 
+.ideation-phase-btn[data-scope="new"]:hover {
+    border-color: #059669;
+    color: #059669;
+    background: rgba(16, 185, 129, 0.04);
+}
+
 .ideation-phase-btn[data-scope="new"].active {
-    background: var(--accent);
-    border-color: var(--accent);
+    background: #10b981;
+    border-color: #10b981;
     color: #ffffff;
 }
 
@@ -4171,8 +4177,8 @@ img { display: block; max-width: 100%; }
     display: flex;
     gap: 24px;
     align-items: center;
-    margin-top: 10px;
-    margin-bottom: 6px;
+    margin-top: 0;
+    margin-bottom: 14px;
 }
 
 .scope-legend-item {
@@ -4194,8 +4200,8 @@ img { display: block; max-width: 100%; }
 }
 
 .scope-legend-dot.new {
-    background: var(--accent);
-    box-shadow: 0 0 0 2px rgba(245, 166, 35, 0.2);
+    background: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
 }
 
 .scope-legend-dot.existing {
