@@ -476,7 +476,14 @@
             'assets/svgs/project_Pots/ideationScreens/compareAsset/screen2.svg',
             'assets/svgs/project_Pots/ideationScreens/compareAsset/screen3.svg'
         ],
-        add:       Array(12).fill(null),
+        add: [
+            'assets/svgs/project_Pots/ideationScreens/addMoneyToPot/screen1.svg',
+            'assets/svgs/project_Pots/ideationScreens/addMoneyToPot/screen2.svg',
+            'assets/svgs/project_Pots/ideationScreens/addMoneyToPot/screen3.svg',
+            'assets/svgs/project_Pots/ideationScreens/addMoneyToPot/screen4.svg',
+            'assets/svgs/project_Pots/ideationScreens/addMoneyToPot/screen5.svg',
+            'assets/svgs/project_Pots/ideationScreens/addMoneyToPot/screen6.svg'
+        ],
         withdraw:  Array(12).fill(null),
         schedule:  Array(12).fill(null),
         favourite: Array(12).fill(null),
@@ -489,7 +496,7 @@
     function renderScreenFlow() {
         if (!ideationScreenFlow) return;
 
-        const screens = ideationScreenData[activePhase] || [];
+        const screens = (ideationScreenData[activePhase] || []).filter(src => src !== null);
 
         ideationScreenFlow.innerHTML = '';
 
