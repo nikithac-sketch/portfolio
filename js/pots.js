@@ -505,8 +505,18 @@
             'assets/svgs/project_Pots/ideationScreens/favouritePot/screen2.svg',
             'assets/svgs/project_Pots/ideationScreens/favouritePot/screen3.svg'
         ],
-        edit:      Array(12).fill(null),
-        close:     Array(12).fill(null)
+        edit: [
+            'assets/svgs/project_Pots/ideationScreens/editPot/screen1.svg',
+            'assets/svgs/project_Pots/ideationScreens/editPot/screen2.svg',
+            'assets/svgs/project_Pots/ideationScreens/editPot/screen3.svg',
+            'assets/svgs/project_Pots/ideationScreens/editPot/screen4.svg'
+        ],
+        close: [
+            'assets/svgs/project_Pots/ideationScreens/closePot/screen1.svg',
+            'assets/svgs/project_Pots/ideationScreens/closePot/screen2.svg',
+            'assets/svgs/project_Pots/ideationScreens/closePot/screen3.svg',
+            'assets/svgs/project_Pots/ideationScreens/closePot/screen4.svg'
+        ]
     };
 
     let activePhase = 'creation';
