@@ -4175,10 +4175,17 @@ img { display: block; max-width: 100%; }
 /* Scope Legend */
 .ideation-scope-legend {
     display: flex;
+    flex-wrap: wrap;
     gap: 24px;
     align-items: center;
-    margin-top: 0;
-    margin-bottom: 14px;
+    justify-content: center;
+    margin: -24px auto 24px auto;
+    padding: 8px 24px;
+    background: var(--bg-alt);
+    border: 1.5px solid var(--border);
+    border-radius: 100px;
+    width: fit-content;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .scope-legend-item {
