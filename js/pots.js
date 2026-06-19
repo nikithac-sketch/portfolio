@@ -326,29 +326,44 @@
 
 
 
-    // ─── Ideation Section: Phase + Screen Flow ───
+    // ─── Ideation Section: Folder + Phase + Screen Flow ───
+    const ideationFolders = document.querySelectorAll('.ideation-folder');
     const ideationPhaseBtns = document.querySelectorAll('.ideation-phase-btn');
     const ideationScreenFlow = document.getElementById('ideationScreenFlow');
 
-    // Screen data: phase > array of image URLs (null = empty placeholder)
+    // Screen data: folder > phase > array of image URLs (null = empty placeholder)
     // Replace null values with actual image paths when ready, e.g.:
     //   'assets/svgs/project_Pots/Frame 17.svg'
     const ideationScreenData = {
-        arrival:   [null, null, null, null, null],
-        intention: [null, null, null, null, null],
-        asset:     [null, null, null, null, null, null],
-        preview:   [null, null, null, null, null],
-        lifecycle: [null, null, null, null, null],
-        final:     [null, null, null, null, null]
+        chosen: {
+            arrival:   [null, null, null, null, null],
+            intention: [null, null, null, null, null],
+            asset:     [null, null, null, null, null, null],
+            preview:   [null, null, null, null, null],
+            lifecycle: [null, null, null, null, null],
+            final:     [null, null, null, null, null]
+        },
+        discarded: {
+            arrival:   [null, null, null, null, null],
+            intention: [null, null, null, null, null],
+            asset:     [null, null, null, null, null, null],
+            preview:   [null, null, null, null, null],
+            lifecycle: [null, null, null, null, null],
+            final:     [null, null, null, null, null]
+        }
     };
 
+    let activeFolder = 'chosen';
     let activePhase = 'arrival';
 
     function renderScreenFlow() {
         if (!ideationScreenFlow) return;
 
-        const screens = ideationScreenData[activePhase] || [];
+        const screens = ideationScreenData[activeFolder]?.[activePhase] || [];
+        const isDiscarded = activeFolder === 'discarded';
 
+        // Apply discarded class for greyed-out effect
+        ideationScreenFlow.className = 'ideation-screen-flow' + (isDiscarded ? ' discarded' : '');
         ideationScreenFlow.innerHTML = '';
 
         screens.forEach((src, i) => {
@@ -385,6 +400,15 @@
             }
         });
     }
+
+    // Folder click handler
+    ideationFolders.forEach(folder => {
+        folder.addEventListener('click', () => {
+            activeFolder = folder.getAttribute('data-folder');
+            ideationFolders.forEach(f => f.classList.toggle('active', f === folder));
+            renderScreenFlow();
+        });
+    });
 
     // Phase button click handler
     ideationPhaseBtns.forEach(btn => {

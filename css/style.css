@@ -3912,28 +3912,64 @@ img { display: block; max-width: 100%; }
     align-items: flex-start;
 }
 
-/* ─── Left Sidebar: Phase Selection ─── */
-.ideation-sidebar {
-    flex: 0 0 260px;
+/* ─── Left Sidebar: Folder Navigation ─── */
+.ideation-folders {
+    flex: 0 0 280px;
     display: flex;
     flex-direction: column;
+    gap: 16px;
     padding-top: 6px;
 }
 
-.ideation-sidebar .ideation-phase-btns {
+.ideation-folder {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    margin-bottom: 0;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1.5px solid var(--border);
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-spring);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
 }
 
-.ideation-sidebar .ideation-phase-btn {
-    width: 100%;
-    text-align: left;
-    white-space: nowrap;
-    padding: 12px 20px;
-    border-radius: 12px;
+.ideation-folder:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    border-color: var(--accent);
+}
+
+.ideation-folder.active {
+    border-color: var(--accent);
+    background: var(--bg-alt);
+    box-shadow: 0 4px 14px rgba(245, 166, 35, 0.1);
+}
+
+.ideation-folder .folder-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.ideation-folder.active .folder-icon {
+    color: var(--accent);
+}
+
+.ideation-folder .folder-label {
+    font-family: var(--font);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.ideation-folder.active .folder-label {
+    color: var(--text);
 }
 
 /* ─── Right Panel: Explorer ─── */
@@ -4083,7 +4119,17 @@ img { display: block; max-width: 100%; }
     color: rgba(0, 0, 0, 0.15);
 }
 
+/* Discarded folder — greyed out effect */
+.ideation-screen-flow.discarded .ideation-screen-card {
+    filter: grayscale(0.45);
+    opacity: 0.55;
+    border-color: rgba(0, 0, 0, 0.06);
+    background: #f0f0f0;
+}
 
+.ideation-screen-flow.discarded .ideation-flow-arrow {
+    opacity: 0.4;
+}
 
 /* ─── Responsive Overrides ─── */
 @media (max-width: 900px) {
@@ -4092,23 +4138,34 @@ img { display: block; max-width: 100%; }
         gap: 24px;
     }
 
-    .ideation-sidebar {
+    .ideation-folders {
         flex: none;
+        width: 100%;
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .ideation-folder {
+        flex: 1;
+        justify-content: center;
+        padding: 12px 16px;
+    }
+
+    .ideation-explorer {
         width: 100%;
     }
 
-    .ideation-sidebar .ideation-phase-btns {
-        flex-direction: row;
+    .ideation-phase-btns {
+        flex-wrap: nowrap;
         overflow-x: auto;
         padding-bottom: 8px;
-        flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
     }
 
-    .ideation-sidebar .ideation-phase-btn {
-        width: auto;
+    .ideation-phase-btn {
         flex-shrink: 0;
-        padding: 10px 16px;
+        padding: 8px 14px;
+        font-size: 0.65rem;
     }
 
     .ideation-screen-card {
@@ -4127,9 +4184,9 @@ img { display: block; max-width: 100%; }
     .ideation-subtitle {
         font-size: 1rem;
     }
-    .ideation-sidebar .ideation-phase-btn {
+    .ideation-phase-btn {
         font-size: 0.62rem;
-        padding: 8px 14px;
+        padding: 8px 12px;
         border-radius: 100px;
     }
     .ideation-screen-card {
