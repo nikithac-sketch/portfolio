@@ -3864,7 +3864,9 @@ img { display: block; max-width: 100%; }
 
 /* Horizontal connector between phases */
 .ia-connector-horiz {
-    width: 32px;
+    width: 76px;
+    margin-left: -22px;
+    margin-right: -22px;
     height: 2px;
     background: var(--border);
     align-self: flex-start;
@@ -3874,7 +3876,9 @@ img { display: block; max-width: 100%; }
 }
 
 .ia-connector-bent {
-    width: 32px;
+    width: 76px;
+    margin-left: -22px;
+    margin-right: -22px;
     height: 136px;
     align-self: flex-start;
     margin-top: 144px;
@@ -4019,11 +4023,15 @@ img { display: block; max-width: 100%; }
         min-height: 360px;
     }
     .ia-connector-horiz {
-        width: 20px;
+        width: 30px;
+        margin-left: -5px;
+        margin-right: -5px;
         margin-top: 142px;
     }
     .ia-connector-bent {
-        width: 20px;
+        width: 30px;
+        margin-left: -5px;
+        margin-right: -5px;
         height: 124px;
         margin-top: 142px;
     }
