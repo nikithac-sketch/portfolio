@@ -474,8 +474,7 @@
         dashboard: [
             'assets/svgs/project_Pots/ideationScreens/compareAsset/screen1.svg',
             'assets/svgs/project_Pots/ideationScreens/compareAsset/screen2.svg',
-            'assets/svgs/project_Pots/ideationScreens/compareAsset/screen3.svg',
-            null, null, null, null, null, null, null, null, null
+            'assets/svgs/project_Pots/ideationScreens/compareAsset/screen3.svg'
         ],
         add:       Array(12).fill(null),
         withdraw:  Array(12).fill(null),
