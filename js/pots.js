@@ -362,6 +362,17 @@
                 "<strong>Low initial funding:</strong> Early testing showed that only 12% of users funded their pots immediately after creation in this flow."
             ],
             solution: "We transformed the success screen into an active onboarding step, adding a primary button saying 'Add your first $10' alongside presets. This simple change increased immediate funding rates from 12% to 64%."
+        },
+        "dashboard-2": {
+            title: "Ideation Cut: Screen 2 — Dense Matrix Grid Compare Layout",
+            image: "assets/svgs/project_Pots/Frame 16.svg",
+            concept: "We initially designed a detailed comparison matrix showing all assets side-by-side with exhaustive financial metrics, interest yields, and maturity dates.",
+            drawbacks: [
+                "<strong>Overwhelming data density:</strong> Desktop-style comparison tables felt extremely cramped and required heavy horizontal scrolling on a mobile viewport.",
+                "<strong>High cognitive load:</strong> Presenting raw interest formulas and maturity calculations distracted users from the core task of comparing overall benefits.",
+                "<strong>Lack of visual hierarchy:</strong> Without a clear recommendation or highlight system, users spent too much time trying to decode which option suited them best."
+            ],
+            solution: "We streamlined the comparison into a clean, card-based comparison layout with toggleable detail tabs, highlighting key differentiators like interest yield and flexibility using visual badges."
         }
     };
 
@@ -460,7 +471,12 @@
             'assets/svgs/project_Pots/ideationScreens/potCreation/screen11.svg',
             'assets/svgs/project_Pots/ideationScreens/potCreation/screen12.svg'
         ],
-        dashboard: Array(12).fill(null),
+        dashboard: [
+            'assets/svgs/project_Pots/ideationScreens/compareAsset/screen1.svg',
+            'assets/svgs/project_Pots/ideationScreens/compareAsset/screen2.svg',
+            'assets/svgs/project_Pots/ideationScreens/compareAsset/screen3.svg',
+            null, null, null, null, null, null, null, null, null
+        ],
         add:       Array(12).fill(null),
         withdraw:  Array(12).fill(null),
         schedule:  Array(12).fill(null),
@@ -507,15 +523,26 @@
 
             wrapper.appendChild(card);
 
-            // Add the "didn't make the cut" link for screens 1, 3, 5, 12 of "creation" phase
+            // Add the "didn't make the cut" link
+            let showBadge = false;
+            let cutKey = null;
+
             if (activePhase === 'creation' && (i === 0 || i === 2 || i === 4 || i === 11)) {
+                showBadge = true;
+                cutKey = i + 1;
+            } else if (activePhase === 'dashboard' && i === 1) {
+                showBadge = true;
+                cutKey = 'dashboard-2';
+            }
+
+            if (showBadge) {
                 const cutLink = document.createElement('button');
                 cutLink.className = 'ideation-cut-link';
                 cutLink.style.animationDelay = (i * 60 + 15) + 'ms';
                 cutLink.innerHTML = 'Ideations that didn\'t make the cut <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px;"><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
                 cutLink.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    openCutModal(i + 1);
+                    openCutModal(cutKey);
                 });
                 wrapper.appendChild(cutLink);
             }
