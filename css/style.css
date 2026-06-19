@@ -4236,8 +4236,8 @@ img { display: block; max-width: 100%; }
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    flex: 0 0 210px;
-    width: 210px;
+    flex: 0 0 175.5px;
+    width: 175.5px;
 }
 
 .ideation-cut-link {
@@ -4390,8 +4390,8 @@ img { display: block; max-width: 100%; }
     }
 
     .ideation-screen-wrapper {
-        flex: 0 0 180px;
-        width: 180px;
+        flex: 0 0 148.5px;
+        width: 148.5px;
     }
 
     .ideation-screen-card {
@@ -4415,8 +4415,8 @@ img { display: block; max-width: 100%; }
         border-radius: 100px;
     }
     .ideation-screen-wrapper {
-        flex: 0 0 165px;
-        width: 165px;
+        flex: 0 0 135px;
+        width: 135px;
     }
     .ideation-screen-card {
         height: 300px;
