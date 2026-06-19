@@ -327,47 +327,30 @@
 
 
     // ─── Ideation Section: Folder + Phase + Screen Flow ───
-    const ideationFolders = document.querySelectorAll('.ideation-folder');
     const ideationPhaseBtns = document.querySelectorAll('.ideation-phase-btn');
     const ideationScreenFlow = document.getElementById('ideationScreenFlow');
 
-    // Screen data: folder > phase > array of image URLs (null = empty placeholder)
+    // Screen data: phase > array of image URLs (null = empty placeholder)
     // Replace null values with actual image paths when ready, e.g.:
     //   'assets/svgs/project_Pots/Frame 17.svg'
     const ideationScreenData = {
-        chosen: {
-            creation:  [null, null, null, null, null],
-            dashboard: [null, null, null, null, null],
-            add:       [null, null, null, null, null],
-            withdraw:  [null, null, null, null, null],
-            schedule:  [null, null, null, null, null],
-            favourite: [null, null, null, null, null],
-            edit:      [null, null, null, null, null],
-            close:     [null, null, null, null, null]
-        },
-        discarded: {
-            creation:  [null, null, null, null, null],
-            dashboard: [null, null, null, null, null],
-            add:       [null, null, null, null, null],
-            withdraw:  [null, null, null, null, null],
-            schedule:  [null, null, null, null, null],
-            favourite: [null, null, null, null, null],
-            edit:      [null, null, null, null, null],
-            close:     [null, null, null, null, null]
-        }
+        creation:  [null, null, null, null, null],
+        dashboard: [null, null, null, null, null],
+        add:       [null, null, null, null, null],
+        withdraw:  [null, null, null, null, null],
+        schedule:  [null, null, null, null, null],
+        favourite: [null, null, null, null, null],
+        edit:      [null, null, null, null, null],
+        close:     [null, null, null, null, null]
     };
 
-    let activeFolder = 'chosen';
     let activePhase = 'creation';
 
     function renderScreenFlow() {
         if (!ideationScreenFlow) return;
 
-        const screens = ideationScreenData[activeFolder]?.[activePhase] || [];
-        const isDiscarded = activeFolder === 'discarded';
+        const screens = ideationScreenData[activePhase] || [];
 
-        // Apply discarded class for greyed-out effect
-        ideationScreenFlow.className = 'ideation-screen-flow' + (isDiscarded ? ' discarded' : '');
         ideationScreenFlow.innerHTML = '';
 
         screens.forEach((src, i) => {
@@ -404,15 +387,6 @@
             }
         });
     }
-
-    // Folder click handler
-    ideationFolders.forEach(folder => {
-        folder.addEventListener('click', () => {
-            activeFolder = folder.getAttribute('data-folder');
-            ideationFolders.forEach(f => f.classList.toggle('active', f === folder));
-            renderScreenFlow();
-        });
-    });
 
     // Phase button click handler
     ideationPhaseBtns.forEach(btn => {
