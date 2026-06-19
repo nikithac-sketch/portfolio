@@ -3909,6 +3909,7 @@ img { display: block; max-width: 100%; }
     width: 58px;
     margin-left: -22px;
     margin-right: -4px;
+    margin-top: 412px; /* Aligns with the center of the 3rd node ("Add $1 as nudge") */
 }
 .ia-connector-from-dashboard {
     width: 58px;
@@ -4051,6 +4052,7 @@ img { display: block; max-width: 100%; }
         width: 16px;
         margin-left: -5px;
         margin-right: 9px;
+        margin-top: 390px; /* Aligns with the 3rd node on mobile */
     }
     .ia-connector-from-dashboard {
         width: 16px;
