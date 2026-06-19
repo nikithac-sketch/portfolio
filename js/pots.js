@@ -311,6 +311,118 @@
         });
     }
 
+    // ─── Ideation Cuts Modal Interactivity ───
+    const cutModal = document.getElementById('cutModal');
+    const cutModalImg = document.getElementById('cutModalImg');
+    const cutModalTitle = document.getElementById('cutModalTitle');
+    const cutModalBody = document.getElementById('cutModalBody');
+    const cutModalClose = document.getElementById('cutModalClose');
+
+    const cutData = {
+        1: {
+            title: "Ideation Cut: Screen 1 — Form-Heavy Setup",
+            image: "assets/svgs/project_Pots/Frame 15.svg",
+            concept: "We initially designed a comprehensive, single-page creation form where users had to input their Pot Name, Target Amount, and Goal Date all at once.",
+            drawbacks: [
+                "<strong>High cognitive load:</strong> Seeing a long form with multiple required inputs right after clicking 'Create Pot' created immediate friction.",
+                "<strong>Date picker friction:</strong> Forcing users to select a calendar date felt like homework and stalled the excitement of setting a savings goal.",
+                "<strong>Lack of guidance:</strong> No preset templates or categories left users staring at a blank name field, leading to a 34% drop-off rate in early user trials."
+            ],
+            solution: "We broke the flow down into a progressive, step-by-step wizard. We replaced the text input with visual categories (e.g. Travel, Emergency, Tech) and introduced preset goal targets to get users started instantly."
+        },
+        3: {
+            title: "Ideation Cut: Screen 3 — Restrictive Target Dates",
+            image: "assets/svgs/project_Pots/Frame 16.svg",
+            concept: "This version enforced a strict, non-negotiable target date for the pot to calculate exact monthly savings schedules.",
+            drawbacks: [
+                "<strong>Intimidating pressure:</strong> Users felt anxious about missing fixed deadlines, which discouraged them from creating pots for open-ended goals like 'Rainy Day Fund'.",
+                "<strong>Rigid automation:</strong> The system automatically set fixed monthly drafts without giving users control over flexible deposit amounts or schedules.",
+                "<strong>Negative feedback loop:</strong> If a user missed a scheduled deposit, the UI flagged it as a failure, causing users to abandon the pot altogether."
+            ],
+            solution: "We made target dates completely optional, rebranding them as milestones. We introduced flexible, gamified scheduling options (e.g., Round-ups, recurring deposits, or manually adding spare change) to encourage positive reinforcement."
+        },
+        5: {
+            title: "Ideation Cut: Screen 5 — Redundant Preview Step",
+            image: "assets/svgs/project_Pots/Frame 17.svg",
+            concept: "A confirmation screen summarizing the pot rules, selected category, and scheduled drafts, requiring a final confirmation click.",
+            drawbacks: [
+                "<strong>Speed bump:</strong> The preview page acted as a transaction screen, slowing down the instant-gratification loop of savings.",
+                "<strong>Duplicated effort:</strong> Users felt they were re-reading what they just input, causing a micro-annoyance before completing creation.",
+                "<strong>Underutilized real estate:</strong> The page lacked visual interest and felt dry compared to the rest of the gamified interface."
+            ],
+            solution: "We eliminated the separate confirmation step entirely. Instead, clicking 'Create' immediately initiates a vibrant success animation and deploys the pot, while providing an inline 'Edit' option directly on the dashboard."
+        },
+        12: {
+            title: "Ideation Cut: Screen 12 — Static Success Screen",
+            image: "assets/svgs/project_Pots/Dashboard_Partial state.svg",
+            concept: "A simple success screen with a 'Congrats' message and a single button to return to the main dashboard.",
+            drawbacks: [
+                "<strong>Missed onboarding opportunity:</strong> Once the pot was created, the user was left with a balance of $0 and no prompt or guidance on what to do next.",
+                "<strong>Dead-end flow:</strong> Users had to navigate back to the dashboard, select the pot, and click 'Deposit' to fund it—creating three extra clicks.",
+                "<strong>Low initial funding:</strong> Early testing showed that only 12% of users funded their pots immediately after creation in this flow."
+            ],
+            solution: "We transformed the success screen into an active onboarding step, adding a primary button saying 'Add your first $10' alongside presets. This simple change increased immediate funding rates from 12% to 64%."
+        }
+    };
+
+    function openCutModal(screenNum) {
+        const data = cutData[screenNum];
+        if (!data || !cutModal || !cutModalImg || !cutModalTitle || !cutModalBody) return;
+
+        cutModalImg.src = data.image;
+        cutModalImg.alt = data.title;
+        cutModalTitle.textContent = data.title;
+
+        let html = '';
+        html += '<div class="cut-section">';
+        html += '  <h4>The Concept</h4>';
+        html += '  <p>' + data.concept + '</p>';
+        html += '</div>';
+
+        html += '<div class="cut-section">';
+        html += '  <h4>❌ Why it didn\'t make the cut</h4>';
+        html += '  <ul class="cut-drawbacks-list">';
+        data.drawbacks.forEach(db => {
+            html += '    <li>' + db + '</li>';
+        });
+        html += '  </ul>';
+        html += '</div>';
+
+        html += '<div class="cut-section">';
+        html += '  <h4>✓ What works in the final design</h4>';
+        html += '  <p>' + data.solution + '</p>';
+        html += '</div>';
+
+        cutModalBody.innerHTML = html;
+        cutModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    if (cutModal && cutModalClose) {
+        const closeCutModal = () => {
+            cutModal.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                cutModalImg.src = '';
+                cutModalTitle.textContent = '';
+                cutModalBody.innerHTML = '';
+            }, 300);
+        };
+
+        cutModalClose.addEventListener('click', closeCutModal);
+        cutModal.addEventListener('click', (e) => {
+            if (e.target === cutModal) {
+                closeCutModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && cutModal.classList.contains('active')) {
+                closeCutModal();
+            }
+        });
+    }
+
     // ─── Scroll Listener ───
     let ticking = false;
     window.addEventListener('scroll', () => {
@@ -367,6 +479,10 @@
         ideationScreenFlow.innerHTML = '';
 
         screens.forEach((src, i) => {
+            // Create wrapper
+            const wrapper = document.createElement('div');
+            wrapper.className = 'ideation-screen-wrapper';
+
             // Create screen card
             const card = document.createElement('div');
             card.className = 'ideation-screen-card';
@@ -389,9 +505,24 @@
                     '</div>';
             }
 
-            ideationScreenFlow.appendChild(card);
+            wrapper.appendChild(card);
 
-            // Add flow arrow between cards (not after the last one)
+            // Add the "didn't make the cut" link for screens 1, 3, 5, 12 of "creation" phase
+            if (activePhase === 'creation' && (i === 0 || i === 2 || i === 4 || i === 11)) {
+                const cutLink = document.createElement('button');
+                cutLink.className = 'ideation-cut-link';
+                cutLink.style.animationDelay = (i * 60 + 15) + 'ms';
+                cutLink.innerHTML = 'Ideations that didn\'t make the cut <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px;"><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+                cutLink.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openCutModal(i + 1);
+                });
+                wrapper.appendChild(cutLink);
+            }
+
+            ideationScreenFlow.appendChild(wrapper);
+
+            // Add flow arrow between wrappers (not after the last one)
             if (i < screens.length - 1) {
                 const arrow = document.createElement('div');
                 arrow.className = 'ideation-flow-arrow';

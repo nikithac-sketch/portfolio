@@ -3408,6 +3408,174 @@ img { display: block; max-width: 100%; }
     transform: rotate(90deg);
 }
 
+/* Ideation Cuts Modal */
+.cut-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 13, 13, 0.75);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.cut-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cut-modal-wrapper {
+    position: relative;
+    background: #ffffff;
+    max-width: 900px;
+    width: 90%;
+    max-height: 85vh;
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    transform: scale(0.96) translateY(10px);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cut-modal.active .cut-modal-wrapper {
+    transform: scale(1) translateY(0);
+}
+
+.cut-modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: #f1f5f9;
+    border: none;
+    color: #475569;
+    font-size: 1.5rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 1;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.cut-modal-close:hover {
+    background: #e2e8f0;
+    transform: scale(1.05);
+}
+
+.cut-modal-content {
+    display: flex;
+    gap: 36px;
+    margin-top: 10px;
+}
+
+.cut-modal-left {
+    flex: 0 0 280px;
+    background: #f8fafc;
+    border-radius: 18px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e2e8f0;
+}
+
+.cut-modal-img {
+    max-width: 100%;
+    max-height: 480px;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.cut-modal-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.cut-modal-title {
+    font-family: var(--font);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 0;
+    margin-bottom: 20px;
+    line-height: 1.25;
+}
+
+.cut-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cut-section h4 {
+    font-family: var(--font);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #334155;
+    margin: 0 0 6px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.cut-section p {
+    font-family: var(--font);
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.cut-drawbacks-list {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cut-drawbacks-list li {
+    font-family: var(--font);
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .cut-modal-content {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .cut-modal-left {
+        flex: 0 0 auto;
+        padding: 12px;
+    }
+    .cut-modal-img {
+        max-height: 320px;
+    }
+    .cut-modal-wrapper {
+        padding: 24px;
+        width: 95%;
+    }
+    .cut-modal-title {
+        font-size: 1.3rem;
+        margin-bottom: 16px;
+    }
+}
+
 /* Media Queries for Responsive Gamification */
 @media (max-width: 1024px) {
     .gamification-gallery {
@@ -3960,7 +4128,7 @@ img { display: block; max-width: 100%; }
 .ideation-screen-flow {
     display: flex;
     gap: 14px;
-    align-items: center;
+    align-items: flex-start;
     overflow-x: auto;
     padding-bottom: 12px;
     scroll-snap-type: x proximity;
@@ -3976,6 +4144,41 @@ img { display: block; max-width: 100%; }
 .ideation-screen-flow::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.08);
     border-radius: 4px;
+}
+
+.ideation-screen-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 0 0 auto;
+}
+
+.ideation-cut-link {
+    background: rgba(245, 166, 35, 0.04);
+    border: 1px solid rgba(245, 166, 35, 0.18);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 100px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+    text-decoration: none;
+}
+
+.ideation-cut-link:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(245, 166, 35, 0.2);
 }
 
 /* Individual Screen Card */
@@ -4063,6 +4266,19 @@ img { display: block; max-width: 100%; }
     display: flex;
     align-items: center;
     color: rgba(0, 0, 0, 0.15);
+    height: 390px;
+}
+
+@media (max-width: 1024px) {
+    .ideation-flow-arrow {
+        height: 330px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ideation-flow-arrow {
+        height: 300px;
+    }
 }
 
 /* Discarded folder — greyed out effect */
