@@ -321,7 +321,7 @@
     const cutData = {
         1: {
             title: "Ideation Cut: Screen 1 — Form-Heavy Setup",
-            image: "assets/svgs/project_Pots/ideationScreens/potCreation/screen1_ideationsThatDidn'tMakeTheCut/screen1_itdmtc.svg",
+            image: "assets/svgs/project_Pots/ideationScreens/potCreation/ideationsThatDidn'tMakeTheCut/screen1_itdmtc.svg.svg",
             concept: "We initially designed a comprehensive, single-page creation form where users had to input their Pot Name, Target Amount, and Goal Date all at once.",
             drawbacks: [
                 "<strong>High cognitive load:</strong> Seeing a long form with multiple required inputs right after clicking 'Create Pot' created immediate friction.",

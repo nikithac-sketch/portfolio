@@ -3590,32 +3590,27 @@ img { display: block; max-width: 100%; }
 .cut-modal.full-svg-mode .cut-modal-content {
     margin-top: 0 !important;
     flex: 1 !important;
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: 100% !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    display: block !important;
     width: 100% !important;
 }
 
 .cut-modal.full-svg-mode .cut-modal-left {
-    flex: 1 !important;
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
     background: transparent !important;
     border: none !important;
     padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: block !important;
 }
 
 .cut-modal.full-svg-mode .cut-modal-img {
-    max-width: 100% !important;
-    max-height: calc(90vh - 100px) !important;
-    width: auto !important;
+    width: 100% !important;
     height: auto !important;
-    object-fit: contain !important;
+    display: block !important;
+    max-width: 100% !important;
+    max-height: none !important;
     box-shadow: none !important;
     border-radius: 0 !important;
 }
@@ -3623,6 +3618,7 @@ img { display: block; max-width: 100%; }
 .cut-modal.full-svg-mode .cut-modal-right {
     display: none !important;
 }
+
 
 
 /* Media Queries for Responsive Gamification */
