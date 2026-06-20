@@ -380,31 +380,43 @@
         const data = cutData[screenNum];
         if (!data || !cutModal || !cutModalImg || !cutModalTitle || !cutModalBody) return;
 
-        cutModalImg.src = data.image;
-        cutModalImg.alt = data.title;
-        cutModalTitle.textContent = data.title;
+        // Reset class
+        cutModal.classList.remove('full-svg-mode');
 
-        let html = '';
-        html += '<div class="cut-section">';
-        html += '  <h4>The Concept</h4>';
-        html += '  <p>' + data.concept + '</p>';
-        html += '</div>';
+        if (screenNum === 1 || screenNum === '1') {
+            cutModal.classList.add('full-svg-mode');
+            cutModalImg.src = data.image;
+            cutModalImg.alt = data.title;
+            cutModalTitle.textContent = '';
+            cutModalBody.innerHTML = '';
+        } else {
+            cutModalImg.src = data.image;
+            cutModalImg.alt = data.title;
+            cutModalTitle.textContent = data.title;
 
-        html += '<div class="cut-section">';
-        html += '  <h4>❌ Why it didn\'t make the cut</h4>';
-        html += '  <ul class="cut-drawbacks-list">';
-        data.drawbacks.forEach(db => {
-            html += '    <li>' + db + '</li>';
-        });
-        html += '  </ul>';
-        html += '</div>';
+            let html = '';
+            html += '<div class="cut-section">';
+            html += '  <h4>The Concept</h4>';
+            html += '  <p>' + data.concept + '</p>';
+            html += '</div>';
 
-        html += '<div class="cut-section">';
-        html += '  <h4>✓ What works in the final design</h4>';
-        html += '  <p>' + data.solution + '</p>';
-        html += '</div>';
+            html += '<div class="cut-section">';
+            html += '  <h4>❌ Why it didn\'t make the cut</h4>';
+            html += '  <ul class="cut-drawbacks-list">';
+            data.drawbacks.forEach(db => {
+                html += '    <li>' + db + '</li>';
+            });
+            html += '  </ul>';
+            html += '</div>';
 
-        cutModalBody.innerHTML = html;
+            html += '<div class="cut-section">';
+            html += '  <h4>✓ What works in the final design</h4>';
+            html += '  <p>' + data.solution + '</p>';
+            html += '</div>';
+
+            cutModalBody.innerHTML = html;
+        }
+
         cutModal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
@@ -417,6 +429,7 @@
                 cutModalImg.src = '';
                 cutModalTitle.textContent = '';
                 cutModalBody.innerHTML = '';
+                cutModal.classList.remove('full-svg-mode');
             }, 300);
         };
 

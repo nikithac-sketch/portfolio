@@ -3576,6 +3576,55 @@ img { display: block; max-width: 100%; }
     }
 }
 
+/* Full SVG Modal styling */
+.cut-modal.full-svg-mode .cut-modal-wrapper {
+    max-width: 1200px !important;
+    width: 95% !important;
+    max-height: 90vh !important;
+    padding: 60px 24px 24px 24px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.cut-modal.full-svg-mode .cut-modal-content {
+    margin-top: 0 !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.cut-modal.full-svg-mode .cut-modal-left {
+    flex: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.cut-modal.full-svg-mode .cut-modal-img {
+    max-width: 100% !important;
+    max-height: calc(90vh - 100px) !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+.cut-modal.full-svg-mode .cut-modal-right {
+    display: none !important;
+}
+
+
 /* Media Queries for Responsive Gamification */
 @media (max-width: 1024px) {
     .gamification-gallery {
