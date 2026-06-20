@@ -343,7 +343,7 @@
         },
         5: {
             title: "Ideation Cut: Screen 5 — Redundant Preview Step",
-            image: "assets/svgs/project_Pots/gamificationConcepts/Frame 17.svg",
+            image: "assets/svgs/project_Pots/ideationScreens/potCreation/screen5.svg",
             concept: "A confirmation screen summarizing the pot rules, selected category, and scheduled drafts, requiring a final confirmation click.",
             drawbacks: [
                 "<strong>Speed bump:</strong> The preview page acted as a transaction screen, slowing down the instant-gratification loop of savings.",
@@ -383,7 +383,7 @@
         // Reset class
         cutModal.classList.remove('full-svg-mode');
 
-        if (screenNum === 1 || screenNum === '1' || screenNum === 3 || screenNum === '3') {
+        if (screenNum === 1 || screenNum === '1' || screenNum === 3 || screenNum === '3' || screenNum === 5 || screenNum === '5') {
             cutModal.classList.add('full-svg-mode');
             cutModalImg.src = data.image;
             cutModalImg.alt = data.title;
