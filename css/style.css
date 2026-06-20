@@ -158,25 +158,6 @@ img { display: block; max-width: 100%; }
     position: relative; min-height: 100vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 0 40px 12vh; background: var(--bg);
-    overflow: hidden;
-}
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 900px;
-    height: 80%;
-    max-height: 700px;
-    background-image: url('../assets/Highlights-by-Outdraw-Design/04_Blobs/Blob 5.svg');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: invert(68%) sepia(85%) saturate(541%) hue-rotate(345deg) brightness(98%) contrast(96%) opacity(0.07);
-    pointer-events: none;
-    z-index: 0;
 }
 .hero-content { position: relative; z-index: 2; }
 .hero-icon { margin-bottom: -10px; position: relative; z-index: 1; }
