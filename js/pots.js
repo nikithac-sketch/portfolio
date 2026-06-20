@@ -341,6 +341,10 @@
             ],
             solution: "We made target dates completely optional, rebranding them as milestones. We introduced flexible, gamified scheduling options (e.g., Round-ups, recurring deposits, or manually adding spare change) to encourage positive reinforcement."
         },
+        4: {
+            title: "Ideation Cut: Screen 4 — Milestone Rewards",
+            image: "assets/svgs/project_Pots/ideationScreens/potCreation/ideationsThatDidn'tMakeTheCut/screen4_itdmtc.svg"
+        },
         5: {
             title: "Ideation Cut: Screen 5 — Redundant Preview Step",
             image: "assets/svgs/project_Pots/ideationScreens/potCreation/screen5.svg",
@@ -383,7 +387,8 @@
         // Reset class
         cutModal.classList.remove('full-svg-mode');
 
-        if (screenNum === 1 || screenNum === '1' || screenNum === 3 || screenNum === '3' || screenNum === 5 || screenNum === '5') {
+        const fullSvgScreens = [1, '1', 3, '3', 4, '4', 5, '5'];
+        if (fullSvgScreens.includes(screenNum)) {
             cutModal.classList.add('full-svg-mode');
             cutModalImg.src = data.image;
             cutModalImg.alt = data.title;
@@ -574,7 +579,7 @@
             let showBadge = false;
             let cutKey = null;
 
-            if (activePhase === 'creation' && (i === 0 || i === 2 || i === 4 || i === 11)) {
+            if (activePhase === 'creation' && (i === 0 || i === 2 || i === 3 || i === 4 || i === 11)) {
                 showBadge = true;
                 cutKey = i + 1;
             } else if (activePhase === 'dashboard' && i === 1) {
