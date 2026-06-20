@@ -332,7 +332,7 @@
         },
         3: {
             title: "Ideation Cut: Screen 3 — Restrictive Target Dates",
-            image: "assets/svgs/project_Pots/gamificationConcepts/Frame 16.svg",
+            image: "assets/svgs/project_Pots/ideationScreens/potCreation/ideationsThatDidn'tMakeTheCut/screen3_itdmtc.svg",
             concept: "This version enforced a strict, non-negotiable target date for the pot to calculate exact monthly savings schedules.",
             drawbacks: [
                 "<strong>Intimidating pressure:</strong> Users felt anxious about missing fixed deadlines, which discouraged them from creating pots for open-ended goals like 'Rainy Day Fund'.",
@@ -383,7 +383,7 @@
         // Reset class
         cutModal.classList.remove('full-svg-mode');
 
-        if (screenNum === 1 || screenNum === '1') {
+        if (screenNum === 1 || screenNum === '1' || screenNum === 3 || screenNum === '3') {
             cutModal.classList.add('full-svg-mode');
             cutModalImg.src = data.image;
             cutModalImg.alt = data.title;
