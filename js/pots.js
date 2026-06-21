@@ -360,6 +360,10 @@
             title: "Ideation Cut: Screen 8",
             image: "assets/svgs/project_Pots/ideationScreens/potCreation/ideationsThatDidn'tMakeTheCut/screen8_itdmtc.svg"
         },
+        9: {
+            title: "Ideation Cut: Screen 9",
+            image: "assets/svgs/project_Pots/ideationScreens/potCreation/ideationsThatDidn'tMakeTheCut/screen9_itdmtc.svg"
+        },
         12: {
             title: "Ideation Cut: Screen 12 — Static Success Screen",
             image: "assets/svgs/project_Pots/Dashboard_Partial state.svg",
@@ -391,7 +395,7 @@
         // Reset class
         cutModal.classList.remove('full-svg-mode');
 
-        const fullSvgScreens = [1, '1', 3, '3', 4, '4', 5, '5', 8, '8'];
+        const fullSvgScreens = [1, '1', 3, '3', 4, '4', 5, '5', 8, '8', 9, '9'];
         if (fullSvgScreens.includes(screenNum)) {
             cutModal.classList.add('full-svg-mode');
             cutModalImg.src = data.image;
@@ -583,7 +587,7 @@
             let showBadge = false;
             let cutKey = null;
 
-            if (activePhase === 'creation' && (i === 0 || i === 2 || i === 3 || i === 4 || i === 7 || i === 11)) {
+            if (activePhase === 'creation' && (i === 0 || i === 2 || i === 3 || i === 4 || i === 7 || i === 8 || i === 11)) {
                 showBadge = true;
                 cutKey = i + 1;
             } else if (activePhase === 'dashboard' && i === 1) {
