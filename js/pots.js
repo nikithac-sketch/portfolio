@@ -347,7 +347,7 @@
         },
         5: {
             title: "Ideation Cut: Screen 5 — Redundant Preview Step",
-            image: "assets/svgs/project_Pots/ideationScreens/potCreation/screen5.svg",
+            image: "assets/svgs/project_Pots/ideationScreens/potCreation/ideationsThatDidn'tMakeTheCut/screen5_itdmtc.svg",
             concept: "A confirmation screen summarizing the pot rules, selected category, and scheduled drafts, requiring a final confirmation click.",
             drawbacks: [
                 "<strong>Speed bump:</strong> The preview page acted as a transaction screen, slowing down the instant-gratification loop of savings.",
