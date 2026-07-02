@@ -596,10 +596,28 @@
             }
 
             if (showBadge) {
+                const teaserLines = {
+                    1: 'This screen started as a long, intimidating form.',
+                    3: 'Rigid deadlines almost killed the fun of saving.',
+                    4: 'Milestone rewards sounded great — until they didn\'t.',
+                    5: 'An extra confirmation step that slowed everyone down.',
+                    8: 'An earlier take that missed the mark.',
+                    9: 'A direction we explored but ultimately moved past.',
+                    12: 'A dead-end success screen that left users stranded.',
+                    'dashboard-2': 'A data-heavy comparison grid that overwhelmed users.'
+                };
+
                 const cutLink = document.createElement('button');
                 cutLink.className = 'ideation-cut-link';
                 cutLink.style.animationDelay = (i * 60 + 15) + 'ms';
-                cutLink.innerHTML = 'Ideations that didn\'t make the cut <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px;"><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+                cutLink.innerHTML = 'See what didn\'t work <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px;"><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+
+                const teaser = document.createElement('span');
+                teaser.className = 'ideation-cut-teaser';
+                teaser.textContent = teaserLines[cutKey] || '';
+                teaser.style.animationDelay = (i * 60 + 12) + 'ms';
+                cutLink.appendChild(teaser);
+
                 cutLink.addEventListener('click', (e) => {
                     e.stopPropagation();
                     openCutModal(cutKey);
