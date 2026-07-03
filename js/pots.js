@@ -209,7 +209,7 @@
                     // Update donut chart text
                     if (donutPct && donutLabel && archetypeData[archId]) {
                         donutPct.textContent = archetypeData[archId].pct;
-                        donutLabel.textContent = archetypeData[archId].label;
+                        donutLabel.textContent = 'of Users';
                     }
 
                     // Highlight donut segment
