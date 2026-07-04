@@ -1542,20 +1542,27 @@ img { display: block; max-width: 100%; }
     margin-bottom: 48px;
 }
 
+.case-study-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 16px 0 24px;
+}
+
 .case-study-title {
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 900;
     letter-spacing: -0.03em;
     text-transform: uppercase;
     line-height: 1.0;
-    margin: 16px 0 24px;
+    margin: 0;
 }
 
 .case-study-tagline {
     font-size: clamp(1.1rem, 3vw, 1.6rem);
     line-height: 1.4;
     color: var(--text-secondary);
-    max-width: 800px;
+    max-width: none;
 }
 
 .case-study-hero-card {

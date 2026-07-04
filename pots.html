@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Bitcount+Single&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=140">
+    <link rel="stylesheet" href="css/style.css?v=141">
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 </head>
 <body>
@@ -62,7 +62,13 @@
                 <span class="project-dash"></span>
                 <span class="project-cat">CLIENT UX CASE STUDY</span>
             </div>
-            <h1 class="case-study-title">Pots</h1>
+            <div class="case-study-title-wrapper">
+                <h1 class="case-study-title">Pots</h1>
+                <button class="story-ring" data-story="pots" aria-label="View Pots story">
+                    <svg class="story-ring-svg" viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" /></svg>
+                    <span class="story-ring-icon">▶</span>
+                </button>
+            </div>
             <p class="case-study-tagline">Gamifying micro-savings through delightful milestones & visual pathways</p>
         </header>
 
@@ -927,6 +933,23 @@
         </div>
     </footer>
 
-    <script src="js/pots.js?v=105"></script>
+    <!-- ============ STORY VIEWER MODAL ============ -->
+    <div class="story-viewer" id="storyViewer">
+        <div class="story-viewer-inner">
+            <!-- Progress bars -->
+            <div class="story-progress-bar" id="storyProgressBar"></div>
+            <!-- Close button -->
+            <button class="story-close" id="storyClose">&times;</button>
+            <!-- Project label -->
+            <div class="story-project-label" id="storyProjectLabel"></div>
+            <!-- Slide image -->
+            <img class="story-slide-img" id="storySlideImg" src="" alt="Story slide">
+            <!-- Tap zones -->
+            <div class="story-tap story-tap-left" id="storyTapLeft"></div>
+            <div class="story-tap story-tap-right" id="storyTapRight"></div>
+        </div>
+    </div>
+
+    <script src="js/pots.js?v=106"></script>
 </body>
 </html>

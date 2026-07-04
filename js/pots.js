@@ -641,6 +641,160 @@
     // Initial render
     renderScreenFlow();
 
+    // ─── Instagram Stories Viewer ───
+    const STORY_DURATION = 5000; // 5 seconds per slide
+
+    const storySlides = {
+        pots: {
+            label: 'POTS',
+            slides: [
+                'assets/images/stories/pots_1.jpg',
+                'assets/images/stories/pots_2.jpg',
+                'assets/images/stories/pots_3.jpg',
+                'assets/images/stories/pots_4.jpg',
+                'assets/images/stories/pots_5.jpg'
+            ]
+        }
+    };
+
+    const storyViewer     = document.getElementById('storyViewer');
+    const storyProgressBar = document.getElementById('storyProgressBar');
+    const storySlideImg   = document.getElementById('storySlideImg');
+    const storyCloseBtn   = document.getElementById('storyClose');
+    const storyTapLeft    = document.getElementById('storyTapLeft');
+    const storyTapRight   = document.getElementById('storyTapRight');
+    const storyLabel      = document.getElementById('storyProjectLabel');
+
+    let currentStory = null;
+    let currentSlideIndex = 0;
+    let storyTimer = null;
+
+    function openStory(projectKey) {
+        const data = storySlides[projectKey];
+        if (!data) return;
+
+        currentStory = data;
+        currentSlideIndex = 0;
+
+        if (storyLabel) storyLabel.textContent = data.label;
+
+        storyProgressBar.innerHTML = '';
+        data.slides.forEach(() => {
+            const seg = document.createElement('div');
+            seg.className = 'story-progress-seg';
+            seg.innerHTML = '<div class="story-progress-fill"></div>';
+            storyProgressBar.appendChild(seg);
+        });
+
+        storyViewer.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        showSlide(0);
+    }
+
+    function closeStory() {
+        clearTimeout(storyTimer);
+        storyViewer.classList.remove('active');
+        document.body.style.overflow = '';
+        storySlideImg.classList.remove('loaded');
+        storySlideImg.src = '';
+        currentStory = null;
+    }
+
+    function showSlide(index) {
+        if (!currentStory) return;
+        const slides = currentStory.slides;
+
+        if (index >= slides.length) {
+            closeStory();
+            return;
+        }
+
+        if (index < 0) index = 0;
+
+        currentSlideIndex = index;
+        clearTimeout(storyTimer);
+
+        const segs = storyProgressBar.querySelectorAll('.story-progress-seg');
+        segs.forEach((seg, i) => {
+            seg.classList.remove('active', 'done');
+            if (i < index) {
+                seg.classList.add('done');
+            } else if (i === index) {
+                seg.classList.add('active');
+                seg.querySelector('.story-progress-fill').style.setProperty('--story-duration', STORY_DURATION + 'ms');
+            }
+        });
+
+        storySlideImg.classList.remove('loaded');
+
+        const imgSrc = slides[index];
+        const dummyCanvas = document.createElement('canvas');
+        dummyCanvas.width = 420;
+        dummyCanvas.height = 750;
+        const ctx = dummyCanvas.getContext('2d');
+
+        const hues = [32, 180, 260, 340, 120];
+        const hue = hues[index % hues.length];
+        ctx.fillStyle = 'hsl(' + hue + ', 35%, 25%)';
+        ctx.fillRect(0, 0, 420, 750);
+
+        ctx.fillStyle = 'rgba(255,255,255,0.15)';
+        ctx.font = 'bold 80px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(String(index + 1).padStart(2, '0'), 210, 340);
+
+        ctx.fillStyle = 'rgba(255,255,255,0.35)';
+        ctx.font = '600 14px sans-serif';
+        ctx.fillText(currentStory.label + ' — SLIDE ' + (index + 1), 210, 410);
+
+        const img = new Image();
+        img.onload = function () {
+            storySlideImg.src = img.src;
+            storySlideImg.classList.add('loaded');
+        };
+        img.onerror = function () {
+            storySlideImg.src = dummyCanvas.toDataURL();
+            storySlideImg.classList.add('loaded');
+        };
+        img.src = imgSrc;
+
+        storyTimer = setTimeout(() => {
+            showSlide(currentSlideIndex + 1);
+        }, STORY_DURATION);
+    }
+
+    document.querySelectorAll('.story-ring').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const key = btn.getAttribute('data-story');
+            openStory(key);
+        });
+    });
+
+    if (storyCloseBtn) {
+        storyCloseBtn.addEventListener('click', closeStory);
+    }
+
+    if (storyTapLeft) {
+        storyTapLeft.addEventListener('click', () => {
+            showSlide(currentSlideIndex - 1);
+        });
+    }
+    if (storyTapRight) {
+        storyTapRight.addEventListener('click', () => {
+            showSlide(currentSlideIndex + 1);
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && storyViewer && storyViewer.classList.contains('active')) {
+            closeStory();
+        }
+    });
+
     // Initial executions
     updateScrollProgress();
     updateNavState();
