@@ -600,7 +600,7 @@
                     1: 'This screen started as a long, intimidating form.',
                     3: 'The tone of voice is very important!',
                     4: "Recommendations sounded great, until they didn't.",
-                    5: 'An extra confirmation step that slowed everyone down.',
+                    5: "This page went through a lot of user testing and team feedback before finalisation.",
                     8: 'An earlier take that missed the mark.',
                     9: 'A direction we explored but ultimately moved past.',
                     12: 'A dead-end success screen that left users stranded.',
