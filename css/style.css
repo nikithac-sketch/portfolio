@@ -2093,19 +2093,13 @@ img { display: block; max-width: 100%; }
 }
 
 .dramatic-transition-section.scroll-reveal .dramatic-text-bold {
-    opacity: 0;
-    transition: opacity 0.8s ease;
-    transition-delay: 0.4s;
+    opacity: 1;
 }
 
 /* Revealed states triggered on scroll */
 .dramatic-transition-section.scroll-reveal.revealed .dramatic-text-pre {
     opacity: 1;
     transform: translateY(0);
-}
-
-.dramatic-transition-section.scroll-reveal.revealed .dramatic-text-bold {
-    opacity: 1;
 }
 
 .dramatic-spiral-container {
