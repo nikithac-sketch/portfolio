@@ -598,7 +598,7 @@
             if (showBadge) {
                 const teaserLines = {
                     1: 'This screen started as a long, intimidating form.',
-                    3: 'Rigid deadlines almost killed the fun of saving.',
+                    3: 'The tone of voice is very important!',
                     4: 'Milestone rewards sounded great — until they didn\'t.',
                     5: 'An extra confirmation step that slowed everyone down.',
                     8: 'An earlier take that missed the mark.',
