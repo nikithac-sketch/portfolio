@@ -759,7 +759,7 @@
 
     // ─── Final Designs Showcase Scrollytelling Logic ───
     const creationSteps = document.querySelectorAll('.creation-scroll-step');
-    const creationImages = document.querySelectorAll('.creation-screen-img');
+    const creationImages = document.querySelectorAll('.creation-scrolly-layout .phone-screen-img');
 
     if (creationSteps.length > 0 && creationImages.length > 0) {
         const creationObserver = new IntersectionObserver((entries) => {
@@ -769,7 +769,7 @@
                     
                     // Update scrolling step classes
                     creationSteps.forEach((step, i) => {
-                        step.classList.toggle('active-step', i === stepIndex);
+                        step.classList.toggle('active', i === stepIndex);
                     });
 
                     // Update screen image active states
@@ -779,14 +779,17 @@
                 }
             });
         }, {
-            root: null,
-            rootMargin: '-40% 0px -40% 0px',
-            threshold: 0
+            threshold: 0.4,
+            rootMargin: '-10% 0px -10% 0px'
         });
 
         creationSteps.forEach(step => {
             creationObserver.observe(step);
         });
+
+        // Set first step active on load
+        creationSteps[0].classList.add('active');
+        creationImages[0].classList.add('active');
     }
 
     // Initial executions
