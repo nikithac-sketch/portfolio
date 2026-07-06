@@ -366,7 +366,7 @@
         },
         12: {
             title: "Ideation Cut: Screen 12 — Static Success Screen",
-            image: "assets/svgs/project_Pots/Dashboard_Partial state.svg",
+            image: "assets/svgs/project_Pots/ideationScreens/potCreation/ideationsThatDidn'tMakeTheCut/screen12_itdmtc.svg",
             concept: "A simple success screen with a 'Congrats' message and a single button to return to the main dashboard.",
             drawbacks: [
                 "<strong>Missed onboarding opportunity:</strong> Once the pot was created, the user was left with a balance of $0 and no prompt or guidance on what to do next.",
