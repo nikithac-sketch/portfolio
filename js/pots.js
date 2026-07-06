@@ -757,6 +757,38 @@
         }
     });
 
+    // ─── Final Designs Showcase Scrollytelling Logic ───
+    const showcaseSteps = document.querySelectorAll('.showcase-scroll-step');
+    const showcaseImages = document.querySelectorAll('.showcase-screen-img');
+
+    if (showcaseSteps.length > 0 && showcaseImages.length > 0) {
+        const showcaseObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stepIndex = parseInt(entry.target.getAttribute('data-step'), 10);
+                    
+                    // Update scrolling step classes
+                    showcaseSteps.forEach((step, i) => {
+                        step.classList.toggle('active-step', i === stepIndex);
+                    });
+
+                    // Update screen image active states
+                    showcaseImages.forEach((img, i) => {
+                        img.classList.toggle('active', i === stepIndex);
+                    });
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '-40% 0px -40% 0px',
+            threshold: 0
+        });
+
+        showcaseSteps.forEach(step => {
+            showcaseObserver.observe(step);
+        });
+    }
+
     // Initial executions
     updateScrollProgress();
     updateNavState();
