@@ -758,22 +758,22 @@
     });
 
     // ─── Final Designs Showcase Scrollytelling Logic ───
-    const showcaseSteps = document.querySelectorAll('.showcase-scroll-step');
-    const showcaseImages = document.querySelectorAll('.showcase-screen-img');
+    const creationSteps = document.querySelectorAll('.creation-scroll-step');
+    const creationImages = document.querySelectorAll('.creation-screen-img');
 
-    if (showcaseSteps.length > 0 && showcaseImages.length > 0) {
-        const showcaseObserver = new IntersectionObserver((entries) => {
+    if (creationSteps.length > 0 && creationImages.length > 0) {
+        const creationObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const stepIndex = parseInt(entry.target.getAttribute('data-step'), 10);
                     
                     // Update scrolling step classes
-                    showcaseSteps.forEach((step, i) => {
+                    creationSteps.forEach((step, i) => {
                         step.classList.toggle('active-step', i === stepIndex);
                     });
 
                     // Update screen image active states
-                    showcaseImages.forEach((img, i) => {
+                    creationImages.forEach((img, i) => {
                         img.classList.toggle('active', i === stepIndex);
                     });
                 }
@@ -784,8 +784,8 @@
             threshold: 0
         });
 
-        showcaseSteps.forEach(step => {
-            showcaseObserver.observe(step);
+        creationSteps.forEach(step => {
+            creationObserver.observe(step);
         });
     }
 
