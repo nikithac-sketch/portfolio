@@ -390,45 +390,10 @@
 
     function openCutModal(screenNum) {
         const data = cutData[screenNum];
-        if (!data || !cutModal || !cutModalImg || !cutModalTitle || !cutModalBody) return;
+        if (!data || !cutModal || !cutModalImg) return;
 
-        // Reset class
-        cutModal.classList.remove('full-svg-mode');
-
-        const fullSvgScreens = [1, '1', 3, '3', 4, '4', 5, '5', 8, '8', 9, '9'];
-        if (fullSvgScreens.includes(screenNum)) {
-            cutModal.classList.add('full-svg-mode');
-            cutModalImg.src = data.image;
-            cutModalImg.alt = data.title;
-            cutModalTitle.textContent = '';
-            cutModalBody.innerHTML = '';
-        } else {
-            cutModalImg.src = data.image;
-            cutModalImg.alt = data.title;
-            cutModalTitle.textContent = data.title;
-
-            let html = '';
-            html += '<div class="cut-section">';
-            html += '  <h4>The Concept</h4>';
-            html += '  <p>' + data.concept + '</p>';
-            html += '</div>';
-
-            html += '<div class="cut-section">';
-            html += '  <h4>❌ Why it didn\'t make the cut</h4>';
-            html += '  <ul class="cut-drawbacks-list">';
-            data.drawbacks.forEach(db => {
-                html += '    <li>' + db + '</li>';
-            });
-            html += '  </ul>';
-            html += '</div>';
-
-            html += '<div class="cut-section">';
-            html += '  <h4>✓ What works in the final design</h4>';
-            html += '  <p>' + data.solution + '</p>';
-            html += '</div>';
-
-            cutModalBody.innerHTML = html;
-        }
+        cutModalImg.src = data.image;
+        cutModalImg.alt = data.title;
 
         cutModal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -440,9 +405,6 @@
             document.body.style.overflow = '';
             setTimeout(() => {
                 cutModalImg.src = '';
-                cutModalTitle.textContent = '';
-                cutModalBody.innerHTML = '';
-                cutModal.classList.remove('full-svg-mode');
             }, 300);
         };
 

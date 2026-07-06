@@ -3419,15 +3419,15 @@ img { display: block; max-width: 100%; }
     transform: rotate(90deg);
 }
 
-/* Ideation Cuts Modal */
+/* Ideation Cuts Modal (Fullscreen Lightbox-style) */
 .cut-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(13, 13, 13, 0.75);
-    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
     z-index: 2000;
     display: flex;
     align-items: center;
@@ -3444,190 +3444,50 @@ img { display: block; max-width: 100%; }
 
 .cut-modal-wrapper {
     position: relative;
-    background: #ffffff;
-    max-width: 900px;
-    width: 90%;
+    max-width: 90%;
     max-height: 85vh;
-    border-radius: 24px;
-    padding: 36px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15);
-    overflow-y: auto;
-    transform: scale(0.96) translateY(10px);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
 }
 
 .cut-modal.active .cut-modal-wrapper {
-    transform: scale(1) translateY(0);
+    transform: scale(1);
+}
+
+.cut-modal-img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
 .cut-modal-close {
-    position: absolute;
+    position: fixed;
     top: 24px;
     right: 24px;
     background: #f1f5f9;
     border: none;
     color: #475569;
     font-size: 1.5rem;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     line-height: 1;
+    z-index: 2010;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .cut-modal-close:hover {
     background: #e2e8f0;
     transform: scale(1.05);
-}
-
-.cut-modal-content {
-    display: flex;
-    gap: 36px;
-    margin-top: 10px;
-}
-
-.cut-modal-left {
-    flex: 0 0 280px;
-    background: #f8fafc;
-    border-radius: 18px;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #e2e8f0;
-}
-
-.cut-modal-img {
-    max-width: 100%;
-    max-height: 480px;
-    object-fit: contain;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-}
-
-.cut-modal-right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.cut-modal-title {
-    font-family: var(--font);
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #0f172a;
-    margin-top: 0;
-    margin-bottom: 20px;
-    line-height: 1.25;
-}
-
-.cut-modal-body {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.cut-section h4 {
-    font-family: var(--font);
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #334155;
-    margin: 0 0 6px 0;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.cut-section p {
-    font-family: var(--font);
-    font-size: 0.95rem;
-    color: #475569;
-    line-height: 1.6;
-    margin: 0;
-}
-
-.cut-drawbacks-list {
-    margin: 0;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.cut-drawbacks-list li {
-    font-family: var(--font);
-    font-size: 0.95rem;
-    color: #475569;
-    line-height: 1.5;
-}
-
-@media (max-width: 768px) {
-    .cut-modal-content {
-        flex-direction: column;
-        gap: 24px;
-    }
-    .cut-modal-left {
-        flex: 0 0 auto;
-        padding: 12px;
-    }
-    .cut-modal-img {
-        max-height: 320px;
-    }
-    .cut-modal-wrapper {
-        padding: 24px;
-        width: 95%;
-    }
-    .cut-modal-title {
-        font-size: 1.3rem;
-        margin-bottom: 16px;
-    }
-}
-
-/* Full SVG Modal styling */
-.cut-modal.full-svg-mode .cut-modal-wrapper {
-    max-width: 1200px !important;
-    width: 95% !important;
-    max-height: 90vh !important;
-    padding: 60px 24px 24px 24px !important;
-    overflow: hidden !important;
-    display: flex !important;
-    flex-direction: column !important;
-}
-
-.cut-modal.full-svg-mode .cut-modal-content {
-    margin-top: 0 !important;
-    flex: 1 !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    display: block !important;
-    width: 100% !important;
-}
-
-.cut-modal.full-svg-mode .cut-modal-left {
-    width: 100% !important;
-    height: auto !important;
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    display: block !important;
-}
-
-.cut-modal.full-svg-mode .cut-modal-img {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-    max-width: 100% !important;
-    max-height: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-}
-
-.cut-modal.full-svg-mode .cut-modal-right {
-    display: none !important;
 }
 
 
