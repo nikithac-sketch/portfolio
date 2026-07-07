@@ -2159,7 +2159,7 @@ img { display: block; max-width: 100%; }
 
 .dramatic-spiral {
     display: block;
-    width: clamp(110px, 18vw, 180px);
+    width: clamp(150px, 22vw, 230px);
     height: auto;
     pointer-events: none;
     color: #F3C364; /* brand yellow/gold */
