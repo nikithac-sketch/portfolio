@@ -2123,7 +2123,7 @@ img { display: block; max-width: 100%; }
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 32px;
+    margin-bottom: 64px;
 }
 
 .dramatic-headline {
