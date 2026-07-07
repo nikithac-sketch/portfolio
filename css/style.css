@@ -2164,17 +2164,7 @@ img { display: block; max-width: 100%; }
     pointer-events: none;
     color: #F3C364; /* brand yellow/gold */
     opacity: 0.85;
-    transform-origin: 50% 50%;
-    animation: scribbleRotate 25s linear infinite;
-}
-
-@keyframes scribbleRotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+    transform: rotate(-5deg);
 }
 
 /* ============================================
