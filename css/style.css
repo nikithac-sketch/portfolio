@@ -2163,16 +2163,18 @@ img { display: block; max-width: 100%; }
     height: auto;
     pointer-events: none;
     color: #F3C364; /* brand yellow/gold */
-    opacity: 0;
-    transform: scale(0.5) rotate(-15deg);
-    transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    transition-delay: 0.8s;
+    opacity: 0.85;
+    transform-origin: 50% 50%;
+    animation: scribbleRotate 25s linear infinite;
 }
 
-.dramatic-transition-section.scroll-reveal.revealed .dramatic-spiral {
-    opacity: 0.85;
-    transform: scale(1) rotate(-5deg);
+@keyframes scribbleRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* ============================================
