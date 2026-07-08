@@ -1524,6 +1524,62 @@ img { display: block; max-width: 100%; }
     overflow: hidden;
 }
 
+/* Ambient Sky Elements */
+.sky-elements-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: var(--max-w);
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.sky-sun {
+    position: absolute;
+    top: 220px;
+    right: 120px;
+    animation: floatSlow 6s ease-in-out infinite alternate;
+}
+
+.sky-cloud {
+    position: absolute;
+    opacity: 0.85;
+    animation: floatSlow 8s ease-in-out infinite alternate;
+}
+
+.sky-cloud.cloud-1 {
+    top: 150px;
+    left: 45%;
+    animation-delay: 1s;
+    animation-duration: 9s;
+}
+
+.sky-cloud.cloud-2 {
+    top: 310px;
+    right: 280px;
+    animation-delay: 2s;
+    animation-duration: 7s;
+}
+
+.sky-cloud.cloud-3 {
+    top: 230px;
+    left: 60px;
+    animation-delay: 0.5s;
+    animation-duration: 8s;
+}
+
+@keyframes floatSlow {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-8px) rotate(1deg);
+    }
+}
+
 .case-study-hero-banner .case-study-meta-grid {
     max-width: var(--max-w);
     margin: 0 auto;
@@ -2048,6 +2104,29 @@ img { display: block; max-width: 100%; }
     }
     .checkpoint .lbl {
         display: none;
+    }
+    .sky-elements-container {
+        max-width: 100%;
+        overflow: hidden;
+    }
+    .sky-sun {
+        top: 130px;
+        right: 20px;
+        transform: scale(0.65);
+    }
+    .sky-cloud.cloud-1 {
+        top: 90px;
+        left: 55%;
+        transform: scale(0.55);
+    }
+    .sky-cloud.cloud-2 {
+        display: none; /* Hide extra cloud on mobile to avoid overcrowding */
+    }
+    .sky-cloud.cloud-3 {
+        top: 170px;
+        left: 15px;
+        transform: scale(0.55);
+        opacity: 0.5;
     }
 }
 
