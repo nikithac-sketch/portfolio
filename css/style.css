@@ -1510,6 +1510,57 @@ img { display: block; max-width: 100%; }
     min-height: calc(100vh - 120px);
 }
 
+.case-study-hero-banner {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: #D1EBEB;
+    margin-top: -140px; /* pull banner under nav */
+    padding-top: 140px; /* leave space for fixed nav */
+    overflow: hidden;
+}
+
+.case-study-hero-banner .case-study-breadcrumb,
+.case-study-hero-banner .case-study-header {
+    max-width: var(--max-w);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.case-study-hero-banner .case-study-hero-card {
+    width: 100%;
+    max-width: 100%;
+    margin: 40px 0 0 0;
+}
+
+.case-study-hero-banner .showcase-frame {
+    background: transparent;
+    padding: 0;
+    mask-image: none;
+    -webkit-mask-image: none;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.case-study-hero-banner .showcase-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
 .case-study-breadcrumb {
     display: flex;
     align-items: center;
@@ -1951,6 +2002,15 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 600px) {
+    .case-study-hero-banner {
+        margin-top: -100px;
+        padding-top: 100px;
+    }
+    .case-study-hero-banner .case-study-breadcrumb,
+    .case-study-hero-banner .case-study-header {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
     .case-study-container {
         padding-top: 100px;
         padding-left: 20px;
