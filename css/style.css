@@ -1542,12 +1542,18 @@ img { display: block; max-width: 100%; }
     top: 220px;
     right: 120px;
     animation: floatSlow 6s ease-in-out infinite alternate;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.05));
 }
 
 .sky-cloud {
     position: absolute;
     opacity: 0.85;
     animation: floatSlow 8s ease-in-out infinite alternate;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.06));
+}
+
+.sky-cloud svg {
+    overflow: visible !important;
 }
 
 .sky-cloud.cloud-1 {
