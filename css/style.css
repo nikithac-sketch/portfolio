@@ -1517,11 +1517,25 @@ img { display: block; max-width: 100%; }
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    background: linear-gradient(to bottom, #D1EBEB 0%, #D1EBEB calc(100% - 220px), #6EA088 calc(100% - 140px), #6EA088 100%);
+    background: linear-gradient(to bottom, #D1EBEB 0%, #D1EBEB calc(100% - 320px), #85B787 calc(100% - 220px), #85B787 100%);
     margin-top: -140px; /* pull banner under nav */
     padding-top: 140px; /* leave space for fixed nav */
-    padding-bottom: 80px; /* Increased bleed below */
+    margin-bottom: 56px; /* push intro section down */
     overflow: hidden;
+}
+
+.case-study-hero-banner .case-study-meta-grid {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 0;
+}
+
+.case-study-hero-banner .case-study-meta-grid::before {
+    display: none; /* Hide top border since the entire block is green */
 }
 
 .case-study-hero-banner .case-study-breadcrumb,
@@ -2006,8 +2020,9 @@ img { display: block; max-width: 100%; }
     .case-study-hero-banner {
         margin-top: -100px;
         padding-top: 100px;
-        padding-bottom: 40px;
-        background: linear-gradient(to bottom, #D1EBEB 0%, #D1EBEB calc(100% - 80px), #6EA088 calc(100% - 50px), #6EA088 100%);
+        padding-bottom: 0;
+        margin-bottom: 32px;
+        background: linear-gradient(to bottom, #D1EBEB 0%, #D1EBEB calc(100% - 280px), #85B787 calc(100% - 240px), #85B787 100%);
     }
     .case-study-hero-banner .case-study-breadcrumb,
     .case-study-hero-banner .case-study-header {
@@ -2019,10 +2034,14 @@ img { display: block; max-width: 100%; }
         padding-left: 20px;
         padding-right: 20px;
     }
-    .case-study-meta-grid {
+    .case-study-hero-banner .case-study-meta-grid {
         grid-template-columns: 1fr;
         gap: 16px;
-        padding: 24px 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        margin-bottom: 0;
     }
     .showcase-frame {
         padding: 20px 0 0 0;
