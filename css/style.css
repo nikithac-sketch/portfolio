@@ -582,6 +582,255 @@ img { display: block; max-width: 100%; }
 .story-tap-left  { left: 0; }
 .story-tap-right { right: 0; width: 60%; }
 
+/* ─── Rich HTML Story Slide Content ─── */
+.story-slide-content {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: none;
+    align-items: stretch;
+    justify-content: stretch;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.story-slide-content.loaded {
+    opacity: 1;
+}
+.story-slide-content > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 56px 28px 40px;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Shared Typography */
+.ss-tagline {
+    font-family: var(--font-mono, 'Bitcount Single', monospace);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+.ss-section-title {
+    font-family: var(--font-body, 'Instrument Sans', sans-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 16px;
+    line-height: 1.3;
+}
+.ss-footnote {
+    font-family: var(--font-mono, 'Bitcount Single', monospace);
+    font-size: 0.55rem;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.35);
+    position: absolute;
+    bottom: 24px;
+    left: 28px;
+    right: 28px;
+    text-align: center;
+}
+
+/* ── Title Slide ── */
+.ss-title-slide {
+    justify-content: center;
+    gap: 4px;
+}
+.ss-hero-title {
+    font-family: var(--font-body, 'Instrument Sans', sans-serif);
+    font-size: 4.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0;
+    line-height: 1;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+.ss-hero-sub {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    max-width: 280px;
+    margin: 12px 0 0;
+}
+.ss-accent-bar {
+    width: 48px;
+    height: 4px;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+/* ── Stat Slide ── */
+.ss-stat-slide {
+    gap: 8px;
+}
+.ss-stat-value {
+    font-family: var(--font-body, 'Instrument Sans', sans-serif);
+    font-size: 6rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    margin: 8px 0;
+    background: linear-gradient(135deg, #fff 30%, rgba(255,255,255,0.6));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.ss-stat-desc {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.55;
+    max-width: 280px;
+    margin: 0;
+}
+
+/* ── Insight Slide (Archetypes) ── */
+.ss-insight-slide {
+    justify-content: flex-start;
+    padding-top: 72px !important;
+}
+.ss-insight-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    margin-top: 8px;
+}
+.ss-insight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-align: left;
+}
+.ss-insight-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.ss-insight-text {
+    flex: 1;
+}
+.ss-insight-text strong {
+    font-size: 0.85rem;
+    color: #fff;
+}
+.ss-insight-pct {
+    font-family: var(--font-mono, 'Bitcount Single', monospace);
+    font-size: 0.7rem;
+    color: #F3C364;
+    margin-left: 6px;
+    letter-spacing: 0.04em;
+}
+.ss-insight-text p {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.55);
+    margin: 3px 0 0;
+    line-height: 1.4;
+}
+
+/* ── Concept Slide ── */
+.ss-concept-slide {
+    gap: 8px;
+    justify-content: flex-start;
+    padding-top: 72px !important;
+}
+.ss-concept-desc {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.55;
+    max-width: 320px;
+    margin: 0 0 16px;
+}
+.ss-concept-img-wrap {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+.ss-concept-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* ── Screen Slide (Phone Mockup) ── */
+.ss-screen-slide {
+    gap: 12px;
+    justify-content: flex-start;
+    padding-top: 64px !important;
+    padding-bottom: 28px !important;
+}
+.ss-phone-frame {
+    flex: 1;
+    width: 72%;
+    max-height: 520px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.ss-phone-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+.ss-screen-caption {
+    font-size: 0.72rem;
+    line-height: 1.5;
+    max-width: 300px;
+    margin: 0;
+}
+
+/* ── Impact Slide ── */
+.ss-impact-slide {
+    gap: 16px;
+}
+.ss-impact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    margin-top: 8px;
+}
+.ss-impact-stat {
+    text-align: center;
+}
+.ss-impact-value {
+    font-family: var(--font-body, 'Instrument Sans', sans-serif);
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+.ss-impact-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+    margin: 0;
+    max-width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .story-viewer-inner {
