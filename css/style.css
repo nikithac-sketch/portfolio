@@ -59,11 +59,16 @@ img { display: block; max-width: 100%; }
     position: fixed; top: 0; left: 0; right: 0;
     display: flex; align-items: center; justify-content: space-between;
     padding: 20px 40px; z-index: 150;
+    background: transparent;
+    backdrop-filter: none;
+    transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
+}
+.nav.scrolled {
+    padding: 14px 40px;
     background: rgba(255,255,255,0.92);
     backdrop-filter: blur(16px);
-    transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+    box-shadow: 0 1px 0 var(--border);
 }
-.nav.scrolled { padding: 14px 40px; box-shadow: 0 1px 0 var(--border); }
 
 
 .nav-left {
