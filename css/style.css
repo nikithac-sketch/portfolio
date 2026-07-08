@@ -1600,6 +1600,14 @@ img { display: block; max-width: 100%; }
     display: none; /* Hide top border since the entire block is green */
 }
 
+.case-study-hero-banner .meta-label {
+    color: #27402c; /* Deep forest green for contrast on light green background */
+}
+
+.case-study-hero-banner .meta-value {
+    color: #111111; /* Dark charcoal/black for strong legibility */
+}
+
 .case-study-hero-banner .case-study-breadcrumb,
 .case-study-hero-banner .case-study-header {
     max-width: var(--max-w);
