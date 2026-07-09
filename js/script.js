@@ -319,19 +319,84 @@
         }
     });
 
-    // ─── Instagram Stories Viewer ───
-    const STORY_DURATION = 5000; // 5 seconds per slide
+    // ─── Instagram Stories Viewer (Hybrid Rich HTML + Image Slides) ───
+    const STORY_DURATION = 6000; // 6 seconds per slide
 
-    // Slide data per project (replace nulls with real image paths later)
     const storySlides = {
         pots: {
             label: 'POTS',
             slides: [
-                'assets/images/stories/pots_1.jpg',
-                'assets/images/stories/pots_2.jpg',
-                'assets/images/stories/pots_3.jpg',
-                'assets/images/stories/pots_4.jpg',
-                'assets/images/stories/pots_5.jpg'
+                {
+                    type: 'title',
+                    bg: 'linear-gradient(165deg, #D1EBEB 0%, #85B787 55%, #5C8F5E 100%)',
+                    tagline: 'HUGOSAVE · UX CASE STUDY',
+                    title: 'POTS',
+                    subtitle: 'Gamifying micro-savings through delightful milestones & visual pathways',
+                    accent: '#F3C364'
+                },
+                {
+                    type: 'stat',
+                    bg: 'linear-gradient(165deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+                    tagline: 'THE PROBLEM',
+                    stat: '68%',
+                    description: 'of users who created money pots never returned to save more after their first deposit.',
+                    footnote: 'Based on internal analytics & user interviews'
+                },
+                {
+                    type: 'insight',
+                    bg: 'linear-gradient(165deg, #2d2d3f 0%, #1e1e30 100%)',
+                    tagline: 'USER RESEARCH',
+                    title: 'Four distinct saving archetypes',
+                    items: [
+                        { icon: '🏗️', name: 'Architect', pct: '37.8%', desc: 'Plans every detail before saving' },
+                        { icon: '📦', name: 'Accumulator', pct: '16.2%', desc: 'Saves impulsively in small bursts' },
+                        { icon: '⏳', name: 'Countdown', pct: '1.6%', desc: 'Deadline-driven, last-minute savers' },
+                        { icon: '🧭', name: 'Explorer', pct: '44.4%', desc: 'Curious but needs gentle nudges' }
+                    ]
+                },
+                {
+                    type: 'concept',
+                    bg: 'linear-gradient(165deg, #0f3460 0%, #1a1a2e 100%)',
+                    tagline: 'THE SOLUTION',
+                    title: 'A gamified savings journey',
+                    description: 'Transform passive pot creation into an engaging milestone pathway — every deposit unlocks visual rewards & progress celebrations.',
+                    image: 'assets/svgs/project_Pots/gamificationConcepts/Frame 16.svg'
+                },
+                {
+                    type: 'screen',
+                    bg: 'linear-gradient(165deg, #D1EBEB 0%, #a8d5ba 100%)',
+                    tagline: 'CREATING A POT',
+                    caption: 'Guided pot creation with flexible goal-setting and personalised themes',
+                    image: 'assets/svgs/project_Pots/finalScreens/Money Pot Creation.svg',
+                    dark: true
+                },
+                {
+                    type: 'screen',
+                    bg: 'linear-gradient(165deg, #f5e6d3 0%, #e8d5b7 100%)',
+                    tagline: 'SAVINGS DASHBOARD',
+                    caption: 'Track progress, celebrate milestones, and manage all pots from one place',
+                    image: 'assets/svgs/project_Pots/finalScreens/Money Pot screen.svg',
+                    dark: true
+                },
+                {
+                    type: 'screen',
+                    bg: 'linear-gradient(165deg, #1a1a2e 0%, #2d2d3f 100%)',
+                    tagline: 'MILESTONE REWARDS',
+                    caption: 'Delightful celebration moments that encourage continued saving habits',
+                    image: 'assets/svgs/project_Pots/finalScreens/Congratulation screen/Buy Schedule.svg',
+                    dark: false
+                },
+                {
+                    type: 'impact',
+                    bg: 'linear-gradient(165deg, #85B787 0%, #5C8F5E 50%, #3d6b3f 100%)',
+                    tagline: 'IMPACT',
+                    stats: [
+                        { value: '4×', label: 'Increase in return visits after pot creation' },
+                        { value: '92%', label: 'Of testers found milestones motivating' },
+                        { value: '3.2×', label: 'More deposits per user per month' }
+                    ],
+                    footnote: 'Measured during usability testing with 24 participants'
+                }
             ]
         },
         echoverse: {
@@ -356,13 +421,14 @@
         }
     };
 
-    const storyViewer     = document.getElementById('storyViewer');
-    const storyProgressBar = document.getElementById('storyProgressBar');
-    const storySlideImg   = document.getElementById('storySlideImg');
-    const storyCloseBtn   = document.getElementById('storyClose');
-    const storyTapLeft    = document.getElementById('storyTapLeft');
-    const storyTapRight   = document.getElementById('storyTapRight');
-    const storyLabel      = document.getElementById('storyProjectLabel');
+    const storyViewer       = document.getElementById('storyViewer');
+    const storyProgressBar  = document.getElementById('storyProgressBar');
+    const storySlideImg     = document.getElementById('storySlideImg');
+    const storySlideContent = document.getElementById('storySlideContent');
+    const storyCloseBtn     = document.getElementById('storyClose');
+    const storyTapLeft      = document.getElementById('storyTapLeft');
+    const storyTapRight     = document.getElementById('storyTapRight');
+    const storyLabelEl      = document.getElementById('storyProjectLabel');
 
     let currentStory = null;
     let currentSlideIndex = 0;
@@ -375,10 +441,8 @@
         currentStory = data;
         currentSlideIndex = 0;
 
-        // Set project label
-        if (storyLabel) storyLabel.textContent = data.label;
+        if (storyLabelEl) storyLabelEl.textContent = data.label;
 
-        // Build progress segments
         storyProgressBar.innerHTML = '';
         data.slides.forEach(() => {
             const seg = document.createElement('div');
@@ -387,11 +451,8 @@
             storyProgressBar.appendChild(seg);
         });
 
-        // Show viewer
         storyViewer.classList.add('active');
         document.body.style.overflow = 'hidden';
-
-        // Show first slide
         showSlide(0);
     }
 
@@ -399,28 +460,113 @@
         clearTimeout(storyTimer);
         storyViewer.classList.remove('active');
         document.body.style.overflow = '';
-        storySlideImg.classList.remove('loaded');
-        storySlideImg.src = '';
+        if (storySlideImg) {
+            storySlideImg.classList.remove('loaded');
+            storySlideImg.src = '';
+            storySlideImg.style.display = 'none';
+        }
+        if (storySlideContent) {
+            storySlideContent.classList.remove('loaded');
+            storySlideContent.innerHTML = '';
+            storySlideContent.style.display = 'none';
+        }
         currentStory = null;
+    }
+
+    function renderSlideHTML(slide) {
+        let html = '';
+
+        if (slide.type === 'title') {
+            html = `
+                <div class="ss-title-slide" style="background:${slide.bg}">
+                    <span class="ss-tagline" style="color:${slide.dark ? '#333' : '#fff'}">${slide.tagline}</span>
+                    <h2 class="ss-hero-title" style="color:${slide.dark ? '#111' : '#fff'}">${slide.title}</h2>
+                    <p class="ss-hero-sub" style="color:${slide.dark ? '#333' : 'rgba(255,255,255,0.85)'}">${slide.subtitle}</p>
+                    <div class="ss-accent-bar" style="background:${slide.accent}"></div>
+                </div>`;
+        }
+
+        else if (slide.type === 'stat') {
+            html = `
+                <div class="ss-stat-slide" style="background:${slide.bg}">
+                    <span class="ss-tagline">${slide.tagline}</span>
+                    <div class="ss-stat-value">${slide.stat}</div>
+                    <p class="ss-stat-desc">${slide.description}</p>
+                    <span class="ss-footnote">${slide.footnote}</span>
+                </div>`;
+        }
+
+        else if (slide.type === 'insight') {
+            const itemsHtml = slide.items.map(it => `
+                <div class="ss-insight-item">
+                    <span class="ss-insight-icon">${it.icon}</span>
+                    <div class="ss-insight-text">
+                        <strong>${it.name}</strong> <span class="ss-insight-pct">${it.pct}</span>
+                        <p>${it.desc}</p>
+                    </div>
+                </div>`).join('');
+            html = `
+                <div class="ss-insight-slide" style="background:${slide.bg}">
+                    <span class="ss-tagline">${slide.tagline}</span>
+                    <h3 class="ss-section-title">${slide.title}</h3>
+                    <div class="ss-insight-list">${itemsHtml}</div>
+                </div>`;
+        }
+
+        else if (slide.type === 'concept') {
+            html = `
+                <div class="ss-concept-slide" style="background:${slide.bg}">
+                    <span class="ss-tagline">${slide.tagline}</span>
+                    <h3 class="ss-section-title">${slide.title}</h3>
+                    <p class="ss-concept-desc">${slide.description}</p>
+                    <div class="ss-concept-img-wrap">
+                        <img src="${slide.image}" alt="${slide.title}" class="ss-concept-img" />
+                    </div>
+                </div>`;
+        }
+
+        else if (slide.type === 'screen') {
+            html = `
+                <div class="ss-screen-slide" style="background:${slide.bg}">
+                    <span class="ss-tagline" style="color:${slide.dark ? '#333' : '#fff'}">${slide.tagline}</span>
+                    <div class="ss-phone-frame">
+                        <img src="${slide.image}" alt="${slide.tagline}" class="ss-phone-img" />
+                    </div>
+                    <p class="ss-screen-caption" style="color:${slide.dark ? '#444' : 'rgba(255,255,255,0.85)'}">${slide.caption}</p>
+                </div>`;
+        }
+
+        else if (slide.type === 'impact') {
+            const statsHtml = slide.stats.map(s => `
+                <div class="ss-impact-stat">
+                    <div class="ss-impact-value">${s.value}</div>
+                    <p class="ss-impact-label">${s.label}</p>
+                </div>`).join('');
+            html = `
+                <div class="ss-impact-slide" style="background:${slide.bg}">
+                    <span class="ss-tagline">${slide.tagline}</span>
+                    <div class="ss-impact-grid">${statsHtml}</div>
+                    <span class="ss-footnote">${slide.footnote}</span>
+                </div>`;
+        }
+
+        return html;
     }
 
     function showSlide(index) {
         if (!currentStory) return;
         const slides = currentStory.slides;
 
-        // If we've gone past the last slide, close the viewer
         if (index >= slides.length) {
             closeStory();
             return;
         }
 
-        // If going backwards past the beginning, stay at first
         if (index < 0) index = 0;
 
         currentSlideIndex = index;
         clearTimeout(storyTimer);
 
-        // Update progress segments
         const segs = storyProgressBar.querySelectorAll('.story-progress-seg');
         segs.forEach((seg, i) => {
             seg.classList.remove('active', 'done');
@@ -428,52 +574,69 @@
                 seg.classList.add('done');
             } else if (i === index) {
                 seg.classList.add('active');
-                // Set the CSS custom property for animation duration
                 seg.querySelector('.story-progress-fill').style.setProperty('--story-duration', STORY_DURATION + 'ms');
             }
         });
 
-        // Load the image
-        storySlideImg.classList.remove('loaded');
+        const slide = slides[index];
 
-        // Generate a dummy placeholder color for missing images
-        const imgSrc = slides[index];
-        const dummyCanvas = document.createElement('canvas');
-        dummyCanvas.width = 420;
-        dummyCanvas.height = 750;
-        const ctx = dummyCanvas.getContext('2d');
+        if (typeof slide === 'object') {
+            // Rich HTML slide
+            if (storySlideImg) {
+                storySlideImg.classList.remove('loaded');
+                storySlideImg.src = '';
+                storySlideImg.style.display = 'none';
+            }
+            if (storySlideContent) {
+                storySlideContent.style.display = 'flex';
+                storySlideContent.innerHTML = renderSlideHTML(slide);
+                requestAnimationFrame(() => {
+                    storySlideContent.classList.add('loaded');
+                });
+            }
+        } else {
+            // Image slide (fallback)
+            if (storySlideContent) {
+                storySlideContent.classList.remove('loaded');
+                storySlideContent.innerHTML = '';
+                storySlideContent.style.display = 'none';
+            }
+            if (storySlideImg) {
+                storySlideImg.style.display = 'block';
+                storySlideImg.classList.remove('loaded');
 
-        // Unique background colour per slide
-        const hues = [32, 180, 260, 340, 120];
-        const hue = hues[index % hues.length];
-        ctx.fillStyle = 'hsl(' + hue + ', 35%, 25%)';
-        ctx.fillRect(0, 0, 420, 750);
+                const dummyCanvas = document.createElement('canvas');
+                dummyCanvas.width = 420;
+                dummyCanvas.height = 750;
+                const ctx = dummyCanvas.getContext('2d');
+                const hues = [32, 180, 260, 340, 120];
+                const hue = hues[index % hues.length];
+                ctx.fillStyle = 'hsl(' + hue + ', 35%, 25%)';
+                ctx.fillRect(0, 0, 420, 750);
+                ctx.fillStyle = 'rgba(255,255,255,0.15)';
+                ctx.font = 'bold 80px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(String(index + 1).padStart(2, '0'), 210, 340);
+                ctx.fillStyle = 'rgba(255,255,255,0.35)';
+                ctx.font = '600 14px sans-serif';
+                ctx.fillText(currentStory.label + ' — SLIDE ' + (index + 1), 210, 410);
 
-        // Label text
-        ctx.fillStyle = 'rgba(255,255,255,0.15)';
-        ctx.font = 'bold 80px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(String(index + 1).padStart(2, '0'), 210, 340);
+                const img = new Image();
+                img.onload = function () {
+                    storySlideImg.src = img.src;
+                    storySlideImg.classList.add('loaded');
+                };
+                img.onerror = function () {
+                    storySlideImg.src = dummyCanvas.toDataURL();
+                    storySlideImg.classList.add('loaded');
+                };
+                img.src = slide;
+            }
+        }
 
-        ctx.fillStyle = 'rgba(255,255,255,0.35)';
-        ctx.font = '600 14px sans-serif';
-        ctx.fillText(currentStory.label + ' — SLIDE ' + (index + 1), 210, 410);
-
-        // Try real image, fallback to canvas dummy
-        const img = new Image();
-        img.onload = function () {
-            storySlideImg.src = img.src;
-            storySlideImg.classList.add('loaded');
-        };
-        img.onerror = function () {
-            storySlideImg.src = dummyCanvas.toDataURL();
-            storySlideImg.classList.add('loaded');
-        };
-        img.src = imgSrc;
-
-        // Auto-advance timer
         storyTimer = setTimeout(() => {
+            if (storySlideContent) storySlideContent.classList.remove('loaded');
             showSlide(currentSlideIndex + 1);
         }, STORY_DURATION);
     }
@@ -488,12 +651,10 @@
         });
     });
 
-    // Close button
     if (storyCloseBtn) {
         storyCloseBtn.addEventListener('click', closeStory);
     }
 
-    // Tap zones: left = previous, right = next
     if (storyTapLeft) {
         storyTapLeft.addEventListener('click', () => {
             showSlide(currentSlideIndex - 1);
@@ -505,7 +666,6 @@
         });
     }
 
-    // Escape key to close
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && storyViewer.classList.contains('active')) {
             closeStory();
