@@ -92,7 +92,7 @@ img { display: block; max-width: 100%; }
     transform: scale(1.1);
 }
 .nav-logo .home-icon {
-    font-size: 22px;
+    font-size: 32px;
     display: block;
     transition: color 0.4s ease;
 }
@@ -1717,7 +1717,7 @@ img { display: block; max-width: 100%; }
         padding: 8px 12px;
     }
     .nav-logo .home-icon {
-        font-size: 19px;
+        font-size: 26px;
     }
     .nav-right {
         gap: 10px;
