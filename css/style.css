@@ -80,12 +80,23 @@ img { display: block; max-width: 100%; }
 .nav-clock { color: var(--text-muted); transition: color 0.4s ease; }
 
 .nav-center { position: absolute; left: 50%; transform: translateX(-50%); }
-.nav-logo { display: grid; grid-template-columns: repeat(2, 8px); gap: 5px; }
-.logo-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--text); transition: background 0.4s ease;
+.nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    transition: color 0.4s ease, transform 0.25s ease;
 }
-.nav-logo:hover .logo-dot { background: var(--accent); }
+.nav-logo:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+.nav-logo svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    transition: stroke 0.4s ease;
+}
 
 .nav-right { display: flex; align-items: center; gap: 32px; }
 .nav-link {
@@ -1706,13 +1717,9 @@ img { display: block; max-width: 100%; }
     .nav {
         padding: 8px 12px;
     }
-    .nav-logo {
-        grid-template-columns: repeat(2, 6px);
-        gap: 3px;
-    }
-    .logo-dot {
-        width: 6px;
-        height: 6px;
+    .nav-logo svg {
+        width: 18px;
+        height: 18px;
     }
     .nav-right {
         gap: 10px;
