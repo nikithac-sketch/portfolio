@@ -1921,6 +1921,8 @@ img { display: block; max-width: 100%; }
     font-size: 0.72rem;
     font-weight: 700;
     margin-bottom: 32px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .case-study-breadcrumb a {
