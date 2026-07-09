@@ -91,11 +91,10 @@ img { display: block; max-width: 100%; }
     color: var(--accent);
     transform: scale(1.1);
 }
-.nav-logo svg {
-    width: 20px;
-    height: 20px;
+.nav-logo .home-icon {
+    font-size: 22px;
     display: block;
-    transition: stroke 0.4s ease;
+    transition: color 0.4s ease;
 }
 
 .nav-right { display: flex; align-items: center; gap: 32px; }
@@ -1717,9 +1716,8 @@ img { display: block; max-width: 100%; }
     .nav {
         padding: 8px 12px;
     }
-    .nav-logo svg {
-        width: 18px;
-        height: 18px;
+    .nav-logo .home-icon {
+        font-size: 19px;
     }
     .nav-right {
         gap: 10px;
