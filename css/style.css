@@ -2419,9 +2419,14 @@ img { display: block; max-width: 100%; }
    ============================================ */
 .hugo-intro-section {
     width: 100%;
-    margin: 150px auto 100px;
-    padding: 0 40px;
+    margin: 0 auto;
+    padding: 80px 40px;
     max-width: var(--max-w);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 /* Custom Dissolve Reveal Effect */
