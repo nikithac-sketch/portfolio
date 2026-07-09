@@ -1783,7 +1783,7 @@ img { display: block; max-width: 100%; }
     padding-top: 140px; /* leave space for fixed nav */
     margin-bottom: 56px; /* push intro section down */
     overflow: hidden;
-    min-height: calc(100vh + 140px);
+    min-height: 100vh;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -2362,7 +2362,7 @@ img { display: block; max-width: 100%; }
         padding-bottom: 0;
         margin-bottom: 32px;
         background: linear-gradient(to bottom, #D1EBEB 0%, #D1EBEB calc(100% - 280px), #85B787 calc(100% - 240px), #85B787 100%);
-        min-height: calc(100vh + 100px);
+        min-height: 100vh;
     }
     .case-study-hero-banner .case-study-breadcrumb,
     .case-study-hero-banner .case-study-header {
