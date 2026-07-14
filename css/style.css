@@ -252,7 +252,7 @@ img { display: block; max-width: 100%; }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 
 /* ============================================
-   PROJECT SECTIONS — Sticky Scrollytelling
+   PROJECT SECTIONS — Normal Scroll Layout
    ============================================ */
 .projects-container {
     max-width: var(--max-w);
@@ -260,22 +260,38 @@ img { display: block; max-width: 100%; }
     padding: 80px 40px 100px;
 }
 
-/* Two-column layout */
-.projects-layout {
-    display: block;
-    width: 100%;
+/* Individual project panel — side-by-side phone + info */
+.project-panel {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.project-panel:last-child {
+    border-bottom: none;
+}
+.project-panel.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* ── Sticky Phone Column (left) ── */
-.projects-phone-col {
-    display: none !important;
+/* ── Phone Column (per project) ── */
+.project-phone-col {
+    flex: 0 0 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ── Phone Frame ── */
 .phone-frame {
     position: relative;
-    width: 300px;
-    height: 560px;
+    width: 280px;
+    height: 524px;
     background: transparent;
     box-shadow: none;
     filter: none;
@@ -284,10 +300,10 @@ img { display: block; max-width: 100%; }
 /* Screen area coordinates calculated to sit perfectly behind the SVG inner screen stroke */
 .phone-screen {
     position: absolute;
-    left: 22px;
-    top: 60px;
-    width: 256px;
-    height: 430px;
+    left: 20px;
+    top: 56px;
+    width: 240px;
+    height: 402px;
     overflow: visible;
     background: var(--bg-alt);
     border-radius: 4px;
@@ -312,21 +328,17 @@ img { display: block; max-width: 100%; }
     left: 0;
     top: 0;
     right: auto;
-    width: 1273px;
+    width: 1190px;
     max-width: none;
-    height: 521px;
+    height: 488px;
     object-fit: cover;
     object-position: left top;
-    clip-path: inset(0px 0px 91px 0px);
+    clip-path: inset(0px 0px 86px 0px);
 }
 
 @media (min-width: 901px) {
-    #section1 {
-        justify-content: flex-start;
-        padding-top: 120px;
-    }
-    #section1 .project-tags {
-        margin-bottom: 220px;
+    #section1 .project-info-col .project-tags {
+        margin-bottom: 0;
     }
 }
 
@@ -340,32 +352,9 @@ img { display: block; max-width: 100%; }
     z-index: 10;
 }
 
-/* ── Scrolling Content Column (right) ── */
-.projects-content-col {
-    width: 100%;
-    position: relative;
-    z-index: 5;
-}
-
-/* Individual project panel */
-.project-panel {
-    min-height: auto;
-    display: flex;
-    flex-direction: row;
-    gap: 80px;
-    align-items: center;
-    padding: 100px 0;
-    border-bottom: 1px solid var(--border);
-    opacity: 1 !important;
-}
-.project-panel:last-child {
-    border-bottom: none;
-}
-.project-panel:nth-child(even) {
-    flex-direction: row-reverse;
-}
-.project-details {
-    flex: 1.2;
+/* ── Info Column (right side of each panel) ── */
+.project-info-col {
+    flex: 1;
     min-width: 0;
 }
 
@@ -861,28 +850,7 @@ img { display: block; max-width: 100%; }
     max-width: 520px;
 }
 .mobile-project-card {
-    display: block;
-    flex: 1;
-    min-width: 0;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 2.5px solid #555555;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-    background: var(--bg-alt);
-}
-.pots-mobile-card {
-    aspect-ratio: 1 / 1;
-    position: relative;
-    overflow: hidden;
-}
-.pots-mobile-card .pots-landscape {
-    position: absolute;
-    left: 0;
-    top: -38.9%;
-    width: 497.2%;
-    max-width: none;
-    height: auto;
-    display: block;
+    display: none;
 }
 .project-tags {
     display: flex;
@@ -1603,8 +1571,8 @@ img { display: block; max-width: 100%; }
     .chapter-indicator { right: 14px; }
     .footer-inner { flex-direction: column; gap: 10px; text-align: center; }
     
-    .projects-layout {
-        gap: 60px;
+    .project-panel {
+        gap: 40px;
     }
     
     /* About Mobile/Tablet */
@@ -1642,16 +1610,12 @@ img { display: block; max-width: 100%; }
         font-size: 0.72rem;
         padding: 8px 16px;
     }
-
-    .projects-layout {
+    .project-panel {
         flex-direction: column;
         gap: 0;
         align-items: stretch;
     }
-    .projects-content-col {
-        width: 100%;
-    }
-    .projects-phone-col {
+    .project-phone-col {
         display: none;
     }
     .mobile-project-card {
@@ -1670,13 +1634,26 @@ img { display: block; max-width: 100%; }
         display: block;
         object-fit: cover;
     }
+    .pots-mobile-card {
+        aspect-ratio: 1 / 1;
+        position: relative;
+        overflow: hidden;
+    }
+    .pots-mobile-card .pots-landscape {
+        position: absolute;
+        left: 0;
+        top: -38.9%;
+        width: 497.2%;
+        max-width: none;
+        height: auto;
+        display: block;
+    }
     .project-panel {
         width: 100%;
         min-height: auto;
         padding: 48px 0;
         opacity: 1 !important;
-        flex-direction: column !important;
-        gap: 32px;
+        transform: none !important;
     }
     .projects-container {
         padding: 40px 20px 60px;

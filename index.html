@@ -73,49 +73,26 @@
 
     <!-- ============ PROJECTS ============ -->
     <div id="projects" class="projects-container">
-        <div class="projects-layout">
-
-            <!-- Sticky Phone (left) -->
-            <div class="projects-phone-col">
-                <div class="phone-frame">
-                    <!-- Screen -->
-                    <div class="phone-screen" id="phoneScreen">
-                        <img src="assets/svgs/project_Pots/img-pots.svg?v=29" alt="POTS" class="phone-screen-img active pots-landscape" data-project="section1">
-                        <img src="assets/images/home/img-echoverse.png" alt="ECHOVERSE" class="phone-screen-img" data-project="section2">
-                        <img src="assets/images/home/img-terraform.png" alt="TERRAFORM" class="phone-screen-img" data-project="section3">
-                    </div>
-
-                    <!-- Sketchy Phone SVG Overlay -->
-                    <svg viewBox="0 0 300 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="phone-sketch-overlay">
-                        <!-- Opaque White Bezel Mask with Single-Stroke Outer Outline (EvenOdd Rule, slightly more rounded corners) -->
-                        <path d="M 45,18 C 120,16 180,16 255,18 C 275,18 285,28 285,48 C 286,150 284,380 285,512 C 285,532 275,542 255,542 C 180,544 120,538 45,542 C 25,542 15,532 15,512 C 14,380 16,150 15,48 C 15,28 25,18 45,18 Z M 25,62 C 90,60 210,60 275,62 C 276,170 274,380 275,488 C 210,490 90,490 25,488 C 24,380 26,170 25,62 Z" 
-                              fill="#ffffff" 
-                              fill-rule="evenodd" 
-                              stroke="#555555" 
-                              stroke-width="2.5" 
-                              stroke-linecap="round" 
-                              stroke-linejoin="round" />
-
-                        <!-- Left Side Buttons -->
-                        <path d="M 15,110 C 10,110 10,113 10,116 C 10,119 10,122 15,122" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-                        <path d="M 15,137 C 10,137 10,144 10,150 C 10,156 10,160 15,160" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-
-                        <!-- Top Camera & Speaker (Clean single stroke sketchy contours) -->
-                        <circle cx="115" cy="38" r="4.5" fill="#555555" />
-                        <path d="M 140,34 C 155,32 175,32 190,34 C 196,34 198,36 198,38 C 198,40 196,42 190,42 C 175,44 155,44 140,42 C 134,42 132,40 132,38 C 132,36 134,34 140,34 Z" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
-
-                        <!-- Bottom Home Button (Clean single stroke sketchy loop) -->
-                        <path d="M 125,502 C 135,499 165,499 175,502 C 182,502 185,506 185,510 C 185,514 182,518 175,518 C 165,521 135,521 125,518 C 118,518 115,514 115,510 C 115,506 118,502 125,502 Z" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Scrolling Content (right) -->
-            <div class="projects-content-col">
 
                 <!-- Project 1: POTS -->
-                <div class="project-panel" id="section1" data-screen="0">
-                    <div class="project-details">
+                <div class="project-panel" id="section1">
+                    <div class="project-phone-col">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <img src="assets/svgs/project_Pots/img-pots.svg?v=29" alt="POTS" class="phone-screen-img active pots-landscape">
+                            </div>
+                            <svg viewBox="0 0 300 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="phone-sketch-overlay">
+                                <path d="M 45,18 C 120,16 180,16 255,18 C 275,18 285,28 285,48 C 286,150 284,380 285,512 C 285,532 275,542 255,542 C 180,544 120,538 45,542 C 25,542 15,532 15,512 C 14,380 16,150 15,48 C 15,28 25,18 45,18 Z M 25,62 C 90,60 210,60 275,62 C 276,170 274,380 275,488 C 210,490 90,490 25,488 C 24,380 26,170 25,62 Z" 
+                                      fill="#ffffff" fill-rule="evenodd" stroke="#555555" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M 15,110 C 10,110 10,113 10,116 C 10,119 10,122 15,122" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
+                                <path d="M 15,137 C 10,137 10,144 10,150 C 10,156 10,160 15,160" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
+                                <circle cx="115" cy="38" r="4.5" fill="#555555" />
+                                <path d="M 140,34 C 155,32 175,32 190,34 C 196,34 198,36 198,38 C 198,40 196,42 190,42 C 175,44 155,44 140,42 C 134,42 132,40 132,38 C 132,36 134,34 140,34 Z" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
+                                <path d="M 125,502 C 135,499 165,499 175,502 C 182,502 185,506 185,510 C 185,514 182,518 175,518 C 165,521 135,521 125,518 C 118,518 115,514 115,510 C 115,506 118,502 125,502 Z" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-info-col">
                         <div class="project-label">
                             <span class="project-num">01</span>
                             <span class="project-dash"></span>
@@ -127,6 +104,9 @@
                                 <svg class="story-ring-svg" viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" /></svg>
                                 <span class="story-ring-icon">▶</span>
                             </button>
+                        </div>
+                        <div class="mobile-project-card pots-mobile-card">
+                            <img src="assets/svgs/project_Pots/img-pots.svg?v=29" alt="POTS" class="mobile-project-img pots-landscape">
                         </div>
                         <p class="project-desc">Delve into the world of Pots, where saving gets more exciting with milestones and rewards.</p>
                         <div class="project-tags">
@@ -147,14 +127,27 @@
                             <img src="assets/Highlights-by-Outdraw-Design/12_Doodles/Doodle 5.svg" class="cta-sprinkle cta-sprinkle-right" alt="">
                         </div>
                     </div>
-                    <div class="mobile-project-card pots-mobile-card">
-                        <img src="assets/svgs/project_Pots/img-pots.svg?v=29" alt="POTS" class="mobile-project-img pots-landscape">
-                    </div>
                 </div>
 
                 <!-- Project 2: ECHOVERSE -->
-                <div class="project-panel" id="section2" data-screen="1">
-                    <div class="project-details">
+                <div class="project-panel" id="section2">
+                    <div class="project-phone-col">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <img src="assets/images/home/img-echoverse.png" alt="ECHOVERSE" class="phone-screen-img active">
+                            </div>
+                            <svg viewBox="0 0 300 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="phone-sketch-overlay">
+                                <path d="M 45,18 C 120,16 180,16 255,18 C 275,18 285,28 285,48 C 286,150 284,380 285,512 C 285,532 275,542 255,542 C 180,544 120,538 45,542 C 25,542 15,532 15,512 C 14,380 16,150 15,48 C 15,28 25,18 45,18 Z M 25,62 C 90,60 210,60 275,62 C 276,170 274,380 275,488 C 210,490 90,490 25,488 C 24,380 26,170 25,62 Z" 
+                                      fill="#ffffff" fill-rule="evenodd" stroke="#555555" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M 15,110 C 10,110 10,113 10,116 C 10,119 10,122 15,122" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
+                                <path d="M 15,137 C 10,137 10,144 10,150 C 10,156 10,160 15,160" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
+                                <circle cx="115" cy="38" r="4.5" fill="#555555" />
+                                <path d="M 140,34 C 155,32 175,32 190,34 C 196,34 198,36 198,38 C 198,40 196,42 190,42 C 175,44 155,44 140,42 C 134,42 132,40 132,38 C 132,36 134,34 140,34 Z" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
+                                <path d="M 125,502 C 135,499 165,499 175,502 C 182,502 185,506 185,510 C 185,514 182,518 175,518 C 165,521 135,521 125,518 C 118,518 115,514 115,510 C 115,506 118,502 125,502 Z" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-info-col">
                         <div class="project-label">
                             <span class="project-num">02</span>
                             <span class="project-dash"></span>
@@ -166,6 +159,9 @@
                                 <svg class="story-ring-svg" viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" /></svg>
                                 <span class="story-ring-icon">▶</span>
                             </button>
+                        </div>
+                        <div class="mobile-project-card">
+                            <img src="assets/images/home/img-echoverse.png" alt="ECHOVERSE" class="mobile-project-img">
                         </div>
                         <p class="project-desc">A spatial audio experience that transforms sound into immersive 3D landscapes. Wander through sonic worlds that react and reshape to music in real-time.</p>
                         <div class="project-tags">
@@ -185,14 +181,27 @@
                             <img src="assets/Highlights-by-Outdraw-Design/12_Doodles/Doodle 5.svg" class="cta-sprinkle cta-sprinkle-right" alt="">
                         </div>
                     </div>
-                    <div class="mobile-project-card">
-                        <img src="assets/images/home/img-echoverse.png" alt="ECHOVERSE" class="mobile-project-img">
-                    </div>
                 </div>
 
                 <!-- Project 3: TERRAFORM -->
-                <div class="project-panel" id="section3" data-screen="2">
-                    <div class="project-details">
+                <div class="project-panel" id="section3">
+                    <div class="project-phone-col">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <img src="assets/images/home/img-terraform.png" alt="TERRAFORM" class="phone-screen-img active">
+                            </div>
+                            <svg viewBox="0 0 300 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="phone-sketch-overlay">
+                                <path d="M 45,18 C 120,16 180,16 255,18 C 275,18 285,28 285,48 C 286,150 284,380 285,512 C 285,532 275,542 255,542 C 180,544 120,538 45,542 C 25,542 15,532 15,512 C 14,380 16,150 15,48 C 15,28 25,18 45,18 Z M 25,62 C 90,60 210,60 275,62 C 276,170 274,380 275,488 C 210,490 90,490 25,488 C 24,380 26,170 25,62 Z" 
+                                      fill="#ffffff" fill-rule="evenodd" stroke="#555555" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M 15,110 C 10,110 10,113 10,116 C 10,119 10,122 15,122" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
+                                <path d="M 15,137 C 10,137 10,144 10,150 C 10,156 10,160 15,160" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
+                                <circle cx="115" cy="38" r="4.5" fill="#555555" />
+                                <path d="M 140,34 C 155,32 175,32 190,34 C 196,34 198,36 198,38 C 198,40 196,42 190,42 C 175,44 155,44 140,42 C 134,42 132,40 132,38 C 132,36 134,34 140,34 Z" stroke="#555555" stroke-width="2.0" stroke-linecap="round" />
+                                <path d="M 125,502 C 135,499 165,499 175,502 C 182,502 185,506 185,510 C 185,514 182,518 175,518 C 165,521 135,521 125,518 C 118,518 115,514 115,510 C 115,506 118,502 125,502 Z" stroke="#555555" stroke-width="2.2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-info-col">
                         <div class="project-label">
                             <span class="project-num">03</span>
                             <span class="project-dash"></span>
@@ -204,6 +213,9 @@
                                 <svg class="story-ring-svg" viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" /></svg>
                                 <span class="story-ring-icon">▶</span>
                             </button>
+                        </div>
+                        <div class="mobile-project-card">
+                            <img src="assets/images/home/img-terraform.png" alt="TERRAFORM" class="mobile-project-img">
                         </div>
                         <p class="project-desc">An interactive climate data dashboard that tells the story of our changing planet through stunning visualizations, making complex data accessible and deeply emotional.</p>
                         <div class="project-tags">
@@ -223,13 +235,8 @@
                             <img src="assets/Highlights-by-Outdraw-Design/12_Doodles/Doodle 5.svg" class="cta-sprinkle cta-sprinkle-right" alt="">
                         </div>
                     </div>
-                    <div class="mobile-project-card">
-                        <img src="assets/images/home/img-terraform.png" alt="TERRAFORM" class="mobile-project-img">
-                    </div>
                 </div>
 
-            </div>
-        </div>
     </div>
 
     <!-- ============ CONTACT ============ -->
@@ -358,6 +365,6 @@
         </div>
     </footer>
 
-    <script src="js/script.js?v=5"></script>
+    <script src="js/script.js?v=6"></script>
 </body>
 </html>

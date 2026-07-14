@@ -181,36 +181,9 @@
     );
     document.querySelectorAll('.scroll-reveal').forEach((el) => revealObserver.observe(el));
 
-    // ─── Project Panel Scroll → Phone Screen Swap ───
+    // ─── Project Panel Scroll Reveal ───
     const projectPanels = document.querySelectorAll('.project-panel');
-    const screenImages = document.querySelectorAll('.phone-screen-img');
-
-    if (projectPanels.length && screenImages.length) {
-        const panelObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        // Highlight the active panel
-                        projectPanels.forEach((p) => p.classList.remove('active'));
-                        entry.target.classList.add('active');
-
-                        // Swap phone screen image
-                        const screenIndex = entry.target.getAttribute('data-screen');
-                        screenImages.forEach((img) => img.classList.remove('active'));
-                        if (screenImages[screenIndex]) {
-                            screenImages[screenIndex].classList.add('active');
-                        }
-                    }
-                });
-            },
-            { threshold: 0.4, rootMargin: '-10% 0px -10% 0px' }
-        );
-
-        projectPanels.forEach((panel) => panelObserver.observe(panel));
-
-        // Set first panel active on load
-        projectPanels[0].classList.add('active');
-    }
+    projectPanels.forEach((panel) => revealObserver.observe(panel));
 
     // ─── Chapter Dot Click ───
     chapterDots.forEach((dot) => {
@@ -252,69 +225,6 @@
         });
     }
 
-    // ─── Projects Scroll Dissolve ───
-    const projectsContainer = document.getElementById('projects');
-    const projectsLayout = document.querySelector('.projects-layout');
-
-    function updateProjectsFade() {
-        if (!projectsContainer || !projectsLayout) return;
-
-        // Disable scrolly fade animation on mobile/tablet to ensure silky-smooth native scrolling
-        if (window.innerWidth <= 768) {
-            projectsLayout.style.opacity = 1;
-            projectsLayout.style.transform = 'none';
-            projectsLayout.style.visibility = 'visible';
-            projectsLayout.style.pointerEvents = 'auto';
-            return;
-        }
-
-        const rect = projectsContainer.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-
-        let opacity = 1;
-        let translateY = 0;
-
-        // 1. Entrance Fade-in
-        const entryStart = viewportHeight * 0.40; // Starts dissolving in
-        const entryEnd = 0;                      // Fully visible
-
-        if (rect.top > entryEnd) {
-            if (rect.top >= entryStart) {
-                opacity = 0;
-            } else {
-                const ratio = (rect.top - entryEnd) / (entryStart - entryEnd);
-                opacity = 1 - ratio;
-            }
-        }
-
-        // 2. Exit Fade-out
-        const exitStart = viewportHeight * 0.80; // Fully visible
-        const exitEnd = viewportHeight * 0.50;   // Completely faded out
-
-        if (rect.bottom < exitStart) {
-            if (rect.bottom <= exitEnd) {
-                opacity = 0;
-            } else {
-                const ratio = (rect.bottom - exitEnd) / (exitStart - exitEnd);
-                opacity = ratio;
-            }
-        }
-
-        opacity = Math.max(0, Math.min(1, opacity));
-        translateY = (1 - opacity) * 30;
-
-        projectsLayout.style.opacity = opacity;
-        projectsLayout.style.transform = `translateY(${translateY}px)`;
-
-        if (opacity === 0) {
-            projectsLayout.style.visibility = 'hidden';
-            projectsLayout.style.pointerEvents = 'none';
-        } else {
-            projectsLayout.style.visibility = 'visible';
-            projectsLayout.style.pointerEvents = 'auto';
-        }
-    }
-
     // ─── Throttled Scroll ───
     let ticking = false;
     window.addEventListener('scroll', () => {
@@ -324,7 +234,6 @@
                 updateNavState();
                 updateScrollHint();
                 updateActiveSection();
-                updateProjectsFade();
                 ticking = false;
             });
             ticking = true;
@@ -688,5 +597,4 @@
     updateScrollProgress();
     updateNavState();
     updateActiveSection();
-    updateProjectsFade();
 })();
