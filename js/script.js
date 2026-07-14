@@ -366,8 +366,8 @@
                 }
             ]
         },
-        echoverse: {
-            label: 'ECHOVERSE',
+        labellie: {
+            label: 'LABEL LIE',
             slides: [
                 'assets/images/stories/echoverse_1.jpg',
                 'assets/images/stories/echoverse_2.jpg',
