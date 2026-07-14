@@ -143,8 +143,11 @@
         ];
 
         allSections.forEach((section, index) => {
-            if (section && section.offsetTop <= scrollPos) {
-                activeIndex = index;
+            if (section) {
+                const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+                if (sectionTop <= scrollPos) {
+                    activeIndex = index;
+                }
             }
         });
 
@@ -155,8 +158,10 @@
         const projectsSec = document.getElementById('projects');
         const connectSec = document.getElementById('chapter-connect');
         if (projectsSec && connectSec) {
-            const start = projectsSec.offsetTop - window.innerHeight * 0.5;
-            const end = connectSec.offsetTop - window.innerHeight * 0.3;
+            const projectsTop = projectsSec.getBoundingClientRect().top + window.scrollY;
+            const connectTop = connectSec.getBoundingClientRect().top + window.scrollY;
+            const start = projectsTop - window.innerHeight * 0.5;
+            const end = connectTop - window.innerHeight * 0.3;
             const isInsideProjects = window.scrollY >= start && window.scrollY < end;
             chapterIndicator.classList.toggle('visible', isInsideProjects);
         }
