@@ -258,27 +258,17 @@ img { display: block; max-width: 100%; }
     max-width: var(--max-w);
     margin: 0 auto;
     padding: 80px 40px 100px;
-    /* Clip so the sticky phone doesn't peek into hero/contact */
-    clip-path: inset(0);
 }
 
 /* Two-column layout */
 .projects-layout {
-    display: flex;
-    gap: 160px;
-    align-items: flex-start;
-    will-change: transform, opacity;
+    display: block;
+    width: 100%;
 }
 
 /* ── Sticky Phone Column (left) ── */
 .projects-phone-col {
-    flex: 0 0 320px;
-    height: 80vh;
-    position: sticky;
-    top: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: none !important;
 }
 
 /* ── Phone Frame ── */
@@ -352,28 +342,31 @@ img { display: block; max-width: 100%; }
 
 /* ── Scrolling Content Column (right) ── */
 .projects-content-col {
-    flex: 1;
-    min-width: 0;
+    width: 100%;
     position: relative;
     z-index: 5;
 }
 
 /* Individual project panel */
 .project-panel {
-    min-height: 80vh;
+    min-height: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 60px 0;
+    flex-direction: row;
+    gap: 80px;
+    align-items: center;
+    padding: 100px 0;
     border-bottom: 1px solid var(--border);
-    opacity: 0.3;
-    transition: opacity 0.5s ease;
+    opacity: 1 !important;
 }
 .project-panel:last-child {
     border-bottom: none;
 }
-.project-panel.active {
-    opacity: 1;
+.project-panel:nth-child(even) {
+    flex-direction: row-reverse;
+}
+.project-details {
+    flex: 1.2;
+    min-width: 0;
 }
 
 /* ── Project Info Styles ── */
@@ -868,7 +861,28 @@ img { display: block; max-width: 100%; }
     max-width: 520px;
 }
 .mobile-project-card {
-    display: none;
+    display: block;
+    flex: 1;
+    min-width: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2.5px solid #555555;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    background: var(--bg-alt);
+}
+.pots-mobile-card {
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+}
+.pots-mobile-card .pots-landscape {
+    position: absolute;
+    left: 0;
+    top: -38.9%;
+    width: 497.2%;
+    max-width: none;
+    height: auto;
+    display: block;
 }
 .project-tags {
     display: flex;
@@ -1656,25 +1670,13 @@ img { display: block; max-width: 100%; }
         display: block;
         object-fit: cover;
     }
-    .pots-mobile-card {
-        aspect-ratio: 1 / 1;
-        position: relative;
-        overflow: hidden;
-    }
-    .pots-mobile-card .pots-landscape {
-        position: absolute;
-        left: 0;
-        top: -38.9%;
-        width: 497.2%;
-        max-width: none;
-        height: auto;
-        display: block;
-    }
     .project-panel {
         width: 100%;
         min-height: auto;
         padding: 48px 0;
         opacity: 1 !important;
+        flex-direction: column !important;
+        gap: 32px;
     }
     .projects-container {
         padding: 40px 20px 60px;
