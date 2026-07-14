@@ -265,7 +265,7 @@ img { display: block; max-width: 100%; }
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: 120px; /* Increased gap between canvas and content */
+    gap: 150px; /* Increased gap to accommodate larger cards and shift content right */
     height: 100vh;
     min-height: 100vh;
     box-sizing: border-box;
@@ -358,8 +358,8 @@ img { display: block; max-width: 100%; }
 
 .stacked-card {
     position: absolute;
-    width: 250px; /* Increased width */
-    height: 350px; /* Increased height */
+    width: 280px; /* Increased width */
+    height: 390px; /* Increased height */
     border-radius: 16px 12px 18px 14px / 14px 18px 12px 16px; /* Wobbly sketch look */
     border: 2.5px solid #000000; /* Black border */
     padding: 0; /* Image bleed */
@@ -370,34 +370,34 @@ img { display: block; max-width: 100%; }
     background: transparent;
 }
 
-/* Card 1: Back Left (Call Audit) */
+/* Card 1: Back Left (Steal Pizza Card) */
 .stacked-card.card-back-left {
-    transform: rotate(-14deg) translate(-40px, -30px);
+    transform: rotate(-14deg) translate(-55px, -35px);
     z-index: 1;
 }
 
-/* Card 2: Back Right (Imposter) */
+/* Card 2: Back Right (Imposter Card) */
 .stacked-card.card-back-right {
-    transform: rotate(10deg) translate(45px, -15px);
+    transform: rotate(10deg) translate(60px, -20px);
     z-index: 2;
 }
 
-/* Card 3: Front Center (Peanut Butter Card) */
+/* Card 3: Front Center (Granola Bar Card) */
 .stacked-card.card-front {
-    transform: rotate(-3deg) translate(0px, 20px);
+    transform: rotate(-3deg) translate(0px, 25px);
     z-index: 3;
     box-shadow: 0 16px 36px rgba(0,0,0,0.12);
 }
 
 /* Hover effects for interactive feel */
 .stacked-cards-container:hover .stacked-card.card-back-left {
-    transform: rotate(-22deg) translate(-75px, -45px) scale(1.02);
+    transform: rotate(-22deg) translate(-95px, -50px) scale(1.02);
 }
 .stacked-cards-container:hover .stacked-card.card-back-right {
-    transform: rotate(18deg) translate(80px, -25px) scale(1.02);
+    transform: rotate(18deg) translate(100px, -30px) scale(1.02);
 }
 .stacked-cards-container:hover .stacked-card.card-front {
-    transform: rotate(0deg) translate(0px, 10px) scale(1.05);
+    transform: rotate(0deg) translate(0px, 15px) scale(1.05);
     box-shadow: 0 20px 48px rgba(0,0,0,0.16);
 }
 
