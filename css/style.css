@@ -270,7 +270,7 @@ img { display: block; max-width: 100%; }
     min-height: 100vh;
     box-sizing: border-box;
     padding-top: calc(50vh - 308px); /* Center 616px phone frame vertically */
-    padding-left: 40px; /* Shift content and canvas slightly left */
+    padding-left: 0; /* Shift content and canvas further left to balance screen margins */
     position: relative;
     border-bottom: 1px solid var(--border);
 }
