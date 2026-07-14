@@ -137,9 +137,9 @@
         let activeIndex = 0;
 
         const allSections = [
-            document.getElementById('hero'),
-            document.getElementById('projects'),
-            document.getElementById('chapter-connect'),
+            document.getElementById('section1'),
+            document.getElementById('section2'),
+            document.getElementById('section3'),
         ];
 
         allSections.forEach((section, index) => {
@@ -152,7 +152,14 @@
             dot.classList.toggle('active', i === activeIndex);
         });
 
-        chapterIndicator.classList.toggle('visible', window.scrollY > window.innerHeight * 0.5);
+        const projectsSec = document.getElementById('projects');
+        const connectSec = document.getElementById('chapter-connect');
+        if (projectsSec && connectSec) {
+            const start = projectsSec.offsetTop - window.innerHeight * 0.5;
+            const end = connectSec.offsetTop - window.innerHeight * 0.3;
+            const isInsideProjects = window.scrollY >= start && window.scrollY < end;
+            chapterIndicator.classList.toggle('visible', isInsideProjects);
+        }
     }
 
     // ─── Scroll Reveal ───
