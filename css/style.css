@@ -265,11 +265,12 @@ img { display: block; max-width: 100%; }
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: 80px;
+    gap: 120px; /* Increased gap between canvas and content */
     height: 100vh;
     min-height: 100vh;
     box-sizing: border-box;
-    padding-top: calc(50vh - 262px); /* Center 524px phone frame vertically */
+    padding-top: calc(50vh - 308px); /* Center 616px phone frame vertically */
+    padding-left: 100px; /* Shift content and canvas to the right of the screen */
     position: relative;
     border-bottom: 1px solid var(--border);
 }
@@ -279,7 +280,7 @@ img { display: block; max-width: 100%; }
 
 /* ── Phone Column (per project) ── */
 .project-phone-col {
-    flex: 0 0 280px;
+    flex: 0 0 330px; /* Scaled phone column width */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -290,8 +291,8 @@ img { display: block; max-width: 100%; }
 /* ── Phone Frame ── */
 .phone-frame {
     position: relative;
-    width: 280px;
-    height: 524px;
+    width: 330px; /* Scaled phone width */
+    height: 616px; /* Scaled phone height */
     background: transparent;
     box-shadow: none;
     filter: none;
@@ -300,10 +301,10 @@ img { display: block; max-width: 100%; }
 /* Screen area coordinates calculated to sit perfectly behind the SVG inner screen stroke */
 .phone-screen {
     position: absolute;
-    left: 20px;
-    top: 56px;
-    width: 240px;
-    height: 402px;
+    left: 24px; /* Scaled screen offset */
+    top: 66px; /* Scaled screen offset */
+    width: 282px; /* Scaled screen width */
+    height: 473px; /* Scaled screen height */
     overflow: visible;
     background: var(--bg-alt);
     border-radius: 4px;
@@ -328,17 +329,20 @@ img { display: block; max-width: 100%; }
     left: 0;
     top: 0;
     right: auto;
-    width: 1190px;
+    width: 1400px; /* Scaled Pots landscape illustration */
     max-width: none;
-    height: 488px;
+    height: 573px;
     object-fit: cover;
     object-position: left top;
-    clip-path: inset(0px 0px 86px 0px);
+    clip-path: inset(0px 0px 100px 0px);
 }
 
 @media (min-width: 901px) {
     #section1 .project-info-col .project-tags {
         margin-bottom: 0;
+    }
+    #section1 .cta-container {
+        margin-top: 220px; /* Shift the View Project button below the expanded milestone track line */
     }
 }
 
@@ -356,7 +360,7 @@ img { display: block; max-width: 100%; }
 .project-info-col {
     flex: 1;
     min-width: 0;
-    margin-top: 56px; /* Align top of text with top of phone screen */
+    margin-top: 66px; /* Align top of text with top of phone screen */
     position: relative;
     z-index: 5;
 }
