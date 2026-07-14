@@ -181,9 +181,54 @@
     );
     document.querySelectorAll('.scroll-reveal').forEach((el) => revealObserver.observe(el));
 
-    // ─── Project Panel Scroll Reveal ───
-    const projectPanels = document.querySelectorAll('.project-panel');
-    projectPanels.forEach((panel) => revealObserver.observe(panel));
+    // ─── Projects Scroll Dissolve ───
+    function updateProjectsFade() {
+        const panels = document.querySelectorAll('.project-panel');
+        if (!panels.length) return;
+
+        if (window.innerWidth <= 768) {
+            panels.forEach((panel) => {
+                panel.style.opacity = '';
+                panel.style.transform = '';
+                panel.style.visibility = '';
+                panel.style.pointerEvents = '';
+            });
+            return;
+        }
+
+        const viewportHeight = window.innerHeight;
+        const viewportCenter = viewportHeight / 2;
+
+        panels.forEach((panel) => {
+            const rect = panel.getBoundingClientRect();
+            const panelCenter = rect.top + rect.height / 2;
+
+            // Calculate distance of panel center from viewport center
+            const distance = Math.abs(viewportCenter - panelCenter);
+            
+            // Fully visible (opacity 1) when centered,
+            // and fully dissolved (opacity 0) when it moves 50% of the viewport height away.
+            const maxDistance = viewportHeight * 0.5;
+            
+            let opacity = 1 - (distance / maxDistance);
+            opacity = Math.max(0, Math.min(1, opacity));
+
+            panel.style.opacity = opacity;
+            
+            // Subtle shift upward/downward as it scrolls away
+            const translateY = (1 - opacity) * 30 * (panelCenter < viewportCenter ? -1 : 1);
+            panel.style.transform = `translateY(${translateY}px)`;
+
+            // Prevent interaction with faded out panels
+            if (opacity < 0.15) {
+                panel.style.pointerEvents = 'none';
+                panel.style.visibility = 'hidden';
+            } else {
+                panel.style.pointerEvents = 'auto';
+                panel.style.visibility = 'visible';
+            }
+        });
+    }
 
     // ─── Chapter Dot Click ───
     chapterDots.forEach((dot) => {
@@ -234,6 +279,7 @@
                 updateNavState();
                 updateScrollHint();
                 updateActiveSection();
+                updateProjectsFade();
                 ticking = false;
             });
             ticking = true;
@@ -597,4 +643,5 @@
     updateScrollProgress();
     updateNavState();
     updateActiveSection();
+    updateProjectsFade();
 })();
