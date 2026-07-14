@@ -362,33 +362,28 @@ img { display: block; max-width: 100%; }
     height: 350px; /* Increased height */
     border-radius: 16px 12px 18px 14px / 14px 18px 12px 16px; /* Wobbly sketch look */
     border: 2.5px solid #000000; /* Black border */
-    padding: 18px 16px;
+    padding: 0; /* Image bleed */
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    overflow: hidden; /* Clip image to wobbly shape */
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), z-index 0.4s ease, box-shadow 0.4s ease;
     box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-    background: #ffffff;
+    background: transparent;
 }
 
-/* Card 1: Back Left (Organic Oats) */
+/* Card 1: Back Left (Call Audit) */
 .stacked-card.card-back-left {
-    background: #eef7f2; /* Soft healthy green */
     transform: rotate(-14deg) translate(-40px, -30px);
     z-index: 1;
 }
 
-/* Card 2: Back Right (Fake Fruit Juice) */
+/* Card 2: Back Right (Imposter) */
 .stacked-card.card-back-right {
-    background: #fff5e6; /* Soft juice orange */
     transform: rotate(10deg) translate(45px, -15px);
     z-index: 2;
 }
 
-/* Card 3: Front Center (Label Lie Master Card) */
+/* Card 3: Front Center (Peanut Butter Card) */
 .stacked-card.card-front {
-    background: #fffdf5; /* Crisp card stock vanilla */
     transform: rotate(-3deg) translate(0px, 20px);
     z-index: 3;
     box-shadow: 0 16px 36px rgba(0,0,0,0.12);
@@ -406,95 +401,12 @@ img { display: block; max-width: 100%; }
     box-shadow: 0 20px 48px rgba(0,0,0,0.16);
 }
 
-/* ── Stacked Card Content Styles ── */
-.stacked-card-inner {
+.card-img-content {
+    width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px dashed #777777;
-    padding-bottom: 8px;
-}
-.card-header-badge {
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    color: #555555;
-    text-transform: uppercase;
-}
-.card-points {
-    font-size: 0.75rem;
-    font-weight: 900;
-    color: var(--accent);
-}
-
-.card-illustration-box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3.5rem;
-    padding: 12px 0;
-    position: relative;
-    user-select: none;
-}
-
-/* Hand-drawn lie stamp */
-.card-stamp-lie {
-    position: absolute;
-    font-family: 'Permanent Marker', cursive, sans-serif;
-    font-size: 1.8rem;
-    color: #ef4444;
-    border: 3.5px solid #ef4444;
-    padding: 2px 10px;
-    border-radius: 6px;
-    transform: translate(-50%, -50%) rotate(-20deg);
-    top: 50%;
-    left: 50%;
-    letter-spacing: 0.1em;
-    font-weight: 900;
-    opacity: 0.9;
-}
-
-.card-stamp-real {
-    position: absolute;
-    font-family: 'Permanent Marker', cursive, sans-serif;
-    font-size: 1.8rem;
-    color: #22c55e;
-    border: 3.5px solid #22c55e;
-    padding: 2px 10px;
-    border-radius: 6px;
-    transform: translate(-50%, -50%) rotate(15deg);
-    top: 50%;
-    left: 50%;
-    letter-spacing: 0.1em;
-    font-weight: 900;
-    opacity: 0.9;
-}
-
-.card-footer-row {
-    border-top: 2px dashed #777777;
-    padding-top: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.card-footer-title {
-    font-size: 0.7rem;
-    font-weight: 800;
-    color: #333333;
-    text-transform: uppercase;
-}
-.card-footer-desc {
-    font-size: 0.55rem;
-    font-weight: 500;
-    color: #666666;
+    object-fit: cover;
+    border-radius: inherit;
+    display: block;
 }
 
 /* Hand-drawn wobbly overlay that masks the straight edges of the screenshot */
