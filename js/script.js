@@ -9,11 +9,10 @@
     const scrollProgress = document.getElementById('scrollProgress');
     const nav = document.getElementById('nav');
     const navClock = document.getElementById('navClock');
+    const mobileClock = document.getElementById('mobileClock');
     const chapterIndicator = document.getElementById('chapterIndicator');
     const scrollHint = document.getElementById('scrollHint');
     const chapterDots = document.querySelectorAll('.chapter-dot');
-
-
 
     // ─── Live Clock ───
     function updateClock() {
@@ -21,10 +20,48 @@
         const h = String(now.getHours()).padStart(2, '0');
         const m = String(now.getMinutes()).padStart(2, '0');
         const s = String(now.getSeconds()).padStart(2, '0');
-        if (navClock) navClock.textContent = `${h}:${m}:${s}`;
+        const timeStr = `${h}:${m}:${s}`;
+        if (navClock) navClock.textContent = timeStr;
+        if (mobileClock) mobileClock.textContent = timeStr;
     }
     updateClock();
     setInterval(updateClock, 1000);
+
+    // ─── Mobile Navigation Toggle ───
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (mobileNavToggle && mobileMenu) {
+        mobileNavToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileNavToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            if (mobileMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu when links are clicked
+        const mobileLinks = mobileMenu.querySelectorAll('.mobile-menu-link, .mobile-btn-wobbly');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close mobile menu when clicking outside the menu drawer
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('active') && !mobileMenu.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+                mobileNavToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
     // ─── Typewriter + Video Sync ───
     // Video plays CONTINUOUSLY for smooth morphing transitions.
     // Typewriter reacts to video position using correct segment boundaries.

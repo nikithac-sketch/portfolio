@@ -38,7 +38,31 @@
                 </svg>
             </a>
         </div>
+        <button class="nav-mobile-toggle" aria-label="Toggle Navigation" id="mobileNavToggle">
+            <span class="hamburger-bar bar-1"></span>
+            <span class="hamburger-bar bar-2"></span>
+            <span class="hamburger-bar bar-3"></span>
+        </button>
     </nav>
+
+    <!-- Mobile Navigation Overlay Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <a href="about.html" class="mobile-menu-link">ABOUT</a>
+            <a href="work.html" class="mobile-menu-link active-page">WORK</a>
+            <a href="index.html" class="mobile-menu-link">FUN</a>
+            <a href="index.html#chapter-connect" class="mobile-btn-wobbly" id="mobileContactBtn">
+                CONTACT
+                <svg class="nav-sketch-border" viewBox="0 0 120 40" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 8,2 C 40,1.5 80,2.5 112,2 C 115,2 118,4 118,8 C 117,14 118,26 118,32 C 118,36 115,38 112,38 C 80,37.5 40,38.5 8,38 C 5,38 2,36 2,32 C 3,26 1,14 2,8 C 2,4 5,2 8,2 Z" />
+                </svg>
+            </a>
+            <div class="mobile-menu-footer">
+                <span class="mobile-local">LOCAL/</span>
+                <span class="mobile-clock" id="mobileClock">00:00:00</span>
+            </div>
+        </div>
+    </div>
 
     <!-- ============ WORK PAGE ============ -->
     <main class="work-page">
