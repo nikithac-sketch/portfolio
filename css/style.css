@@ -2041,11 +2041,11 @@ img { display: block; max-width: 100%; }
     max-width: var(--max-w);
     margin-left: auto;
     margin-right: auto;
-    margin-top: auto;
+    margin-top: 12px;
     padding-left: 40px;
     padding-right: 40px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 32px;
     margin-bottom: 0;
     width: 100%;
     box-sizing: border-box;
@@ -2567,7 +2567,7 @@ img { display: block; max-width: 100%; }
         gap: 16px;
         padding-left: 20px;
         padding-right: 20px;
-        padding-top: 24px;
+        padding-top: 12px;
         padding-bottom: 24px;
         margin-bottom: 0;
     }
