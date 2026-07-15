@@ -456,6 +456,15 @@ img { display: block; max-width: 100%; }
     #section1 .cta-container {
         margin-top: 220px; /* Shift the View Project button below the expanded milestone track line */
     }
+    
+    /* Section 3: Hurrey Library desktop alignment */
+    #section3 {
+        padding-top: calc(50vh - 201px); /* Center the 402px desktop frame vertically */
+        gap: 100px; /* Reduce gap to balance wider monitor frame */
+    }
+    #section3 .project-info-col {
+        margin-top: 24px; /* Align top of text with top of browser screen */
+    }
 }
 
 /* ── Stacked Diagonal Cards (Project 2: Label Lie) ── */
