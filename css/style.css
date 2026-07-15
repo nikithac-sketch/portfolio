@@ -447,6 +447,9 @@ img { display: block; max-width: 100%; }
 }
 
 @media (min-width: 901px) {
+    #section1 .project-phone-col {
+        margin-left: -80px; /* Shift phone canvas left for Section 1 only */
+    }
     #section1 .project-info-col .project-tags {
         margin-bottom: 0;
     }
