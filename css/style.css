@@ -255,7 +255,7 @@ img { display: block; max-width: 100%; }
    PROJECT SECTIONS — Normal Scroll Layout
    ============================================ */
 .projects-container {
-    max-width: var(--max-w);
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 40px;
 }
@@ -459,11 +459,12 @@ img { display: block; max-width: 100%; }
     
     /* Section 3: Hurrey Library desktop alignment */
     #section3 {
-        padding-top: calc(50vh - 201px); /* Center the 402px desktop frame vertically */
-        gap: 100px; /* Reduce gap to balance wider monitor frame */
+        align-items: center; /* Center canvas vertically with content container */
+        padding-top: 0;      /* Let flexbox handle vertical centering */
+        gap: 130px;          /* Shift content container a little more to the right */
     }
     #section3 .project-info-col {
-        margin-top: 24px; /* Align top of text with top of browser screen */
+        margin-top: 0;       /* Keep aligned center with the monitor */
     }
 }
 
