@@ -1070,7 +1070,7 @@ img { display: block; max-width: 100%; }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 12px;
     font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -1081,7 +1081,7 @@ img { display: block; max-width: 100%; }
     background: transparent;
     transition: all 0.3s var(--ease-spring);
     width: 100%;
-    max-width: 260px;
+    max-width: 420px;
     cursor: pointer;
     z-index: 1;
 }
