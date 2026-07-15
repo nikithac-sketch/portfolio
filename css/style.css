@@ -1081,7 +1081,7 @@ img { display: block; max-width: 100%; }
     background: transparent;
     transition: all 0.3s var(--ease-spring);
     width: 100%;
-    max-width: 220px;
+    max-width: 260px;
     cursor: pointer;
     z-index: 1;
 }
@@ -1864,6 +1864,7 @@ img { display: block; max-width: 100%; }
     .project-cta {
         font-size: 0.75rem !important;
         padding: 14px 28px !important;
+        max-width: 200px !important;
     }
     .cta-arrow-svg {
         width: 16px !important;
