@@ -639,9 +639,76 @@
         }
     });
 
+    // ─── Sync Section 3 Monitor Height with Content Container ───
+    function syncMonitorHeight() {
+        const section3 = document.getElementById('section3');
+        if (!section3) return;
+
+        if (window.innerWidth <= 768) {
+            // Reset styles on mobile/tablet
+            section3.style.setProperty('--monitor-body-h', '');
+            section3.style.setProperty('--monitor-body-w', '');
+            section3.style.setProperty('--monitor-neck-w', '');
+            section3.style.setProperty('--monitor-neck-h', '');
+            section3.style.setProperty('--monitor-base-w', '');
+            section3.style.setProperty('--monitor-base-h', '');
+            section3.style.setProperty('--browser-header-h', '');
+            section3.style.setProperty('--browser-dot-size', '');
+            section3.style.setProperty('--browser-address-h', '');
+            return;
+        }
+
+        const infoCol = section3.querySelector('.project-info-col');
+        if (!infoCol) return;
+
+        // Force browser to recalculate height accurately
+        const contentHeight = infoCol.getBoundingClientRect().height;
+        if (contentHeight <= 0) return;
+
+        // Monitor body height = contentHeight - neckHeight - baseHeight + overlaps
+        // Neck is ~48px, base is ~14px, overlaps are ~3px
+        // So total height of non-body monitor parts is 48 + 14 - 3 = 59px.
+        const bodyHeight = Math.max(250, contentHeight - 59);
+
+        // Aspect ratio of body is 550 / 340 = 1.6176
+        const bodyWidth = bodyHeight * 1.6176;
+
+        // Neck proportions
+        const neckWidth = bodyWidth * (40 / 550);
+        const neckHeight = bodyHeight * (48 / 340);
+
+        // Base proportions
+        const baseWidth = bodyWidth * (180 / 550);
+        const baseHeight = bodyHeight * (14 / 340);
+
+        // Browser header proportions
+        const headerHeight = bodyHeight * (24 / 340);
+        const dotSize = bodyHeight * (8 / 340);
+        const addressHeight = bodyHeight * (14 / 340);
+
+        // Set CSS variables
+        section3.style.setProperty('--monitor-body-h', `${bodyHeight}px`);
+        section3.style.setProperty('--monitor-body-w', `${bodyWidth}px`);
+        section3.style.setProperty('--monitor-neck-w', `${neckWidth}px`);
+        section3.style.setProperty('--monitor-neck-h', `${neckHeight}px`);
+        section3.style.setProperty('--monitor-base-w', `${baseWidth}px`);
+        section3.style.setProperty('--monitor-base-h', `${baseHeight}px`);
+        section3.style.setProperty('--browser-header-h', `${headerHeight}px`);
+        section3.style.setProperty('--browser-dot-size', `${dotSize}px`);
+        section3.style.setProperty('--browser-address-h', `${addressHeight}px`);
+    }
+
     // ─── Initial ───
+    syncMonitorHeight();
     updateScrollProgress();
     updateNavState();
     updateActiveSection();
     updateProjectsFade();
+
+    window.addEventListener('resize', () => {
+        syncMonitorHeight();
+        updateProjectsFade();
+    });
+
+    window.addEventListener('load', syncMonitorHeight);
 })();
