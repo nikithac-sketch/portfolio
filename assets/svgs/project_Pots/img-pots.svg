@@ -787,8 +787,8 @@
 </g>
 </g>
 <defs>
-<linearGradient id="paint_active_fade" x1="360" y1="473" x2="520" y2="473" gradientUnits="userSpaceOnUse">
-<stop stop-color="white" stop-opacity="0"/>
+<linearGradient id="paint_active_fade" x1="88" y1="473" x2="239" y2="473" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0.3"/>
 <stop offset="1" stop-color="white"/>
 </linearGradient>
 <pattern id="pattern0_966_31519" patternContentUnits="objectBoundingBox" width="1" height="1">
