@@ -112,7 +112,13 @@
 
     function startTypingPhrase(phrase) {
         if (typewriterTimer) clearTimeout(typewriterTimer);
-        typewriterTarget = phrase;
+        
+        // If on mobile (<= 600px), split phrase into 2 lines by replacing space with newline
+        if (window.innerWidth <= 600) {
+            typewriterTarget = phrase.replace(' ', '\n');
+        } else {
+            typewriterTarget = phrase;
+        }
 
         // If there's existing text, delete it first
         if (typewriterCurrent.length > 0) {
