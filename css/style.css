@@ -1498,6 +1498,7 @@ img { display: block; max-width: 100%; }
     .connect-form-side {
         grid-column: auto;
         height: auto;
+        order: -1; /* Shift name block / form above the cards */
     }
     .connect-form {
         height: auto;
@@ -1508,6 +1509,7 @@ img { display: block; max-width: 100%; }
     .connect-links-side {
         grid-column: auto;
         height: auto;
+        order: 1; /* Position cards below form */
     }
     .contact-cards-stack {
         display: grid;
