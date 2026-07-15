@@ -466,6 +466,9 @@ img { display: block; max-width: 100%; }
     #section3 .project-info-col {
         margin-top: 0;       /* Keep aligned center with the monitor */
     }
+    #section3 .project-desktop-col {
+        margin-left: 80px;   /* Shift the desktop canvas to the right */
+    }
 }
 
 /* ── Stacked Diagonal Cards (Project 2: Label Lie) ── */
