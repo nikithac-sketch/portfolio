@@ -207,8 +207,8 @@
             const distance = Math.abs(viewportCenter - panelCenter);
             
             // Fully visible (opacity 1) when centered,
-            // and fully dissolved (opacity 0) when it moves 50% of the viewport height away.
-            const maxDistance = viewportHeight * 0.5;
+            // and fully dissolved (opacity 0) when it moves 85% of the viewport height away.
+            const maxDistance = viewportHeight * 0.85;
             
             let opacity = 1 - (distance / maxDistance);
             opacity = Math.max(0, Math.min(1, opacity));
