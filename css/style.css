@@ -1071,10 +1071,10 @@ img { display: block; max-width: 100%; }
     align-items: center;
     justify-content: center;
     gap: 8px;
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.1em;
-    padding: 14px 28px;
+    padding: 20px 36px;
     border: none;
     border-radius: 0;
     color: var(--text);
@@ -1100,8 +1100,8 @@ img { display: block; max-width: 100%; }
     transition: stroke 0.3s ease, fill 0.3s ease;
 }
 .cta-arrow-svg {
-    width: 16px;
-    height: 11px;
+    width: 20px;
+    height: 14px;
     object-fit: contain;
     filter: brightness(0.08); /* Matches near-black text color */
     transition: transform 0.3s var(--ease-spring), filter 0.3s ease;
@@ -1857,6 +1857,17 @@ img { display: block; max-width: 100%; }
     }
     .projects-container {
         padding: 40px 20px 60px;
+    }
+    .project-desc {
+        display: none !important;
+    }
+    .project-cta {
+        font-size: 0.75rem !important;
+        padding: 14px 28px !important;
+    }
+    .cta-arrow-svg {
+        width: 16px !important;
+        height: 11px !important;
     }
     .about-container {
         padding: 100px 20px 60px;
