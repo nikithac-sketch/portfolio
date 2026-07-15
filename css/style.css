@@ -1873,7 +1873,7 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 600px) {
     .hero { padding: 0 20px 12vh; }
-    .hero-title { font-size: clamp(3.0rem, 14vw, 5.0rem); font-weight: 900; }
+    .hero-title { font-size: clamp(2.2rem, 9vw, 3.8rem); font-weight: 900; }
     .chapter { padding-left: 20px; padding-right: 20px; }
     .footer { padding: 24px 20px; }
     
@@ -1918,7 +1918,7 @@ img { display: block; max-width: 100%; }
         padding: 6px 12px;
     }
     .hero-title {
-        font-size: clamp(2.0rem, 8vw, 3.2rem);
+        font-size: clamp(1.4rem, 7.5vw, 2.5rem);
         font-weight: 900;
     }
     .scroll-hint {
