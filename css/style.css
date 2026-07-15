@@ -2051,8 +2051,9 @@ img { display: block; max-width: 100%; }
     box-sizing: border-box;
 }
 
-.case-study-hero-banner .case-study-meta-grid::before {
-    display: none; /* Hide top border since the entire block is green */
+.case-study-hero-banner .case-study-meta-grid::before,
+.case-study-hero-banner .case-study-meta-grid::after {
+    display: none; /* Hide top and bottom borders since the entire block is green */
 }
 
 .case-study-hero-banner .meta-label {
