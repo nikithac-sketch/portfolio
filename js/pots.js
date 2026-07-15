@@ -929,8 +929,9 @@
     });
 
     // ─── Final Designs Showcase Scrollytelling Logic ───
-    const creationSteps = document.querySelectorAll('.creation-scroll-step');
-    const creationImages = document.querySelectorAll('.creation-scrolly-layout .phone-screen-img');
+    const creationSteps = document.querySelectorAll('.creation-scroll-steps-trigger .creation-scroll-step');
+    const creationImages = document.querySelectorAll('.creation-sticky-view .phone-screen-img');
+    const creationDialogues = document.querySelectorAll('.creation-dialogue');
 
     if (creationSteps.length > 0 && creationImages.length > 0) {
         const creationObserver = new IntersectionObserver((entries) => {
@@ -947,6 +948,11 @@
                     creationImages.forEach((img, i) => {
                         img.classList.toggle('active', i === stepIndex);
                     });
+
+                    // Update dialogue active states
+                    creationDialogues.forEach((dialogue, i) => {
+                        dialogue.classList.toggle('active', i === stepIndex);
+                    });
                 }
             });
         }, {
@@ -959,8 +965,9 @@
         });
 
         // Set first step active on load
-        creationSteps[0].classList.add('active');
-        creationImages[0].classList.add('active');
+        if (creationSteps[0]) creationSteps[0].classList.add('active');
+        if (creationImages[0]) creationImages[0].classList.add('active');
+        if (creationDialogues[0]) creationDialogues[0].classList.add('active');
     }
 
     // Initial executions
