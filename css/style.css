@@ -5834,8 +5834,7 @@ img { display: block; max-width: 100%; }
     transition: transform 0.4s ease;
 }
 
-/* Screen area coordinates calculated to sit perfectly behind the SVG inner screen stroke */
-.phone-screen {
+.center-scaled-phone .phone-screen {
     position: absolute;
     left: 24px; /* Scaled screen offset */
     top: 66px; /* Scaled screen offset */
@@ -5847,7 +5846,7 @@ img { display: block; max-width: 100%; }
     z-index: 1;
 }
 
-.phone-screen-img {
+.center-scaled-phone .phone-screen-img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -5859,7 +5858,7 @@ img { display: block; max-width: 100%; }
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.phone-screen-img.active {
+.center-scaled-phone .phone-screen-img.active {
     opacity: 1;
     transform: scale(1);
 }
