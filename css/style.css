@@ -1823,7 +1823,6 @@ img { display: block; max-width: 100%; }
     #section1 .phone-frame {
         transform: scale(0.75);
         transform-origin: center center;
-        height: 470px;
         margin: -70px 0;
     }
     #section1 .phone-screen {
