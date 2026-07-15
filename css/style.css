@@ -325,6 +325,115 @@ img { display: block; max-width: 100%; }
     opacity: 1;
 }
 
+/* ── Desktop Column ── */
+.project-desktop-col {
+    flex: 0 0 440px; /* Wider desktop canvas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Desktop Frame (sketched style) ── */
+.desktop-frame {
+    position: relative;
+    width: 440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.monitor-body {
+    width: 100%;
+    height: 280px; /* Landscape aspect ratio */
+    border: 2.5px solid #000000;
+    border-radius: 14px 11px 15px 12px / 12px 14px 11px 13px; /* Wobbly hand-drawn border */
+    background: #ffffff;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.browser-header {
+    height: 24px;
+    background: #f0f0f0;
+    border-bottom: 2.5px solid #000000;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    position: relative;
+}
+
+.browser-dots {
+    display: flex;
+    gap: 6px;
+    margin-right: 16px;
+}
+
+.browser-dot {
+    width: 8px;
+    height: 8px;
+    border: 1px solid #000000;
+    border-radius: 50%;
+}
+.browser-dot.close { background: #ff5f56; }
+.browser-dot.minimize { background: #ffbd2e; }
+.browser-dot.maximize { background: #27c93f; }
+
+.browser-address-bar {
+    flex: 1;
+    height: 14px;
+    background: #ffffff;
+    border: 1.5px solid #000000;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.55rem;
+    color: #666666;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    max-width: 240px;
+    user-select: none;
+}
+
+.monitor-screen {
+    flex: 1;
+    position: relative;
+    background: #1a1a1a;
+    overflow: hidden;
+}
+
+.monitor-screen-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.monitor-neck {
+    width: 32px;
+    height: 40px;
+    border: 2.5px solid #000000;
+    border-top: none;
+    border-bottom: none;
+    background: #ffffff;
+    position: relative;
+    z-index: -1;
+    margin-top: -1px;
+}
+
+.monitor-base {
+    width: 140px;
+    height: 14px;
+    border: 2.5px solid #000000;
+    border-radius: 20px 20px 8px 8px / 12px 12px 6px 6px; /* Wobbly sketch look */
+    background: #ffffff;
+    margin-top: -2px;
+}
+
 .phone-screen-img.pots-landscape {
     left: 0;
     top: 0;
@@ -1685,7 +1794,8 @@ img { display: block; max-width: 100%; }
         gap: 0;
         align-items: stretch;
     }
-    .project-phone-col {
+    .project-phone-col,
+    .project-desktop-col {
         display: none;
     }
     .mobile-project-card {

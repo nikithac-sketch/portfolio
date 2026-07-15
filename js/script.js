@@ -376,8 +376,8 @@
                 'assets/images/stories/echoverse_5.jpg'
             ]
         },
-        terraform: {
-            label: 'TERRAFORM',
+        hurrey: {
+            label: 'HURREY LIBRARY',
             slides: [
                 'assets/images/stories/terraform_1.jpg',
                 'assets/images/stories/terraform_2.jpg',
