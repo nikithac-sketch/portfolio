@@ -5782,7 +5782,7 @@ img { display: block; max-width: 100%; }
 }
 
 .creation-sticky-left {
-    flex: 0 0 300px;
+    flex: 0 0 330px;
     height: calc(100vh - 180px);
     position: sticky;
     top: 140px;
