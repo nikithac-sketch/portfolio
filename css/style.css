@@ -1872,7 +1872,16 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 600px) {
-    .hero { padding: 0 20px 12vh; }
+    .hero {
+        padding: 0 20px 12vh;
+        justify-content: flex-start;
+        padding-top: 10vh;
+    }
+    .hero-morph-video {
+        width: 32vh;
+        height: 32vh;
+        max-height: 32vh;
+    }
     .hero-title {
         font-size: clamp(2.4rem, 10.5vw, 3.8rem);
         font-weight: 900;
