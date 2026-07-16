@@ -5805,7 +5805,7 @@ img { display: block; max-width: 100%; }
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #ffffff;
+    background: #ebf2ef;
     overflow: hidden;
     z-index: 5;
 }
