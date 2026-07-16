@@ -2650,12 +2650,13 @@ img { display: block; max-width: 100%; }
 }
 
 .hugo-intro-grid {
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: 60px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    max-width: 900px;
+    gap: 40px;
+    max-width: 800px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .hugo-intro-left {
@@ -2691,6 +2692,7 @@ img { display: block; max-width: 100%; }
 .hugo-intro-right {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 16px;
 }
 
@@ -2718,26 +2720,18 @@ img { display: block; max-width: 100%; }
 
 .hugo-cta-container {
     margin-top: 10px;
-    align-self: flex-start;
+    align-self: center;
 }
 
 /* Responsive adjustment for Hugosave Intro */
 @media (max-width: 768px) {
     .hugo-intro-grid {
-        grid-template-columns: 1fr;
         gap: 30px;
-        text-align: center;
-    }
-    .hugo-intro-right {
-        align-items: center;
     }
     .hugo-logo-img {
         width: 160px;
         height: 160px;
         border-radius: 28px;
-    }
-    .hugo-cta-container {
-        align-self: center;
     }
 }
 
