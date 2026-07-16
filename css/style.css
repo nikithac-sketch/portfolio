@@ -5791,7 +5791,9 @@ img { display: block; max-width: 100%; }
 /* Centered Sticky Scrollytelling Showcase for Creation Flow */
 .creation-scrolly-track {
     position: relative;
-    width: 100%;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
     height: 380vh; /* Scroll track height to trigger steps */
     margin-top: 60px;
     margin-bottom: 60px;
