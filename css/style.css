@@ -3147,84 +3147,177 @@ img { display: block; max-width: 100%; }
     z-index: 2;
 }
 
-.donut-chart-box {
+.donut-chart-box,
+.treemap-chart-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 18px;
     width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
 }
 
-.donut-svg-wrapper {
-    position: relative;
-    width: 320px;
-    height: 320px;
+.treemap-container {
+    width: 100%;
+    height: 460px; /* Matches the exact height of the Archetype Card */
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    overflow: hidden; /* Seamlessly clips outer corners */
 }
 
-.donut-svg {
-    width: 100%;
+.treemap-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     height: 100%;
-    transform: rotate(-90deg);         /* start segments at the top */
-    transform-origin: center center;
 }
 
-.donut-segment {
-    transition: stroke-width 0.3s ease, filter 0.3s ease, stroke 0.3s ease, opacity 0.3s ease;
-    cursor: pointer;
+.treemap-subrow {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    width: 100%;
 }
 
-.donut-segment.active-slice {
-    stroke-width: 15px;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
-    opacity: 1;
-}
-
-/* Dim inactive segments when there is an active segment */
-.donut-svg:has(.active-slice) .donut-segment:not(.active-slice) {
-    opacity: 0.35;
-}
-
-/* Interactive hover highlights */
-.donut-svg:hover .donut-segment {
-    opacity: 0.35;
-    stroke-width: 10px;
-}
-
-.donut-svg:hover .donut-segment:hover {
-    opacity: 1;
-    stroke-width: 15px;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
-}
-
-.donut-center-text {
-    position: absolute;
-    inset: 0;
+.treemap-node {
+    position: relative;
+    border-radius: 0;
+    border: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: flex-end;
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.treemap-node-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 2;
     pointer-events: none;
 }
 
-.donut-pct-val {
+.treemap-node-pct {
     font-family: var(--font);
-    font-size: 2.8rem;                 /* scaled down */
     font-weight: 800;
-    color: #1a1a1a;
-    line-height: 1.1;
+    line-height: 1.05;
     letter-spacing: -0.02em;
+    transition: color 0.3s ease;
 }
 
-.donut-label-val {
-    font-family: var(--font);
-    font-size: 1.0rem;                  /* scaled down */
-    font-weight: 700;
-    color: var(--text-secondary);
-    margin-top: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+.node-explorer .treemap-node-pct,
+.node-architect .treemap-node-pct {
+    font-size: 1.75rem;
 }
+
+.node-accumulator .treemap-node-pct {
+    font-size: 1.35rem;
+}
+
+.node-countdown .treemap-node-pct {
+    font-size: 0.95rem;
+}
+
+.treemap-node-name {
+    font-family: var(--font);
+    font-weight: 700;
+    margin-top: 4px;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    opacity: 0.9;
+    transition: color 0.3s ease;
+}
+
+.node-explorer .treemap-node-name,
+.node-architect .treemap-node-name {
+    font-size: 0.9rem;
+}
+
+.node-accumulator .treemap-node-name {
+    font-size: 0.78rem;
+}
+
+.node-countdown .treemap-node-name {
+    font-size: 0.65rem;
+}
+
+/* ── Node Fills & Colors ── */
+.node-explorer {
+    background: rgba(148, 163, 184, 0.16);
+    color: #334155;
+}
+
+.node-architect {
+    background: rgba(139, 92, 246, 0.16);
+    color: #5b21b6;
+}
+
+.node-accumulator {
+    background: rgba(16, 185, 129, 0.16);
+    color: #065f46;
+}
+
+.node-countdown {
+    background: rgba(245, 158, 11, 0.16);
+    color: #92400e;
+    padding: 14px 10px;
+}
+
+/* ── Active Node Highlight State ── */
+.treemap-container:has(.active-node) .treemap-node:not(.active-node) {
+    opacity: 0.45;
+    filter: grayscale(15%);
+}
+
+.node-explorer.active-node {
+    background: #64748b;
+    color: #ffffff;
+    z-index: 3;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.node-architect.active-node {
+    background: #8b5cf6;
+    color: #ffffff;
+    z-index: 3;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.node-accumulator.active-node {
+    background: #10b981;
+    color: #ffffff;
+    z-index: 3;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.node-countdown.active-node {
+    background: #f59e0b;
+    color: #ffffff;
+    z-index: 3;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.treemap-node:hover {
+    filter: brightness(0.96);
+    z-index: 4;
+}
+
 
 .archetypes-scroll-right {
     display: flex;
@@ -3257,18 +3350,21 @@ img { display: block; max-width: 100%; }
 
 .archetype-card .cta-sketch-border {
     position: absolute;
-    inset: -5px;
-    width: calc(100% + 10px);
-    height: calc(100% + 10px);
+    inset: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: -1;
 }
 
 .archetype-card .cta-sketch-border path {
-    stroke: #1a1a1a;
+    stroke: var(--text, #1a1a1a);
     stroke-width: 2.5;
-    fill: var(--bg-alt);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: var(--bg-alt, #faf9f6);
     vector-effect: non-scaling-stroke;
+    transition: stroke 0.3s ease, fill 0.3s ease;
 }
 
 .arch-illustration-box {

@@ -246,50 +246,49 @@
                 <p class="archetypes-intro-text">To better understand the usage patterns, user interviews and app usage were studied.<br>This emerged 4 interesting archetypes who create a money pot:</p>
             </div>
             
-            <!-- Left Side: Sticky Donut Chart & Center Text -->
+            <!-- Left Side: Sticky Treemap Visualisation -->
             <div class="archetypes-sticky-left">
-                <div class="donut-chart-box">
-                    
-                    <!-- SVG Donut Chart -->
-                    <div class="donut-svg-wrapper">
-                        <svg class="donut-svg" viewBox="0 0 120 120">
-                            <!-- Background Circle -->
-                            <circle class="donut-ring-bg" cx="60" cy="60" r="50" fill="none" stroke="#f8fafc" stroke-width="12" />
-                            
-                            <!-- Type 4: The Explorer (44.39%) -->
-                            <circle class="donut-segment segment-explorer" cx="60" cy="60" r="50" fill="none" 
-                                    stroke="#94a3b8" stroke-width="12" 
-                                    stroke-dasharray="139.46 174.70" stroke-dashoffset="0"
-                                    data-archetype="4" />
-                            
-                            <!-- Type 1: The Architect (37.84%) -->
-                            <circle class="donut-segment segment-architect" cx="60" cy="60" r="50" fill="none" 
-                                    stroke="#8b5cf6" stroke-width="12" 
-                                    stroke-dasharray="118.88 195.28" stroke-dashoffset="-139.46"
-                                    data-archetype="1" />
-                            
-                            <!-- Type 2: The Accumulator (16.22%) -->
-                            <circle class="donut-segment segment-accumulator" cx="60" cy="60" r="50" fill="none" 
-                                    stroke="#10b981" stroke-width="12" 
-                                    stroke-dasharray="50.96 263.20" stroke-dashoffset="-258.34"
-                                    data-archetype="2" />
-                            
-                            <!-- Type 3: The Countdown (1.55%) -->
-                            <circle class="donut-segment segment-countdown" cx="60" cy="60" r="50" fill="none" 
-                                    stroke="#f59e0b" stroke-width="12" 
-                                    stroke-dasharray="4.87 309.29" stroke-dashoffset="-309.30"
-                                    data-archetype="3" />
-                        </svg>
-                        
-                        <!-- Donut Chart Center Text -->
-                        <div class="donut-center-text">
-                            <span class="donut-pct-val" id="donutPct">37.84%</span>
-                            <span class="donut-label-val" id="donutLabel">of Users</span>
+                <div class="treemap-chart-box">
+                    <!-- Treemap Container -->
+                    <div class="treemap-container">
+                        <!-- Left Block: Explorer (44.39%) -->
+                        <div class="treemap-node node-explorer" data-archetype="4" style="flex: 44.39;" title="The Explorer: 44.39%">
+                            <div class="treemap-node-content">
+                                <span class="treemap-node-pct">44.39%</span>
+                                <span class="treemap-node-name">The Explorer</span>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Architect (Top) & Accumulator + Countdown (Bottom) -->
+                        <div class="treemap-col-right" style="flex: 55.61;">
+                            <!-- Architect (37.84%) -->
+                            <div class="treemap-node node-architect active-node" data-archetype="1" style="flex: 37.84;" title="The Architect: 37.84%">
+                                <div class="treemap-node-content">
+                                    <span class="treemap-node-pct">37.84%</span>
+                                    <span class="treemap-node-name">The Architect</span>
+                                </div>
+                            </div>
+
+                            <!-- Subrow: Accumulator (16.22%) & Countdown (1.55%) -->
+                            <div class="treemap-subrow" style="flex: 17.77;">
+                                <!-- Accumulator (16.22%) -->
+                                <div class="treemap-node node-accumulator" data-archetype="2" style="flex: 16.22;" title="The Accumulator: 16.22%">
+                                    <div class="treemap-node-content">
+                                        <span class="treemap-node-pct">16.22%</span>
+                                        <span class="treemap-node-name">The Accumulator</span>
+                                    </div>
+                                </div>
+
+                                <!-- Countdown (1.55%) -->
+                                <div class="treemap-node node-countdown" data-archetype="3" style="flex: 3.5;" title="The Countdown: 1.55%">
+                                    <div class="treemap-node-content">
+                                        <span class="treemap-node-pct">1.55%</span>
+                                        <span class="treemap-node-name">Countdown</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Legend list removed to prioritize chart size -->
-
                 </div>
             </div>
 
@@ -299,9 +298,9 @@
                 <!-- Archetype Card 1 -->
                 <div class="archetype-scroll-trigger" data-archetype="1">
                     <div class="archetype-card card-architect active-card">
-                        <!-- Wobbly SVG outline -->
-                        <svg class="cta-sketch-border" viewBox="0 0 220 50" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M 10,2 C 60,1.5 160,2.5 210,2 C 215,2 218,5 218,10 C 217,20 219,30 218,40 C 218,45 215,48 210,48 C 160,47.5 60,48.5 10,48 C 5,48 2,45 2,40 C 3,30 1,20 2,10 C 2,5 5,2 10,2 Z" />
+                        <!-- Clean SVG outline -->
+                        <svg class="cta-sketch-border" viewBox="0 0 400 520" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 20,3 C 120,2.2 280,3.8 380,3 C 391,3 397,9 397,20 C 396.2,150 397.8,370 397,500 C 397,511 391,517 380,517 C 280,517.8 120,516.2 20,517 C 9,517 3,511 3,500 C 3.8,370 2.2,150 3,20 C 3,9 9,3 20,3 Z" />
                         </svg>
                         
                         <div class="arch-card-header">
@@ -325,9 +324,9 @@
                 <!-- Archetype Card 2 -->
                 <div class="archetype-scroll-trigger" data-archetype="2">
                     <div class="archetype-card card-accumulator">
-                        <!-- Wobbly SVG outline -->
-                        <svg class="cta-sketch-border" viewBox="0 0 220 50" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M 10,2 C 60,1.5 160,2.5 210,2 C 215,2 218,5 218,10 C 217,20 219,30 218,40 C 218,45 215,48 210,48 C 160,47.5 60,48.5 10,48 C 5,48 2,45 2,40 C 3,30 1,20 2,10 C 2,5 5,2 10,2 Z" />
+                        <!-- Clean SVG outline -->
+                        <svg class="cta-sketch-border" viewBox="0 0 400 520" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 20,3 C 120,2.2 280,3.8 380,3 C 391,3 397,9 397,20 C 396.2,150 397.8,370 397,500 C 397,511 391,517 380,517 C 280,517.8 120,516.2 20,517 C 9,517 3,511 3,500 C 3.8,370 2.2,150 3,20 C 3,9 9,3 20,3 Z" />
                         </svg>
                         
                         <div class="arch-card-header">
@@ -351,9 +350,9 @@
                 <!-- Archetype Card 3 -->
                 <div class="archetype-scroll-trigger" data-archetype="3">
                     <div class="archetype-card card-countdown">
-                        <!-- Wobbly SVG outline -->
-                        <svg class="cta-sketch-border" viewBox="0 0 220 50" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M 10,2 C 60,1.5 160,2.5 210,2 C 215,2 218,5 218,10 C 217,20 219,30 218,40 C 218,45 215,48 210,48 C 160,47.5 60,48.5 10,48 C 5,48 2,45 2,40 C 3,30 1,20 2,10 C 2,5 5,2 10,2 Z" />
+                        <!-- Clean SVG outline -->
+                        <svg class="cta-sketch-border" viewBox="0 0 400 520" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 20,3 C 120,2.2 280,3.8 380,3 C 391,3 397,9 397,20 C 396.2,150 397.8,370 397,500 C 397,511 391,517 380,517 C 280,517.8 120,516.2 20,517 C 9,517 3,511 3,500 C 3.8,370 2.2,150 3,20 C 3,9 9,3 20,3 Z" />
                         </svg>
                         
                         <div class="arch-card-header">
@@ -377,9 +376,9 @@
                 <!-- Archetype Card 4 -->
                 <div class="archetype-scroll-trigger" data-archetype="4">
                     <div class="archetype-card card-explorer">
-                        <!-- Wobbly SVG outline -->
-                        <svg class="cta-sketch-border" viewBox="0 0 220 50" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M 10,2 C 60,1.5 160,2.5 210,2 C 215,2 218,5 218,10 C 217,20 219,30 218,40 C 218,45 215,48 210,48 C 160,47.5 60,48.5 10,48 C 5,48 2,45 2,40 C 3,30 1,20 2,10 C 2,5 5,2 10,2 Z" />
+                        <!-- Clean SVG outline -->
+                        <svg class="cta-sketch-border" viewBox="0 0 400 520" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 20,3 C 120,2.2 280,3.8 380,3 C 391,3 397,9 397,20 C 396.2,150 397.8,370 397,500 C 397,511 391,517 380,517 C 280,517.8 120,516.2 20,517 C 9,517 3,511 3,500 C 3.8,370 2.2,150 3,20 C 3,9 9,3 20,3 Z" />
                         </svg>
                         
                         <div class="arch-card-header">

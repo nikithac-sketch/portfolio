@@ -215,11 +215,9 @@
             pictoObserver.observe(step);
         });
     }
-    // ─── Scrollytelling Archetypes Logic ───
+    // ─── Scrollytelling Archetypes Logic (Treemap Visualization) ───
     const archetypeTriggers = document.querySelectorAll('.archetype-scroll-trigger');
-    const donutPct = document.getElementById('donutPct');
-    const donutLabel = document.getElementById('donutLabel');
-    const donutSegments = document.querySelectorAll('.donut-segment');
+    const treemapNodes = document.querySelectorAll('.treemap-node, .donut-segment');
 
     const archetypeData = {
         1: { pct: '37.84%', label: 'The Architect' },
@@ -245,19 +243,13 @@
                         }
                     });
 
-                    // Update donut chart text
-                    if (donutPct && donutLabel && archetypeData[archId]) {
-                        donutPct.textContent = archetypeData[archId].pct;
-                        donutLabel.textContent = 'of Users';
-                    }
-
-                    // Highlight donut segment
-                    donutSegments.forEach(segment => {
-                        const segmentId = parseInt(segment.getAttribute('data-archetype'), 10);
-                        if (segmentId === archId) {
-                            segment.classList.add('active-slice');
+                    // Highlight treemap node
+                    treemapNodes.forEach(node => {
+                        const nodeId = parseInt(node.getAttribute('data-archetype'), 10);
+                        if (nodeId === archId) {
+                            node.classList.add('active-node', 'active-slice');
                         } else {
-                            segment.classList.remove('active-slice');
+                            node.classList.remove('active-node', 'active-slice');
                         }
                     });
                 }
@@ -272,13 +264,25 @@
             archetypesObserver.observe(trigger);
         });
 
-        // Add click listener on donut segments to scroll to corresponding cards
-        document.querySelectorAll('.donut-segment').forEach(el => {
+        // Add click listener on treemap nodes to scroll smoothly to corresponding cards without top clipping
+        document.querySelectorAll('.treemap-node, .donut-segment').forEach(el => {
             el.addEventListener('click', () => {
                 const archId = el.getAttribute('data-archetype');
                 const targetTrigger = document.querySelector(`.archetype-scroll-trigger[data-archetype="${archId}"]`);
                 if (targetTrigger) {
-                    targetTrigger.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    const card = targetTrigger.querySelector('.archetype-card') || targetTrigger;
+                    const cardRect = card.getBoundingClientRect();
+                    const navOffset = 110; // Clearance for sticky navigation bar
+                    const availableSpace = window.innerHeight - navOffset;
+                    
+                    // Center the card in the viewport space below the navbar
+                    const centerOffset = Math.max(20, (availableSpace - cardRect.height) / 2);
+                    const targetY = window.pageYOffset + cardRect.top - navOffset - centerOffset;
+
+                    window.scrollTo({
+                        top: Math.max(0, targetY),
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
