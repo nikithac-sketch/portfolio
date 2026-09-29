@@ -4211,17 +4211,20 @@ img { display: block; max-width: 100%; }
 
 .scope-card .cta-sketch-border {
     position: absolute;
-    inset: -5px;
-    width: calc(100% + 10px);
-    height: calc(100% + 10px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: -1;
 }
 
 .scope-card .cta-sketch-border path {
-    stroke: #1a1a1a;
+    stroke: var(--text, #1a1a1a);
     stroke-width: 2.5;
-    fill: var(--bg-alt);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: var(--bg-alt, #f6f5f2);
     vector-effect: non-scaling-stroke;
 }
 
