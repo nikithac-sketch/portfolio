@@ -1,0 +1,17 @@
+# macOS system files
+.DS_Store
+*.DS_Store
+
+# Environment and secrets
+.env
+*.env.local
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/

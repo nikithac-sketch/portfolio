@@ -215,9 +215,9 @@
             pictoObserver.observe(step);
         });
     }
-    // ─── Scrollytelling Archetypes Logic (Treemap Visualization) ───
+    // ─── Scrollytelling Archetypes Logic (Quadrant Visualization) ───
     const archetypeTriggers = document.querySelectorAll('.archetype-scroll-trigger');
-    const treemapNodes = document.querySelectorAll('.treemap-node, .donut-segment');
+    const quadrantNodes = document.querySelectorAll('.quadrant-node, .donut-segment');
 
     const archetypeData = {
         1: { pct: '37.84%', label: 'The Architect' },
@@ -243,8 +243,8 @@
                         }
                     });
 
-                    // Highlight treemap node
-                    treemapNodes.forEach(node => {
+                    // Highlight quadrant node
+                    quadrantNodes.forEach(node => {
                         const nodeId = parseInt(node.getAttribute('data-archetype'), 10);
                         if (nodeId === archId) {
                             node.classList.add('active-node', 'active-slice');
@@ -264,8 +264,8 @@
             archetypesObserver.observe(trigger);
         });
 
-        // Add click listener on treemap nodes to scroll smoothly to corresponding cards without top clipping
-        document.querySelectorAll('.treemap-node, .donut-segment').forEach(el => {
+        // Add click listener on quadrant nodes to scroll smoothly to corresponding cards without top clipping
+        document.querySelectorAll('.quadrant-node, .donut-segment').forEach(el => {
             el.addEventListener('click', () => {
                 const archId = el.getAttribute('data-archetype');
                 const targetTrigger = document.querySelector(`.archetype-scroll-trigger[data-archetype="${archId}"]`);
@@ -309,28 +309,13 @@
         });
     }
 
-    // ─── Lightbox Modal Interactivity ───
+    // ─── Lightbox Modal Interactivity (Disabled - Screens not clickable) ───
     const lightboxModal = document.getElementById('lightboxModal');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxCaption = document.getElementById('lightboxCaption');
     const lightboxClose = document.getElementById('lightboxClose');
-    const conceptImageWrappers = document.querySelectorAll('.concept-image-wrapper');
 
     if (lightboxModal && lightboxImg && lightboxClose) {
-        conceptImageWrappers.forEach(wrapper => {
-            wrapper.addEventListener('click', () => {
-                const img = wrapper.querySelector('img');
-                const caption = wrapper.getAttribute('data-caption');
-                if (img) {
-                    lightboxImg.src = img.src;
-                    lightboxImg.alt = img.alt;
-                    lightboxCaption.textContent = caption || img.alt;
-                    lightboxModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-        });
-
         const closeLightbox = () => {
             lightboxModal.classList.remove('active');
             document.body.style.overflow = '';

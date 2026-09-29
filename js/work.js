@@ -276,11 +276,11 @@
         hurrey: {
             label: 'HURREY LIBRARY',
             slides: [
-                'assets/images/stories/terraform_1.jpg',
-                'assets/images/stories/terraform_2.jpg',
-                'assets/images/stories/terraform_3.jpg',
-                'assets/images/stories/terraform_4.jpg',
-                'assets/images/stories/terraform_5.jpg'
+                'assets/documents/project_hurreyLibrary/pages/page_001.png',
+                'assets/documents/project_hurreyLibrary/pages/page_079.png',
+                'assets/documents/project_hurreyLibrary/pages/page_176.png',
+                'assets/documents/project_hurreyLibrary/pages/page_190.png',
+                'assets/documents/project_hurreyLibrary/pages/page_204.png'
             ]
         },
         studybuddy: {

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hurrey Library UX Case Study — Nikitha C</title>
+    <meta name="description" content="UX Case Study: Rebuilding the enterprise digital library module for Hurrey EdTech. NID Graduation Project 2023.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Bitcount+Single&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=219">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-left">
+            <span class="nav-local">LOCAL/</span>
+            <span class="nav-clock" id="navClock">00:00:00</span>
+        </div>
+        <div class="nav-center">
+            <a href="index.html" class="nav-logo" aria-label="Home">
+                <iconify-icon icon="streamline-freehand:home-chimney-2" class="home-icon"></iconify-icon>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="index.html#projects" class="nav-link active-page">WORK</a>
+            <a href="index.html" class="nav-link">FUN</a>
+            <a href="index.html#chapter-connect" class="nav-btn-wobbly" id="navContactBtn">
+                CONTACT
+                <svg class="nav-sketch-border" viewBox="0 0 120 40" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 8,2 C 40,1.5 80,2.5 112,2 C 115,2 118,4 118,8 C 117,14 118,26 118,32 C 118,36 115,38 112,38 C 80,37.5 40,38.5 8,38 C 5,38 2,36 2,32 C 3,26 1,14 2,8 C 2,4 5,2 8,2 Z" />
+                </svg>
+            </a>
+        </div>
+        <button class="nav-mobile-toggle" aria-label="Toggle Navigation" id="mobileNavToggle">
+            <span class="hamburger-bar bar-1"></span>
+            <span class="hamburger-bar bar-2"></span>
+            <span class="hamburger-bar bar-3"></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Navigation Overlay Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <a href="about.html" class="mobile-menu-link">ABOUT</a>
+            <a href="index.html#projects" class="mobile-menu-link active-page">WORK</a>
+            <a href="index.html" class="mobile-menu-link">FUN</a>
+            <a href="index.html#chapter-connect" class="mobile-btn-wobbly" id="mobileContactBtn">
+                CONTACT
+                <svg class="nav-sketch-border" viewBox="0 0 120 40" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 8,2 C 40,1.5 80,2.5 112,2 C 115,2 118,4 118,8 C 117,14 118,26 118,32 C 118,36 115,38 112,38 C 80,37.5 40,38.5 8,38 C 5,38 2,36 2,32 C 3,26 1,14 2,8 C 2,4 5,2 8,2 Z" />
+                </svg>
+            </a>
+            <div class="mobile-menu-footer">
+                <span class="mobile-local">LOCAL/</span>
+                <span class="mobile-clock" id="mobileClock">00:00:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ CASE STUDY CONTAINER ============ -->
+    <main class="case-study-container">
+
+        <!-- ===== HERO ===== -->
+        <div class="case-study-hero-banner hl-hero-banner">
+
+            <!-- Breadcrumb -->
+            <div class="case-study-breadcrumb">
+                <a href="index.html">HOME</a>
+                <span class="breadcrumb-slash">/</span>
+                <a href="index.html#projects">WORK</a>
+                <span class="breadcrumb-slash">/</span>
+                <span class="breadcrumb-current">HURREY LIBRARY</span>
+            </div>
+
+            <!-- Hero Title Block -->
+            <header class="case-study-header">
+                <div class="project-label">
+                    <span class="project-num">02</span>
+                    <span class="project-dash"></span>
+                    <span class="project-cat">NID GRADUATION PROJECT &middot; B2B SAAS &middot; 2023</span>
+                </div>
+                <div class="case-study-title-wrapper">
+                    <h1 class="case-study-title">Hurrey Library</h1>
+                </div>
+                <p class="case-study-tagline">How do you design enterprise software for people who chose a quiet life with books, not an endless labyrinth of input fields?</p>
+                <p class="hl-hero-prelude">Redesigning a mission-critical school library system from a 14-click friction trap into an intelligent, AI-assisted workflow for private school educators.</p>
+            </header>
+
+            <!-- Hero image -->
+            <section class="case-study-hero-card">
+                <div class="showcase-frame hl-showcase-frame">
+                    <img
+                        src="assets/documents/project_hurreyLibrary/pages/page_190.png"
+                        alt="Hurrey Library Final Design — Book details and circulation control"
+                        class="showcase-img hl-showcase-img"
+                    >
+                </div>
+            </section>
+
+            <!-- Metadata -->
+            <section class="case-study-meta-grid">
+                <div class="meta-item">
+                    <span class="meta-label">CLIENT</span>
+                    <span class="meta-value">Hurrey Tech Ventures</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">ROLE</span>
+                    <span class="meta-value">Lead UX Designer (Intern)</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">TIMELINE</span>
+                    <span class="meta-value">6 Months &middot; Graduation Project</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">INSTITUTION</span>
+                    <span class="meta-value">National Institute of Design<br>(NID MP)</span>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===== ACT 1: THE CONTEXT & AMBITION ===== -->
+        <section class="hugo-intro-section scroll-reveal dissolve" id="hl-company">
+            <div class="hugo-intro-grid">
+                <div class="hugo-intro-left">
+                    <div class="hugo-logo-frame hl-logo-frame">
+                        <div class="hl-brand-pill">
+                            <span class="hl-brand-h">H</span><span class="hl-brand-rest">urrey</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hugo-intro-right">
+                    <div class="hugo-intro-description">
+                        <p class="desc-line">Hurrey is an EdTech startup building an interconnected school superapp to dismantle the "one-size-fits-all" classroom. By unifying teachers, parents, administrators, and students, their platform anchors around three pillars: <strong>Personalised Learning</strong>, <strong>Breaking Silos</strong>, and <strong>Positive Reinforcement</strong>.</p>
+                        <p class="desc-line">I joined Hurrey as a graduation design intern with an open mandate: take their early beta module, diagnose why adoption was struggling, and transform it into an enterprise tool that educators actually loved using.</p>
+                        <p class="desc-line">Naturally, I chose the quietest, most overlooked corner of the school: <strong>The Library</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DRAMATIC TRANSITION: THE SHOCK ===== -->
+        <section class="dramatic-transition-section scroll-reveal">
+            <div class="dramatic-spiral-container">
+                <img src="assets/Highlights-by-Outdraw-Design/09_Spirals/Spiral 1.svg" class="dramatic-spiral" alt="Hand-drawn spiral doodle">
+            </div>
+            <h2 class="dramatic-headline">
+                <span class="dramatic-text-pre">Everything looked clean on paper...</span>
+                <span class="dramatic-text-bold">UNTIL THE 40-MINUTE LUNCH RUSH.</span>
+            </h2>
+        </section>
+
+        <!-- ===== ACT 2: SERVICE SAFARI & FRICTION BREAKDOWNS ===== -->
+        <section class="hl-friction-section scroll-reveal dissolve">
+            <div class="hl-section-header">
+                <span class="hl-chapter-label">SERVICE SAFARI</span>
+                <h2 class="hl-chapter-title">A digital tool that felt more manual than paper</h2>
+                <p class="hl-chapter-sub">To understand why the beta was failing, I shadowed school librarians through their daily crucible: 40 minutes of recess when 200 energetic students flood the circulation desk.</p>
+            </div>
+
+            <div class="hl-friction-grid">
+                <!-- Friction 1 -->
+                <div class="hl-friction-card scroll-reveal">
+                    <div class="hl-friction-header">
+                        <span class="hl-friction-num">01</span>
+                        <span class="hl-arch-tag negative">Catalog Bloat</span>
+                    </div>
+                    <div class="hl-friction-screen-frame">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_079.png" alt="Book list interface before redesign" loading="lazy">
+                    </div>
+                    <blockquote class="hl-friction-quote">
+                        "I don't need a Netflix movie poster. I need to know if Copy #2 of Wings of Fire is on Shelf 4B!"
+                    </blockquote>
+                    <div class="hl-friction-body">
+                        <h4>The 80% Cover Disaster</h4>
+                        <p>The catalog prioritized massive book cover artwork taking up 80% of screen real estate. Essential metadata — shelf classification, accession number, and live copy counts — was completely hidden. Only two rigid filters existed, with zero sorting.</p>
+                    </div>
+                </div>
+
+                <!-- Friction 2 -->
+                <div class="hl-friction-card scroll-reveal">
+                    <div class="hl-friction-header">
+                        <span class="hl-friction-num">02</span>
+                        <span class="hl-arch-tag negative">Circulation Bottleneck</span>
+                    </div>
+                    <div class="hl-friction-screen-frame">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_082.png" alt="Issue book screen before redesign" loading="lazy">
+                    </div>
+                    <blockquote class="hl-friction-quote">
+                        "When 30 sixth-graders are queuing before the bell rings, typing 13-digit ISBNs by hand is a nightmare."
+                    </blockquote>
+                    <div class="hl-friction-body">
+                        <h4>14 Clicks &amp; Keyboard Fatigue</h4>
+                        <p>Issuing a single book required opening a modal, typing an entire 13-digit ISBN without auto-complete, and selecting 7 mandatory dropdowns. One typo reset the form. Average checkout time: <strong>4.2 minutes per student</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Friction 3 -->
+                <div class="hl-friction-card scroll-reveal">
+                    <div class="hl-friction-header">
+                        <span class="hl-friction-num">03</span>
+                        <span class="hl-arch-tag negative">Siloed Data</span>
+                    </div>
+                    <div class="hl-friction-screen-frame">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_084.png" alt="Add book multi-step screen before redesign" loading="lazy">
+                    </div>
+                    <blockquote class="hl-friction-quote">
+                        "We bought 400 books at the annual fair. The software asked me to manually type every single publication date."
+                    </blockquote>
+                    <div class="hl-friction-body">
+                        <h4>The Anti-Standard Island</h4>
+                        <p>The system ignored established library science protocols like MARC 21 and Dewey Decimal Classification. It was completely isolated from global publishers and other Hurrey superapp modules.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Redefined Brief Block -->
+            <div class="hl-brief-block scroll-reveal" style="max-width: 1100px; margin: 3.5rem auto 0;">
+                <span class="hl-brief-label">THE REDEFINED BRIEF</span>
+                <blockquote class="hl-brief-quote">
+                    "Redesign the UI/UX of Hurrey's digital library system for school librarians — eliminating operational friction, honouring conventional library standards, and harnessing contextual AI to transform the library from a book warehouse into an active learning engine."
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- ===== ACT 3: THE 4 SCHOOL ARCHETYPES ===== -->
+        <section class="hl-archetypes-section scroll-reveal dissolve">
+            <div class="hl-section-header">
+                <span class="hl-chapter-num">01</span>
+                <h2 class="hl-chapter-title">Who we're designing for</h2>
+                <p class="hl-chapter-sub">Enterprise school software cannot treat all institutions the same. Through contextual inquiry, four distinct school archetypes emerged — and two were chosen for product focus.</p>
+            </div>
+
+            <div class="hl-archetype-grid-rich">
+                <!-- Archetype 1 -->
+                <div class="hl-arch-rich-card selected-arch scroll-reveal">
+                    <span class="hl-arch-badge-selected">SELECTED &middot; V1 LAUNCH</span>
+                    <span class="hl-arch-number">ARCHETYPE 01</span>
+                    <h3 class="hl-arch-title">The Vanguard Academy</h3>
+                    <div class="hl-arch-quote-box">
+                        “Our library isn't storage. It’s an intellectual incubator for young researchers.”
+                    </div>
+                    <p class="hl-arch-desc">High budget with progressive international curricula (IB/Cambridge). Heavily prioritizes student inquiry, digital literacy, and cross-disciplinary projects. Open to smart AI recommendations.</p>
+                    <div class="hl-arch-tags">
+                        <span class="hl-arch-tag positive">Tech Readiness ✓</span>
+                        <span class="hl-arch-tag positive">Reading Culture ✓</span>
+                        <span class="hl-arch-tag positive">High Budget ✓</span>
+                    </div>
+                </div>
+
+                <!-- Archetype 2 -->
+                <div class="hl-arch-rich-card selected-arch scroll-reveal">
+                    <span class="hl-arch-badge-selected">SELECTED &middot; MAXIMUM IMPACT</span>
+                    <span class="hl-arch-number">ARCHETYPE 02</span>
+                    <h3 class="hl-arch-title">The Resilient Striver</h3>
+                    <div class="hl-arch-quote-box">
+                        “We have a modest budget, but our kids devour books. Every minute saved from clerical work is a minute I spend with them.”
+                    </div>
+                    <p class="hl-arch-desc">Mid-to-low budget private institution with immense heart. A single solo librarian handles cataloging, discipline, and checkout. Desperately needs automation to survive daily chaos.</p>
+                    <div class="hl-arch-tags">
+                        <span class="hl-arch-tag positive">High Passion ✓</span>
+                        <span class="hl-arch-tag positive">Student Focus ✓</span>
+                        <span class="hl-arch-tag negative">Budget Constraints —</span>
+                    </div>
+                </div>
+
+                <!-- Archetype 3 -->
+                <div class="hl-arch-rich-card scroll-reveal">
+                    <span class="hl-arch-badge-out">DEPRIORITIZED</span>
+                    <span class="hl-arch-number">ARCHETYPE 03</span>
+                    <h3 class="hl-arch-title">The Exam Fortress</h3>
+                    <div class="hl-arch-quote-box">
+                        “The library is strictly a silent study hall for board exam preparation.”
+                    </div>
+                    <p class="hl-arch-desc">Academically rigid school obsessed with standardized testing scores. The library serves as silent seating for textbooks; recreational reading and exploratory literature are actively discouraged.</p>
+                    <div class="hl-arch-tags">
+                        <span class="hl-arch-tag positive">Syllabus Locked ✓</span>
+                        <span class="hl-arch-tag negative">Recreational Reading —</span>
+                    </div>
+                </div>
+
+                <!-- Archetype 4 -->
+                <div class="hl-arch-rich-card scroll-reveal">
+                    <span class="hl-arch-badge-out">OUT OF SCOPE</span>
+                    <span class="hl-arch-number">ARCHETYPE 04</span>
+                    <h3 class="hl-arch-title">The Dormant Archive</h3>
+                    <div class="hl-arch-quote-box">
+                        “The books stay locked behind glass cases so they don’t get damaged or lost.”
+                    </div>
+                    <p class="hl-arch-desc">Severe budget starvation and bureaucratic inertia. Books are preserved as institutional property rather than shared learning assets. Digital adoption readiness is near zero.</p>
+                    <div class="hl-arch-tags">
+                        <span class="hl-arch-tag negative">Low Usage —</span>
+                        <span class="hl-arch-tag negative">Zero Digital Infra —</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hl-insight-callout scroll-reveal" style="margin-top: 3.5rem;">
+                <div class="hl-insight-line"></div>
+                <p class="hl-insight-text"><strong>Why Vanguard + Striver?</strong> Designing for the Vanguard gave us the architectural headroom for advanced AI intelligence (smart reading planners, catalog analytics). Designing for the Striver ensured the interface remained lightning-fast, ultra-tolerant of manual constraints, and dead simple to navigate.</p>
+            </div>
+        </section>
+
+        <!-- ===== ACT 4: DOMAIN KNOWLEDGE (SPEAKING LIBRARIAN) ===== -->
+        <section class="hl-process-section scroll-reveal dissolve">
+            <div class="hl-section-header">
+                <span class="hl-chapter-num">02</span>
+                <h2 class="hl-chapter-title">Deciphering 60 years of library science</h2>
+                <p class="hl-chapter-sub">Before writing a line of UI code, I had to learn how librarians have categorized human thought since 1876. Modern UX cannot ignore global bibliographic standards.</p>
+            </div>
+
+            <div class="hl-standards-grid">
+                <div class="hl-standard-card scroll-reveal">
+                    <div class="hl-standard-code">MARC 21</div>
+                    <div class="hl-standard-name">Machine-Readable Cataloging</div>
+                    <p>The global data format invented in the 1960s that refuses to die. Ensuring full MARC 21 field compliance meant schools could export and import records across Follett, Koha, and national libraries without data loss.</p>
+                </div>
+                <div class="hl-standard-card scroll-reveal">
+                    <div class="hl-standard-code">ISBN</div>
+                    <div class="hl-standard-name">International Standard Book Number</div>
+                    <p>The 13-digit global fingerprint of every publication. By integrating an open ISBN database lookup, typing an ISBN auto-populates title, author, edition, and publisher in 0.4 seconds.</p>
+                </div>
+                <div class="hl-standard-card scroll-reveal">
+                    <div class="hl-standard-code">DDC</div>
+                    <div class="hl-standard-name">Dewey Decimal Classification</div>
+                    <p>From 000 (Computer Science) to 800 (Literature) and 900 (History). Adding automated DDC category mapping gives librarians instant shelf spine numbering suggestions.</p>
+                </div>
+                <div class="hl-standard-card scroll-reveal">
+                    <div class="hl-standard-code">ACC#</div>
+                    <div class="hl-standard-name">Accession Tracking</div>
+                    <p>The vital distinction between <em>Title</em> and <em>Physical Inventory</em>. One book title can have 5 identical copies; accession numbers track the specific condition and location of Copy #3.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ACT 5: THE CUTTING ROOM FLOOR ("SEE WHAT DIDN'T WORK") ===== -->
+        <section class="hl-cut-section scroll-reveal dissolve">
+            <div class="hl-section-header">
+                <span class="hl-chapter-label">THE CUTTING ROOM FLOOR</span>
+                <h2 class="hl-chapter-title">See what didn't work</h2>
+                <p class="hl-chapter-sub">Great design is defined as much by what you ruthlessly kill as what you ship. Here are three early concepts that failed user testing and why they were cut.</p>
+            </div>
+
+            <div class="hl-cut-grid">
+                <!-- Cut 1 -->
+                <div class="hl-cut-card scroll-reveal">
+                    <span class="hl-cut-badge">REJECTED CONCEPT 01</span>
+                    <h3>The Netflix-Style Cover Carousel</h3>
+                    <p class="hl-cut-hypothesis"><strong>Hypothesis:</strong> Visual carousels of book covers will make the library feel modern, playful, and student-friendly.</p>
+                    <div class="hl-cut-reality">
+                        <strong>Librarian Reality:</strong> "I’m not watching a movie; I’m managing 4,000 physical assets. I need high-density tables, accession numbers, and rapid keyboard navigation."
+                    </div>
+                </div>
+
+                <!-- Cut 2 -->
+                <div class="hl-cut-card scroll-reveal">
+                    <span class="hl-cut-badge">REJECTED CONCEPT 02</span>
+                    <h3>The 18-Field Universal Modal</h3>
+                    <p class="hl-cut-hypothesis"><strong>Hypothesis:</strong> Putting book issuance, fine collection, and return status into one giant dialog window will save clicks.</p>
+                    <div class="hl-cut-reality">
+                        <strong>Librarian Reality:</strong> Cognitive overload. If a student asked a question midway through, the modal was closed, destroying all unsaved form state. We switched to an empty-state guided page flow.
+                    </div>
+                </div>
+
+                <!-- Cut 3 -->
+                <div class="hl-cut-card scroll-reveal">
+                    <span class="hl-cut-badge">REJECTED CONCEPT 03</span>
+                    <h3>Autonomous AI Purchasing Bot</h3>
+                    <p class="hl-cut-hypothesis"><strong>Hypothesis:</strong> The AI should automatically generate purchase orders for out-of-stock titles based on request frequency.</p>
+                    <div class="hl-cut-reality">
+                        <strong>Librarian Reality:</strong> Complete administrative rejection. School principals require human gatekeeping before budget funds are deployed. The feature was pivoted into the <strong>Recommendation Centre</strong>.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ACT 6: WIREFRAMES & TESTING WITH 5 LIBRARIANS ===== -->
+        <section class="hl-wireframe-section scroll-reveal dissolve">
+            <div class="hl-section-header">
+                <span class="hl-chapter-num">03</span>
+                <h2 class="hl-chapter-title">From wireframe to user proof</h2>
+                <p class="hl-chapter-sub">Lo-fi sketches &rarr; 12x12 Mid-fi structural grids &rarr; Rigorous Think-Aloud testing with 5 practicing school librarians.</p>
+            </div>
+
+            <div class="hl-fidelity-steps">
+                <div class="hl-fidelity-step scroll-reveal">
+                    <div class="hl-fidelity-label">01 &middot; LOW FIDELITY</div>
+                    <div class="hl-fidelity-screen">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_119.png" alt="Low fidelity wireframe of library dashboard" loading="lazy">
+                    </div>
+                    <p class="hl-fidelity-desc">Rapid paper and digital wireframes testing information architecture. Identified missing quick-action CTAs and eliminated deep nested menus.</p>
+                </div>
+
+                <div class="hl-fidelity-arrow">&rarr;</div>
+
+                <div class="hl-fidelity-step scroll-reveal">
+                    <div class="hl-fidelity-label">02 &middot; MID FIDELITY</div>
+                    <div class="hl-fidelity-screen">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_134.png" alt="Mid fidelity structured wireframe" loading="lazy">
+                    </div>
+                    <p class="hl-fidelity-desc">Standardized on a clean 12x12 column grid with neutral greys. Validated visual hierarchy, table readability, and drawer navigation balance.</p>
+                </div>
+
+                <div class="hl-fidelity-arrow">&rarr;</div>
+
+                <div class="hl-fidelity-step scroll-reveal">
+                    <div class="hl-fidelity-label">03 &middot; LIBRARIAN TESTING</div>
+                    <div class="hl-fidelity-screen hl-feedback-block">
+                        <div class="hl-feedback-header">5 Librarians Tested &middot; Think-Aloud &amp; This-or-That</div>
+                        <div class="hl-feedback-row"><span class="hl-fb-tag hl-fb-like">Loved</span><span>"Clean layout — I can see my pending returns instantly without scrolling."</span></div>
+                        <div class="hl-feedback-row"><span class="hl-fb-tag hl-fb-like">Loved</span><span>"Recommendation view gives me concrete data when asking admin for budget."</span></div>
+                        <div class="hl-feedback-row"><span class="hl-fb-tag hl-fb-wish">Critique</span><span>"Change 'Circulation' to 'Issue &amp; Return'. Jargon slows us down."</span></div>
+                        <div class="hl-feedback-row"><span class="hl-fb-tag hl-fb-wish">Critique</span><span>"Less circular pie charts in reports, more plain text summaries."</span></div>
+                        <div class="hl-feedback-row"><span class="hl-fb-tag hl-fb-whatif">Idea</span><span>"Can the planner suggest books based on classroom curriculum topics?"</span></div>
+                    </div>
+                    <p class="hl-fidelity-desc">Every piece of feedback directly altered the final production build — replacing jargon with natural librarian vocabulary.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ACT 7: THE AI SUPERPOWER (REAL VALUE, NOT HYPE) ===== -->
+        <section class="hl-research-section scroll-reveal dissolve">
+            <div class="hl-section-header">
+                <span class="hl-chapter-num">04</span>
+                <h2 class="hl-chapter-title">Unlocking Hurrey's AI superpower</h2>
+                <p class="hl-chapter-sub">Hurrey’s competitive edge was its AI engine. But instead of superficial conversational chatbots, we embedded machine intelligence where it solved unglamorous, high-friction operational pain.</p>
+            </div>
+
+            <div class="hl-ai-pillars-grid">
+                <!-- AI 1 -->
+                <div class="hl-ai-pillar-card scroll-reveal">
+                    <div class="hl-ai-pillar-icon">&#x1F4CA;</div>
+                    <h3>Predictive Restock Engine</h3>
+                    <p>Cross-references student search queries, unmet hold requests, and the school’s upcoming academic calendar. Predicts surges in demand 3 weeks before teachers introduce topics, giving librarians time to procure copies.</p>
+                </div>
+                <!-- AI 2 -->
+                <div class="hl-ai-pillar-card scroll-reveal">
+                    <div class="hl-ai-pillar-icon">&#x1F9F9;</div>
+                    <h3>Smart Weeding Assistant</h3>
+                    <p>Physical library shelves have hard limits. The weeding algorithm flags dead titles with zero circulation across 24 months, recommending them for archive storage or book sales to liberate shelf space.</p>
+                </div>
+                <!-- AI 3 -->
+                <div class="hl-ai-pillar-card scroll-reveal">
+                    <div class="hl-ai-pillar-icon">&#x2728;</div>
+                    <h3>The Library Planner</h3>
+                    <p>Librarians select a grade level, pedagogical theme (e.g., "Eco-fiction &amp; Climate"), and time horizon. The system analyzes readability scores and catalog availability to generate a structured reading curriculum in 5 seconds.</p>
+                </div>
+            </div>
+
+            <!-- Spotlight on Library Planner -->
+            <div class="hl-ai-callout scroll-reveal">
+                <div class="hl-ai-callout-inner">
+                    <div class="hl-ai-icon">&#x1F5D3;&#xFE0F;</div>
+                    <div class="hl-ai-text">
+                        <h3>Spotlight: The Library Planner</h3>
+                        <p>Before this feature, building curated reading plans for English teachers took librarians an entire weekend of cross-referencing syllabi with physical shelves. With Library Planner, it takes <strong>10 seconds</strong> — complete with age-appropriate reading difficulty scores and direct reserve links.</p>
+                    </div>
+                    <div class="hl-ai-screen">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_204.png" alt="Library Planner feature final screen" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ACT 8: DESIGN SYSTEM ===== -->
+        <section class="hl-ds-section scroll-reveal dissolve">
+            <div class="hl-section-header">
+                <span class="hl-chapter-label">FOUNDATIONAL SYSTEM</span>
+                <h2 class="hl-chapter-title">Google Material Design &mdash; adapted for data density</h2>
+            </div>
+
+            <div class="hl-ds-body">
+                <div class="hl-ds-left">
+                    <p>Enterprise SaaS for education demands rock-solid consistency across desktop monitors, school administrative laptops, and portable tablets. In collaboration with Hurrey’s engineering team, we adopted <strong>Google Material Design</strong> as our baseline foundation.</p>
+                    <p>However, default Material components are notoriously generous with white space. We engineered custom dense variants: tight tabular row heights, persistent sticky column headers, high-contrast status pills, and keyboard shortcuts (`Enter` to issue, `Esc` to clear).</p>
+                    <div class="hl-ds-components">
+                        <span class="hl-ds-chip">High-Density Tables</span>
+                        <span class="hl-ds-chip">Faceted Filters</span>
+                        <span class="hl-ds-chip">Navigation Drawer</span>
+                        <span class="hl-ds-chip">Barcode Modal</span>
+                        <span class="hl-ds-chip">Status Badges</span>
+                        <span class="hl-ds-chip">Keyboard Accelerators</span>
+                        <span class="hl-ds-chip">Calendar Engine</span>
+                        <span class="hl-ds-chip">Multi-language Tokens</span>
+                    </div>
+                </div>
+                <div class="hl-ds-right">
+                    <div class="hl-ds-screen-frame">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_159.png" alt="Hurrey design system documentation and component specs" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ACT 9: THE FINAL REDESIGNED EXPERIENCE ===== -->
+        <section class="hl-final-section">
+            <div class="hl-section-header scroll-reveal dissolve">
+                <span class="hl-chapter-num">05</span>
+                <h2 class="hl-chapter-title">The final experience</h2>
+                <p class="hl-chapter-sub">Explore the six core production flows — built for zero friction, high operational velocity, and intelligent assistance.</p>
+            </div>
+
+            <!-- Tab nav -->
+            <div class="hl-screen-tabs scroll-reveal" id="hlScreenTabs">
+                <button class="hl-screen-tab active" data-group="dashboard">Dashboard</button>
+                <button class="hl-screen-tab" data-group="circulation">Issue &amp; Return</button>
+                <button class="hl-screen-tab" data-group="catalog">Smart Catalog</button>
+                <button class="hl-screen-tab" data-group="requests">Requests Inbox</button>
+                <button class="hl-screen-tab" data-group="ai">AI Intelligence</button>
+                <button class="hl-screen-tab" data-group="settings">System Rules</button>
+            </div>
+
+            <!-- Screen groups -->
+            <div class="hl-screen-group active" data-group="dashboard">
+                <div class="hl-screen-showcase-grid">
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_175.png" alt="Dashboard empty state overview" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Dashboard (Empty State)</strong> &mdash; Friendly onboarding cards guiding first-time librarians to import books, set loan periods, and connect student registers.</div>
+                    </div>
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_176.png" alt="Dashboard active operational state" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Dashboard (Operational Velocity)</strong> &mdash; Live pulse of library health: daily checkouts, overdue alerts, and high-velocity books at a single glance.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hl-screen-group" data-group="circulation">
+                <div class="hl-screen-showcase-grid">
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_180.png" alt="Issue & Return user lookup" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Student Verification</strong> &mdash; Instant barcode scan or student name search. Instantly renders past loan history, unreturned books, and active restrictions.</div>
+                    </div>
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_181.png" alt="Lightning checkout flow" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Lightning Checkout</strong> &mdash; Scan book accession code &rarr; auto-validates return due date based on grade rules &rarr; confirms in 1 click.</div>
+                    </div>
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_182.png" alt="Issue confirmation screen" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Instant Confirmation</strong> &mdash; Unambiguous confirmation badge with quick option to print receipt or send automated WhatsApp notification to parents.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hl-screen-group" data-group="catalog">
+                <div class="hl-screen-showcase-grid">
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_188.png" alt="High density catalog list view" loading="lazy">
+                        <div class="hl-screen-caption"><strong>High-Density Catalog</strong> &mdash; Tabular view with multi-faceted filtering (Genre, DDC, Author, Grade, Availability) and instant alphabetical sort.</div>
+                    </div>
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_190.png" alt="Detailed MARC compliant book view" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Bibliographic Record</strong> &mdash; Complete MARC 21 metadata, shelf spine code, edition records, and real-time copy tracking across school blocks.</div>
+                    </div>
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_194.png" alt="Add book with smart ISBN auto-fetch" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Smart Add (ISBN Fetch)</strong> &mdash; Type 13 digits &rarr; system queries global library repositories and populates all fields automatically.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hl-screen-group" data-group="requests">
+                <div class="hl-screen-showcase-grid">
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_198.png" alt="Gmail inspired requests list" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Priority Request Inbox</strong> &mdash; Familiar Gmail-style triaging: unread hold requests highlighted, fulfilled requests archived with timestamps.</div>
+                    </div>
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_199.png" alt="Request detail and action modal" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Request Actions</strong> &mdash; Review student note, reserve copy on hold, or trigger procurement review in one streamlined drawer.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hl-screen-group" data-group="ai">
+                <div class="hl-screen-showcase-grid">
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_202.png" alt="Plain text report insights" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Narrative Reports</strong> &mdash; Replaces confusing scatter plots with plain-language analytical summaries that librarians can paste into board presentations.</div>
+                    </div>
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_203.png" alt="AI book restock recommendations" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Restock Intelligence</strong> &mdash; Algorithmic purchasing suggestions ranked by student request frequency, curriculum trends, and current inventory deficits.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hl-screen-group" data-group="settings">
+                <div class="hl-screen-showcase-grid">
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_204.png" alt="Circulation and loan rules configuration" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Circulation Policies</strong> &mdash; Granular controls for loan periods, renewal limits, fine tiers, and reminder schedules per student grade tier.</div>
+                    </div>
+                    <div class="hl-screen-item">
+                        <img src="assets/documents/project_hurreyLibrary/pages/page_196.png" alt="Catalog category and classification rules" loading="lazy">
+                        <div class="hl-screen-caption"><strong>Classification Rules</strong> &mdash; Customize Dewey Decimal categories, custom accession prefixes, and campus branch allocations.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ACT 10: REAL IMPACT & METRICS ===== -->
+        <section class="hl-outcome-section scroll-reveal dissolve">
+            <div class="hl-section-header">
+                <span class="hl-chapter-num">06</span>
+                <h2 class="hl-chapter-title">Measurable impact</h2>
+                <p class="hl-chapter-sub">When you reduce administrative friction, you give educators their time back.</p>
+            </div>
+
+            <div class="hl-metric-grid">
+                <div class="hl-metric-card scroll-reveal">
+                    <span class="hl-metric-val">18s</span>
+                    <span class="hl-metric-lbl">Checkout Duration</span>
+                    <span class="hl-metric-sub">Down from 4.2 minutes per student</span>
+                </div>
+                <div class="hl-metric-card scroll-reveal">
+                    <span class="hl-metric-val">0%</span>
+                    <span class="hl-metric-lbl">Manual ISBN Errors</span>
+                    <span class="hl-metric-sub">Via automated barcode &amp; repository fetch</span>
+                </div>
+                <div class="hl-metric-card scroll-reveal">
+                    <span class="hl-metric-val">100%</span>
+                    <span class="hl-metric-lbl">MARC 21 Standardized</span>
+                    <span class="hl-metric-sub">Interoperable with global libraries</span>
+                </div>
+                <div class="hl-metric-card scroll-reveal">
+                    <span class="hl-metric-val">5 / 5</span>
+                    <span class="hl-metric-lbl">Pilot Approval</span>
+                    <span class="hl-metric-sub">100% recommendation score from test librarians</span>
+                </div>
+            </div>
+
+            <!-- Management feedback callout -->
+            <div class="hl-feedback-callout scroll-reveal">
+                <div class="hl-feedback-quote">
+                    "The library module went from our most complained-about beta feature to one of our strongest product differentiators. By giving librarians interconnected superapp data without micro-management, Nikitha transformed the library into the digital heart of our schools."
+                    <div style="margin-top: 1rem; font-size: 0.85rem; font-style: normal; font-weight: 700; color: var(--text);">
+                        &mdash; Abhishek Chakraborty, Founder @ Hurrey Tech Ventures
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ACT 11: HONEST REFLECTIONS ===== -->
+        <section class="hl-reflection-section scroll-reveal dissolve">
+            <div class="hl-section-header">
+                <span class="hl-chapter-label">REFLECTION</span>
+                <h2 class="hl-chapter-title">What 6 months in a school library taught me</h2>
+            </div>
+            <div class="hl-reflection-body">
+                <p class="hl-reflection-text">This graduation project was my first deep immersion into enterprise B2B SaaS &mdash; and it shattered my student illusions about what "good design" looks like. In school, we are taught to design for visual delight and fluid consumer animations. In an enterprise tool, <em>delight is getting out of the user's way as fast as humanly possible</em>.</p>
+                <p class="hl-reflection-text">When you watch a librarian face down 30 impatient kids during a 15-minute recess, you stop caring about trendy design dribbble shots. You care about keyboard shortcuts. You care about error recovery that doesn't wipe 8 fields when you make a typo. You care about high-density tables that fit 40 records on a budget 1080p screen.</p>
+                <p class="hl-reflection-text">And AI? This project proved that AI is most powerful when it is humble. Not a chat bubble interrupting your flow, but an invisible background engine that looks at an ISBN and fills out 12 fields so a human doesn’t have to.</p>
+                <p class="hl-reflection-text">Six months, five pilot schools, zero lost library cards, and a permanent respect for the quietest room in education. &#x1F4DA;&#x2728;</p>
+            </div>
+        </section>
+
+        <!-- ===== NEXT PROJECT CTA ===== -->
+        <section class="case-study-next-section scroll-reveal">
+            <div class="next-project-cta">
+                <span class="next-project-label">NEXT PROJECT</span>
+                <a href="pots.html" class="next-project-link">
+                    <span class="next-project-title">Pots &rarr;</span>
+                    <span class="next-project-sub">Gamifying micro-savings for Gen-Z &middot; Hugosave &middot; UX Case Study</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/hurrey.js?v=3"></script>
+</body>
+</html>

@@ -422,11 +422,62 @@
         hurrey: {
             label: 'HURREY LIBRARY',
             slides: [
-                'assets/images/stories/terraform_1.jpg',
-                'assets/images/stories/terraform_2.jpg',
-                'assets/images/stories/terraform_3.jpg',
-                'assets/images/stories/terraform_4.jpg',
-                'assets/images/stories/terraform_5.jpg'
+                {
+                    type: 'title',
+                    bg: 'linear-gradient(165deg, #0B3C58 0%, #062334 100%)',
+                    tagline: 'UX CASE STUDY · 2023',
+                    title: 'Hurrey Library',
+                    subtitle: 'Rebuilding enterprise software for the 40-minute school lunch rush',
+                    accent: '#F5A623',
+                    dark: false
+                },
+                {
+                    type: 'stat',
+                    bg: 'linear-gradient(165deg, #1f1f2e 0%, #11111a 100%)',
+                    tagline: 'THE LUNCH RUSH',
+                    stat: '4.2m',
+                    description: 'Average checkout time per student with 14 clicks and manual 13-digit ISBN entry.',
+                    footnote: 'Measured across 5 pilot school libraries during recess'
+                },
+                {
+                    type: 'insight',
+                    bg: 'linear-gradient(165deg, #2a2015 0%, #150f08 100%)',
+                    tagline: 'USER ARCHETYPES',
+                    title: 'Who are we designing for?',
+                    items: [
+                        { icon: '🏛️', name: 'The Vanguard', pct: 'IB/Cambridge', desc: 'Needs smart restock AI & reading planners' },
+                        { icon: '⚡', name: 'The Striver', pct: 'Solo Hero', desc: 'Handles 200 kids in 40 mins with zero budget' },
+                        { icon: '🔒', name: 'Exam Fortress', pct: 'Deprioritized', desc: 'Silent study hall; recreation discouraged' },
+                        { icon: '📦', name: 'Dormant Archive', pct: 'Out of Scope', desc: 'Books locked behind glass cases' }
+                    ]
+                },
+                {
+                    type: 'concept',
+                    bg: 'linear-gradient(165deg, #0B3C58 0%, #082d43 100%)',
+                    tagline: 'THE AI SUPERPOWER',
+                    title: 'Predictive Restock & Weeding',
+                    description: 'Replaced chatbots with machine intelligence predicting surges 3 weeks early and auto-generating grade-specific reading planners in 5 seconds.',
+                    image: 'assets/documents/project_hurreyLibrary/pages/page_204.png'
+                },
+                {
+                    type: 'screen',
+                    bg: 'linear-gradient(165deg, #F6F5F2 0%, #E8E6E0 100%)',
+                    tagline: 'LIGHTNING CIRCULATION',
+                    caption: 'Barcode lookup + grade-aware loan policy + 1-click checkout in under 18 seconds',
+                    image: 'assets/documents/project_hurreyLibrary/pages/page_181.png',
+                    dark: true
+                },
+                {
+                    type: 'impact',
+                    bg: 'linear-gradient(165deg, #0B3C58 0%, #062334 100%)',
+                    tagline: 'MEASURABLE IMPACT',
+                    stats: [
+                        { value: '18s', label: 'Checkout duration (down from 4.2m)' },
+                        { value: '0%', label: 'Manual ISBN errors via barcode fetch' },
+                        { value: '5/5', label: 'Pilot approval from school librarians' }
+                    ],
+                    footnote: 'Validated across 5 partner private schools'
+                }
             ]
         }
     };
