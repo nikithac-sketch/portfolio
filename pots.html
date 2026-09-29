@@ -259,24 +259,56 @@
                 <p class="archetypes-intro-text">To better understand the usage patterns, user interviews and app usage were studied.<br>This emerged 4 interesting archetypes who create a money pot:</p>
             </div>
             
-            <!-- Left Side: Sticky Visualisation (amCharts 5) -->
+            <!-- Left Side: Sticky Quadrant Visualisation -->
             <div class="archetypes-sticky-left">
-                <div class="archetypes-chart-box" id="archetypesChartBox">
-                    <div class="archetypes-chart-toolbar">
-                        <span class="archetypes-chart-badge">USAGE PROPORTION</span>
-                        <div class="archetypes-view-toggle" id="archetypeViewToggle">
-                            <button class="arch-toggle-btn active" data-view="treemap">Treemap</button>
-                            <button class="arch-toggle-btn" data-view="quadrant">Quadrant</button>
-                        </div>
+                <div class="quadrant-chart-box">
+                    <!-- Y-axis labels (vertical, left side) -->
+                    <div class="quadrant-y-axis">
+                        <span class="axis-label-end">Goal Date</span>
+                        <span class="axis-label-start">No Goal Date</span>
                     </div>
 
-                    <!-- amCharts 5 Canvas Container -->
-                    <div id="archetypeChartDiv" class="archetype-chart-canvas"></div>
+                    <div class="quadrant-main">
+                        <!-- Quadrant grid area -->
+                        <div class="quadrant-area">
+                            <!-- Dotted axis lines -->
+                            <div class="quadrant-axis-h"></div>
+                            <div class="quadrant-axis-v"></div>
 
-                    <!-- Interactive hint & live active archetype callout -->
-                    <div class="archetypes-chart-footer" id="archetypeChartFooter">
-                        <span class="arch-footer-dot" id="archFooterDot"></span>
-                        <span class="arch-footer-label" id="archFooterLabel">Scroll cards or click slices to inspect</span>
+                            <!-- Top-left: The Countdown (1.55%) — has date, no amount -->
+                            <div class="quadrant-node node-countdown" data-archetype="3">
+                                <div class="quadrant-marker"></div>
+                                <span class="quadrant-node-pct">1.55%</span>
+                                <span class="quadrant-node-name">The Countdown</span>
+                            </div>
+
+                            <!-- Top-right: The Architect (37.84%) — has both -->
+                            <div class="quadrant-node node-architect active-node" data-archetype="1">
+                                <div class="quadrant-marker"></div>
+                                <span class="quadrant-node-pct">37.84%</span>
+                                <span class="quadrant-node-name">The Architect</span>
+                            </div>
+
+                            <!-- Bottom-left: The Explorer (44.39%) — neither -->
+                            <div class="quadrant-node node-explorer" data-archetype="4">
+                                <div class="quadrant-marker"></div>
+                                <span class="quadrant-node-pct">44.39%</span>
+                                <span class="quadrant-node-name">The Explorer</span>
+                            </div>
+
+                            <!-- Bottom-right: The Accumulator (16.22%) — has amount, no date -->
+                            <div class="quadrant-node node-accumulator" data-archetype="2">
+                                <div class="quadrant-marker"></div>
+                                <span class="quadrant-node-pct">16.22%</span>
+                                <span class="quadrant-node-name">The Accumulator</span>
+                            </div>
+                        </div>
+
+                        <!-- X-axis labels -->
+                        <div class="quadrant-x-axis">
+                            <span class="axis-label-start">No Goal Amount</span>
+                            <span class="axis-label-end">Goal Amount</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1085,16 +1117,6 @@
             </div>
         </div>
 
-        <!-- amCharts 5 Impact Benchmark Visualization -->
-        <div class="impact-benchmark-card scroll-reveal dissolve">
-            <div class="impact-benchmark-header">
-                <span class="impact-benchmark-tag">PRODUCTION TELEMETRY</span>
-                <h3 class="impact-benchmark-title">Legacy Savings vs. Redesigned Pots Experience</h3>
-                <p class="impact-benchmark-sub">Comparing single-session completion, wizard drop-off, and repeat monthly deposit conversion before and after the gamified milestone redesign.</p>
-            </div>
-            <div id="impactChartDiv" class="impact-chart-canvas"></div>
-        </div>
-
         <!-- Qualitative Insights -->
         <div class="impact-insights">
             <div class="impact-insight-block">
@@ -1179,12 +1201,6 @@
         </div>
     </div>
 
-    <!-- amCharts 5 Library -->
-    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/hierarchy.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-
-    <script src="js/pots.js?v=206"></script>
+    <script src="js/pots.js?v=201"></script>
 </body>
 </html>
