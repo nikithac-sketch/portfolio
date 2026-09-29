@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "amcharts5": {
+      "serverUrl": "https://mcp.amcharts.com/mcp"
+    }
+  }
+}

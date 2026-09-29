@@ -215,17 +215,461 @@
             pictoObserver.observe(step);
         });
     }
-    // ─── Scrollytelling Archetypes Logic (Quadrant Visualization) ───
+    // ─── Scrollytelling Archetypes Logic (amCharts 5) ───
     const archetypeTriggers = document.querySelectorAll('.archetype-scroll-trigger');
-    const quadrantNodes = document.querySelectorAll('.quadrant-node, .donut-segment');
+    const chartDiv = document.getElementById('archetypeChartDiv');
+    const viewToggleBtns = document.querySelectorAll('.arch-toggle-btn');
+    const footerDot = document.getElementById('archFooterDot');
+    const footerLabel = document.getElementById('archFooterLabel');
 
-    const archetypeData = {
-        1: { pct: '37.84%', label: 'The Architect' },
-        2: { pct: '16.22%', label: 'The Accumulator' },
-        3: { pct: '1.55%', label: 'The Countdown' },
-        4: { pct: '44.39%', label: 'The Explorer' }
+    let archetypeChartRoot = null;
+    let currentArchetypeView = 'treemap';
+    let currentActiveArchId = 1;
+    let treemapSeriesRef = null;
+    let quadrantSeriesRef = null;
+
+    const archetypeMeta = {
+        1: { name: 'The Architect', pct: '37.84%', value: 37.84, color: 0x7C3AED, tagline: 'Goal Date ✓ · Goal Amount ✓', desc: 'Plans target dates and amounts with strict discipline.' },
+        2: { name: 'The Accumulator', pct: '16.22%', value: 16.22, color: 0x11530D, tagline: 'Goal Amount ✓ · No Goal Date', desc: 'Saves impulsively in bursts without strict deadlines.' },
+        3: { name: 'The Countdown', pct: '1.55%', value: 1.55, color: 0xF5A623, tagline: 'Goal Date ✓ · No Goal Amount', desc: 'Event-focused sprints saving towards a fixed calendar deadline.' },
+        4: { name: 'The Explorer', pct: '44.39%', value: 44.39, color: 0x475569, tagline: 'No Goal Date · No Goal Amount', desc: 'Hesitant savers who need casual, open-ended milestone prompts.' }
     };
 
+    function scrollToArchetype(archId) {
+        const targetTrigger = document.querySelector(`.archetype-scroll-trigger[data-archetype="${archId}"]`);
+        if (targetTrigger) {
+            const card = targetTrigger.querySelector('.archetype-card') || targetTrigger;
+            const cardRect = card.getBoundingClientRect();
+            const navOffset = 110;
+            const availableSpace = window.innerHeight - navOffset;
+            const centerOffset = Math.max(20, (availableSpace - cardRect.height) / 2);
+            const targetY = window.pageYOffset + cardRect.top - navOffset - centerOffset;
+
+            window.scrollTo({
+                top: Math.max(0, targetY),
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    function highlightActiveArchetype(archId) {
+        currentActiveArchId = archId;
+        const meta = archetypeMeta[archId];
+        if (!meta) return;
+
+        // Update footer UI callout
+        if (footerDot) footerDot.style.background = '#' + meta.color.toString(16).padStart(6, '0');
+        if (footerLabel) {
+            footerLabel.innerHTML = `<strong>${meta.name} (${meta.pct})</strong> &mdash; ${meta.tagline}`;
+        }
+
+        // Treemap node highlight
+        if (currentArchetypeView === 'treemap' && treemapSeriesRef) {
+            if (treemapSeriesRef.rectangles && typeof treemapSeriesRef.rectangles.each === 'function') {
+                treemapSeriesRef.rectangles.each(rect => {
+                    const ctx = rect.dataItem ? rect.dataItem.dataContext : null;
+                    if (ctx && ctx.archetypeId) {
+                        if (ctx.archetypeId === archId) {
+                            rect.setAll({
+                                stroke: am5.color(0xFF7A00),
+                                strokeWidth: 3.5
+                            });
+                            if (typeof rect.toFront === 'function') rect.toFront();
+                        } else {
+                            rect.setAll({
+                                stroke: am5.color(0x0D0D0D),
+                                strokeWidth: 1.5
+                            });
+                        }
+                    }
+                });
+            }
+
+            const rootItem = treemapSeriesRef.dataItems ? treemapSeriesRef.dataItems[0] : null;
+            const children = rootItem ? rootItem.get('children') : [];
+            if (children && children.length > 0) {
+                children.forEach(item => {
+                    const ctx = item.dataContext;
+                    const rect = item.get('graphics');
+                    if (!rect) return;
+                    if (ctx && ctx.archetypeId === archId) {
+                        rect.setAll({
+                            stroke: am5.color(0xFF7A00),
+                            strokeWidth: 3.5
+                        });
+                        if (typeof rect.toFront === 'function') rect.toFront();
+                    } else {
+                        rect.setAll({
+                            stroke: am5.color(0x0D0D0D),
+                            strokeWidth: 1.5
+                        });
+                    }
+                });
+            }
+        }
+
+        // Quadrant node highlight
+        if (currentArchetypeView === 'quadrant' && quadrantSeriesRef) {
+            quadrantSeriesRef.dataItems.forEach(item => {
+                const ctx = item.dataContext;
+                const bullets = item.bullets;
+                if (!bullets || bullets.length === 0) return;
+                const bulletContainer = bullets[0].get('sprite');
+                if (!bulletContainer) return;
+                const circle = bulletContainer.children.getIndex(0);
+                if (!circle) return;
+
+                if (ctx && ctx.archetypeId === archId) {
+                    circle.setAll({
+                        stroke: am5.color(0xFF7A00),
+                        strokeWidth: 4,
+                        scale: 1.08
+                    });
+                } else {
+                    circle.setAll({
+                        stroke: am5.color(0x0D0D0D),
+                        strokeWidth: 1.5,
+                        scale: 1.0
+                    });
+                }
+            });
+        }
+    }
+
+    function initArchetypeTreemap() {
+        if (typeof am5 === 'undefined' || typeof am5hierarchy === 'undefined' || !chartDiv) return;
+
+        if (archetypeChartRoot) {
+            archetypeChartRoot.dispose();
+            archetypeChartRoot = null;
+        }
+
+        const root = am5.Root.new('archetypeChartDiv');
+        archetypeChartRoot = root;
+
+        if (typeof am5themes_Animated !== 'undefined') {
+            root.setThemes([am5themes_Animated.new(root)]);
+        }
+
+        const container = root.container.children.push(
+            am5.Container.new(root, {
+                width: am5.percent(100),
+                height: am5.percent(100),
+                layout: root.verticalLayout
+            })
+        );
+
+        const series = container.children.push(
+            am5hierarchy.Treemap.new(root, {
+                singleBranchOnly: false,
+                downDepth: 1,
+                upDepth: -1,
+                initialDepth: 1,
+                topDepth: 1,
+                valueField: 'value',
+                categoryField: 'name',
+                childDataField: 'children',
+                nodePaddingOuter: 4,
+                nodePaddingInner: 4,
+                layoutAlgorithm: 'squarify'
+            })
+        );
+
+        treemapSeriesRef = series;
+
+        series.rectangles.template.setAll({
+            strokeWidth: 1.5,
+            stroke: am5.color(0x0D0D0D),
+            cornerRadiusTL: 10,
+            cornerRadiusTR: 10,
+            cornerRadiusBL: 10,
+            cornerRadiusBR: 10,
+            tooltipText: '{name}: [bold]{pct}[/]\n[fontSize: 11px]{tagline}[/]',
+            interactive: true,
+            cursorOverStyle: 'pointer'
+        });
+
+        series.rectangles.template.adapters.add('fill', (fill, target) => {
+            const dataItem = target.dataItem;
+            if (dataItem && dataItem.dataContext && dataItem.dataContext.color) {
+                return am5.color(dataItem.dataContext.color);
+            }
+            return fill;
+        });
+
+        series.labels.template.setAll({
+            text: '{name}\n[bold fontSize: 15px]{pct}[/]',
+            fontSize: 12,
+            fontFamily: 'Instrument Sans, sans-serif',
+            fill: am5.color(0xFFFFFF),
+            paddingLeft: 10,
+            paddingTop: 10,
+            populateText: true
+        });
+
+        series.rectangles.template.events.on('click', (ev) => {
+            const ctx = ev.target.dataItem ? ev.target.dataItem.dataContext : null;
+            if (ctx && ctx.archetypeId) {
+                scrollToArchetype(ctx.archetypeId);
+            }
+        });
+
+        series.nodes.template.events.on('click', (ev) => {
+            const ctx = ev.target.dataItem ? ev.target.dataItem.dataContext : null;
+            if (ctx && ctx.archetypeId) {
+                scrollToArchetype(ctx.archetypeId);
+            }
+        });
+
+        const treemapData = {
+            name: 'Root',
+            children: [
+                {
+                    name: 'The Explorer',
+                    archetypeId: 4,
+                    value: 44.39,
+                    pct: '44.39%',
+                    tagline: archetypeMeta[4].tagline,
+                    color: archetypeMeta[4].color
+                },
+                {
+                    name: 'The Architect',
+                    archetypeId: 1,
+                    value: 37.84,
+                    pct: '37.84%',
+                    tagline: archetypeMeta[1].tagline,
+                    color: archetypeMeta[1].color
+                },
+                {
+                    name: 'The Accumulator',
+                    archetypeId: 2,
+                    value: 16.22,
+                    pct: '16.22%',
+                    tagline: archetypeMeta[2].tagline,
+                    color: archetypeMeta[2].color
+                },
+                {
+                    name: 'The Countdown',
+                    archetypeId: 3,
+                    value: 1.55,
+                    pct: '1.55%',
+                    tagline: archetypeMeta[3].tagline,
+                    color: archetypeMeta[3].color
+                }
+            ]
+        };
+
+        series.data.setAll([treemapData]);
+        series.set('selectedDataItem', series.dataItems[0]);
+        series.appear(800, 50);
+
+        setTimeout(() => {
+            highlightActiveArchetype(currentActiveArchId);
+        }, 120);
+    }
+
+    function initArchetypeQuadrant() {
+        if (typeof am5 === 'undefined' || typeof am5xy === 'undefined' || !chartDiv) return;
+
+        if (archetypeChartRoot) {
+            archetypeChartRoot.dispose();
+            archetypeChartRoot = null;
+        }
+
+        const root = am5.Root.new('archetypeChartDiv');
+        archetypeChartRoot = root;
+
+        if (typeof am5themes_Animated !== 'undefined') {
+            root.setThemes([am5themes_Animated.new(root)]);
+        }
+
+        const chart = root.container.children.push(
+            am5xy.XYChart.new(root, {
+                panX: false,
+                panY: false,
+                wheelX: 'none',
+                wheelY: 'none',
+                layout: root.verticalLayout
+            })
+        );
+
+        const xAxisRenderer = am5xy.AxisRendererX.new(root, { minGridDistance: 50 });
+        xAxisRenderer.labels.template.set('visible', false);
+        xAxisRenderer.ticks.template.set('visible', false);
+        xAxisRenderer.grid.template.set('visible', false);
+
+        const xAxis = chart.xAxes.push(
+            am5xy.ValueAxis.new(root, { min: 0, max: 100, renderer: xAxisRenderer })
+        );
+
+        const yAxisRenderer = am5xy.AxisRendererY.new(root, { minGridDistance: 50 });
+        yAxisRenderer.labels.template.set('visible', false);
+        yAxisRenderer.ticks.template.set('visible', false);
+        yAxisRenderer.grid.template.set('visible', false);
+
+        const yAxis = chart.yAxes.push(
+            am5xy.ValueAxis.new(root, { min: 0, max: 100, renderer: yAxisRenderer })
+        );
+
+        // Dashed middle lines at 50, 50
+        const xRange = xAxis.createAxisRange(xAxis.makeDataItem({ value: 50 }));
+        xRange.get('grid').setAll({
+            stroke: am5.color(0x555555),
+            strokeDasharray: [4, 4],
+            strokeWidth: 1.5,
+            strokeOpacity: 0.45
+        });
+
+        const yRange = yAxis.createAxisRange(yAxis.makeDataItem({ value: 50 }));
+        yRange.get('grid').setAll({
+            stroke: am5.color(0x555555),
+            strokeDasharray: [4, 4],
+            strokeWidth: 1.5,
+            strokeOpacity: 0.45
+        });
+
+        // Axis boundary indicators
+        chart.plotContainer.children.push(am5.Label.new(root, {
+            text: 'GOAL DATE ↑',
+            x: am5.p50,
+            y: 8,
+            centerX: am5.p50,
+            fontSize: 10,
+            fontFamily: 'Instrument Sans, sans-serif',
+            fill: am5.color(0x5A5A5A),
+            fontWeight: '700'
+        }));
+
+        chart.plotContainer.children.push(am5.Label.new(root, {
+            text: 'NO GOAL DATE ↓',
+            x: am5.p50,
+            y: am5.percent(95),
+            centerX: am5.p50,
+            fontSize: 10,
+            fontFamily: 'Instrument Sans, sans-serif',
+            fill: am5.color(0x5A5A5A),
+            fontWeight: '700'
+        }));
+
+        chart.plotContainer.children.push(am5.Label.new(root, {
+            text: '← NO AMOUNT',
+            x: 8,
+            y: am5.p50,
+            centerY: am5.p50,
+            fontSize: 10,
+            fontFamily: 'Instrument Sans, sans-serif',
+            fill: am5.color(0x5A5A5A),
+            fontWeight: '700'
+        }));
+
+        chart.plotContainer.children.push(am5.Label.new(root, {
+            text: 'GOAL AMOUNT →',
+            x: am5.percent(96),
+            y: am5.p50,
+            centerX: am5.percent(100),
+            centerY: am5.p50,
+            fontSize: 10,
+            fontFamily: 'Instrument Sans, sans-serif',
+            fill: am5.color(0x5A5A5A),
+            fontWeight: '700'
+        }));
+
+        const series = chart.series.push(
+            am5xy.LineSeries.new(root, {
+                calculateAggregates: true,
+                xAxis: xAxis,
+                yAxis: yAxis,
+                valueYField: 'y',
+                valueXField: 'x',
+                strokeOpacity: 0
+            })
+        );
+
+        quadrantSeriesRef = series;
+
+        series.bullets.push((root, series, dataItem) => {
+            const ctx = dataItem.dataContext;
+            const bulletContainer = am5.Container.new(root, {
+                interactive: true,
+                cursorOverStyle: 'pointer'
+            });
+
+            bulletContainer.children.push(
+                am5.Circle.new(root, {
+                    radius: ctx.radius,
+                    fill: am5.color(ctx.color),
+                    stroke: am5.color(0x0D0D0D),
+                    strokeWidth: 1.5,
+                    tooltipText: '{name}: [bold]{pct}[/]\n[fontSize: 11px]{tagline}[/]'
+                })
+            );
+
+            bulletContainer.children.push(
+                am5.Label.new(root, {
+                    text: '{shortName}\n[bold]{pct}[/]',
+                    centerX: am5.p50,
+                    centerY: am5.p50,
+                    textAlign: 'center',
+                    fill: am5.color(0xFFFFFF),
+                    fontSize: ctx.fontSize || 11,
+                    fontFamily: 'Instrument Sans, sans-serif',
+                    populateText: true
+                })
+            );
+
+            bulletContainer.events.on('click', () => {
+                if (ctx.archetypeId) scrollToArchetype(ctx.archetypeId);
+            });
+
+            return am5.Bullet.new(root, { sprite: bulletContainer });
+        });
+
+        const quadrantData = [
+            { name: 'The Countdown', shortName: 'Countdown', archetypeId: 3, x: 25, y: 75, radius: 24, fontSize: 9, pct: '1.55%', tagline: archetypeMeta[3].tagline, color: archetypeMeta[3].color },
+            { name: 'The Architect', shortName: 'Architect', archetypeId: 1, x: 75, y: 75, radius: 46, fontSize: 12, pct: '37.84%', tagline: archetypeMeta[1].tagline, color: archetypeMeta[1].color },
+            { name: 'The Explorer', shortName: 'Explorer', archetypeId: 4, x: 25, y: 25, radius: 50, fontSize: 13, pct: '44.39%', tagline: archetypeMeta[4].tagline, color: archetypeMeta[4].color },
+            { name: 'The Accumulator', shortName: 'Accumulator', archetypeId: 2, x: 75, y: 25, radius: 36, fontSize: 11, pct: '16.22%', tagline: archetypeMeta[2].tagline, color: archetypeMeta[2].color }
+        ];
+
+        series.data.setAll(quadrantData);
+        series.appear(800);
+        chart.appear(800, 50);
+
+        setTimeout(() => {
+            highlightActiveArchetype(currentActiveArchId);
+        }, 120);
+    }
+
+    // Toggle view buttons
+    viewToggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const view = btn.dataset.view;
+            if (view === currentArchetypeView) return;
+
+            viewToggleBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            currentArchetypeView = view;
+            if (view === 'treemap') {
+                initArchetypeTreemap();
+            } else if (view === 'quadrant') {
+                initArchetypeQuadrant();
+            }
+        });
+    });
+
+    // Auto-init on load or when scripts ready
+    if (typeof am5 !== 'undefined') {
+        initArchetypeTreemap();
+    } else if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        setTimeout(initArchetypeTreemap, 60);
+    } else {
+        window.addEventListener('load', () => {
+            initArchetypeTreemap();
+        });
+    }
+
+    // Archetype cards scroll intersection observer
     if (archetypeTriggers.length > 0) {
         const archetypesObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -243,48 +687,18 @@
                         }
                     });
 
-                    // Highlight quadrant node
-                    quadrantNodes.forEach(node => {
-                        const nodeId = parseInt(node.getAttribute('data-archetype'), 10);
-                        if (nodeId === archId) {
-                            node.classList.add('active-node', 'active-slice');
-                        } else {
-                            node.classList.remove('active-node', 'active-slice');
-                        }
-                    });
+                    // Highlight chart node
+                    highlightActiveArchetype(archId);
                 }
             });
         }, {
             root: null,
-            rootMargin: '-30% 0px -40% 0px', // triggers when the card enters the central viewport band
+            rootMargin: '-30% 0px -40% 0px',
             threshold: 0
         });
 
         archetypeTriggers.forEach(trigger => {
             archetypesObserver.observe(trigger);
-        });
-
-        // Add click listener on quadrant nodes to scroll smoothly to corresponding cards without top clipping
-        document.querySelectorAll('.quadrant-node, .donut-segment').forEach(el => {
-            el.addEventListener('click', () => {
-                const archId = el.getAttribute('data-archetype');
-                const targetTrigger = document.querySelector(`.archetype-scroll-trigger[data-archetype="${archId}"]`);
-                if (targetTrigger) {
-                    const card = targetTrigger.querySelector('.archetype-card') || targetTrigger;
-                    const cardRect = card.getBoundingClientRect();
-                    const navOffset = 110; // Clearance for sticky navigation bar
-                    const availableSpace = window.innerHeight - navOffset;
-                    
-                    // Center the card in the viewport space below the navbar
-                    const centerOffset = Math.max(20, (availableSpace - cardRect.height) / 2);
-                    const targetY = window.pageYOffset + cardRect.top - navOffset - centerOffset;
-
-                    window.scrollTo({
-                        top: Math.max(0, targetY),
-                        behavior: 'smooth'
-                    });
-                }
-            });
         });
     }
 
@@ -957,6 +1371,172 @@
         if (creationSteps[0]) creationSteps[0].classList.add('active');
         if (creationImages[0]) creationImages[0].classList.add('active');
         if (creationDialogues[0]) creationDialogues[0].classList.add('active');
+    }
+
+    // ─── amCharts 5 Impact Benchmark Visualization ───
+    let impactChartRoot = null;
+    function initImpactChart() {
+        const impactDiv = document.getElementById('impactChartDiv');
+        if (!impactDiv || typeof am5 === 'undefined' || typeof am5xy === 'undefined') return;
+
+        if (impactChartRoot) return;
+
+        const root = am5.Root.new('impactChartDiv');
+        impactChartRoot = root;
+
+        if (typeof am5themes_Animated !== 'undefined') {
+            root.setThemes([am5themes_Animated.new(root)]);
+        }
+
+        const chart = root.container.children.push(
+            am5xy.XYChart.new(root, {
+                panX: false,
+                panY: false,
+                wheelX: 'none',
+                wheelY: 'none',
+                paddingLeft: 0,
+                layout: root.verticalLayout
+            })
+        );
+
+        const legend = chart.children.unshift(
+            am5.Legend.new(root, {
+                centerX: am5.p50,
+                x: am5.p50,
+                marginBottom: 16
+            })
+        );
+
+        legend.labels.template.setAll({
+            fontFamily: 'Instrument Sans, sans-serif',
+            fontSize: 12,
+            fontWeight: '600',
+            fill: am5.color(0x0D0D0D)
+        });
+
+        const data = [
+            {
+                metric: 'Single-Session\nCompletion',
+                legacy: 31,
+                redesign: 68
+            },
+            {
+                metric: 'Wizard Drop-Off\nRate',
+                legacy: 59,
+                redesign: 18
+            },
+            {
+                metric: 'Weekly Return\nRate',
+                legacy: 19,
+                redesign: 48
+            }
+        ];
+
+        const xRenderer = am5xy.AxisRendererX.new(root, {
+            cellStartLocation: 0.15,
+            cellEndLocation: 0.85,
+            minGridDistance: 40
+        });
+
+        xRenderer.labels.template.setAll({
+            fontFamily: 'Instrument Sans, sans-serif',
+            fontSize: 12,
+            fontWeight: '600',
+            fill: am5.color(0x5A5A5A),
+            textAlign: 'center',
+            paddingTop: 8
+        });
+
+        xRenderer.grid.template.setAll({
+            strokeOpacity: 0.08
+        });
+
+        const xAxis = chart.xAxes.push(
+            am5xy.CategoryAxis.new(root, {
+                categoryField: 'metric',
+                renderer: xRenderer
+            })
+        );
+        xAxis.data.setAll(data);
+
+        const yRenderer = am5xy.AxisRendererY.new(root, {
+            strokeOpacity: 0.1
+        });
+
+        yRenderer.labels.template.setAll({
+            fontFamily: 'Instrument Sans, sans-serif',
+            fontSize: 11,
+            fill: am5.color(0x5A5A5A)
+        });
+
+        const yAxis = chart.yAxes.push(
+            am5xy.ValueAxis.new(root, {
+                min: 0,
+                max: 100,
+                numberFormat: "#'%'",
+                renderer: yRenderer
+            })
+        );
+
+        function makeImpactSeries(name, fieldName, colorHex) {
+            const series = chart.series.push(
+                am5xy.ColumnSeries.new(root, {
+                    name: name,
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: fieldName,
+                    categoryXField: 'metric'
+                })
+            );
+
+            series.columns.template.setAll({
+                tooltipText: '{name}: [bold]{valueY}%[/]',
+                width: am5.percent(88),
+                fill: am5.color(colorHex),
+                stroke: am5.color(0x0D0D0D),
+                strokeWidth: 1.5,
+                cornerRadiusTL: 6,
+                cornerRadiusTR: 6
+            });
+
+            series.bullets.push(() => {
+                return am5.Bullet.new(root, {
+                    locationY: 0.5,
+                    sprite: am5.Label.new(root, {
+                        text: "{valueY}%",
+                        fill: am5.color(0xFFFFFF),
+                        centerY: am5.p50,
+                        centerX: am5.p50,
+                        fontFamily: 'Instrument Sans, sans-serif',
+                        fontSize: 12,
+                        fontWeight: '700',
+                        populateText: true
+                    })
+                });
+            });
+
+            series.data.setAll(data);
+            series.appear(1000);
+            legend.data.push(series);
+        }
+
+        makeImpactSeries('Legacy Savings', 'legacy', 0x94A3B8);
+        makeImpactSeries('Redesigned Experience', 'redesign', 0xFF7A00);
+
+        chart.appear(1000, 100);
+    }
+
+    const impactDivEl = document.getElementById('impactChartDiv');
+    if (impactDivEl) {
+        const impactObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    initImpactChart();
+                    impactObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        impactObserver.observe(impactDivEl);
     }
 
     // Initial executions
