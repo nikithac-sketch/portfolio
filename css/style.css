@@ -1638,7 +1638,9 @@ img { display: block; max-width: 100%; }
     stroke-width: 2.5;
 }
 .phone-sketch-overlay circle {
-    fill: var(--text);
+    fill: #ffffff;
+    stroke: var(--text);
+    stroke-width: 2.5;
 }
 
 .polaroid-caption {
